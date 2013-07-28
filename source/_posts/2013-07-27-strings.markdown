@@ -106,7 +106,7 @@ puts f
 
 The first line basically means, append " + " to e, then append f to e, then append " is not equal to " to e, and finally append g.to_s to e. I will demonstrate the final way when we get to the Arrays section.
 
-# Escaping characters
+## Escaping characters
 
 If the String you're after is literally ```#{e} + #{f} is not equal to #{g}```, ie. you don't want Ruby to evaluate e, f, and g, you can escape the ```#{}``` blocks by prepending the # with a backslash ```\```. Alternatively, you can use single quotes instead of double quotes, and Ruby will escape those characters for you.
 
