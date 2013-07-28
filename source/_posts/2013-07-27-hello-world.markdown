@@ -7,7 +7,6 @@ categories: [Ruby, SENG2011]
 ---
 
 It's finally time to start coding. Start by cloning the git repository I've prepared for this demonstration.
-
 {% codeblock %}
 git clone git@github.com:nizhu/ruby-intro.git ~/ruby-intro
 cd ~/ruby-intro
@@ -29,7 +28,7 @@ I promise we're almost there, just open your favourite text editor
 puts "Hello World"
 {% endcodeblock %}
 
-That's it! Save it as hello_world.rb, exit, and now we can run the file
+That's it! Save it as hello_world.rb, exit, and now we can run the file. Note that # is the comment delimiter in Ruby and Shell so I will be using that to give you an idea of the expected result of the line preceding it.
 
 {% codeblock %}
 ruby hello_world.rb
@@ -112,8 +111,10 @@ ruby -v
 /usr/bin/ruby -v
 # ruby 1.8.7 (2012-02-08 patchlevel 358) [universal-darwin12.0]
 chmod +x version_env.rb
+./version_env.rb
 # 2.0.0
 chmod +x version_system.rb
+./version_system.rb
 # 1.8.7
 {% endcodeblock %}
 
