@@ -1,0 +1,120 @@
+---
+layout: post
+title: "Strings"
+date: 2013-07-27 17:34
+comments: true
+categories: [Ruby, SENG2011]
+---
+
+There isn't much special about Ruby strings. Try the code snippets below in irb.
+
+## Construction
+
+Strings can be created either using literals, or the new function.
+
+{% codeblock %}
+a = "abcde"
+puts a
+# abcde
+# => nil
+
+b = String.new "fghij"
+puts b
+# fghij
+# => nil
+{% endcodeblock %}
+
+## Instance Functions
+
+Like ```java.lang.String```, there are loads of predefined methods for the class. Remeber to refer to the Class documentation; there are code samples in there too. I'm just going to give you a taste of what's available.
+
+{% codeblock %}
+a.length
+# 1
+a.next
+# abcdf
+a.reverse
+# edcba
+a.upcase
+# ABCDE
+a.slice(3, 5)
+# de
+{% endcodeblock %}
+
+You'll notice that the methods above only returns the result of the function. Some methods makes changes to the string in place.
+
+{% codeblock %}
+c = "ababab"
+c.reverse!
+puts c
+# bababa
+
+c.upcase!
+puts c
+# BABABA
+{% endcodeblock %}
+
+Like Perl, Strings in Ruby are mutable. The object_id method I'm using below returns the id of the object, similar to the & operator in C. Strings inherit this from the Object class. Note that String objects are created every time a String literal is used.
+
+{% codeblock %}
+"xyzxyz".object_id
+# 70243133245180
+"xyzxyz".object_id
+# 70243133228560
+
+d = "xyzxyz"
+d.object_id
+# 70243133212180
+d.reverse!
+d.object_id
+# 70243133212180
+{% endcodeblock %}
+
+Strings can be constructed from variables in 4 different ways. The first two is probably the most commonly used
+
+{% codeblock %}
+e = "abc"
+f = "def"
+g = 10
+h = e + " + " + f + " is not equal to " + g.to_s
+i = "#{e} + #{f} is not equal to #{g}"
+puts h
+puts i
+# abc + def is not equal to 10
+{% endcodeblock %}
+
+The third way is appending to strings. It's more efficient in that it simply adds to a string instead of creating a new one, but it does change the string that is being appended to.
+
+{% codeblock %}
+j = e << " + " << f << " is not equal to " << g.to_s
+# abc + def is not equal to 10
+
+j.object_id
+# 70243124981460
+e.object_id
+# 70243124981460
+f.object_id
+# 70243124965700
+
+puts e
+# abc + def is not equal to 10
+puts f
+# def
+{% endcodeblock %}
+
+The first line basically means, append " + " to e, then append f to e, then append " is not equal to " to e, and finally append g.to_s to e. I will demonstrate the final way when we get to the Arrays section.
+
+## Documentation
+
+There's two way to access the API documentation, online through http://ruby-doc.org/, or offline in your command line with ri.
+
+{% codeblock %}
+ri String
+ri String#object_id
+{% endcodeblock %}
+
+Unofficially, (if you don't already) you'll learn to love Google and Stack Overflow too :)
+
+1. [Ruby Docs - String][1]
+
+  [1]: http://ruby-doc.org/core-2.0/String.html
