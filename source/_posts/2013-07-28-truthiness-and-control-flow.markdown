@@ -27,6 +27,31 @@ nil.object_id
 # 8
 {% endcodeblock %}
 
+## Equality Testing
+
+There are 4 ways of testing for equality in Ruby. You'll be using one of them a majority of the time... ```==```. Generally ```==``` represents equality of the values within the object while ```.equal?``` ensures that the 2 objects are one and the same (reference pointer comparison). However, as always, make sure you test your code thoroughly since these are just methods that are easy to override (more on this later). The other two are more obscure and depends much more on the implementation.
+
+{% codeblock %}
+"abc" == "abc"
+# true
+"abc".equal? "abc"
+# false
+
+1 == 1
+# true
+1.equal? 1
+# true
+1.eql? 1
+# true
+
+1.0 == 1
+# true
+1.0.equal? 1
+# false
+1.0.eql? 1
+# false
+{% endcodeblock %}
+
 # Control Flow
 
 As mentioned in the first post, Ruby was designed to be readable and flexible. I think control flow statements are the highlight. Further, it's important to always remember that false and nil are the only objects that can be 'untruthy' (including 0).
@@ -114,3 +139,7 @@ num = 1
 if num < 0; puts "negative"; puts "lalala" elsif num > 0; puts "positive" else puts "zero" end
 # positive
 {% endcodeblock %}
+
+1. [Stack Overflow - What's the difference between equal?, eql?, ===, and ==?][1]
+
+  [1]: http://stackoverflow.com/questions/7156955/whats-the-difference-between-equal-eql-and/7157051#7157051

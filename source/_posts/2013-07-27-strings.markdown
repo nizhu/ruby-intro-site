@@ -66,6 +66,7 @@ d = "xyzxyz"
 d.object_id
 # 70243133212180
 d.reverse!
+# "zyxzyx"
 d.object_id
 # 70243133212180
 {% endcodeblock %}
@@ -121,7 +122,7 @@ a = '#{e} + #{f} is not equal to #{g}'
 
 ## Ruby Documentation
 
-There's two way to access the API documentation, online through http://ruby-doc.org/, or offline in your command line with ri.
+There's two way to access the API documentation, online through [http://ruby-doc.org/](http://ruby-doc.org/), or offline in your command line with ri.
 
 {% codeblock %}
 ri String
