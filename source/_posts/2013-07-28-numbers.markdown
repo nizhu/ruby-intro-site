@@ -1,0 +1,139 @@
+---
+layout: post
+title: "Numbers"
+date: 2013-07-28 14:48
+comments: true
+categories: [Ruby, SENG2011]
+---
+
+Like most (if not all) object oriented programming languages out there, Ruby has an Integer class and a Float class. Less common in standard libraries however, are the classes Rational and Complex which are used to represent fractions and complex numbers respectively.
+
+# Integers
+
+In terms of functionality, there's little interesting with Integers. There's obviously adding, subtracting, multiplication, division, modulo and exponentials. 
+
+{% codeblock %}
+1 + 2
+# 3
+1 - 2
+# -1 
+1 * 2
+# 2
+2 / 1
+# 2
+5 % 2
+# 1
+2 ** 2
+# 4
+{% endcodeblock %}
+
+There are also several methods for common operations
+
+{% codeblock %}
+1.next
+# 2
+1.even?
+# false
+10.gcd(2)
+# 2
+"10".to_i
+# 10
+{% endcodeblock %}
+
+## Fixnum vs Bignum
+
+To make an analogy to Java and C, this is the comparison between int and long. In Ruby however, integers are not actually of the class Integer.
+
+What we think of Integer is the Fixnum. It's used for all integers that would fit in a machine's 'word', otherwise it's a Bignum. Both these types inherit from the Integer class.
+
+On this 64bit Mac, a word is 8 bytes. The class uses 1 bit mark the number as positive or negative, and another to mark the integer as value as opposed to a pointer (this is why object_id for Fixnum are always odd). As such, the maximum value for a Fixnum is 4611686018427387903 (2^62-1) and the minimum is -4611686018427387904 (-2^62). If an Fixnum leaves this range, Ruby automatically converts it to a Bignum and vice versa.
+
+{% codeblock %}
+FIXNUM_MAX = (2**(0.size * 8 -2) -1)
+# 4611686018427387903
+FIXNUM_MIN = -(2**(0.size * 8 -2))
+# -4611686018427387904
+FIXNUM_MAX.class
+# Fixnum
+bignum = FIXNUM_MAX + 1
+bignum.class
+# Bignum
+(bignum-1).class
+# Fixnum
+{% endcodeblock %}
+
+The biggest difference between these classes is that, like Java ints, Fixnum objects are immediate value. They are not references to another object. Remember in the last post when repeating ```"xyzxyz".object_id``` would return a different number everytime? This won't be the case for Fixnum. In fact, object_id of Fixnum are predictable. For positive numbers, the id is simply 2 * value + 1. Similarly, 2 * value - 1 for negative numbers.
+
+{% codeblock %}
+4611686018427387903.object_id
+# 9223372036854775807
+4611686018427387903.object_id
+# 9223372036854775807
+
+-4611686018427387904.object_id
+# -9223372036854775807
+{% endcodeblock %}
+
+# Rationals
+
+Rationals are useful for calculations because they come with the accuracy that's missing from floats. There are 3 ways to create them
+
+{% codeblock %}
+Rational(1, 2)
+# (1/2)
+"1/2".to_r
+# (1/2)
+0.5.rationalize
+# (1/2)
+
+Rational(1,2) + Rational(2,3)
+# (7/6)
+Rational(7,6).to_f
+# 1.1666666666666667
+{% endcodeblock %}
+
+# Float
+
+Like integers, Float's methods are quite standard.
+
+{% codeblock %}
+1.2345.to_i
+# 1
+1.2345.floor
+# 1
+9.87654321.round(3)
+# 9.877
+(0.0).infinite?
+# nil
+(-1.0/0.0).infinite?
+# -1
+(+1.0/0.0).infinite?
+# 1
+0.3.rationalize
+# (3/10)
+{% endcodeblock %}
+
+However, it's important to note that floating point calculations are inaccurate, like almost every programming langauge (can't name any with).
+
+{% codeblock %}
+0.3.to_r
+# (5404319552844595/18014398509481984)
+printf("%.55f\n", 1.9)
+1.8999999999999999111821580299874767661094665527343750000
+{% endcodeblock %}
+
+1. [Ruby-Docs Integer][1]
+2. [Ruby-Docs Fixnum][2]
+3. [Ruby-Dics Bignum][3]
+4. [Ruby-Docs Float][4]
+5. [Ruby-Docs Rationals][5]
+6. [Ruby-Docs Complex][6]
+7. [Stack Overflow Ruby max integer][7]
+
+  [1]: http://www.ruby-doc.org/core-2.0/Integer.html
+  [2]: http://www.ruby-doc.org/core-2.0/Fixnum.html
+  [3]: http://www.ruby-doc.org/core-2.0/Bignum.html
+  [4]: http://www.ruby-doc.org/core-2.0/Float.html
+  [5]: http://www.ruby-doc.org/core-2.0/Rational.html
+  [6]: http://www.ruby-doc.org/core-2.0/Complex.html
+  [7]: http://stackoverflow.com/questions/535721/ruby-max-integer
