@@ -1,0 +1,344 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>Installing Ruby - Ruby Intro</title>
+  <meta name="author" content="Nick Zhu">
+
+  
+  <meta name="description" content="When I was first starting out in Ruby, this is what gave me the biggest problems. One can install from their operating system&rsquo;s package manager &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://nizhu.github.io/ruby-intro-site/blog/2013/07/27/installing-ruby">
+  <link href="/ruby-intro-site/favicon.png" rel="icon">
+  <link href="/ruby-intro-site/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/ruby-intro-site/atom.xml" rel="alternate" title="Ruby Intro" type="application/atom+xml">
+  <script src="/ruby-intro-site/javascripts/modernizr-2.0.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script>!window.jQuery && document.write(unescape('%3Cscript src="./javascripts/lib/jquery.min.js"%3E%3C/script%3E'))</script>
+  <script src="/ruby-intro-site/javascripts/octopress.js" type="text/javascript"></script>
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+  
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/ruby-intro-site/">Ruby Intro</a></h1>
+  
+    <h2>SENG2011</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/ruby-intro-site/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:nizhu.github.io/ruby-intro-site" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/ruby-intro-site/">Blog</a></li>
+  <li><a href="/ruby-intro-site/blog/archives">Archives</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title">Installing Ruby</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-07-27T12:21:00+10:00" pubdate data-updated="true">Jul 27<span>th</span>, 2013</time>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><p>When I was first starting out in Ruby, this is what gave me the biggest problems. One can install from their operating system&rsquo;s package manager easily enough (likely be installed already with the system), but because of how quickly the Ruby community moves, using system Ruby is generally not a good idea. Every now and then, you&rsquo;ll come across version incompatibility issues and if you need to work on different apps with different versions of Ruby, then you&rsquo;re in a bit of a mess. Not to mention the permission issues.</p>
+
+<p>To get around this, we use a Ruby version manager &ndash; one named simply rvm, and another, rbenv.</p>
+
+<p>I will be going through installing Ruby with rbenv on Bash with you simply because I&rsquo;ve personally had fewer issues with it integrating with our Bamboo continuous integration environment, but that&rsquo;s a story for another day. You&rsquo;ll no doubt come across problems that I didn&rsquo;t foresee. If it tells you of a missing dependency, just install it. Setting up Ruby was a great exercise in google-fu for me; don&rsquo;t be discouraged if you end up having to reinstall several times.</p>
+
+<p>Please read the OSX comments even if you don&rsquo;t have OSX!</p>
+
+<h2>OSX</h2>
+
+<p>If you have a Mac, you&rsquo;re in luck &ndash; you have Homebrew. If you don&rsquo;t, just install it with <code>ruby -e "$(curl -fsSL https://raw.github.com/mxcl/homebrew/go)"</code></p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>brew update
+</span><span class='line'>brew install rbenv</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Unfortunately, a plugin is required to install Ruby with rbenv</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>brew install ruby-build</span></code></pre></td></tr></table></div></figure>
+
+
+<p>&lsquo;Turn on&rsquo; rbenv</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Set up bash to always enable rbenv if available</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>echo 'if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi' >> ~/.profile</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Add rbenv&rsquo;s executables to your PATH</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'># My rbenv is installed in /usr/loca/opt/rbenv, but yours may be in ~/.rbenv
+</span><span class='line'># Change the line below appropriately
+</span><span class='line'>echo 'export PATH=/usr/local/opt/rbenv/shims:$PATH'</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Finally install Ruby 2.0.0-p247</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>rbenv install 2.0.0-p247
+</span><span class='line'># Command below refreshes rbenv's executables.
+</span><span class='line'># Make sure you run this every time you (un)install a ruby or a gem - more on this later
+</span><span class='line'>rbenv rehash</span></code></pre></td></tr></table></div></figure>
+
+
+<h2>Debian/Ubuntu/Linux Mint</h2>
+
+<p>For fun times, install these dependencies</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>apt-get install build-essential openssl libreadline6 libreadline6-dev curl git-core zlib1g zlib1g-dev libssl-dev libyaml-dev libsqlite3-dev sqlite3 libxml2-dev libxslt-dev autoconf libc6-dev ncurses-dev automake libtool bison subversion pkg-config</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Install rbenv + ruby-build</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>git clone https://github.com/sstephenson/rbenv.git ~/.rbenv
+</span><span class='line'>echo 'export PATH="$HOME/.rbenv/bin:$PATH"' >> ~/.bashrc
+</span><span class='line'>echo 'eval "$(rbenv init -)"' >> ~/.bashrc
+</span><span class='line'>exec $SHELL -l
+</span><span class='line'>mkdir -p ~/.rbenv/plugins
+</span><span class='line'>git clone https://github.com/sstephenson/ruby-build.git ~/.rbenv/plugins/ruby-build
+</span><span class='line'>rbenv install 2.0.0-p247
+</span><span class='line'>rbenv rehash</span></code></pre></td></tr></table></div></figure>
+
+
+<h2>Keeping legacy code consistent</h2>
+
+<p>You may have Ruby scripts before installing rbenv that ran with system Ruby, so it&rsquo;s best to keep it that way. To ensure that this happens, we can make system ruby the default for rbenv.</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>rbenv global system
+</span><span class='line'>rbenv version
+</span><span class='line'># system (set by /usr/local/opt/rbenv/version)</span></code></pre></td></tr></table></div></figure>
+
+
+<h2>Make rbenv use a specific version</h2>
+
+<p>Whenever you interact with rbenv, it will look in your current directory for a file named .rbenv-version before falling back to the global default. Try the following:</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>cd /tmp
+</span><span class='line'>rbenv version
+</span><span class='line'># system (set by /usr/local/opt/rbenv/version)
+</span><span class='line'>echo '2.0.0-p247' > .rbenv-version
+</span><span class='line'># 2.0.0-p247 (set by /tmp/.rbenv-version)</span></code></pre></td></tr></table></div></figure>
+
+
+<p>The best thing about forcing versions is that you can commit this file to your code repository, and it will ensure that developer on every machine using rbenv will be using the version of Ruby that is intended.</p>
+
+<ol>
+<li><a href="https://rvm.io/">rvm</a></li>
+<li><a href="https://github.com/sstephenson/rbenv">rbenv</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Continuous_integration">Wikipedia on Continuous Integration</a></li>
+<li><a href="https://www.atlassian.com/software/bamboo">Atlassian Bamboo</a></li>
+<li><a href="http://brew.sh/">Homebrew</a></li>
+<li><a href="https://github.com/sstephenson/rbenv#installation">Installing rbenv</a></li>
+<li><a href="https://github.com/sstephenson/ruby-build">ruby-build rbenv plugin</a></li>
+</ol>
+
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">Nick Zhu</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-07-27T12:21:00+10:00" pubdate data-updated="true">Jul 27<span>th</span>, 2013</time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='/ruby-intro-site/blog/categories/ruby/'>Ruby</a>, <a class='category' href='/ruby-intro-site/blog/categories/seng2011/'>SENG2011</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="/ruby-intro-site//twitter.com/share" class="twitter-share-button" data-url="http://nizhu.github.io/ruby-intro-site/blog/2013/07/27/installing-ruby/" data-via="" data-counturl="http://nizhu.github.io/ruby-intro-site/blog/2013/07/27/installing-ruby/" >Tweet</a>
+  
+  
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/ruby-intro-site/blog/2013/07/27/intro-to-intro/" title="Previous Post: Intro to intro">&laquo; Intro to intro</a>
+      
+      
+        <a class="basic-alignment right" href="/ruby-intro-site/blog/2013/07/27/hello-world/" title="Next Post: Hello World">Hello World &raquo;</a>
+      
+    </p>
+  </footer>
+</article>
+
+</div>
+
+<aside class="sidebar">
+  
+    <section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/ruby-intro-site/blog/2013/07/28/loops/">Loops</a>
+      </li>
+    
+      <li class="post">
+        <a href="/ruby-intro-site/blog/2013/07/28/arrays/">Arrays</a>
+      </li>
+    
+      <li class="post">
+        <a href="/ruby-intro-site/blog/2013/07/28/truthiness-and-control-flow/">Truthiness &amp; Control Flow</a>
+      </li>
+    
+      <li class="post">
+        <a href="/ruby-intro-site/blog/2013/07/28/numbers/">Numbers</a>
+      </li>
+    
+      <li class="post">
+        <a href="/ruby-intro-site/blog/2013/07/27/strings/">Strings</a>
+      </li>
+    
+  </ul>
+</section>
+
+
+
+
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2013 - Nick Zhu -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = '//platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>

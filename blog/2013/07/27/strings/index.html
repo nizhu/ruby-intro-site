@@ -1,0 +1,408 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>Strings - Ruby Intro</title>
+  <meta name="author" content="Nick Zhu">
+
+  
+  <meta name="description" content="There isn&rsquo;t much special about Ruby strings. Try the code snippets below in irb. Construction Strings can be created either using literals, or &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://nizhu.github.io/ruby-intro-site/blog/2013/07/27/strings">
+  <link href="/ruby-intro-site/favicon.png" rel="icon">
+  <link href="/ruby-intro-site/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/ruby-intro-site/atom.xml" rel="alternate" title="Ruby Intro" type="application/atom+xml">
+  <script src="/ruby-intro-site/javascripts/modernizr-2.0.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script>!window.jQuery && document.write(unescape('%3Cscript src="./javascripts/lib/jquery.min.js"%3E%3C/script%3E'))</script>
+  <script src="/ruby-intro-site/javascripts/octopress.js" type="text/javascript"></script>
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+  
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/ruby-intro-site/">Ruby Intro</a></h1>
+  
+    <h2>SENG2011</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/ruby-intro-site/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:nizhu.github.io/ruby-intro-site" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/ruby-intro-site/">Blog</a></li>
+  <li><a href="/ruby-intro-site/blog/archives">Archives</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title">Strings</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-07-27T17:34:00+10:00" pubdate data-updated="true">Jul 27<span>th</span>, 2013</time>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><p>There isn&rsquo;t much special about Ruby strings. Try the code snippets below in irb.</p>
+
+<h2>Construction</h2>
+
+<p>Strings can be created either using literals, or the new function.</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>a = "abcde"
+</span><span class='line'>puts a
+</span><span class='line'># abcde
+</span><span class='line'># => nil
+</span><span class='line'>
+</span><span class='line'>b = String.new "fghij"
+</span><span class='line'>puts b
+</span><span class='line'># fghij
+</span><span class='line'># => nil</span></code></pre></td></tr></table></div></figure>
+
+
+<h2>Instance Functions</h2>
+
+<p>Like <code>java.lang.String</code>, there are loads of predefined methods for the class. Remeber to refer to the Class documentation; there are code samples in there too. I&rsquo;m just going to give you a taste of what&rsquo;s available.</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>a.length
+</span><span class='line'># 1
+</span><span class='line'>a.next
+</span><span class='line'># abcdf
+</span><span class='line'>a.reverse
+</span><span class='line'># edcba
+</span><span class='line'>a.upcase
+</span><span class='line'># ABCDE
+</span><span class='line'>a.slice(3, 5)
+</span><span class='line'># de</span></code></pre></td></tr></table></div></figure>
+
+
+<p>You&rsquo;ll notice that the methods above only returns the result of the function. Some methods makes changes to the string in place.</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>c = "ababab"
+</span><span class='line'>c.reverse!
+</span><span class='line'>puts c
+</span><span class='line'># bababa
+</span><span class='line'>
+</span><span class='line'>c.upcase!
+</span><span class='line'>puts c
+</span><span class='line'># BABABA</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Like Perl, Strings in Ruby are mutable. The object_id method I&rsquo;m using below returns the id of the object, similar to the &amp; operator in C. Strings inherit this from the Object class. Note that String objects are created every time a String literal is used.</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>"xyzxyz".object_id
+</span><span class='line'># 70243133245180
+</span><span class='line'>"xyzxyz".object_id
+</span><span class='line'># 70243133228560
+</span><span class='line'>
+</span><span class='line'>d = "xyzxyz"
+</span><span class='line'>d.object_id
+</span><span class='line'># 70243133212180
+</span><span class='line'>d.reverse!
+</span><span class='line'># "zyxzyx"
+</span><span class='line'>d.object_id
+</span><span class='line'># 70243133212180</span></code></pre></td></tr></table></div></figure>
+
+
+<h2>Building a String</h2>
+
+<p>Strings can be built from variables in 4 different ways. The first two is probably the most commonly used</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>e = "abc"
+</span><span class='line'>f = "def"
+</span><span class='line'>g = 10
+</span><span class='line'>h = e + " + " + f + " is not equal to " + g.to_s
+</span><span class='line'>i = "#{e} + #{f} is not equal to #{g}"
+</span><span class='line'>puts h
+</span><span class='line'>puts i
+</span><span class='line'># abc + def is not equal to 10</span></code></pre></td></tr></table></div></figure>
+
+
+<p>The third way is appending to strings. It&rsquo;s more efficient in that it simply adds to a string instead of creating a new one, but it does change the string that is being appended to.</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>j = e &lt;&lt; " + " &lt;&lt; f &lt;&lt; " is not equal to " &lt;&lt; g.to_s
+</span><span class='line'># abc + def is not equal to 10
+</span><span class='line'>
+</span><span class='line'>j.object_id
+</span><span class='line'># 70243124981460
+</span><span class='line'>e.object_id
+</span><span class='line'># 70243124981460
+</span><span class='line'>f.object_id
+</span><span class='line'># 70243124965700
+</span><span class='line'>
+</span><span class='line'>puts e
+</span><span class='line'># abc + def is not equal to 10
+</span><span class='line'>puts f
+</span><span class='line'># def</span></code></pre></td></tr></table></div></figure>
+
+
+<p>The first line basically means, append &ldquo; + &rdquo; to e, then append f to e, then append &ldquo; is not equal to &rdquo; to e, and finally append g.to_s to e. I will demonstrate the final way when we get to the Arrays section.</p>
+
+<h2>Escaping characters</h2>
+
+<p>If the String you&rsquo;re after is literally <code>#{e} + #{f} is not equal to #{g}</code>, ie. you don&rsquo;t want Ruby to evaluate e, f, and g, you can escape the <code>#{}</code> blocks by prepending the # with a backslash <code>\</code>. Alternatively, you can use single quotes instead of double quotes, and Ruby will escape those characters for you.</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>puts "\#{e} + \#{f} is not equal to \#{g}""
+</span><span class='line'># #{e} + #{f} is not equal to #{g}
+</span><span class='line'>puts '#{e} + #{f} is not equal to #{g}'
+</span><span class='line'># #{e} + #{f} is not equal to #{g}
+</span><span class='line'>a = '#{e} + #{f} is not equal to #{g}'
+</span><span class='line'># "\#{e} + \#{f} is not equal to \#{g}"</span></code></pre></td></tr></table></div></figure>
+
+
+<h2>Ruby Documentation</h2>
+
+<p>There&rsquo;s two way to access the API documentation, online through <a href="http://ruby-doc.org/">http://ruby-doc.org/</a>, or offline in your command line with ri.</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>ri String
+</span><span class='line'>ri String#object_id</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Unofficially, (if you don&rsquo;t already) you&rsquo;ll learn to love Google and Stack Overflow too :)</p>
+
+<ol>
+<li><a href="http://ruby-doc.org/core-2.0/String.html">Ruby Docs &ndash; String</a></li>
+</ol>
+
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">Nick Zhu</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-07-27T17:34:00+10:00" pubdate data-updated="true">Jul 27<span>th</span>, 2013</time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='/ruby-intro-site/blog/categories/ruby/'>Ruby</a>, <a class='category' href='/ruby-intro-site/blog/categories/seng2011/'>SENG2011</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="/ruby-intro-site//twitter.com/share" class="twitter-share-button" data-url="http://nizhu.github.io/ruby-intro-site/blog/2013/07/27/strings/" data-via="" data-counturl="http://nizhu.github.io/ruby-intro-site/blog/2013/07/27/strings/" >Tweet</a>
+  
+  
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/ruby-intro-site/blog/2013/07/27/hello-world/" title="Previous Post: Hello World">&laquo; Hello World</a>
+      
+      
+        <a class="basic-alignment right" href="/ruby-intro-site/blog/2013/07/28/numbers/" title="Next Post: Numbers">Numbers &raquo;</a>
+      
+    </p>
+  </footer>
+</article>
+
+</div>
+
+<aside class="sidebar">
+  
+    <section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/ruby-intro-site/blog/2013/07/28/loops/">Loops</a>
+      </li>
+    
+      <li class="post">
+        <a href="/ruby-intro-site/blog/2013/07/28/arrays/">Arrays</a>
+      </li>
+    
+      <li class="post">
+        <a href="/ruby-intro-site/blog/2013/07/28/truthiness-and-control-flow/">Truthiness &amp; Control Flow</a>
+      </li>
+    
+      <li class="post">
+        <a href="/ruby-intro-site/blog/2013/07/28/numbers/">Numbers</a>
+      </li>
+    
+      <li class="post">
+        <a href="/ruby-intro-site/blog/2013/07/27/strings/">Strings</a>
+      </li>
+    
+  </ul>
+</section>
+
+
+
+
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2013 - Nick Zhu -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = '//platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>

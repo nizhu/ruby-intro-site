@@ -1,0 +1,449 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>Loops - Ruby Intro</title>
+  <meta name="author" content="Nick Zhu">
+
+  
+  <meta name="description" content="Like the if statements you saw 2 posts prior, there are many ways to construct loops. Not that there is no increment/decrement, ++/--, operation in &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://nizhu.github.io/ruby-intro-site/blog/2013/07/28/loops">
+  <link href="/ruby-intro-site/favicon.png" rel="icon">
+  <link href="/ruby-intro-site/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/ruby-intro-site/atom.xml" rel="alternate" title="Ruby Intro" type="application/atom+xml">
+  <script src="/ruby-intro-site/javascripts/modernizr-2.0.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script>!window.jQuery && document.write(unescape('%3Cscript src="./javascripts/lib/jquery.min.js"%3E%3C/script%3E'))</script>
+  <script src="/ruby-intro-site/javascripts/octopress.js" type="text/javascript"></script>
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+  
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/ruby-intro-site/">Ruby Intro</a></h1>
+  
+    <h2>SENG2011</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/ruby-intro-site/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:nizhu.github.io/ruby-intro-site" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/ruby-intro-site/">Blog</a></li>
+  <li><a href="/ruby-intro-site/blog/archives">Archives</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title">Loops</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-07-28T21:09:00+10:00" pubdate data-updated="true">Jul 28<span>th</span>, 2013</time>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><p>Like the if statements you saw 2 posts prior, there are many ways to construct loops. Not that there is no increment/decrement, <code>++/--</code>, operation in Ruby.</p>
+
+<p>There is the while loop you&rsquo;re used to</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>i = 0
+</span><span class='line'>while i &lt; 3 do
+</span><span class='line'>  puts i
+</span><span class='line'>  i += 1
+</span><span class='line'>end
+</span><span class='line'># 0
+</span><span class='line'># 1
+</span><span class='line'># 2</span></code></pre></td></tr></table></div></figure>
+
+
+<p>While loops with the test at the end</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>i = 0
+</span><span class='line'>begin
+</span><span class='line'>  puts i
+</span><span class='line'>  i += 1
+</span><span class='line'>end while i &lt; 3
+</span><span class='line'># 0
+</span><span class='line'># 1
+</span><span class='line'># 2
+</span><span class='line'>
+</span><span class='line'>i = 0
+</span><span class='line'>begin
+</span><span class='line'>  puts i
+</span><span class='line'>  i += 1
+</span><span class='line'>end while i &lt; 0
+</span><span class='line'># 0</span></code></pre></td></tr></table></div></figure>
+
+
+<p>There&rsquo;s the until loops which run while the condition is false</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>i = 0
+</span><span class='line'>until i > 2
+</span><span class='line'>  puts i
+</span><span class='line'>  i += 1
+</span><span class='line'>end
+</span><span class='line'># 0
+</span><span class='line'># 1
+</span><span class='line'># 2
+</span><span class='line'>
+</span><span class='line'>i = 0
+</span><span class='line'>begin
+</span><span class='line'>  puts i
+</span><span class='line'>  i += 1
+</span><span class='line'>end until i >= 0</span></code></pre></td></tr></table></div></figure>
+
+
+<p>And finally, my favourite &ndash; the for loops. If you already have a list to iterate through, great.</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>a = [0, 1, 2]
+</span><span class='line'>for i in a
+</span><span class='line'>  puts i
+</span><span class='line'>end
+</span><span class='line'># 0
+</span><span class='line'># 1
+</span><span class='line'># 2</span></code></pre></td></tr></table></div></figure>
+
+
+<p>If not, it&rsquo;s great too</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>for i in 0..2
+</span><span class='line'>  puts i
+</span><span class='line'>end
+</span><span class='line'># 0
+</span><span class='line'># 1
+</span><span class='line'># 2
+</span><span class='line'>
+</span><span class='line'>(0..2).each do |i|
+</span><span class='line'>  puts i
+</span><span class='line'>end
+</span><span class='line'># 0
+</span><span class='line'># 1
+</span><span class='line'># 2</span></code></pre></td></tr></table></div></figure>
+
+
+<p>There&rsquo;s also 4 keywords to help you manage the control of flow <code>break</code>, <code>next</code>, <code>redo</code> and finally <code>retry</code> which I&rsquo;ll bring up in the Error Handling section. <code>break</code> exits the inner most loop</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>for i in 0..2
+</span><span class='line'>  puts i
+</span><span class='line'>  if i == 1
+</span><span class='line'>    break
+</span><span class='line'>  end
+</span><span class='line'>end
+</span><span class='line'># 0
+</span><span class='line'># 1</span></code></pre></td></tr></table></div></figure>
+
+
+<p>While <code>next</code> jumps to the next iteration of the loop</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>for i in 0..2
+</span><span class='line'>  if i == 1
+</span><span class='line'>    next
+</span><span class='line'>  end
+</span><span class='line'>  puts i
+</span><span class='line'>end
+</span><span class='line'># 0
+</span><span class='line'># 2
+</span><span class='line'>
+</span><span class='line'>for i in 0..2
+</span><span class='line'>  if i == 2
+</span><span class='line'>    next
+</span><span class='line'>  end
+</span><span class='line'>  puts i
+</span><span class='line'>end
+</span><span class='line'># 0
+</span><span class='line'># 1</span></code></pre></td></tr></table></div></figure>
+
+
+<p>And <code>redo</code> jumps back to the beginning of the current iteration in this loop</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>j = 0
+</span><span class='line'>for i in 0..2
+</span><span class='line'>  puts "i is #{i}"
+</span><span class='line'>  puts "j is #{j}"
+</span><span class='line'>  j += 1
+</span><span class='line'>  if j > 2
+</span><span class='line'>    break
+</span><span class='line'>  end
+</span><span class='line'>  if i == 1
+</span><span class='line'>    redo
+</span><span class='line'>  end
+</span><span class='line'>end
+</span><span class='line'># i is 0
+</span><span class='line'># j is 0
+</span><span class='line'># i is 1
+</span><span class='line'># j is 1
+</span><span class='line'># i is 1
+</span><span class='line'># j is 2</span></code></pre></td></tr></table></div></figure>
+
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">Nick Zhu</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-07-28T21:09:00+10:00" pubdate data-updated="true">Jul 28<span>th</span>, 2013</time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='/ruby-intro-site/blog/categories/ruby/'>Ruby</a>, <a class='category' href='/ruby-intro-site/blog/categories/seng2011/'>SENG2011</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="/ruby-intro-site//twitter.com/share" class="twitter-share-button" data-url="http://nizhu.github.io/ruby-intro-site/blog/2013/07/28/loops/" data-via="" data-counturl="http://nizhu.github.io/ruby-intro-site/blog/2013/07/28/loops/" >Tweet</a>
+  
+  
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/ruby-intro-site/blog/2013/07/28/arrays/" title="Previous Post: Arrays">&laquo; Arrays</a>
+      
+      
+    </p>
+  </footer>
+</article>
+
+</div>
+
+<aside class="sidebar">
+  
+    <section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/ruby-intro-site/blog/2013/07/28/loops/">Loops</a>
+      </li>
+    
+      <li class="post">
+        <a href="/ruby-intro-site/blog/2013/07/28/arrays/">Arrays</a>
+      </li>
+    
+      <li class="post">
+        <a href="/ruby-intro-site/blog/2013/07/28/truthiness-and-control-flow/">Truthiness &amp; Control Flow</a>
+      </li>
+    
+      <li class="post">
+        <a href="/ruby-intro-site/blog/2013/07/28/numbers/">Numbers</a>
+      </li>
+    
+      <li class="post">
+        <a href="/ruby-intro-site/blog/2013/07/27/strings/">Strings</a>
+      </li>
+    
+  </ul>
+</section>
+
+
+
+
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2013 - Nick Zhu -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = '//platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>

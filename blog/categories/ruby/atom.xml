@@ -1,0 +1,1555 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Ruby | Ruby Intro]]></title>
+  <link href="http://nizhu.github.io/ruby-intro-site/blog/categories/ruby/atom.xml" rel="self"/>
+  <link href="http://nizhu.github.io/ruby-intro-site/"/>
+  <updated>2013-07-29T22:42:06+10:00</updated>
+  <id>http://nizhu.github.io/ruby-intro-site/</id>
+  <author>
+    <name><![CDATA[Nick Zhu]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Loops]]></title>
+    <link href="http://nizhu.github.io/ruby-intro-site/blog/2013/07/28/loops/"/>
+    <updated>2013-07-28T21:09:00+10:00</updated>
+    <id>http://nizhu.github.io/ruby-intro-site/blog/2013/07/28/loops</id>
+    <content type="html"><![CDATA[<p>Like the if statements you saw 2 posts prior, there are many ways to construct loops. Not that there is no increment/decrement, <code>++/--</code>, operation in Ruby.</p>
+
+<p>There is the while loop you&rsquo;re used to</p>
+
+<p><div class='bogus-wrapper'><notextile><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>i = 0
+</span><span class='line'>while i &lt; 3 do
+</span><span class='line'>  puts i
+</span><span class='line'>  i += 1
+</span><span class='line'>end&lt;/p>
+</span><span class='line'>
+</span><span class='line'>&lt;h1>0&lt;/h1>
+</span><span class='line'>
+</span><span class='line'>&lt;h1>1&lt;/h1>
+</span><span class='line'>
+</span><span class='line'>&lt;h1>2&lt;/h1>
+</span><span class='line'>
+</span><span class='line'>&lt;p></span></code></pre></td></tr></table></div></figure></notextile></div></p>
+
+<p>While loops with the test at the end</p>
+
+<p><div class='bogus-wrapper'><notextile><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>i = 0
+</span><span class='line'>begin
+</span><span class='line'>  puts i
+</span><span class='line'>  i += 1
+</span><span class='line'>end while i &lt; 3&lt;/p>
+</span><span class='line'>
+</span><span class='line'>&lt;h1>0&lt;/h1>
+</span><span class='line'>
+</span><span class='line'>&lt;h1>1&lt;/h1>
+</span><span class='line'>
+</span><span class='line'>&lt;h1>2&lt;/h1>
+</span><span class='line'>
+</span><span class='line'>&lt;p>i = 0
+</span><span class='line'>begin
+</span><span class='line'>  puts i
+</span><span class='line'>  i += 1
+</span><span class='line'>end while i &lt; 0&lt;/p>
+</span><span class='line'>
+</span><span class='line'>&lt;h1>0&lt;/h1>
+</span><span class='line'>
+</span><span class='line'>&lt;p></span></code></pre></td></tr></table></div></figure></notextile></div></p>
+
+<p>There&rsquo;s the until loops which run while the condition is false</p>
+
+<p><div class='bogus-wrapper'><notextile><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>i = 0
+</span><span class='line'>until i > 2
+</span><span class='line'>  puts i
+</span><span class='line'>  i += 1
+</span><span class='line'>end&lt;/p>
+</span><span class='line'>
+</span><span class='line'>&lt;h1>0&lt;/h1>
+</span><span class='line'>
+</span><span class='line'>&lt;h1>1&lt;/h1>
+</span><span class='line'>
+</span><span class='line'>&lt;h1>2&lt;/h1>
+</span><span class='line'>
+</span><span class='line'>&lt;p>i = 0
+</span><span class='line'>begin
+</span><span class='line'>  puts i
+</span><span class='line'>  i += 1
+</span><span class='line'>end until i >= 0</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+
+<p>And finally, my favourite &ndash; the for loops. If you already have a list to iterate through, great.</p>
+
+<p><div class='bogus-wrapper'><notextile><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>a = [0, 1, 2]
+</span><span class='line'>for i in a
+</span><span class='line'>  puts i
+</span><span class='line'>end&lt;/p>
+</span><span class='line'>
+</span><span class='line'>&lt;h1>0&lt;/h1>
+</span><span class='line'>
+</span><span class='line'>&lt;h1>1&lt;/h1>
+</span><span class='line'>
+</span><span class='line'>&lt;h1>2&lt;/h1>
+</span><span class='line'>
+</span><span class='line'>&lt;p></span></code></pre></td></tr></table></div></figure></notextile></div></p>
+
+<p>If not, it&rsquo;s great too</p>
+
+<p><div class='bogus-wrapper'><notextile><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>for i in 0..2
+</span><span class='line'>  puts i
+</span><span class='line'>end&lt;/p>
+</span><span class='line'>
+</span><span class='line'>&lt;h1>0&lt;/h1>
+</span><span class='line'>
+</span><span class='line'>&lt;h1>1&lt;/h1>
+</span><span class='line'>
+</span><span class='line'>&lt;h1>2&lt;/h1>
+</span><span class='line'>
+</span><span class='line'>&lt;p>(0..2).each do |i|
+</span><span class='line'>  puts i
+</span><span class='line'>end&lt;/p>
+</span><span class='line'>
+</span><span class='line'>&lt;h1>0&lt;/h1>
+</span><span class='line'>
+</span><span class='line'>&lt;h1>1&lt;/h1>
+</span><span class='line'>
+</span><span class='line'>&lt;h1>2&lt;/h1>
+</span><span class='line'>
+</span><span class='line'>&lt;p></span></code></pre></td></tr></table></div></figure></notextile></div></p>
+
+<p>There&rsquo;s also 4 keywords to help you manage the control of flow <code>break</code>, <code>next</code>, <code>redo</code> and finally <code>retry</code> which I&rsquo;ll bring up in the Error Handling section. <code>break</code> exits the inner most loop</p>
+
+<p><div class='bogus-wrapper'><notextile><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>for i in 0..2
+</span><span class='line'>  puts i
+</span><span class='line'>  if i == 1&lt;/p>
+</span><span class='line'>
+</span><span class='line'>&lt;pre>&lt;code>break
+</span><span class='line'>&lt;/code>&lt;/pre>
+</span><span class='line'>
+</span><span class='line'>&lt;p>  end
+</span><span class='line'>end&lt;/p>
+</span><span class='line'>
+</span><span class='line'>&lt;h1>0&lt;/h1>
+</span><span class='line'>
+</span><span class='line'>&lt;h1>1&lt;/h1>
+</span><span class='line'>
+</span><span class='line'>&lt;p></span></code></pre></td></tr></table></div></figure></notextile></div></p>
+
+<p>While <code>next</code> jumps to the next iteration of the loop</p>
+
+<p><div class='bogus-wrapper'><notextile><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>for i in 0..2
+</span><span class='line'>  if i == 1&lt;/p>
+</span><span class='line'>
+</span><span class='line'>&lt;pre>&lt;code>next
+</span><span class='line'>&lt;/code>&lt;/pre>
+</span><span class='line'>
+</span><span class='line'>&lt;p>  end
+</span><span class='line'>  puts i
+</span><span class='line'>end&lt;/p>
+</span><span class='line'>
+</span><span class='line'>&lt;h1>0&lt;/h1>
+</span><span class='line'>
+</span><span class='line'>&lt;h1>2&lt;/h1>
+</span><span class='line'>
+</span><span class='line'>&lt;p>for i in 0..2
+</span><span class='line'>  if i == 2&lt;/p>
+</span><span class='line'>
+</span><span class='line'>&lt;pre>&lt;code>next
+</span><span class='line'>&lt;/code>&lt;/pre>
+</span><span class='line'>
+</span><span class='line'>&lt;p>  end
+</span><span class='line'>  puts i
+</span><span class='line'>end&lt;/p>
+</span><span class='line'>
+</span><span class='line'>&lt;h1>0&lt;/h1>
+</span><span class='line'>
+</span><span class='line'>&lt;h1>1&lt;/h1>
+</span><span class='line'>
+</span><span class='line'>&lt;p></span></code></pre></td></tr></table></div></figure></notextile></div></p>
+
+<p>And <code>redo</code> jumps back to the beginning of the current iteration in this loop</p>
+
+<p><div class='bogus-wrapper'><notextile><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+<span class='line-number'>30</span>
+<span class='line-number'>31</span>
+<span class='line-number'>32</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>j = 0
+</span><span class='line'>for i in 0..2
+</span><span class='line'>  puts &ldquo;i is #{i}&rdquo;
+</span><span class='line'>  puts &ldquo;j is #{j}&rdquo;
+</span><span class='line'>  j += 1
+</span><span class='line'>  if j > 2&lt;/p>
+</span><span class='line'>
+</span><span class='line'>&lt;pre>&lt;code>break
+</span><span class='line'>&lt;/code>&lt;/pre>
+</span><span class='line'>
+</span><span class='line'>&lt;p>  end
+</span><span class='line'>  if i == 1&lt;/p>
+</span><span class='line'>
+</span><span class='line'>&lt;pre>&lt;code>redo
+</span><span class='line'>&lt;/code>&lt;/pre>
+</span><span class='line'>
+</span><span class='line'>&lt;p>  end
+</span><span class='line'>end&lt;/p>
+</span><span class='line'>
+</span><span class='line'>&lt;h1>i is 0&lt;/h1>
+</span><span class='line'>
+</span><span class='line'>&lt;h1>j is 0&lt;/h1>
+</span><span class='line'>
+</span><span class='line'>&lt;h1>i is 1&lt;/h1>
+</span><span class='line'>
+</span><span class='line'>&lt;h1>j is 1&lt;/h1>
+</span><span class='line'>
+</span><span class='line'>&lt;h1>i is 1&lt;/h1>
+</span><span class='line'>
+</span><span class='line'>&lt;h1>j is 2&lt;/h1>
+</span><span class='line'>
+</span><span class='line'>&lt;p></span></code></pre></td></tr></table></div></figure></notextile></div></p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Arrays]]></title>
+    <link href="http://nizhu.github.io/ruby-intro-site/blog/2013/07/28/arrays/"/>
+    <updated>2013-07-28T20:21:00+10:00</updated>
+    <id>http://nizhu.github.io/ruby-intro-site/blog/2013/07/28/arrays</id>
+    <content type="html"><![CDATA[<p>Arrays in Ruby are very similar to those in other dynamic programming languages. It&rsquo;s all very standard and the documentation has loads of examples anyway, so I&rsquo;ll go through only the most basic and obvious to get started.</p>
+
+<h3>Construction</h3>
+
+<p><div class='bogus-wrapper'><notextile><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>[1, &ldquo;foo&rdquo;, nil, &ldquo;bar&rdquo;]&lt;/p>
+</span><span class='line'>
+</span><span class='line'>&lt;h1>[1, &ldquo;foo&rdquo;, nil, &ldquo;bar&rdquo;]&lt;/h1>
+</span><span class='line'>
+</span><span class='line'>&lt;p>Array.new&lt;/p>
+</span><span class='line'>
+</span><span class='line'>&lt;h1>[]&lt;/h1>
+</span><span class='line'>
+</span><span class='line'>&lt;p>Array.new(3, true)&lt;/p>
+</span><span class='line'>
+</span><span class='line'>&lt;h1>[true, true, true]&lt;/h1>
+</span><span class='line'>
+</span><span class='line'>&lt;p>(1..10).to_a&lt;/p>
+</span><span class='line'>
+</span><span class='line'>&lt;h1>[1, 2, 3, 4, 5, 6, 7, 8, 9, 10]&lt;/h1>
+</span><span class='line'>
+</span><span class='line'>&lt;p>(&ldquo;a7&rdquo;..&ldquo;b5&rdquo;).to_a&lt;/p>
+</span><span class='line'>
+</span><span class='line'>&lt;h1>[&ldquo;a7&rdquo;, &ldquo;a8&rdquo;, &ldquo;a9&rdquo;, &ldquo;b0&rdquo;, &ldquo;b1&rdquo;, &ldquo;b2&rdquo;, &ldquo;b3&rdquo;, &ldquo;b4&rdquo;, &ldquo;b5&rdquo;]&lt;/h1>
+</span><span class='line'>
+</span><span class='line'>&lt;p></span></code></pre></td></tr></table></div></figure></notextile></div></p>
+
+<h3>Accessing elements and array info</h3>
+
+<p><div class='bogus-wrapper'><notextile><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+<span class='line-number'>30</span>
+<span class='line-number'>31</span>
+<span class='line-number'>32</span>
+<span class='line-number'>33</span>
+<span class='line-number'>34</span>
+<span class='line-number'>35</span>
+<span class='line-number'>36</span>
+<span class='line-number'>37</span>
+<span class='line-number'>38</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>arr = [1, 2, 3, 4, 5, 6]
+</span><span class='line'>arr&lt;a href="http://stackoverflow.com/questions/5018633/what-is-the-difference-between-print-and-puts">2&lt;/a>&lt;/p>
+</span><span class='line'>
+</span><span class='line'>&lt;h1>3&lt;/h1>
+</span><span class='line'>
+</span><span class='line'>&lt;p>arr[100]&lt;/p>
+</span><span class='line'>
+</span><span class='line'>&lt;h1>nil&lt;/h1>
+</span><span class='line'>
+</span><span class='line'>&lt;p>arr[-3]&lt;/p>
+</span><span class='line'>
+</span><span class='line'>&lt;h1>4&lt;/h1>
+</span><span class='line'>
+</span><span class='line'>&lt;p>arr[2, 3]&lt;/p>
+</span><span class='line'>
+</span><span class='line'>&lt;h1>[3, 4, 5]&lt;/h1>
+</span><span class='line'>
+</span><span class='line'>&lt;p>arr[1..4]&lt;/p>
+</span><span class='line'>
+</span><span class='line'>&lt;h1>[2, 3, 4, 5]&lt;/h1>
+</span><span class='line'>
+</span><span class='line'>&lt;p>arr.at(0)&lt;/p>
+</span><span class='line'>
+</span><span class='line'>&lt;h1>1&lt;/h1>
+</span><span class='line'>
+</span><span class='line'>&lt;p>arr.length&lt;/p>
+</span><span class='line'>
+</span><span class='line'>&lt;h1>6&lt;/h1>
+</span><span class='line'>
+</span><span class='line'>&lt;p>arr.empty?&lt;/p>
+</span><span class='line'>
+</span><span class='line'>&lt;h1>false&lt;/h1>
+</span><span class='line'>
+</span><span class='line'>&lt;p>arr.include?(7)&lt;/p>
+</span><span class='line'>
+</span><span class='line'>&lt;h1>false&lt;/h1>
+</span><span class='line'>
+</span><span class='line'>&lt;p></span></code></pre></td></tr></table></div></figure></notextile></div></p>
+
+<h3>Adding to the array</h3>
+
+<p><div class='bogus-wrapper'><notextile><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>arr.push(7)&lt;/p>
+</span><span class='line'>
+</span><span class='line'>&lt;h1>[1, 2, 3, 4, 5, 6, 7]&lt;/h1>
+</span><span class='line'>
+</span><span class='line'>&lt;p>arr &lt;&lt; 8&lt;/p>
+</span><span class='line'>
+</span><span class='line'>&lt;h1>[1, 2, 3, 4, 5, 6, 7, 8]&lt;/h1>
+</span><span class='line'>
+</span><span class='line'>&lt;p>arr.unshift(0)&lt;/p>
+</span><span class='line'>
+</span><span class='line'>&lt;h1>[0, 1, 2, 3, 4, 5, 6, 7]&lt;/h1>
+</span><span class='line'>
+</span><span class='line'>&lt;p>arr.insert(3, 2.5)&lt;/p>
+</span><span class='line'>
+</span><span class='line'>&lt;h1>[0, 1, 2, 2.5, 3, 4, 5, 6, 7]&lt;/h1>
+</span><span class='line'>
+</span><span class='line'>&lt;p></span></code></pre></td></tr></table></div></figure></notextile></div></p>
+
+<h3>Removing from Array</h3>
+
+<p><div class='bogus-wrapper'><notextile><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>arr&lt;/p>
+</span><span class='line'>
+</span><span class='line'>&lt;h1>[0, 1, 2, 2.5, 3, 4, 5, 6, 7]&lt;/h1>
+</span><span class='line'>
+</span><span class='line'>&lt;p>arr.pop&lt;/p>
+</span><span class='line'>
+</span><span class='line'>&lt;h1>7&lt;/h1>
+</span><span class='line'>
+</span><span class='line'>&lt;h1>arr = [0, 1, 2, 2.5, 3, 4, 5, 6]&lt;/h1>
+</span><span class='line'>
+</span><span class='line'>&lt;p>arr.shift&lt;/p>
+</span><span class='line'>
+</span><span class='line'>&lt;h1>0&lt;/h1>
+</span><span class='line'>
+</span><span class='line'>&lt;h1>arr = [1, 2, 2.5, 3, 4, 5, 6]&lt;/h1>
+</span><span class='line'>
+</span><span class='line'>&lt;p>arr.delete(3)&lt;/p>
+</span><span class='line'>
+</span><span class='line'>&lt;h1>2.5&lt;/h1>
+</span><span class='line'>
+</span><span class='line'>&lt;h1>arr = [1, 2. 3, 4, 5, 6]&lt;/h1>
+</span><span class='line'>
+</span><span class='line'>&lt;p></span></code></pre></td></tr></table></div></figure></notextile></div></p>
+
+<h2>Print vs Puts</h2>
+
+<p>Both these functions can be used to output text. To put it simply, puts adds a newline character to the end of each argument and outputs nil as an invisible character rather than a String. Refer to the link at the bottom for more discussion.</p>
+
+<p><div class='bogus-wrapper'><notextile><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>print [nil, 1, 2]&lt;/p>
+</span><span class='line'>
+</span><span class='line'>&lt;h1>[nil, 1, 2]=> nil&lt;/h1>
+</span><span class='line'>
+</span><span class='line'>&lt;p>puts [nil, 1, 2]&lt;/p>
+</span><span class='line'>
+</span><span class='line'>&lt;h1>&lt;/h1>
+</span><span class='line'>
+</span><span class='line'>&lt;h1>1&lt;/h1>
+</span><span class='line'>
+</span><span class='line'>&lt;h1>2&lt;/h1>
+</span><span class='line'>
+</span><span class='line'>&lt;p></span></code></pre></td></tr></table></div></figure></notextile></div></p>
+
+<ol>
+<li><a href="http://ruby-doc.org/core-2.0/Array.html">Ruby-Docs Array</a></li>
+<li><a href="http://stackoverflow.com/questions/5018633/what-is-the-difference-between-print-and-puts">Stack Overflow &ndash; What is the difference between print and puts</a></li>
+</ol>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Truthiness &amp; Control Flow]]></title>
+    <link href="http://nizhu.github.io/ruby-intro-site/blog/2013/07/28/truthiness-and-control-flow/"/>
+    <updated>2013-07-28T15:25:00+10:00</updated>
+    <id>http://nizhu.github.io/ruby-intro-site/blog/2013/07/28/truthiness-and-control-flow</id>
+    <content type="html"><![CDATA[<p>Ruby uses keywords true and false to represent truthiness and nil to represent a reference that points to nothing (usually some variation of null in other languages).</p>
+
+<p>Like Fixnum from the previous post, these 3 keywords are immediate values.</p>
+
+<p><div class='bogus-wrapper'><notextile><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>true.object_id&lt;/p>
+</span><span class='line'>
+</span><span class='line'>&lt;h1>20&lt;/h1>
+</span><span class='line'>
+</span><span class='line'>&lt;p>true.object_id&lt;/p>
+</span><span class='line'>
+</span><span class='line'>&lt;h1>20&lt;/h1>
+</span><span class='line'>
+</span><span class='line'>&lt;p>false.object_id&lt;/p>
+</span><span class='line'>
+</span><span class='line'>&lt;h1>0&lt;/h1>
+</span><span class='line'>
+</span><span class='line'>&lt;p>false.object_id&lt;/p>
+</span><span class='line'>
+</span><span class='line'>&lt;h1>0&lt;/h1>
+</span><span class='line'>
+</span><span class='line'>&lt;p>nil.object_id&lt;/p>
+</span><span class='line'>
+</span><span class='line'>&lt;h1>8&lt;/h1>
+</span><span class='line'>
+</span><span class='line'>&lt;p>nil.object_id&lt;/p>
+</span><span class='line'>
+</span><span class='line'>&lt;h1>8&lt;/h1>
+</span><span class='line'>
+</span><span class='line'>&lt;p></span></code></pre></td></tr></table></div></figure></notextile></div></p>
+
+<h2>Equality Testing</h2>
+
+<p>There are 4 ways of testing for equality in Ruby. You&rsquo;ll be using one of them a majority of the time&hellip; <code>==</code>. Generally <code>==</code> represents equality of the values within the object while <code>.equal?</code> ensures that the 2 objects are one and the same (reference pointer comparison). However, as always, make sure you test your code thoroughly since these are just methods that are easy to override (more on this later). The other two are more obscure and depends much more on the implementation.</p>
+
+<p><div class='bogus-wrapper'><notextile><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+<span class='line-number'>30</span>
+<span class='line-number'>31</span>
+<span class='line-number'>32</span>
+<span class='line-number'>33</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>&ldquo;abc&rdquo; == &ldquo;abc&rdquo;&lt;/p>
+</span><span class='line'>
+</span><span class='line'>&lt;h1>true&lt;/h1>
+</span><span class='line'>
+</span><span class='line'>&lt;p>&ldquo;abc&rdquo;.equal? &ldquo;abc&rdquo;&lt;/p>
+</span><span class='line'>
+</span><span class='line'>&lt;h1>false&lt;/h1>
+</span><span class='line'>
+</span><span class='line'>&lt;p>1 == 1&lt;/p>
+</span><span class='line'>
+</span><span class='line'>&lt;h1>true&lt;/h1>
+</span><span class='line'>
+</span><span class='line'>&lt;p>1.equal? 1&lt;/p>
+</span><span class='line'>
+</span><span class='line'>&lt;h1>true&lt;/h1>
+</span><span class='line'>
+</span><span class='line'>&lt;p>1.eql? 1&lt;/p>
+</span><span class='line'>
+</span><span class='line'>&lt;h1>true&lt;/h1>
+</span><span class='line'>
+</span><span class='line'>&lt;p>1.0 == 1&lt;/p>
+</span><span class='line'>
+</span><span class='line'>&lt;h1>true&lt;/h1>
+</span><span class='line'>
+</span><span class='line'>&lt;p>1.0.equal? 1&lt;/p>
+</span><span class='line'>
+</span><span class='line'>&lt;h1>false&lt;/h1>
+</span><span class='line'>
+</span><span class='line'>&lt;p>1.0.eql? 1&lt;/p>
+</span><span class='line'>
+</span><span class='line'>&lt;h1>false&lt;/h1>
+</span><span class='line'>
+</span><span class='line'>&lt;p></span></code></pre></td></tr></table></div></figure></notextile></div></p>
+
+<h1>Control Flow</h1>
+
+<p>As mentioned in the first post, Ruby was designed to be readable and flexible. I think control flow statements are the highlight. Further, it&rsquo;s important to always remember that false and nil are the only objects that can be &lsquo;untruthy&rsquo; (including 0).</p>
+
+<p>Firstly, we have the very standard if-then-else statements.</p>
+
+<p><div class='bogus-wrapper'><notextile><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>t = true&lt;/p>
+</span><span class='line'>
+</span><span class='line'>&lt;p>if t
+</span><span class='line'>  puts &ldquo;t is true&rdquo;
+</span><span class='line'>else
+</span><span class='line'>  puts &ldquo;t is false&rdquo;
+</span><span class='line'>end&lt;/p>
+</span><span class='line'>
+</span><span class='line'>&lt;h1>t is true&lt;/h1>
+</span><span class='line'>
+</span><span class='line'>&lt;p>num = 0&lt;/p>
+</span><span class='line'>
+</span><span class='line'>&lt;p>if num &lt; 0
+</span><span class='line'>  puts &ldquo;num is negative&rdquo;
+</span><span class='line'>elsif num == 0
+</span><span class='line'>  puts &ldquo;num is zero&rdquo;
+</span><span class='line'>else
+</span><span class='line'>  puts &ldquo;num is positive&rdquo;
+</span><span class='line'>end&lt;/p>
+</span><span class='line'>
+</span><span class='line'>&lt;h1>num is zero&lt;/h1>
+</span><span class='line'>
+</span><span class='line'>&lt;p></span></code></pre></td></tr></table></div></figure></notextile></div></p>
+
+<p>Then we have unless, which literally means if not. However, please avoid this if you need to use else (there is no secondary guard like elsif or elsunless) &ndash; it&rsquo;s only useful in causing confusion.</p>
+
+<p><div class='bogus-wrapper'><notextile><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>t = true&lt;/p>
+</span><span class='line'>
+</span><span class='line'>&lt;p>unless t
+</span><span class='line'>  puts &ldquo;t is false&rdquo;
+</span><span class='line'>else
+</span><span class='line'>  puts &ldquo;t is true&rdquo;
+</span><span class='line'>end&lt;/p>
+</span><span class='line'>
+</span><span class='line'>&lt;h1>t is true&lt;/h1>
+</span><span class='line'>
+</span><span class='line'>&lt;p></span></code></pre></td></tr></table></div></figure></notextile></div></p>
+
+<p>A popular way of writing terse simple control flow without sacrificing on readability is to suffix the control to the line itself</p>
+
+<p><div class='bogus-wrapper'><notextile><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>puts &ldquo;true&rdquo; if true&lt;/p>
+</span><span class='line'>
+</span><span class='line'>&lt;h1>true&lt;/h1>
+</span><span class='line'>
+</span><span class='line'>&lt;h1>=> nil&lt;/h1>
+</span><span class='line'>
+</span><span class='line'>&lt;p>puts &ldquo;false&rdquo; unless true&lt;/p>
+</span><span class='line'>
+</span><span class='line'>&lt;h1>=> nil&lt;/h1>
+</span><span class='line'>
+</span><span class='line'>&lt;p></span></code></pre></td></tr></table></div></figure></notextile></div></p>
+
+<p>Finally, we have the C-style single line statements</p>
+
+<p><div class='bogus-wrapper'><notextile><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>true ? true : false&lt;/p>
+</span><span class='line'>
+</span><span class='line'>&lt;h1>true&lt;/h1>
+</span><span class='line'>
+</span><span class='line'>&lt;p>false ? true : false&lt;/p>
+</span><span class='line'>
+</span><span class='line'>&lt;h1>false&lt;/h1>
+</span><span class='line'>
+</span><span class='line'>&lt;p></span></code></pre></td></tr></table></div></figure></notextile></div></p>
+
+<p>And many more complex variations of them. They&rsquo;re just another way of formatting the first option since they Ruby treats <code>;</code> as a new line. Please never write code like this :)</p>
+
+<p><div class='bogus-wrapper'><notextile><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>if true then true else false end&lt;/p>
+</span><span class='line'>
+</span><span class='line'>&lt;h1>true&lt;/h1>
+</span><span class='line'>
+</span><span class='line'>&lt;p>if true; true else false end&lt;/p>
+</span><span class='line'>
+</span><span class='line'>&lt;h1>true&lt;/h1>
+</span><span class='line'>
+</span><span class='line'>&lt;p>num = 0
+</span><span class='line'>if num &lt; 0; puts &ldquo;negative&rdquo;; puts &ldquo;lalala&rdquo; elsif num > 0; puts &ldquo;positive&rdquo; else puts &ldquo;zero&rdquo; end&lt;/p>
+</span><span class='line'>
+</span><span class='line'>&lt;h1>zero&lt;/h1>
+</span><span class='line'>
+</span><span class='line'>&lt;p>num = -1
+</span><span class='line'>if num &lt; 0; puts &ldquo;negative&rdquo;; puts &ldquo;lalala&rdquo; elsif num > 0; puts &ldquo;positive&rdquo; else puts &ldquo;zero&rdquo; end&lt;/p>
+</span><span class='line'>
+</span><span class='line'>&lt;h1>negative&lt;/h1>
+</span><span class='line'>
+</span><span class='line'>&lt;h1>lalala&lt;/h1>
+</span><span class='line'>
+</span><span class='line'>&lt;p>num = 1
+</span><span class='line'>if num &lt; 0; puts &ldquo;negative&rdquo;; puts &ldquo;lalala&rdquo; elsif num > 0; puts &ldquo;positive&rdquo; else puts &ldquo;zero&rdquo; end&lt;/p>
+</span><span class='line'>
+</span><span class='line'>&lt;h1>positive&lt;/h1>
+</span><span class='line'>
+</span><span class='line'>&lt;p></span></code></pre></td></tr></table></div></figure></notextile></div></p>
+
+<ol>
+<li><a href="http://stackoverflow.com/questions/7156955/whats-the-difference-between-equal-eql-and/7157051#7157051">Stack Overflow &ndash; What&rsquo;s the difference between equal?, eql?, ===, and ==?</a></li>
+</ol>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Numbers]]></title>
+    <link href="http://nizhu.github.io/ruby-intro-site/blog/2013/07/28/numbers/"/>
+    <updated>2013-07-28T14:48:00+10:00</updated>
+    <id>http://nizhu.github.io/ruby-intro-site/blog/2013/07/28/numbers</id>
+    <content type="html"><![CDATA[<p>Like most (if not all) object oriented programming languages out there, Ruby has an Integer class and a Float class. Less common in standard libraries however, are the classes Rational and Complex which are used to represent fractions and complex numbers respectively.</p>
+
+<h1>Integers</h1>
+
+<p>In terms of functionality, there&rsquo;s little interesting with Integers. There&rsquo;s obviously adding, subtracting, multiplication, division, modulo and exponentials.</p>
+
+<p><div class='bogus-wrapper'><notextile><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>1 + 2&lt;/p>
+</span><span class='line'>
+</span><span class='line'>&lt;h1>3&lt;/h1>
+</span><span class='line'>
+</span><span class='line'>&lt;p>1 &ndash; 2&lt;/p>
+</span><span class='line'>
+</span><span class='line'>&lt;h1>-1&lt;/h1>
+</span><span class='line'>
+</span><span class='line'>&lt;p>1 * 2&lt;/p>
+</span><span class='line'>
+</span><span class='line'>&lt;h1>2&lt;/h1>
+</span><span class='line'>
+</span><span class='line'>&lt;p>2 / 1&lt;/p>
+</span><span class='line'>
+</span><span class='line'>&lt;h1>2&lt;/h1>
+</span><span class='line'>
+</span><span class='line'>&lt;p>5 % 2&lt;/p>
+</span><span class='line'>
+</span><span class='line'>&lt;h1>1&lt;/h1>
+</span><span class='line'>
+</span><span class='line'>&lt;p>2 ** 2&lt;/p>
+</span><span class='line'>
+</span><span class='line'>&lt;h1>4&lt;/h1>
+</span><span class='line'>
+</span><span class='line'>&lt;p></span></code></pre></td></tr></table></div></figure></notextile></div></p>
+
+<p>There are also several methods for common operations</p>
+
+<p><div class='bogus-wrapper'><notextile><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>1.next&lt;/p>
+</span><span class='line'>
+</span><span class='line'>&lt;h1>2&lt;/h1>
+</span><span class='line'>
+</span><span class='line'>&lt;p>1.even?&lt;/p>
+</span><span class='line'>
+</span><span class='line'>&lt;h1>false&lt;/h1>
+</span><span class='line'>
+</span><span class='line'>&lt;p>10.gcd(2)&lt;/p>
+</span><span class='line'>
+</span><span class='line'>&lt;h1>2&lt;/h1>
+</span><span class='line'>
+</span><span class='line'>&lt;p>&ldquo;10&rdquo;.to_i&lt;/p>
+</span><span class='line'>
+</span><span class='line'>&lt;h1>10&lt;/h1>
+</span><span class='line'>
+</span><span class='line'>&lt;p></span></code></pre></td></tr></table></div></figure></notextile></div></p>
+
+<h2>Fixnum vs Bignum</h2>
+
+<p>To make an analogy to Java and C, this is the comparison between int and long. In Ruby however, integers are not actually of the class Integer.</p>
+
+<p>What we think of Integer is the Fixnum. It&rsquo;s used for all integers that would fit in a machine&rsquo;s &lsquo;word&rsquo;, otherwise it&rsquo;s a Bignum. Both these types inherit from the Integer class.</p>
+
+<p>On this 64bit Mac, a word is 8 bytes. The class uses 1 bit mark the number as positive or negative, and another to mark the integer as value as opposed to a pointer (this is why object_id for Fixnum are always odd). As such, the maximum value for a Fixnum is 4611686018427387903 (2<sup>62</sup>-1) and the minimum is -4611686018427387904 (-2<sup>62</sup>). If an Fixnum leaves this range, Ruby automatically converts it to a Bignum and vice versa.</p>
+
+<p><div class='bogus-wrapper'><notextile><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>FIXNUM_MAX = (2**(0.size * 8 -2) -1)&lt;/p>
+</span><span class='line'>
+</span><span class='line'>&lt;h1>4611686018427387903&lt;/h1>
+</span><span class='line'>
+</span><span class='line'>&lt;p>FIXNUM_MIN = &ndash;(2**(0.size * 8 -2))&lt;/p>
+</span><span class='line'>
+</span><span class='line'>&lt;h1>-4611686018427387904&lt;/h1>
+</span><span class='line'>
+</span><span class='line'>&lt;p>FIXNUM_MAX.class&lt;/p>
+</span><span class='line'>
+</span><span class='line'>&lt;h1>Fixnum&lt;/h1>
+</span><span class='line'>
+</span><span class='line'>&lt;p>bignum = FIXNUM_MAX + 1
+</span><span class='line'>bignum.class&lt;/p>
+</span><span class='line'>
+</span><span class='line'>&lt;h1>Bignum&lt;/h1>
+</span><span class='line'>
+</span><span class='line'>&lt;p>(bignum-1).class&lt;/p>
+</span><span class='line'>
+</span><span class='line'>&lt;h1>Fixnum&lt;/h1>
+</span><span class='line'>
+</span><span class='line'>&lt;p></span></code></pre></td></tr></table></div></figure></notextile></div></p>
+
+<p>The biggest difference between these classes is that, like Java ints, Fixnum objects are immediate value. They are not references to another object. Remember in the last post when repeating <code>"xyzxyz".object_id</code> would return a different number everytime? This won&rsquo;t be the case for Fixnum. In fact, object_id of Fixnum are predictable. For positive numbers, the id is simply 2 * value + 1. Similarly, 2 * value &ndash; 1 for negative numbers.</p>
+
+<p><div class='bogus-wrapper'><notextile><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>4611686018427387903.object_id&lt;/p>
+</span><span class='line'>
+</span><span class='line'>&lt;h1>9223372036854775807&lt;/h1>
+</span><span class='line'>
+</span><span class='line'>&lt;p>4611686018427387903.object_id&lt;/p>
+</span><span class='line'>
+</span><span class='line'>&lt;h1>9223372036854775807&lt;/h1>
+</span><span class='line'>
+</span><span class='line'>&lt;p>-4611686018427387904.object_id&lt;/p>
+</span><span class='line'>
+</span><span class='line'>&lt;h1>-9223372036854775807&lt;/h1>
+</span><span class='line'>
+</span><span class='line'>&lt;p></span></code></pre></td></tr></table></div></figure></notextile></div></p>
+
+<h1>Rationals</h1>
+
+<p>Rationals are useful for calculations because they come with the accuracy that&rsquo;s missing from floats. There are 3 ways to create them</p>
+
+<p><div class='bogus-wrapper'><notextile><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>Rational(1, 2)&lt;/p>
+</span><span class='line'>
+</span><span class='line'>&lt;h1>(&frac12;)&lt;/h1>
+</span><span class='line'>
+</span><span class='line'>&lt;p>&ldquo;&frac12;&rdquo;.to_r&lt;/p>
+</span><span class='line'>
+</span><span class='line'>&lt;h1>(&frac12;)&lt;/h1>
+</span><span class='line'>
+</span><span class='line'>&lt;p>0.5.rationalize&lt;/p>
+</span><span class='line'>
+</span><span class='line'>&lt;h1>(&frac12;)&lt;/h1>
+</span><span class='line'>
+</span><span class='line'>&lt;p>Rational(1,2) + Rational(2,3)&lt;/p>
+</span><span class='line'>
+</span><span class='line'>&lt;h1>(7/6)&lt;/h1>
+</span><span class='line'>
+</span><span class='line'>&lt;p>Rational(7,6).to_f&lt;/p>
+</span><span class='line'>
+</span><span class='line'>&lt;h1>1.1666666666666667&lt;/h1>
+</span><span class='line'>
+</span><span class='line'>&lt;p></span></code></pre></td></tr></table></div></figure></notextile></div></p>
+
+<h1>Float</h1>
+
+<p>Like integers, Float&rsquo;s methods are quite standard.</p>
+
+<p><div class='bogus-wrapper'><notextile><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>1.2345.to_i&lt;/p>
+</span><span class='line'>
+</span><span class='line'>&lt;h1>1&lt;/h1>
+</span><span class='line'>
+</span><span class='line'>&lt;p>1.2345.floor&lt;/p>
+</span><span class='line'>
+</span><span class='line'>&lt;h1>1&lt;/h1>
+</span><span class='line'>
+</span><span class='line'>&lt;p>9.87654321.round(3)&lt;/p>
+</span><span class='line'>
+</span><span class='line'>&lt;h1>9.877&lt;/h1>
+</span><span class='line'>
+</span><span class='line'>&lt;p>(0.0).infinite?&lt;/p>
+</span><span class='line'>
+</span><span class='line'>&lt;h1>nil&lt;/h1>
+</span><span class='line'>
+</span><span class='line'>&lt;p>(-1.0/0.0).infinite?&lt;/p>
+</span><span class='line'>
+</span><span class='line'>&lt;h1>-1&lt;/h1>
+</span><span class='line'>
+</span><span class='line'>&lt;p>(+1.0/0.0).infinite?&lt;/p>
+</span><span class='line'>
+</span><span class='line'>&lt;h1>1&lt;/h1>
+</span><span class='line'>
+</span><span class='line'>&lt;p>0.3.rationalize&lt;/p>
+</span><span class='line'>
+</span><span class='line'>&lt;h1>(3/10)&lt;/h1>
+</span><span class='line'>
+</span><span class='line'>&lt;p></span></code></pre></td></tr></table></div></figure></notextile></div></p>
+
+<p>However, it&rsquo;s important to note that floating point calculations are inaccurate, like almost every programming langauge (can&rsquo;t name any with).</p>
+
+<p><div class='bogus-wrapper'><notextile><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>0.3.to_r&lt;/p>
+</span><span class='line'>
+</span><span class='line'>&lt;h1>(5404319552844595/18014398509481984)&lt;/h1>
+</span><span class='line'>
+</span><span class='line'>&lt;p>printf(&ldquo;%.55f\n&rdquo;, 1.9)
+</span><span class='line'>1.8999999999999999111821580299874767661094665527343750000</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+
+<ol>
+<li><a href="http://www.ruby-doc.org/core-2.0/Integer.html">Ruby-Docs Integer</a></li>
+<li><a href="http://www.ruby-doc.org/core-2.0/Fixnum.html">Ruby-Docs Fixnum</a></li>
+<li><a href="http://www.ruby-doc.org/core-2.0/Bignum.html">Ruby-Dics Bignum</a></li>
+<li><a href="http://www.ruby-doc.org/core-2.0/Float.html">Ruby-Docs Float</a></li>
+<li><a href="http://www.ruby-doc.org/core-2.0/Rational.html">Ruby-Docs Rationals</a></li>
+<li><a href="http://www.ruby-doc.org/core-2.0/Complex.html">Ruby-Docs Complex</a></li>
+<li><a href="http://stackoverflow.com/questions/535721/ruby-max-integer">Stack Overflow Ruby max integer</a></li>
+</ol>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Strings]]></title>
+    <link href="http://nizhu.github.io/ruby-intro-site/blog/2013/07/27/strings/"/>
+    <updated>2013-07-27T17:34:00+10:00</updated>
+    <id>http://nizhu.github.io/ruby-intro-site/blog/2013/07/27/strings</id>
+    <content type="html"><![CDATA[<p>There isn&rsquo;t much special about Ruby strings. Try the code snippets below in irb.</p>
+
+<h2>Construction</h2>
+
+<p>Strings can be created either using literals, or the new function.</p>
+
+<p><div class='bogus-wrapper'><notextile><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>a = &ldquo;abcde&rdquo;
+</span><span class='line'>puts a&lt;/p>
+</span><span class='line'>
+</span><span class='line'>&lt;h1>abcde&lt;/h1>
+</span><span class='line'>
+</span><span class='line'>&lt;h1>=> nil&lt;/h1>
+</span><span class='line'>
+</span><span class='line'>&lt;p>b = String.new &ldquo;fghij&rdquo;
+</span><span class='line'>puts b&lt;/p>
+</span><span class='line'>
+</span><span class='line'>&lt;h1>fghij&lt;/h1>
+</span><span class='line'>
+</span><span class='line'>&lt;h1>=> nil&lt;/h1>
+</span><span class='line'>
+</span><span class='line'>&lt;p></span></code></pre></td></tr></table></div></figure></notextile></div></p>
+
+<h2>Instance Functions</h2>
+
+<p>Like <code>java.lang.String</code>, there are loads of predefined methods for the class. Remeber to refer to the Class documentation; there are code samples in there too. I&rsquo;m just going to give you a taste of what&rsquo;s available.</p>
+
+<p><div class='bogus-wrapper'><notextile><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>a.length&lt;/p>
+</span><span class='line'>
+</span><span class='line'>&lt;h1>1&lt;/h1>
+</span><span class='line'>
+</span><span class='line'>&lt;p>a.next&lt;/p>
+</span><span class='line'>
+</span><span class='line'>&lt;h1>abcdf&lt;/h1>
+</span><span class='line'>
+</span><span class='line'>&lt;p>a.reverse&lt;/p>
+</span><span class='line'>
+</span><span class='line'>&lt;h1>edcba&lt;/h1>
+</span><span class='line'>
+</span><span class='line'>&lt;p>a.upcase&lt;/p>
+</span><span class='line'>
+</span><span class='line'>&lt;h1>ABCDE&lt;/h1>
+</span><span class='line'>
+</span><span class='line'>&lt;p>a.slice(3, 5)&lt;/p>
+</span><span class='line'>
+</span><span class='line'>&lt;h1>de&lt;/h1>
+</span><span class='line'>
+</span><span class='line'>&lt;p></span></code></pre></td></tr></table></div></figure></notextile></div></p>
+
+<p>You&rsquo;ll notice that the methods above only returns the result of the function. Some methods makes changes to the string in place.</p>
+
+<p><div class='bogus-wrapper'><notextile><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>c = &ldquo;ababab&rdquo;
+</span><span class='line'>c.reverse!
+</span><span class='line'>puts c&lt;/p>
+</span><span class='line'>
+</span><span class='line'>&lt;h1>bababa&lt;/h1>
+</span><span class='line'>
+</span><span class='line'>&lt;p>c.upcase!
+</span><span class='line'>puts c&lt;/p>
+</span><span class='line'>
+</span><span class='line'>&lt;h1>BABABA&lt;/h1>
+</span><span class='line'>
+</span><span class='line'>&lt;p></span></code></pre></td></tr></table></div></figure></notextile></div></p>
+
+<p>Like Perl, Strings in Ruby are mutable. The object_id method I&rsquo;m using below returns the id of the object, similar to the &amp; operator in C. Strings inherit this from the Object class. Note that String objects are created every time a String literal is used.</p>
+
+<p><div class='bogus-wrapper'><notextile><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>&ldquo;xyzxyz&rdquo;.object_id&lt;/p>
+</span><span class='line'>
+</span><span class='line'>&lt;h1>70243133245180&lt;/h1>
+</span><span class='line'>
+</span><span class='line'>&lt;p>&ldquo;xyzxyz&rdquo;.object_id&lt;/p>
+</span><span class='line'>
+</span><span class='line'>&lt;h1>70243133228560&lt;/h1>
+</span><span class='line'>
+</span><span class='line'>&lt;p>d = &ldquo;xyzxyz&rdquo;
+</span><span class='line'>d.object_id&lt;/p>
+</span><span class='line'>
+</span><span class='line'>&lt;h1>70243133212180&lt;/h1>
+</span><span class='line'>
+</span><span class='line'>&lt;p>d.reverse!&lt;/p>
+</span><span class='line'>
+</span><span class='line'>&lt;h1>&ldquo;zyxzyx&rdquo;&lt;/h1>
+</span><span class='line'>
+</span><span class='line'>&lt;p>d.object_id&lt;/p>
+</span><span class='line'>
+</span><span class='line'>&lt;h1>70243133212180&lt;/h1>
+</span><span class='line'>
+</span><span class='line'>&lt;p></span></code></pre></td></tr></table></div></figure></notextile></div></p>
+
+<h2>Building a String</h2>
+
+<p>Strings can be built from variables in 4 different ways. The first two is probably the most commonly used</p>
+
+<p><div class='bogus-wrapper'><notextile><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>e = &ldquo;abc&rdquo;
+</span><span class='line'>f = &ldquo;def&rdquo;
+</span><span class='line'>g = 10
+</span><span class='line'>h = e + &ldquo; + &rdquo; + f + &ldquo; is not equal to &rdquo; + g.to_s
+</span><span class='line'>i = &ldquo;#{e} + #{f} is not equal to #{g}&rdquo;
+</span><span class='line'>puts h
+</span><span class='line'>puts i&lt;/p>
+</span><span class='line'>
+</span><span class='line'>&lt;h1>abc + def is not equal to 10&lt;/h1>
+</span><span class='line'>
+</span><span class='line'>&lt;p></span></code></pre></td></tr></table></div></figure></notextile></div></p>
+
+<p>The third way is appending to strings. It&rsquo;s more efficient in that it simply adds to a string instead of creating a new one, but it does change the string that is being appended to.</p>
+
+<p><div class='bogus-wrapper'><notextile><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>j = e &lt;&lt; &ldquo; + &rdquo; &lt;&lt; f &lt;&lt; &ldquo; is not equal to &rdquo; &lt;&lt; g.to_s&lt;/p>
+</span><span class='line'>
+</span><span class='line'>&lt;h1>abc + def is not equal to 10&lt;/h1>
+</span><span class='line'>
+</span><span class='line'>&lt;p>j.object_id&lt;/p>
+</span><span class='line'>
+</span><span class='line'>&lt;h1>70243124981460&lt;/h1>
+</span><span class='line'>
+</span><span class='line'>&lt;p>e.object_id&lt;/p>
+</span><span class='line'>
+</span><span class='line'>&lt;h1>70243124981460&lt;/h1>
+</span><span class='line'>
+</span><span class='line'>&lt;p>f.object_id&lt;/p>
+</span><span class='line'>
+</span><span class='line'>&lt;h1>70243124965700&lt;/h1>
+</span><span class='line'>
+</span><span class='line'>&lt;p>puts e&lt;/p>
+</span><span class='line'>
+</span><span class='line'>&lt;h1>abc + def is not equal to 10&lt;/h1>
+</span><span class='line'>
+</span><span class='line'>&lt;p>puts f&lt;/p>
+</span><span class='line'>
+</span><span class='line'>&lt;h1>def&lt;/h1>
+</span><span class='line'>
+</span><span class='line'>&lt;p></span></code></pre></td></tr></table></div></figure></notextile></div></p>
+
+<p>The first line basically means, append &ldquo; + &rdquo; to e, then append f to e, then append &ldquo; is not equal to &rdquo; to e, and finally append g.to_s to e. I will demonstrate the final way when we get to the Arrays section.</p>
+
+<h2>Escaping characters</h2>
+
+<p>If the String you&rsquo;re after is literally <code>#{e} + #{f} is not equal to #{g}</code>, ie. you don&rsquo;t want Ruby to evaluate e, f, and g, you can escape the <code>#{}</code> blocks by prepending the # with a backslash <code>\</code>. Alternatively, you can use single quotes instead of double quotes, and Ruby will escape those characters for you.</p>
+
+<p><div class='bogus-wrapper'><notextile><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>puts &ldquo;#{e} + #{f} is not equal to #{g}&rdquo;"&lt;/p>
+</span><span class='line'>
+</span><span class='line'>&lt;h1>#{e} + #{f} is not equal to #{g}&lt;/h1>
+</span><span class='line'>
+</span><span class='line'>&lt;p>puts &lsquo;#{e} + #{f} is not equal to #{g}&rsquo;&lt;/p>
+</span><span class='line'>
+</span><span class='line'>&lt;h1>#{e} + #{f} is not equal to #{g}&lt;/h1>
+</span><span class='line'>
+</span><span class='line'>&lt;p>a = &lsquo;#{e} + #{f} is not equal to #{g}&rsquo;&lt;/p>
+</span><span class='line'>
+</span><span class='line'>&lt;h1>&ldquo;#{e} + #{f} is not equal to #{g}&rdquo;&lt;/h1>
+</span><span class='line'>
+</span><span class='line'>&lt;p></span></code></pre></td></tr></table></div></figure></notextile></div></p>
+
+<h2>Ruby Documentation</h2>
+
+<p>There&rsquo;s two way to access the API documentation, online through <a href="http://ruby-doc.org/">http://ruby-doc.org/</a>, or offline in your command line with ri.</p>
+
+<p><div class='bogus-wrapper'><notextile><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>ri String
+</span><span class='line'>ri String#object_id</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+
+<p>Unofficially, (if you don&rsquo;t already) you&rsquo;ll learn to love Google and Stack Overflow too :)</p>
+
+<ol>
+<li><a href="http://ruby-doc.org/core-2.0/String.html">Ruby Docs &ndash; String</a></li>
+</ol>
+
+]]></content>
+  </entry>
+  
+</feed>

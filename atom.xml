@@ -1,100 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
 
-<!DOCTYPE html>
-<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
-<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
-<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
-<head>
-  <meta charset="utf-8">
-  <title>Ruby Intro</title>
-  <meta name="author" content="Nick Zhu">
-
-  
-  <meta name="description" content="Like the if statements you saw 2 posts prior, there are many ways to construct loops. Not that there is no increment/decrement, ++/--, operation in &hellip;">
-  
-
-  <!-- http://t.co/dKP3o1e -->
-  <meta name="HandheldFriendly" content="True">
-  <meta name="MobileOptimized" content="320">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-
-  
-  <link rel="canonical" href="http://nizhu.github.io/ruby-intro-site">
-  <link href="/ruby-intro-site/favicon.png" rel="icon">
-  <link href="/ruby-intro-site/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
-  <link href="/ruby-intro-site/atom.xml" rel="alternate" title="Ruby Intro" type="application/atom+xml">
-  <script src="/ruby-intro-site/javascripts/modernizr-2.0.js"></script>
-  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-  <script>!window.jQuery && document.write(unescape('%3Cscript src="./javascripts/lib/jquery.min.js"%3E%3C/script%3E'))</script>
-  <script src="/ruby-intro-site/javascripts/octopress.js" type="text/javascript"></script>
-  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
-<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
-<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
-
-  
-
-</head>
-
-<body   >
-  <header role="banner"><hgroup>
-  <h1><a href="/ruby-intro-site/">Ruby Intro</a></h1>
-  
-    <h2>SENG2011</h2>
-  
-</hgroup>
-
-</header>
-  <nav role="navigation"><ul class="subscription" data-subscription="rss">
-  <li><a href="/ruby-intro-site/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
-  
-</ul>
-  
-<form action="http://google.com/search" method="get">
-  <fieldset role="search">
-    <input type="hidden" name="q" value="site:nizhu.github.io/ruby-intro-site" />
-    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
-  </fieldset>
-</form>
-  
-<ul class="main-navigation">
-  <li><a href="/ruby-intro-site/">Blog</a></li>
-  <li><a href="/ruby-intro-site/blog/archives">Archives</a></li>
-</ul>
-
-</nav>
-  <div id="main">
-    <div id="content">
-      <div class="blog-index">
-  
-  
-  
-    <article>
-      
-  <header>
+  <title><![CDATA[Ruby Intro]]></title>
+  <link href="http://nizhu.github.io/ruby-intro-site/atom.xml" rel="self"/>
+  <link href="http://nizhu.github.io/ruby-intro-site/"/>
+  <updated>2013-07-29T22:42:06+10:00</updated>
+  <id>http://nizhu.github.io/ruby-intro-site/</id>
+  <author>
+    <name><![CDATA[Nick Zhu]]></name>
     
-      <h1 class="entry-title"><a href="/ruby-intro-site/blog/2013/07/28/loops/">Loops</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
 
   
-
-
-<time datetime="2013-07-28T21:09:00+10:00" pubdate data-updated="true">Jul 28<span>th</span>, 2013</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>Like the if statements you saw 2 posts prior, there are many ways to construct loops. Not that there is no increment/decrement, <code>++/--</code>, operation in Ruby.</p>
+  <entry>
+    <title type="html"><![CDATA[Loops]]></title>
+    <link href="http://nizhu.github.io/ruby-intro-site/blog/2013/07/28/loops/"/>
+    <updated>2013-07-28T21:09:00+10:00</updated>
+    <id>http://nizhu.github.io/ruby-intro-site/blog/2013/07/28/loops</id>
+    <content type="html"><![CDATA[<p>Like the if statements you saw 2 posts prior, there are many ways to construct loops. Not that there is no increment/decrement, <code>++/--</code>, operation in Ruby.</p>
 
 <p>There is the while loop you&rsquo;re used to</p>
 
@@ -327,42 +251,15 @@
 </span><span class='line'># i is 1
 </span><span class='line'># j is 2</span></code></pre></td></tr></table></div></figure>
 
-</div>
+]]></content>
+  </entry>
   
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/ruby-intro-site/blog/2013/07/28/arrays/">Arrays</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2013-07-28T20:21:00+10:00" pubdate data-updated="true">Jul 28<span>th</span>, 2013</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>Arrays in Ruby are very similar to those in other dynamic programming languages. It&rsquo;s all very standard and the documentation has loads of examples anyway, so I&rsquo;ll go through only the most basic and obvious to get started.</p>
+  <entry>
+    <title type="html"><![CDATA[Arrays]]></title>
+    <link href="http://nizhu.github.io/ruby-intro-site/blog/2013/07/28/arrays/"/>
+    <updated>2013-07-28T20:21:00+10:00</updated>
+    <id>http://nizhu.github.io/ruby-intro-site/blog/2013/07/28/arrays</id>
+    <content type="html"><![CDATA[<p>Arrays in Ruby are very similar to those in other dynamic programming languages. It&rsquo;s all very standard and the documentation has loads of examples anyway, so I&rsquo;ll go through only the most basic and obvious to get started.</p>
 
 <h3>Construction</h3>
 
@@ -517,42 +414,15 @@
 <li><a href="http://stackoverflow.com/questions/5018633/what-is-the-difference-between-print-and-puts">Stack Overflow &ndash; What is the difference between print and puts</a></li>
 </ol>
 
-</div>
+]]></content>
+  </entry>
   
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/ruby-intro-site/blog/2013/07/28/truthiness-and-control-flow/">Truthiness &amp; Control Flow</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2013-07-28T15:25:00+10:00" pubdate data-updated="true">Jul 28<span>th</span>, 2013</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>Ruby uses keywords true and false to represent truthiness and nil to represent a reference that points to nothing (usually some variation of null in other languages).</p>
+  <entry>
+    <title type="html"><![CDATA[Truthiness &amp; Control Flow]]></title>
+    <link href="http://nizhu.github.io/ruby-intro-site/blog/2013/07/28/truthiness-and-control-flow/"/>
+    <updated>2013-07-28T15:25:00+10:00</updated>
+    <id>http://nizhu.github.io/ruby-intro-site/blog/2013/07/28/truthiness-and-control-flow</id>
+    <content type="html"><![CDATA[<p>Ruby uses keywords true and false to represent truthiness and nil to represent a reference that points to nothing (usually some variation of null in other languages).</p>
 
 <p>Like Fixnum from the previous post, these 3 keywords are immediate values.</p>
 
@@ -774,42 +644,15 @@
 <li><a href="http://stackoverflow.com/questions/7156955/whats-the-difference-between-equal-eql-and/7157051#7157051">Stack Overflow &ndash; What&rsquo;s the difference between equal?, eql?, ===, and ==?</a></li>
 </ol>
 
-</div>
+]]></content>
+  </entry>
   
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/ruby-intro-site/blog/2013/07/28/numbers/">Numbers</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2013-07-28T14:48:00+10:00" pubdate data-updated="true">Jul 28<span>th</span>, 2013</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>Like most (if not all) object oriented programming languages out there, Ruby has an Integer class and a Float class. Less common in standard libraries however, are the classes Rational and Complex which are used to represent fractions and complex numbers respectively.</p>
+  <entry>
+    <title type="html"><![CDATA[Numbers]]></title>
+    <link href="http://nizhu.github.io/ruby-intro-site/blog/2013/07/28/numbers/"/>
+    <updated>2013-07-28T14:48:00+10:00</updated>
+    <id>http://nizhu.github.io/ruby-intro-site/blog/2013/07/28/numbers</id>
+    <content type="html"><![CDATA[<p>Like most (if not all) object oriented programming languages out there, Ruby has an Integer class and a Float class. Less common in standard libraries however, are the classes Rational and Complex which are used to represent fractions and complex numbers respectively.</p>
 
 <h1>Integers</h1>
 
@@ -995,42 +838,15 @@
 <li><a href="http://stackoverflow.com/questions/535721/ruby-max-integer">Stack Overflow Ruby max integer</a></li>
 </ol>
 
-</div>
+]]></content>
+  </entry>
   
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/ruby-intro-site/blog/2013/07/27/strings/">Strings</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2013-07-27T17:34:00+10:00" pubdate data-updated="true">Jul 27<span>th</span>, 2013</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>There isn&rsquo;t much special about Ruby strings. Try the code snippets below in irb.</p>
+  <entry>
+    <title type="html"><![CDATA[Strings]]></title>
+    <link href="http://nizhu.github.io/ruby-intro-site/blog/2013/07/27/strings/"/>
+    <updated>2013-07-27T17:34:00+10:00</updated>
+    <id>http://nizhu.github.io/ruby-intro-site/blog/2013/07/27/strings</id>
+    <content type="html"><![CDATA[<p>There isn&rsquo;t much special about Ruby strings. Try the code snippets below in irb.</p>
 
 <h2>Construction</h2>
 
@@ -1220,42 +1036,15 @@
 <li><a href="http://ruby-doc.org/core-2.0/String.html">Ruby Docs &ndash; String</a></li>
 </ol>
 
-</div>
+]]></content>
+  </entry>
   
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/ruby-intro-site/blog/2013/07/27/hello-world/">Hello World</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2013-07-27T14:10:00+10:00" pubdate data-updated="true">Jul 27<span>th</span>, 2013</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>It&rsquo;s finally time to start coding. Start by cloning the git repository I&rsquo;ve prepared for this demonstration.</p>
+  <entry>
+    <title type="html"><![CDATA[Hello World]]></title>
+    <link href="http://nizhu.github.io/ruby-intro-site/blog/2013/07/27/hello-world/"/>
+    <updated>2013-07-27T14:10:00+10:00</updated>
+    <id>http://nizhu.github.io/ruby-intro-site/blog/2013/07/27/hello-world</id>
+    <content type="html"><![CDATA[<p>It&rsquo;s finally time to start coding. Start by cloning the git repository I&rsquo;ve prepared for this demonstration.</p>
 
 <figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
@@ -1415,42 +1204,15 @@
 <li><a href="http://www.skorks.com/2009/08/digging-into-a-ruby-installation-require-vs-load/">Alan Skorkin on Require vs Load</a></li>
 </ol>
 
-</div>
+]]></content>
+  </entry>
   
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/ruby-intro-site/blog/2013/07/27/installing-ruby/">Installing Ruby</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2013-07-27T12:21:00+10:00" pubdate data-updated="true">Jul 27<span>th</span>, 2013</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>When I was first starting out in Ruby, this is what gave me the biggest problems. One can install from their operating system&rsquo;s package manager easily enough (likely be installed already with the system), but because of how quickly the Ruby community moves, using system Ruby is generally not a good idea. Every now and then, you&rsquo;ll come across version incompatibility issues and if you need to work on different apps with different versions of Ruby, then you&rsquo;re in a bit of a mess. Not to mention the permission issues.</p>
+  <entry>
+    <title type="html"><![CDATA[Installing Ruby]]></title>
+    <link href="http://nizhu.github.io/ruby-intro-site/blog/2013/07/27/installing-ruby/"/>
+    <updated>2013-07-27T12:21:00+10:00</updated>
+    <id>http://nizhu.github.io/ruby-intro-site/blog/2013/07/27/installing-ruby</id>
+    <content type="html"><![CDATA[<p>When I was first starting out in Ruby, this is what gave me the biggest problems. One can install from their operating system&rsquo;s package manager easily enough (likely be installed already with the system), but because of how quickly the Ruby community moves, using system Ruby is generally not a good idea. Every now and then, you&rsquo;ll come across version incompatibility issues and if you need to work on different apps with different versions of Ruby, then you&rsquo;re in a bit of a mess. Not to mention the permission issues.</p>
 
 <p>To get around this, we use a Ruby version manager &ndash; one named simply rvm, and another, rbenv.</p>
 
@@ -1576,42 +1338,15 @@
 <li><a href="https://github.com/sstephenson/ruby-build">ruby-build rbenv plugin</a></li>
 </ol>
 
-</div>
+]]></content>
+  </entry>
   
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/ruby-intro-site/blog/2013/07/27/intro-to-intro/">Intro to Intro</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2013-07-27T10:37:00+10:00" pubdate data-updated="true">Jul 27<span>th</span>, 2013</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>Ruby is a dynamic, object oriented programming language that first appeared toward the end of 1995, so it&rsquo;s a bit younger than the other 2 similar, mainstream languages, Python and Perl. In my opinion, it&rsquo;s more hipster and better looking than its cousins, and intuitively, it&rsquo;s as close to English as general purpose programming languages go.</p>
+  <entry>
+    <title type="html"><![CDATA[Intro to intro]]></title>
+    <link href="http://nizhu.github.io/ruby-intro-site/blog/2013/07/27/intro-to-intro/"/>
+    <updated>2013-07-27T10:37:00+10:00</updated>
+    <id>http://nizhu.github.io/ruby-intro-site/blog/2013/07/27/intro-to-intro</id>
+    <content type="html"><![CDATA[<p>Ruby is a dynamic, object oriented programming language that first appeared toward the end of 1995, so it&rsquo;s a bit younger than the other 2 similar, mainstream languages, Python and Perl. In my opinion, it&rsquo;s more hipster and better looking than its cousins, and intuitively, it&rsquo;s as close to English as general purpose programming languages go.</p>
 
 <p>It really only appeared out of obscurity in 2005 with the rise in popularity of the Ruby-based web application framework, Rails. It has however, greatly matured since then.</p>
 
@@ -1626,84 +1361,7 @@
 <li><a href="http://www.ruby-lang.org/en/news/2013/02/24/ruby-2-0-0-p0-is-released/">Ruby 2.0.0 Release Notes</a></li>
 </ol>
 
-</div>
+]]></content>
+  </entry>
   
-  
-
-
-    </article>
-  
-  <div class="pagination">
-    
-    <a href="/ruby-intro-site/blog/archives">Blog Archives</a>
-    
-  </div>
-</div>
-<aside class="sidebar">
-  
-    <section>
-  <h1>Recent Posts</h1>
-  <ul id="recent_posts">
-    
-      <li class="post">
-        <a href="/ruby-intro-site/blog/2013/07/28/loops/">Loops</a>
-      </li>
-    
-      <li class="post">
-        <a href="/ruby-intro-site/blog/2013/07/28/arrays/">Arrays</a>
-      </li>
-    
-      <li class="post">
-        <a href="/ruby-intro-site/blog/2013/07/28/truthiness-and-control-flow/">Truthiness &amp; Control Flow</a>
-      </li>
-    
-      <li class="post">
-        <a href="/ruby-intro-site/blog/2013/07/28/numbers/">Numbers</a>
-      </li>
-    
-      <li class="post">
-        <a href="/ruby-intro-site/blog/2013/07/27/strings/">Strings</a>
-      </li>
-    
-  </ul>
-</section>
-
-
-
-
-
-  
-</aside>
-
-    </div>
-  </div>
-  <footer role="contentinfo"><p>
-  Copyright &copy; 2013 - Nick Zhu -
-  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
-</p>
-
-</footer>
-  
-
-
-
-
-
-
-
-  <script type="text/javascript">
-    (function(){
-      var twitterWidgets = document.createElement('script');
-      twitterWidgets.type = 'text/javascript';
-      twitterWidgets.async = true;
-      twitterWidgets.src = '//platform.twitter.com/widgets.js';
-      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
-    })();
-  </script>
-
-
-
-
-
-</body>
-</html>
+</feed>

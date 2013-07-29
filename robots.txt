@@ -1,0 +1,4 @@
+User-agent: *
+Disallow: 
+
+Sitemap: http://nizhu.github.io/ruby-intro-site/sitemap.xml 
