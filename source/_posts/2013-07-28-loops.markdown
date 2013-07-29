@@ -1,0 +1,149 @@
+---
+layout: post
+title: "Loops"
+date: 2013-07-28 21:09
+comments: true
+categories: [Ruby, SENG2011]
+---
+
+Like the if statements you saw 2 posts prior, there are many ways to construct loops. Not that there is no increment/decrement, ```++/--```, operation in Ruby.
+
+There is the while loop you're used to
+
+{% codeblock %}
+i = 0
+while i < 3 do
+  puts i
+  i += 1
+end
+# 0
+# 1
+# 2
+{% endcodeblock %}
+
+While loops with the test at the end
+
+{% codeblock %}
+i = 0
+begin
+  puts i
+  i += 1
+end while i < 3
+# 0
+# 1
+# 2
+
+i = 0
+begin
+  puts i
+  i += 1
+end while i < 0
+# 0
+{% endcodeblock %}
+
+There's the until loops which run while the condition is false
+
+{% codeblock %}
+i = 0
+until i > 2
+  puts i
+  i += 1
+end
+# 0
+# 1
+# 2
+
+i = 0
+begin
+  puts i
+  i += 1
+end until i >= 0
+{% endcodeblock %}
+
+And finally, my favourite - the for loops. If you already have a list to iterate through, great.
+
+{% codeblock %}
+a = [0, 1, 2]
+for i in a
+  puts i
+end
+# 0
+# 1
+# 2
+{% endcodeblock %}
+
+If not, it's great too
+
+{% codeblock %}
+for i in 0..2
+  puts i
+end
+# 0
+# 1
+# 2
+
+(0..2).each do |i|
+  puts i
+end
+# 0
+# 1
+# 2
+{% endcodeblock %}
+
+There's also 4 keywords to help you manage the control of flow ```break```, ```next```, ```redo``` and finally ```retry``` which I'll bring up in the Error Handling section. ```break``` exits the inner most loop
+
+{% codeblock %}
+for i in 0..2
+  puts i
+  if i == 1
+    break
+  end
+end
+# 0
+# 1
+{% endcodeblock %}
+
+While ```next``` jumps to the next iteration of the loop
+
+{% codeblock %}
+for i in 0..2
+  if i == 1
+    next
+  end
+  puts i
+end
+# 0
+# 2
+
+for i in 0..2
+  if i == 2
+    next
+  end
+  puts i
+end
+# 0
+# 1
+{% endcodeblock %}
+
+And ```redo``` jumps back to the beginning of the current iteration in this loop
+
+{% codeblock %}
+j = 0
+for i in 0..2
+  puts "i is #{i}"
+  puts "j is #{j}"
+  j += 1
+  if j > 2
+    break
+  end
+  if i == 1
+    redo
+  end
+end
+# i is 0
+# j is 0
+# i is 1
+# j is 1
+# i is 1
+# j is 2
+{% endcodeblock %}

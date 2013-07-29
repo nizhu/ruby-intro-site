@@ -1,0 +1,106 @@
+---
+layout: post
+title: "Arrays"
+date: 2013-07-28 20:21
+comments: true
+categories: [Ruby, SENG2011]
+---
+
+Arrays in Ruby are very similar to those in other dynamic programming languages. It's all very standard and the documentation has loads of examples anyway, so I'll go through only the most basic and obvious to get started.
+
+### Construction
+
+{% codeblock %}
+[1, "foo", nil, "bar"]
+# [1, "foo", nil, "bar"]
+
+Array.new
+# []
+Array.new(3, true)
+# [true, true, true]
+
+(1..10).to_a
+# [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+("a7".."b5").to_a
+# ["a7", "a8", "a9", "b0", "b1", "b2", "b3", "b4", "b5"]
+
+{% endcodeblock %}
+
+### Accessing elements and array info
+
+{% codeblock %}
+arr = [1, 2, 3, 4, 5, 6]
+arr[2]
+# 3
+arr[100]
+# nil
+arr[-3]
+# 4
+arr[2, 3]
+# [3, 4, 5]
+arr[1..4]
+# [2, 3, 4, 5]
+arr.at(0)
+# 1
+
+arr.length
+# 6
+arr.empty?
+# false
+arr.include?(7)
+# false
+{% endcodeblock %}
+
+### Adding to the array
+
+{% codeblock %}
+arr.push(7)
+# [1, 2, 3, 4, 5, 6, 7]
+arr << 8
+# [1, 2, 3, 4, 5, 6, 7, 8]
+
+arr.unshift(0)
+# [0, 1, 2, 3, 4, 5, 6, 7]
+
+arr.insert(3, 2.5)
+# [0, 1, 2, 2.5, 3, 4, 5, 6, 7]
+{% endcodeblock %}
+
+### Removing from Array
+
+{% codeblock %}
+arr
+# [0, 1, 2, 2.5, 3, 4, 5, 6, 7]
+
+arr.pop
+# 7
+# arr = [0, 1, 2, 2.5, 3, 4, 5, 6]
+
+arr.shift
+# 0
+# arr = [1, 2, 2.5, 3, 4, 5, 6]
+
+arr.delete(3)
+# 2.5
+# arr = [1, 2. 3, 4, 5, 6]
+{% endcodeblock %}
+
+## Print vs Puts
+
+Both these functions can be used to output text. To put it simply, puts adds a newline character to the end of each argument and outputs nil as an invisible character rather than a String. Refer to the link at the bottom for more discussion.
+
+{% codeblock %}
+print [nil, 1, 2]
+# [nil, 1, 2]=> nil
+
+puts [nil, 1, 2]
+# 
+# 1
+# 2
+{% endcodeblock %}
+
+1. [Ruby-Docs Array][1]
+2. [Stack Overflow - What is the difference between print and puts][2]
+
+  [1]: http://ruby-doc.org/core-2.0/Array.html
+  [2]: http://stackoverflow.com/questions/5018633/what-is-the-difference-between-print-and-puts
