@@ -9,7 +9,15 @@
   <meta name="author" content="Nick Zhu">
 
   
-  <meta name="description" content="Like the if statements you saw 2 posts prior, there are many ways to construct loops. Not that there is no increment/decrement, ++/--, operation in &hellip;">
+  <meta name="description" content="Firstly the syntax. Let&rsquo;s first define a very basic function we can use for this post. 1
+2
+3
+4
+5
+6
+7
+8
+def print_stuff(str1, str2, reverse = &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -65,6 +73,336 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/ruby-intro-site/blog/2013/07/30/functions/">Functions</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-07-30T12:55:00+10:00" pubdate data-updated="true">Jul 30<span>th</span>, 2013</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Firstly the syntax. Let&rsquo;s first define a very basic function we can use for this post.</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>def print_stuff(str1, str2, reverse = false)
+</span><span class='line'>  if reverse
+</span><span class='line'>    puts "#{str2} and #{str1} received!"
+</span><span class='line'>  else
+</span><span class='line'>    puts "#{str1} and #{str2} received!"
+</span><span class='line'>  end
+</span><span class='line'>  str = str1 + str2
+</span><span class='line'>end</span></code></pre></td></tr></table></div></figure>
+
+
+<h3>Calling functions</h3>
+
+<p>Brackets around function parameters is optional in Ruby. However, sometimes it&rsquo;s useful to include them regardless for clarity&rsquo;s sake.</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>print_stuff("First argument", "Second argument")
+</span><span class='line'># First argument and Second argument received!
+</span><span class='line'>
+</span><span class='line'>print_stuff "First argument", "Second argument"
+</span><span class='line'># First argument and Second argument received!</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Arguments can be made optional by giving them a default value.</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>print_stuff("First argument", "Second argument", false)
+</span><span class='line'># First argument and Second argument received!
+</span><span class='line'>
+</span><span class='line'>print_stuff("First argument", "Second argument", true)
+</span><span class='line'># Second argument and First argument received!</span></code></pre></td></tr></table></div></figure>
+
+
+<h3>Return value</h3>
+
+<p>As you may have already noticed, <code>print_stuff</code> does use <code>return</code> even though it does exist in Ruby and it does exactly what you&rsquo;d expect. If the return value is not specified, Ruby will return the value returned in the last executed line of the block</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>def add(a, b)
+</span><span class='line'>  a + b
+</span><span class='line'>end
+</span><span class='line'>
+</span><span class='line'>puts add(1, 2)
+</span><span class='line'># 3
+</span><span class='line'>
+</span><span class='line'>def add_return(a, b)
+</span><span class='line'>  return a + b
+</span><span class='line'>end
+</span><span class='line'>
+</span><span class='line'>puts add_return(1,2)
+</span><span class='line'># 3
+</span><span class='line'>
+</span><span class='line'>def add_print(a, b)
+</span><span class='line'>  a + b
+</span><span class='line'>  print "add successful"
+</span><span class='line'>end
+</span><span class='line'>
+</span><span class='line'>puts add_print(1,2)
+</span><span class='line'># add successful</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Because <code>print "add successful"</code> returns <code>nil</code>, <code>add_print</code> returns nil.</p>
+
+<p>Also relevant later on, <a href="http://innig.net/software/ruby/closures-in-ruby">Closures</a> and <a href="https://rubymonk.com/learning/books/2-metaprogramming-ruby/chapters/32-introduction-to-metaprogramming/lessons/75-being-meta">Metaprogramming</a></p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/ruby-intro-site/blog/2013/07/29/hash-and-symbols/">Hash &amp; Symbols</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-07-29T22:46:00+10:00" pubdate data-updated="true">Jul 29<span>th</span>, 2013</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Maps in the data structure sense is referred to in Ruby as Hashes. Map in Ruby is used in its functional programming definition.</p>
+
+<h3>Construction</h3>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>a = { "a" => "b", 3 => "d" }
+</span><span class='line'># {"a"=>"b", 3=>"d"}
+</span><span class='line'>b = Hash("a" => "b", 3 => "d")
+</span><span class='line'># {"a"=>"b", 3=>"d"}
+</span><span class='line'>
+</span><span class='line'>c = {}
+</span><span class='line'>d = Hash.new
+</span><span class='line'>
+</span><span class='line'>e = Hash.new(0)</span></code></pre></td></tr></table></div></figure>
+
+
+<h3>Testing for Equality</h3>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>a==b
+</span><span class='line'># true
+</span><span class='line'>a.equal? b
+</span><span class='line'># false
+</span><span class='line'>
+</span><span class='line'>c==d
+</span><span class='line'># true
+</span><span class='line'>c.equal? d
+</span><span class='line'># false</span></code></pre></td></tr></table></div></figure>
+
+
+<h3>Retrieving from Hash</h3>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>a["a"]
+</span><span class='line'># "b"
+</span><span class='line'>a[3]
+</span><span class='line'># "d"
+</span><span class='line'>
+</span><span class='line'>a[4]
+</span><span class='line'># nil
+</span><span class='line'>e[4]
+</span><span class='line'># 0</span></code></pre></td></tr></table></div></figure>
+
+
+<h3>Adding values to the Hash</h3>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>a[5] = 6
+</span><span class='line'>puts a
+</span><span class='line'># {"a"=>"b", 3=>"d", 5=>6}</span></code></pre></td></tr></table></div></figure>
+
+
+<h3>Other useful functions</h3>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>b.clear
+</span><span class='line'>puts b
+</span><span class='line'># {}
+</span><span class='line'>
+</span><span class='line'>a.empty?
+</span><span class='line'># false
+</span><span class='line'>b.empty?
+</span><span class='line'># true
+</span><span class='line'>
+</span><span class='line'>a.length
+</span><span class='line'># 3
+</span><span class='line'>
+</span><span class='line'>a.keys
+</span><span class='line'># ["a", 3, 5]
+</span><span class='line'>a.values
+</span><span class='line'># ["b", "d", 6]</span></code></pre></td></tr></table></div></figure>
+
+
+<h3>Iterating through the hash</h3>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>a.each { |k,v| puts "The value for #{k} is #{v}" }
+</span><span class='line'># The value for a is b
+</span><span class='line'># The value for 3 is d
+</span><span class='line'># The value for 5 is 
+</span><span class='line'>
+</span><span class='line'>a.each_key { |k| puts "The value for #{k} is #{a[k]}" }
+</span><span class='line'># The value for a is b
+</span><span class='line'># The value for 3 is d
+</span><span class='line'># The value for 5 is 6
+</span><span class='line'>
+</span><span class='line'>a.each_value { |v| puts v }
+</span><span class='line'># b
+</span><span class='line'># d
+</span><span class='line'># 6
+</span><span class='line'>
+</span><span class='line'>a.each do |k,v|
+</span><span class='line'>  puts "The value for #{k} is #{v}"
+</span><span class='line'>end
+</span><span class='line'># The value for a is b
+</span><span class='line'># The value for 3 is d
+</span><span class='line'># The value for 5 is 6</span></code></pre></td></tr></table></div></figure>
+
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -1611,7 +1949,7 @@
   </header>
 
 
-  <div class="entry-content"><p>Ruby is a dynamic, object oriented programming language that first appeared toward the end of 1995, so it&rsquo;s a bit younger than the other 2 similar, mainstream languages, Python and Perl. In my opinion, it&rsquo;s more hipster and better looking than its cousins, and intuitively, it&rsquo;s as close to English as general purpose programming languages go.</p>
+  <div class="entry-content"><p>Ruby is a dynamic, object oriented programming language that first appeared toward the end of 1995, so it&rsquo;s a bit younger than the other 2 similar, mainstream languages, Python and Perl. In my opinion, it&rsquo;s more hipster and better looking than its cousins, and intuitively, it&rsquo;s as close to English as general purpose programming languages go. As such Ruby is one of the easiest languages to grok.</p>
 
 <p>It really only appeared out of obscurity in 2005 with the rise in popularity of the Ruby-based web application framework, Rails. It has however, greatly matured since then.</p>
 
@@ -1646,6 +1984,14 @@
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/ruby-intro-site/blog/2013/07/30/functions/">Functions</a>
+      </li>
+    
+      <li class="post">
+        <a href="/ruby-intro-site/blog/2013/07/29/hash-and-symbols/">Hash &amp; Symbols</a>
+      </li>
+    
+      <li class="post">
         <a href="/ruby-intro-site/blog/2013/07/28/loops/">Loops</a>
       </li>
     
@@ -1655,14 +2001,6 @@
     
       <li class="post">
         <a href="/ruby-intro-site/blog/2013/07/28/truthiness-and-control-flow/">Truthiness &amp; Control Flow</a>
-      </li>
-    
-      <li class="post">
-        <a href="/ruby-intro-site/blog/2013/07/28/numbers/">Numbers</a>
-      </li>
-    
-      <li class="post">
-        <a href="/ruby-intro-site/blog/2013/07/27/strings/">Strings</a>
       </li>
     
   </ul>

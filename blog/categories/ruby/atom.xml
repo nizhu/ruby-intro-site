@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Ruby | Ruby Intro]]></title>
   <link href="http://nizhu.github.io/ruby-intro-site/blog/categories/ruby/atom.xml" rel="self"/>
   <link href="http://nizhu.github.io/ruby-intro-site/"/>
-  <updated>2013-07-29T22:42:06+10:00</updated>
+  <updated>2013-07-30T19:06:00+10:00</updated>
   <id>http://nizhu.github.io/ruby-intro-site/</id>
   <author>
     <name><![CDATA[Nick Zhu]]></name>
@@ -12,6 +12,402 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Functions]]></title>
+    <link href="http://nizhu.github.io/ruby-intro-site/blog/2013/07/30/functions/"/>
+    <updated>2013-07-30T12:55:00+10:00</updated>
+    <id>http://nizhu.github.io/ruby-intro-site/blog/2013/07/30/functions</id>
+    <content type="html"><![CDATA[<p>Firstly the syntax. Let&rsquo;s first define a very basic function we can use for this post.</p>
+
+<p><div class='bogus-wrapper'><notextile><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>def print_stuff(str1, str2, reverse = false)
+</span><span class='line'>  if reverse&lt;/p>
+</span><span class='line'>
+</span><span class='line'>&lt;pre>&lt;code>puts "#{str2} and #{str1} received!"
+</span><span class='line'>&lt;/code>&lt;/pre>
+</span><span class='line'>
+</span><span class='line'>&lt;p>  else&lt;/p>
+</span><span class='line'>
+</span><span class='line'>&lt;pre>&lt;code>puts "#{str1} and #{str2} received!"
+</span><span class='line'>&lt;/code>&lt;/pre>
+</span><span class='line'>
+</span><span class='line'>&lt;p>  end
+</span><span class='line'>  str = str1 + str2
+</span><span class='line'>end</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+
+<h3>Calling functions</h3>
+
+<p>Brackets around function parameters is optional in Ruby. However, sometimes it&rsquo;s useful to include them regardless for clarity&rsquo;s sake.</p>
+
+<p><div class='bogus-wrapper'><notextile><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>print_stuff(&ldquo;First argument&rdquo;, &ldquo;Second argument&rdquo;)&lt;/p>
+</span><span class='line'>
+</span><span class='line'>&lt;h1>First argument and Second argument received!&lt;/h1>
+</span><span class='line'>
+</span><span class='line'>&lt;p>print_stuff &ldquo;First argument&rdquo;, &ldquo;Second argument&rdquo;&lt;/p>
+</span><span class='line'>
+</span><span class='line'>&lt;h1>First argument and Second argument received!&lt;/h1>
+</span><span class='line'>
+</span><span class='line'>&lt;p></span></code></pre></td></tr></table></div></figure></notextile></div></p>
+
+<p>Arguments can be made optional by giving them a default value.</p>
+
+<p><div class='bogus-wrapper'><notextile><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>print_stuff(&ldquo;First argument&rdquo;, &ldquo;Second argument&rdquo;, false)&lt;/p>
+</span><span class='line'>
+</span><span class='line'>&lt;h1>First argument and Second argument received!&lt;/h1>
+</span><span class='line'>
+</span><span class='line'>&lt;p>print_stuff(&ldquo;First argument&rdquo;, &ldquo;Second argument&rdquo;, true)&lt;/p>
+</span><span class='line'>
+</span><span class='line'>&lt;h1>Second argument and First argument received!&lt;/h1>
+</span><span class='line'>
+</span><span class='line'>&lt;p></span></code></pre></td></tr></table></div></figure></notextile></div></p>
+
+<h3>Return value</h3>
+
+<p>As you may have already noticed, <code>print_stuff</code> does use <code>return</code> even though it does exist in Ruby and it does exactly what you&rsquo;d expect. If the return value is not specified, Ruby will return the value returned in the last executed line of the block</p>
+
+<p><div class='bogus-wrapper'><notextile><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>def add(a, b)
+</span><span class='line'>  a + b
+</span><span class='line'>end&lt;/p>
+</span><span class='line'>
+</span><span class='line'>&lt;p>puts add(1, 2)&lt;/p>
+</span><span class='line'>
+</span><span class='line'>&lt;h1>3&lt;/h1>
+</span><span class='line'>
+</span><span class='line'>&lt;p>def add_return(a, b)
+</span><span class='line'>  return a + b
+</span><span class='line'>end&lt;/p>
+</span><span class='line'>
+</span><span class='line'>&lt;p>puts add_return(1,2)&lt;/p>
+</span><span class='line'>
+</span><span class='line'>&lt;h1>3&lt;/h1>
+</span><span class='line'>
+</span><span class='line'>&lt;p>def add_print(a, b)
+</span><span class='line'>  a + b
+</span><span class='line'>  print &ldquo;add successful&rdquo;
+</span><span class='line'>end&lt;/p>
+</span><span class='line'>
+</span><span class='line'>&lt;p>puts add_print(1,2)&lt;/p>
+</span><span class='line'>
+</span><span class='line'>&lt;h1>add successful&lt;/h1>
+</span><span class='line'>
+</span><span class='line'>&lt;p></span></code></pre></td></tr></table></div></figure></notextile></div></p>
+
+<p>Because <code>print "add successful"</code> returns <code>nil</code>, <code>add_print</code> returns nil.</p>
+
+<p>Also relevant later on, <a href="http://innig.net/software/ruby/closures-in-ruby">Closures</a> and <a href="https://rubymonk.com/learning/books/2-metaprogramming-ruby/chapters/32-introduction-to-metaprogramming/lessons/75-being-meta">Metaprogramming</a></p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Hash &amp; Symbols]]></title>
+    <link href="http://nizhu.github.io/ruby-intro-site/blog/2013/07/29/hash-and-symbols/"/>
+    <updated>2013-07-29T22:46:00+10:00</updated>
+    <id>http://nizhu.github.io/ruby-intro-site/blog/2013/07/29/hash-and-symbols</id>
+    <content type="html"><![CDATA[<p>Maps in the data structure sense is referred to in Ruby as Hashes. Map in Ruby is used in its functional programming definition.</p>
+
+<h3>Construction</h3>
+
+<p><div class='bogus-wrapper'><notextile><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>a = { &ldquo;a&rdquo; => &ldquo;b&rdquo;, 3 => &ldquo;d&rdquo; }&lt;/p>
+</span><span class='line'>
+</span><span class='line'>&lt;h1>{&ldquo;a&rdquo;=>&ldquo;b&rdquo;, 3=>&ldquo;d&rdquo;}&lt;/h1>
+</span><span class='line'>
+</span><span class='line'>&lt;p>b = Hash(&ldquo;a&rdquo; => &ldquo;b&rdquo;, 3 => &ldquo;d&rdquo;)&lt;/p>
+</span><span class='line'>
+</span><span class='line'>&lt;h1>{&ldquo;a&rdquo;=>&ldquo;b&rdquo;, 3=>&ldquo;d&rdquo;}&lt;/h1>
+</span><span class='line'>
+</span><span class='line'>&lt;p>c = {}
+</span><span class='line'>d = Hash.new&lt;/p>
+</span><span class='line'>
+</span><span class='line'>&lt;p>e = Hash.new(0)</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+
+<h3>Testing for Equality</h3>
+
+<p><div class='bogus-wrapper'><notextile><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>a==b&lt;/p>
+</span><span class='line'>
+</span><span class='line'>&lt;h1>true&lt;/h1>
+</span><span class='line'>
+</span><span class='line'>&lt;p>a.equal? b&lt;/p>
+</span><span class='line'>
+</span><span class='line'>&lt;h1>false&lt;/h1>
+</span><span class='line'>
+</span><span class='line'>&lt;p>c==d&lt;/p>
+</span><span class='line'>
+</span><span class='line'>&lt;h1>true&lt;/h1>
+</span><span class='line'>
+</span><span class='line'>&lt;p>c.equal? d&lt;/p>
+</span><span class='line'>
+</span><span class='line'>&lt;h1>false&lt;/h1>
+</span><span class='line'>
+</span><span class='line'>&lt;p></span></code></pre></td></tr></table></div></figure></notextile></div></p>
+
+<h3>Retrieving from Hash</h3>
+
+<p><div class='bogus-wrapper'><notextile><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>a[&ldquo;a&rdquo;]&lt;/p>
+</span><span class='line'>
+</span><span class='line'>&lt;h1>&ldquo;b&rdquo;&lt;/h1>
+</span><span class='line'>
+</span><span class='line'>&lt;p>a[3]&lt;/p>
+</span><span class='line'>
+</span><span class='line'>&lt;h1>&ldquo;d&rdquo;&lt;/h1>
+</span><span class='line'>
+</span><span class='line'>&lt;p>a[4]&lt;/p>
+</span><span class='line'>
+</span><span class='line'>&lt;h1>nil&lt;/h1>
+</span><span class='line'>
+</span><span class='line'>&lt;p>e[4]&lt;/p>
+</span><span class='line'>
+</span><span class='line'>&lt;h1>0&lt;/h1>
+</span><span class='line'>
+</span><span class='line'>&lt;p></span></code></pre></td></tr></table></div></figure></notextile></div></p>
+
+<h3>Adding values to the Hash</h3>
+
+<p><div class='bogus-wrapper'><notextile><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>a[5] = 6
+</span><span class='line'>puts a&lt;/p>
+</span><span class='line'>
+</span><span class='line'>&lt;h1>{&ldquo;a&rdquo;=>&ldquo;b&rdquo;, 3=>&ldquo;d&rdquo;, 5=>6}&lt;/h1>
+</span><span class='line'>
+</span><span class='line'>&lt;p></span></code></pre></td></tr></table></div></figure></notextile></div></p>
+
+<h3>Other useful functions</h3>
+
+<p><div class='bogus-wrapper'><notextile><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>b.clear
+</span><span class='line'>puts b&lt;/p>
+</span><span class='line'>
+</span><span class='line'>&lt;h1>{}&lt;/h1>
+</span><span class='line'>
+</span><span class='line'>&lt;p>a.empty?&lt;/p>
+</span><span class='line'>
+</span><span class='line'>&lt;h1>false&lt;/h1>
+</span><span class='line'>
+</span><span class='line'>&lt;p>b.empty?&lt;/p>
+</span><span class='line'>
+</span><span class='line'>&lt;h1>true&lt;/h1>
+</span><span class='line'>
+</span><span class='line'>&lt;p>a.length&lt;/p>
+</span><span class='line'>
+</span><span class='line'>&lt;h1>3&lt;/h1>
+</span><span class='line'>
+</span><span class='line'>&lt;p>a.keys&lt;/p>
+</span><span class='line'>
+</span><span class='line'>&lt;h1>[&ldquo;a&rdquo;, 3, 5]&lt;/h1>
+</span><span class='line'>
+</span><span class='line'>&lt;p>a.values&lt;/p>
+</span><span class='line'>
+</span><span class='line'>&lt;h1>[&ldquo;b&rdquo;, &ldquo;d&rdquo;, 6]&lt;/h1>
+</span><span class='line'>
+</span><span class='line'>&lt;p></span></code></pre></td></tr></table></div></figure></notextile></div></p>
+
+<h3>Iterating through the hash</h3>
+
+<p><div class='bogus-wrapper'><notextile><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+<span class='line-number'>30</span>
+<span class='line-number'>31</span>
+<span class='line-number'>32</span>
+<span class='line-number'>33</span>
+<span class='line-number'>34</span>
+<span class='line-number'>35</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>a.each { |k,v| puts &ldquo;The value for #{k} is #{v}&rdquo; }&lt;/p>
+</span><span class='line'>
+</span><span class='line'>&lt;h1>The value for a is b&lt;/h1>
+</span><span class='line'>
+</span><span class='line'>&lt;h1>The value for 3 is d&lt;/h1>
+</span><span class='line'>
+</span><span class='line'>&lt;h1>The value for 5 is&lt;/h1>
+</span><span class='line'>
+</span><span class='line'>&lt;p>a.each_key { |k| puts &ldquo;The value for #{k} is #{a[k]}&rdquo; }&lt;/p>
+</span><span class='line'>
+</span><span class='line'>&lt;h1>The value for a is b&lt;/h1>
+</span><span class='line'>
+</span><span class='line'>&lt;h1>The value for 3 is d&lt;/h1>
+</span><span class='line'>
+</span><span class='line'>&lt;h1>The value for 5 is 6&lt;/h1>
+</span><span class='line'>
+</span><span class='line'>&lt;p>a.each_value { |v| puts v }&lt;/p>
+</span><span class='line'>
+</span><span class='line'>&lt;h1>b&lt;/h1>
+</span><span class='line'>
+</span><span class='line'>&lt;h1>d&lt;/h1>
+</span><span class='line'>
+</span><span class='line'>&lt;h1>6&lt;/h1>
+</span><span class='line'>
+</span><span class='line'>&lt;p>a.each do |k,v|
+</span><span class='line'>  puts &ldquo;The value for #{k} is #{v}&rdquo;
+</span><span class='line'>end&lt;/p>
+</span><span class='line'>
+</span><span class='line'>&lt;h1>The value for a is b&lt;/h1>
+</span><span class='line'>
+</span><span class='line'>&lt;h1>The value for 3 is d&lt;/h1>
+</span><span class='line'>
+</span><span class='line'>&lt;h1>The value for 5 is 6&lt;/h1>
+</span><span class='line'>
+</span><span class='line'>&lt;p></span></code></pre></td></tr></table></div></figure></notextile></div></p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Loops]]></title>
@@ -934,619 +1330,6 @@
 
 <ol>
 <li><a href="http://stackoverflow.com/questions/7156955/whats-the-difference-between-equal-eql-and/7157051#7157051">Stack Overflow &ndash; What&rsquo;s the difference between equal?, eql?, ===, and ==?</a></li>
-</ol>
-
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Numbers]]></title>
-    <link href="http://nizhu.github.io/ruby-intro-site/blog/2013/07/28/numbers/"/>
-    <updated>2013-07-28T14:48:00+10:00</updated>
-    <id>http://nizhu.github.io/ruby-intro-site/blog/2013/07/28/numbers</id>
-    <content type="html"><![CDATA[<p>Like most (if not all) object oriented programming languages out there, Ruby has an Integer class and a Float class. Less common in standard libraries however, are the classes Rational and Complex which are used to represent fractions and complex numbers respectively.</p>
-
-<h1>Integers</h1>
-
-<p>In terms of functionality, there&rsquo;s little interesting with Integers. There&rsquo;s obviously adding, subtracting, multiplication, division, modulo and exponentials.</p>
-
-<p><div class='bogus-wrapper'><notextile><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-<span class='line-number'>15</span>
-<span class='line-number'>16</span>
-<span class='line-number'>17</span>
-<span class='line-number'>18</span>
-<span class='line-number'>19</span>
-<span class='line-number'>20</span>
-<span class='line-number'>21</span>
-<span class='line-number'>22</span>
-<span class='line-number'>23</span>
-<span class='line-number'>24</span>
-<span class='line-number'>25</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>1 + 2&lt;/p>
-</span><span class='line'>
-</span><span class='line'>&lt;h1>3&lt;/h1>
-</span><span class='line'>
-</span><span class='line'>&lt;p>1 &ndash; 2&lt;/p>
-</span><span class='line'>
-</span><span class='line'>&lt;h1>-1&lt;/h1>
-</span><span class='line'>
-</span><span class='line'>&lt;p>1 * 2&lt;/p>
-</span><span class='line'>
-</span><span class='line'>&lt;h1>2&lt;/h1>
-</span><span class='line'>
-</span><span class='line'>&lt;p>2 / 1&lt;/p>
-</span><span class='line'>
-</span><span class='line'>&lt;h1>2&lt;/h1>
-</span><span class='line'>
-</span><span class='line'>&lt;p>5 % 2&lt;/p>
-</span><span class='line'>
-</span><span class='line'>&lt;h1>1&lt;/h1>
-</span><span class='line'>
-</span><span class='line'>&lt;p>2 ** 2&lt;/p>
-</span><span class='line'>
-</span><span class='line'>&lt;h1>4&lt;/h1>
-</span><span class='line'>
-</span><span class='line'>&lt;p></span></code></pre></td></tr></table></div></figure></notextile></div></p>
-
-<p>There are also several methods for common operations</p>
-
-<p><div class='bogus-wrapper'><notextile><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-<span class='line-number'>15</span>
-<span class='line-number'>16</span>
-<span class='line-number'>17</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>1.next&lt;/p>
-</span><span class='line'>
-</span><span class='line'>&lt;h1>2&lt;/h1>
-</span><span class='line'>
-</span><span class='line'>&lt;p>1.even?&lt;/p>
-</span><span class='line'>
-</span><span class='line'>&lt;h1>false&lt;/h1>
-</span><span class='line'>
-</span><span class='line'>&lt;p>10.gcd(2)&lt;/p>
-</span><span class='line'>
-</span><span class='line'>&lt;h1>2&lt;/h1>
-</span><span class='line'>
-</span><span class='line'>&lt;p>&ldquo;10&rdquo;.to_i&lt;/p>
-</span><span class='line'>
-</span><span class='line'>&lt;h1>10&lt;/h1>
-</span><span class='line'>
-</span><span class='line'>&lt;p></span></code></pre></td></tr></table></div></figure></notextile></div></p>
-
-<h2>Fixnum vs Bignum</h2>
-
-<p>To make an analogy to Java and C, this is the comparison between int and long. In Ruby however, integers are not actually of the class Integer.</p>
-
-<p>What we think of Integer is the Fixnum. It&rsquo;s used for all integers that would fit in a machine&rsquo;s &lsquo;word&rsquo;, otherwise it&rsquo;s a Bignum. Both these types inherit from the Integer class.</p>
-
-<p>On this 64bit Mac, a word is 8 bytes. The class uses 1 bit mark the number as positive or negative, and another to mark the integer as value as opposed to a pointer (this is why object_id for Fixnum are always odd). As such, the maximum value for a Fixnum is 4611686018427387903 (2<sup>62</sup>-1) and the minimum is -4611686018427387904 (-2<sup>62</sup>). If an Fixnum leaves this range, Ruby automatically converts it to a Bignum and vice versa.</p>
-
-<p><div class='bogus-wrapper'><notextile><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-<span class='line-number'>15</span>
-<span class='line-number'>16</span>
-<span class='line-number'>17</span>
-<span class='line-number'>18</span>
-<span class='line-number'>19</span>
-<span class='line-number'>20</span>
-<span class='line-number'>21</span>
-<span class='line-number'>22</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>FIXNUM_MAX = (2**(0.size * 8 -2) -1)&lt;/p>
-</span><span class='line'>
-</span><span class='line'>&lt;h1>4611686018427387903&lt;/h1>
-</span><span class='line'>
-</span><span class='line'>&lt;p>FIXNUM_MIN = &ndash;(2**(0.size * 8 -2))&lt;/p>
-</span><span class='line'>
-</span><span class='line'>&lt;h1>-4611686018427387904&lt;/h1>
-</span><span class='line'>
-</span><span class='line'>&lt;p>FIXNUM_MAX.class&lt;/p>
-</span><span class='line'>
-</span><span class='line'>&lt;h1>Fixnum&lt;/h1>
-</span><span class='line'>
-</span><span class='line'>&lt;p>bignum = FIXNUM_MAX + 1
-</span><span class='line'>bignum.class&lt;/p>
-</span><span class='line'>
-</span><span class='line'>&lt;h1>Bignum&lt;/h1>
-</span><span class='line'>
-</span><span class='line'>&lt;p>(bignum-1).class&lt;/p>
-</span><span class='line'>
-</span><span class='line'>&lt;h1>Fixnum&lt;/h1>
-</span><span class='line'>
-</span><span class='line'>&lt;p></span></code></pre></td></tr></table></div></figure></notextile></div></p>
-
-<p>The biggest difference between these classes is that, like Java ints, Fixnum objects are immediate value. They are not references to another object. Remember in the last post when repeating <code>"xyzxyz".object_id</code> would return a different number everytime? This won&rsquo;t be the case for Fixnum. In fact, object_id of Fixnum are predictable. For positive numbers, the id is simply 2 * value + 1. Similarly, 2 * value &ndash; 1 for negative numbers.</p>
-
-<p><div class='bogus-wrapper'><notextile><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>4611686018427387903.object_id&lt;/p>
-</span><span class='line'>
-</span><span class='line'>&lt;h1>9223372036854775807&lt;/h1>
-</span><span class='line'>
-</span><span class='line'>&lt;p>4611686018427387903.object_id&lt;/p>
-</span><span class='line'>
-</span><span class='line'>&lt;h1>9223372036854775807&lt;/h1>
-</span><span class='line'>
-</span><span class='line'>&lt;p>-4611686018427387904.object_id&lt;/p>
-</span><span class='line'>
-</span><span class='line'>&lt;h1>-9223372036854775807&lt;/h1>
-</span><span class='line'>
-</span><span class='line'>&lt;p></span></code></pre></td></tr></table></div></figure></notextile></div></p>
-
-<h1>Rationals</h1>
-
-<p>Rationals are useful for calculations because they come with the accuracy that&rsquo;s missing from floats. There are 3 ways to create them</p>
-
-<p><div class='bogus-wrapper'><notextile><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-<span class='line-number'>15</span>
-<span class='line-number'>16</span>
-<span class='line-number'>17</span>
-<span class='line-number'>18</span>
-<span class='line-number'>19</span>
-<span class='line-number'>20</span>
-<span class='line-number'>21</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>Rational(1, 2)&lt;/p>
-</span><span class='line'>
-</span><span class='line'>&lt;h1>(&frac12;)&lt;/h1>
-</span><span class='line'>
-</span><span class='line'>&lt;p>&ldquo;&frac12;&rdquo;.to_r&lt;/p>
-</span><span class='line'>
-</span><span class='line'>&lt;h1>(&frac12;)&lt;/h1>
-</span><span class='line'>
-</span><span class='line'>&lt;p>0.5.rationalize&lt;/p>
-</span><span class='line'>
-</span><span class='line'>&lt;h1>(&frac12;)&lt;/h1>
-</span><span class='line'>
-</span><span class='line'>&lt;p>Rational(1,2) + Rational(2,3)&lt;/p>
-</span><span class='line'>
-</span><span class='line'>&lt;h1>(7/6)&lt;/h1>
-</span><span class='line'>
-</span><span class='line'>&lt;p>Rational(7,6).to_f&lt;/p>
-</span><span class='line'>
-</span><span class='line'>&lt;h1>1.1666666666666667&lt;/h1>
-</span><span class='line'>
-</span><span class='line'>&lt;p></span></code></pre></td></tr></table></div></figure></notextile></div></p>
-
-<h1>Float</h1>
-
-<p>Like integers, Float&rsquo;s methods are quite standard.</p>
-
-<p><div class='bogus-wrapper'><notextile><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-<span class='line-number'>15</span>
-<span class='line-number'>16</span>
-<span class='line-number'>17</span>
-<span class='line-number'>18</span>
-<span class='line-number'>19</span>
-<span class='line-number'>20</span>
-<span class='line-number'>21</span>
-<span class='line-number'>22</span>
-<span class='line-number'>23</span>
-<span class='line-number'>24</span>
-<span class='line-number'>25</span>
-<span class='line-number'>26</span>
-<span class='line-number'>27</span>
-<span class='line-number'>28</span>
-<span class='line-number'>29</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>1.2345.to_i&lt;/p>
-</span><span class='line'>
-</span><span class='line'>&lt;h1>1&lt;/h1>
-</span><span class='line'>
-</span><span class='line'>&lt;p>1.2345.floor&lt;/p>
-</span><span class='line'>
-</span><span class='line'>&lt;h1>1&lt;/h1>
-</span><span class='line'>
-</span><span class='line'>&lt;p>9.87654321.round(3)&lt;/p>
-</span><span class='line'>
-</span><span class='line'>&lt;h1>9.877&lt;/h1>
-</span><span class='line'>
-</span><span class='line'>&lt;p>(0.0).infinite?&lt;/p>
-</span><span class='line'>
-</span><span class='line'>&lt;h1>nil&lt;/h1>
-</span><span class='line'>
-</span><span class='line'>&lt;p>(-1.0/0.0).infinite?&lt;/p>
-</span><span class='line'>
-</span><span class='line'>&lt;h1>-1&lt;/h1>
-</span><span class='line'>
-</span><span class='line'>&lt;p>(+1.0/0.0).infinite?&lt;/p>
-</span><span class='line'>
-</span><span class='line'>&lt;h1>1&lt;/h1>
-</span><span class='line'>
-</span><span class='line'>&lt;p>0.3.rationalize&lt;/p>
-</span><span class='line'>
-</span><span class='line'>&lt;h1>(3/10)&lt;/h1>
-</span><span class='line'>
-</span><span class='line'>&lt;p></span></code></pre></td></tr></table></div></figure></notextile></div></p>
-
-<p>However, it&rsquo;s important to note that floating point calculations are inaccurate, like almost every programming langauge (can&rsquo;t name any with).</p>
-
-<p><div class='bogus-wrapper'><notextile><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>0.3.to_r&lt;/p>
-</span><span class='line'>
-</span><span class='line'>&lt;h1>(5404319552844595/18014398509481984)&lt;/h1>
-</span><span class='line'>
-</span><span class='line'>&lt;p>printf(&ldquo;%.55f\n&rdquo;, 1.9)
-</span><span class='line'>1.8999999999999999111821580299874767661094665527343750000</span></code></pre></td></tr></table></div></figure></notextile></div></p>
-
-<ol>
-<li><a href="http://www.ruby-doc.org/core-2.0/Integer.html">Ruby-Docs Integer</a></li>
-<li><a href="http://www.ruby-doc.org/core-2.0/Fixnum.html">Ruby-Docs Fixnum</a></li>
-<li><a href="http://www.ruby-doc.org/core-2.0/Bignum.html">Ruby-Dics Bignum</a></li>
-<li><a href="http://www.ruby-doc.org/core-2.0/Float.html">Ruby-Docs Float</a></li>
-<li><a href="http://www.ruby-doc.org/core-2.0/Rational.html">Ruby-Docs Rationals</a></li>
-<li><a href="http://www.ruby-doc.org/core-2.0/Complex.html">Ruby-Docs Complex</a></li>
-<li><a href="http://stackoverflow.com/questions/535721/ruby-max-integer">Stack Overflow Ruby max integer</a></li>
-</ol>
-
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Strings]]></title>
-    <link href="http://nizhu.github.io/ruby-intro-site/blog/2013/07/27/strings/"/>
-    <updated>2013-07-27T17:34:00+10:00</updated>
-    <id>http://nizhu.github.io/ruby-intro-site/blog/2013/07/27/strings</id>
-    <content type="html"><![CDATA[<p>There isn&rsquo;t much special about Ruby strings. Try the code snippets below in irb.</p>
-
-<h2>Construction</h2>
-
-<p>Strings can be created either using literals, or the new function.</p>
-
-<p><div class='bogus-wrapper'><notextile><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-<span class='line-number'>15</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>a = &ldquo;abcde&rdquo;
-</span><span class='line'>puts a&lt;/p>
-</span><span class='line'>
-</span><span class='line'>&lt;h1>abcde&lt;/h1>
-</span><span class='line'>
-</span><span class='line'>&lt;h1>=> nil&lt;/h1>
-</span><span class='line'>
-</span><span class='line'>&lt;p>b = String.new &ldquo;fghij&rdquo;
-</span><span class='line'>puts b&lt;/p>
-</span><span class='line'>
-</span><span class='line'>&lt;h1>fghij&lt;/h1>
-</span><span class='line'>
-</span><span class='line'>&lt;h1>=> nil&lt;/h1>
-</span><span class='line'>
-</span><span class='line'>&lt;p></span></code></pre></td></tr></table></div></figure></notextile></div></p>
-
-<h2>Instance Functions</h2>
-
-<p>Like <code>java.lang.String</code>, there are loads of predefined methods for the class. Remeber to refer to the Class documentation; there are code samples in there too. I&rsquo;m just going to give you a taste of what&rsquo;s available.</p>
-
-<p><div class='bogus-wrapper'><notextile><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-<span class='line-number'>15</span>
-<span class='line-number'>16</span>
-<span class='line-number'>17</span>
-<span class='line-number'>18</span>
-<span class='line-number'>19</span>
-<span class='line-number'>20</span>
-<span class='line-number'>21</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>a.length&lt;/p>
-</span><span class='line'>
-</span><span class='line'>&lt;h1>1&lt;/h1>
-</span><span class='line'>
-</span><span class='line'>&lt;p>a.next&lt;/p>
-</span><span class='line'>
-</span><span class='line'>&lt;h1>abcdf&lt;/h1>
-</span><span class='line'>
-</span><span class='line'>&lt;p>a.reverse&lt;/p>
-</span><span class='line'>
-</span><span class='line'>&lt;h1>edcba&lt;/h1>
-</span><span class='line'>
-</span><span class='line'>&lt;p>a.upcase&lt;/p>
-</span><span class='line'>
-</span><span class='line'>&lt;h1>ABCDE&lt;/h1>
-</span><span class='line'>
-</span><span class='line'>&lt;p>a.slice(3, 5)&lt;/p>
-</span><span class='line'>
-</span><span class='line'>&lt;h1>de&lt;/h1>
-</span><span class='line'>
-</span><span class='line'>&lt;p></span></code></pre></td></tr></table></div></figure></notextile></div></p>
-
-<p>You&rsquo;ll notice that the methods above only returns the result of the function. Some methods makes changes to the string in place.</p>
-
-<p><div class='bogus-wrapper'><notextile><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>c = &ldquo;ababab&rdquo;
-</span><span class='line'>c.reverse!
-</span><span class='line'>puts c&lt;/p>
-</span><span class='line'>
-</span><span class='line'>&lt;h1>bababa&lt;/h1>
-</span><span class='line'>
-</span><span class='line'>&lt;p>c.upcase!
-</span><span class='line'>puts c&lt;/p>
-</span><span class='line'>
-</span><span class='line'>&lt;h1>BABABA&lt;/h1>
-</span><span class='line'>
-</span><span class='line'>&lt;p></span></code></pre></td></tr></table></div></figure></notextile></div></p>
-
-<p>Like Perl, Strings in Ruby are mutable. The object_id method I&rsquo;m using below returns the id of the object, similar to the &amp; operator in C. Strings inherit this from the Object class. Note that String objects are created every time a String literal is used.</p>
-
-<p><div class='bogus-wrapper'><notextile><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-<span class='line-number'>15</span>
-<span class='line-number'>16</span>
-<span class='line-number'>17</span>
-<span class='line-number'>18</span>
-<span class='line-number'>19</span>
-<span class='line-number'>20</span>
-<span class='line-number'>21</span>
-<span class='line-number'>22</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>&ldquo;xyzxyz&rdquo;.object_id&lt;/p>
-</span><span class='line'>
-</span><span class='line'>&lt;h1>70243133245180&lt;/h1>
-</span><span class='line'>
-</span><span class='line'>&lt;p>&ldquo;xyzxyz&rdquo;.object_id&lt;/p>
-</span><span class='line'>
-</span><span class='line'>&lt;h1>70243133228560&lt;/h1>
-</span><span class='line'>
-</span><span class='line'>&lt;p>d = &ldquo;xyzxyz&rdquo;
-</span><span class='line'>d.object_id&lt;/p>
-</span><span class='line'>
-</span><span class='line'>&lt;h1>70243133212180&lt;/h1>
-</span><span class='line'>
-</span><span class='line'>&lt;p>d.reverse!&lt;/p>
-</span><span class='line'>
-</span><span class='line'>&lt;h1>&ldquo;zyxzyx&rdquo;&lt;/h1>
-</span><span class='line'>
-</span><span class='line'>&lt;p>d.object_id&lt;/p>
-</span><span class='line'>
-</span><span class='line'>&lt;h1>70243133212180&lt;/h1>
-</span><span class='line'>
-</span><span class='line'>&lt;p></span></code></pre></td></tr></table></div></figure></notextile></div></p>
-
-<h2>Building a String</h2>
-
-<p>Strings can be built from variables in 4 different ways. The first two is probably the most commonly used</p>
-
-<p><div class='bogus-wrapper'><notextile><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>e = &ldquo;abc&rdquo;
-</span><span class='line'>f = &ldquo;def&rdquo;
-</span><span class='line'>g = 10
-</span><span class='line'>h = e + &ldquo; + &rdquo; + f + &ldquo; is not equal to &rdquo; + g.to_s
-</span><span class='line'>i = &ldquo;#{e} + #{f} is not equal to #{g}&rdquo;
-</span><span class='line'>puts h
-</span><span class='line'>puts i&lt;/p>
-</span><span class='line'>
-</span><span class='line'>&lt;h1>abc + def is not equal to 10&lt;/h1>
-</span><span class='line'>
-</span><span class='line'>&lt;p></span></code></pre></td></tr></table></div></figure></notextile></div></p>
-
-<p>The third way is appending to strings. It&rsquo;s more efficient in that it simply adds to a string instead of creating a new one, but it does change the string that is being appended to.</p>
-
-<p><div class='bogus-wrapper'><notextile><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-<span class='line-number'>15</span>
-<span class='line-number'>16</span>
-<span class='line-number'>17</span>
-<span class='line-number'>18</span>
-<span class='line-number'>19</span>
-<span class='line-number'>20</span>
-<span class='line-number'>21</span>
-<span class='line-number'>22</span>
-<span class='line-number'>23</span>
-<span class='line-number'>24</span>
-<span class='line-number'>25</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>j = e &lt;&lt; &ldquo; + &rdquo; &lt;&lt; f &lt;&lt; &ldquo; is not equal to &rdquo; &lt;&lt; g.to_s&lt;/p>
-</span><span class='line'>
-</span><span class='line'>&lt;h1>abc + def is not equal to 10&lt;/h1>
-</span><span class='line'>
-</span><span class='line'>&lt;p>j.object_id&lt;/p>
-</span><span class='line'>
-</span><span class='line'>&lt;h1>70243124981460&lt;/h1>
-</span><span class='line'>
-</span><span class='line'>&lt;p>e.object_id&lt;/p>
-</span><span class='line'>
-</span><span class='line'>&lt;h1>70243124981460&lt;/h1>
-</span><span class='line'>
-</span><span class='line'>&lt;p>f.object_id&lt;/p>
-</span><span class='line'>
-</span><span class='line'>&lt;h1>70243124965700&lt;/h1>
-</span><span class='line'>
-</span><span class='line'>&lt;p>puts e&lt;/p>
-</span><span class='line'>
-</span><span class='line'>&lt;h1>abc + def is not equal to 10&lt;/h1>
-</span><span class='line'>
-</span><span class='line'>&lt;p>puts f&lt;/p>
-</span><span class='line'>
-</span><span class='line'>&lt;h1>def&lt;/h1>
-</span><span class='line'>
-</span><span class='line'>&lt;p></span></code></pre></td></tr></table></div></figure></notextile></div></p>
-
-<p>The first line basically means, append &ldquo; + &rdquo; to e, then append f to e, then append &ldquo; is not equal to &rdquo; to e, and finally append g.to_s to e. I will demonstrate the final way when we get to the Arrays section.</p>
-
-<h2>Escaping characters</h2>
-
-<p>If the String you&rsquo;re after is literally <code>#{e} + #{f} is not equal to #{g}</code>, ie. you don&rsquo;t want Ruby to evaluate e, f, and g, you can escape the <code>#{}</code> blocks by prepending the # with a backslash <code>\</code>. Alternatively, you can use single quotes instead of double quotes, and Ruby will escape those characters for you.</p>
-
-<p><div class='bogus-wrapper'><notextile><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>puts &ldquo;#{e} + #{f} is not equal to #{g}&rdquo;"&lt;/p>
-</span><span class='line'>
-</span><span class='line'>&lt;h1>#{e} + #{f} is not equal to #{g}&lt;/h1>
-</span><span class='line'>
-</span><span class='line'>&lt;p>puts &lsquo;#{e} + #{f} is not equal to #{g}&rsquo;&lt;/p>
-</span><span class='line'>
-</span><span class='line'>&lt;h1>#{e} + #{f} is not equal to #{g}&lt;/h1>
-</span><span class='line'>
-</span><span class='line'>&lt;p>a = &lsquo;#{e} + #{f} is not equal to #{g}&rsquo;&lt;/p>
-</span><span class='line'>
-</span><span class='line'>&lt;h1>&ldquo;#{e} + #{f} is not equal to #{g}&rdquo;&lt;/h1>
-</span><span class='line'>
-</span><span class='line'>&lt;p></span></code></pre></td></tr></table></div></figure></notextile></div></p>
-
-<h2>Ruby Documentation</h2>
-
-<p>There&rsquo;s two way to access the API documentation, online through <a href="http://ruby-doc.org/">http://ruby-doc.org/</a>, or offline in your command line with ri.</p>
-
-<p><div class='bogus-wrapper'><notextile><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>ri String
-</span><span class='line'>ri String#object_id</span></code></pre></td></tr></table></div></figure></notextile></div></p>
-
-<p>Unofficially, (if you don&rsquo;t already) you&rsquo;ll learn to love Google and Stack Overflow too :)</p>
-
-<ol>
-<li><a href="http://ruby-doc.org/core-2.0/String.html">Ruby Docs &ndash; String</a></li>
 </ol>
 
 ]]></content>

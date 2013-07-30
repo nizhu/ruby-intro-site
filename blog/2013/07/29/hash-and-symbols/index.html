@@ -5,11 +5,14 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>Arrays - Ruby Intro</title>
+  <title>Hash &amp; Symbols - Ruby Intro</title>
   <meta name="author" content="Nick Zhu">
 
   
-  <meta name="description" content="Arrays in Ruby are very similar to those in other dynamic programming languages. It&rsquo;s all very standard and the documentation has loads of &hellip;">
+  <meta name="description" content="Maps in the data structure sense is referred to in Ruby as Hashes. Map in Ruby is used in its functional programming definition. Construction 1
+2
+3
+4 &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -18,7 +21,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://nizhu.github.io/ruby-intro-site/blog/2013/07/28/arrays">
+  <link rel="canonical" href="http://nizhu.github.io/ruby-intro-site/blog/2013/07/29/hash-and-symbols">
   <link href="/ruby-intro-site/favicon.png" rel="icon">
   <link href="/ruby-intro-site/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <link href="/ruby-intro-site/atom.xml" rel="alternate" title="Ruby Intro" type="application/atom+xml">
@@ -68,7 +71,7 @@
   
   <header>
     
-      <h1 class="entry-title">Arrays</h1>
+      <h1 class="entry-title">Hash &amp; Symbols</h1>
     
     
       <p class="meta">
@@ -84,16 +87,92 @@
   
 
 
-<time datetime="2013-07-28T20:21:00+10:00" pubdate data-updated="true">Jul 28<span>th</span>, 2013</time>
+<time datetime="2013-07-29T22:46:00+10:00" pubdate data-updated="true">Jul 29<span>th</span>, 2013</time>
         
       </p>
     
   </header>
 
 
-<div class="entry-content"><p>Arrays in Ruby are very similar to those in other dynamic programming languages. It&rsquo;s all very standard and the documentation has loads of examples anyway, so I&rsquo;ll go through only the most basic and obvious to get started.</p>
+<div class="entry-content"><p>Maps in the data structure sense is referred to in Ruby as Hashes. Map in Ruby is used in its functional programming definition.</p>
 
 <h3>Construction</h3>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>a = { "a" => "b", 3 => "d" }
+</span><span class='line'># {"a"=>"b", 3=>"d"}
+</span><span class='line'>b = Hash("a" => "b", 3 => "d")
+</span><span class='line'># {"a"=>"b", 3=>"d"}
+</span><span class='line'>
+</span><span class='line'>c = {}
+</span><span class='line'>d = Hash.new
+</span><span class='line'>
+</span><span class='line'>e = Hash.new(0)</span></code></pre></td></tr></table></div></figure>
+
+
+<h3>Testing for Equality</h3>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>a==b
+</span><span class='line'># true
+</span><span class='line'>a.equal? b
+</span><span class='line'># false
+</span><span class='line'>
+</span><span class='line'>c==d
+</span><span class='line'># true
+</span><span class='line'>c.equal? d
+</span><span class='line'># false</span></code></pre></td></tr></table></div></figure>
+
+
+<h3>Retrieving from Hash</h3>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>a["a"]
+</span><span class='line'># "b"
+</span><span class='line'>a[3]
+</span><span class='line'># "d"
+</span><span class='line'>
+</span><span class='line'>a[4]
+</span><span class='line'># nil
+</span><span class='line'>e[4]
+</span><span class='line'># 0</span></code></pre></td></tr></table></div></figure>
+
+
+<h3>Adding values to the Hash</h3>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>a[5] = 6
+</span><span class='line'>puts a
+</span><span class='line'># {"a"=>"b", 3=>"d", 5=>6}</span></code></pre></td></tr></table></div></figure>
+
+
+<h3>Other useful functions</h3>
 
 <figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
@@ -107,21 +186,29 @@
 <span class='line-number'>10</span>
 <span class='line-number'>11</span>
 <span class='line-number'>12</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>[1, "foo", nil, "bar"]
-</span><span class='line'># [1, "foo", nil, "bar"]
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>b.clear
+</span><span class='line'>puts b
+</span><span class='line'># {}
 </span><span class='line'>
-</span><span class='line'>Array.new
-</span><span class='line'># []
-</span><span class='line'>Array.new(3, true)
-</span><span class='line'># [true, true, true]
+</span><span class='line'>a.empty?
+</span><span class='line'># false
+</span><span class='line'>b.empty?
+</span><span class='line'># true
 </span><span class='line'>
-</span><span class='line'>(1..10).to_a
-</span><span class='line'># [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
-</span><span class='line'>("a7".."b5").to_a
-</span><span class='line'># ["a7", "a8", "a9", "b0", "b1", "b2", "b3", "b4", "b5"]</span></code></pre></td></tr></table></div></figure>
+</span><span class='line'>a.length
+</span><span class='line'># 3
+</span><span class='line'>
+</span><span class='line'>a.keys
+</span><span class='line'># ["a", 3, 5]
+</span><span class='line'>a.values
+</span><span class='line'># ["b", "d", 6]</span></code></pre></td></tr></table></div></figure>
 
 
-<h3>Accessing elements and array info</h3>
+<h3>Iterating through the hash</h3>
 
 <figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
@@ -143,108 +230,28 @@
 <span class='line-number'>18</span>
 <span class='line-number'>19</span>
 <span class='line-number'>20</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>arr = [1, 2, 3, 4, 5, 6]
-</span><span class='line'>arr[2]
-</span><span class='line'># 3
-</span><span class='line'>arr[100]
-</span><span class='line'># nil
-</span><span class='line'>arr[-3]
-</span><span class='line'># 4
-</span><span class='line'>arr[2, 3]
-</span><span class='line'># [3, 4, 5]
-</span><span class='line'>arr[1..4]
-</span><span class='line'># [2, 3, 4, 5]
-</span><span class='line'>arr.at(0)
-</span><span class='line'># 1
+<span class='line-number'>21</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>a.each { |k,v| puts "The value for #{k} is #{v}" }
+</span><span class='line'># The value for a is b
+</span><span class='line'># The value for 3 is d
+</span><span class='line'># The value for 5 is 
 </span><span class='line'>
-</span><span class='line'>arr.length
+</span><span class='line'>a.each_key { |k| puts "The value for #{k} is #{a[k]}" }
+</span><span class='line'># The value for a is b
+</span><span class='line'># The value for 3 is d
+</span><span class='line'># The value for 5 is 6
+</span><span class='line'>
+</span><span class='line'>a.each_value { |v| puts v }
+</span><span class='line'># b
+</span><span class='line'># d
 </span><span class='line'># 6
-</span><span class='line'>arr.empty?
-</span><span class='line'># false
-</span><span class='line'>arr.include?(7)
-</span><span class='line'># false</span></code></pre></td></tr></table></div></figure>
-
-
-<h3>Adding to the array</h3>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>arr.push(7)
-</span><span class='line'># [1, 2, 3, 4, 5, 6, 7]
-</span><span class='line'>arr &lt;&lt; 8
-</span><span class='line'># [1, 2, 3, 4, 5, 6, 7, 8]
 </span><span class='line'>
-</span><span class='line'>arr.unshift(0)
-</span><span class='line'># [0, 1, 2, 3, 4, 5, 6, 7]
-</span><span class='line'>
-</span><span class='line'>arr.insert(3, 2.5)
-</span><span class='line'># [0, 1, 2, 2.5, 3, 4, 5, 6, 7]</span></code></pre></td></tr></table></div></figure>
-
-
-<h3>Removing from Array</h3>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>arr
-</span><span class='line'># [0, 1, 2, 2.5, 3, 4, 5, 6, 7]
-</span><span class='line'>
-</span><span class='line'>arr.pop
-</span><span class='line'># 7
-</span><span class='line'># arr = [0, 1, 2, 2.5, 3, 4, 5, 6]
-</span><span class='line'>
-</span><span class='line'>arr.shift
-</span><span class='line'># 0
-</span><span class='line'># arr = [1, 2, 2.5, 3, 4, 5, 6]
-</span><span class='line'>
-</span><span class='line'>arr.delete(3)
-</span><span class='line'># 2.5
-</span><span class='line'># arr = [1, 2. 3, 4, 5, 6]</span></code></pre></td></tr></table></div></figure>
-
-
-<h2>Print vs Puts</h2>
-
-<p>Both these functions can be used to output text. To put it simply, puts adds a newline character to the end of each argument and outputs nil as an invisible character rather than a String. Refer to the link at the bottom for more discussion.</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>print [nil, 1, 2]
-</span><span class='line'># [nil, 1, 2]=> nil
-</span><span class='line'>
-</span><span class='line'>puts [nil, 1, 2]
-</span><span class='line'># 
-</span><span class='line'># 1
-</span><span class='line'># 2</span></code></pre></td></tr></table></div></figure>
-
-
-<ol>
-<li><a href="http://ruby-doc.org/core-2.0/Array.html">Ruby-Docs Array</a></li>
-<li><a href="http://stackoverflow.com/questions/5018633/what-is-the-difference-between-print-and-puts">Stack Overflow &ndash; What is the difference between print and puts</a></li>
-</ol>
+</span><span class='line'>a.each do |k,v|
+</span><span class='line'>  puts "The value for #{k} is #{v}"
+</span><span class='line'>end
+</span><span class='line'># The value for a is b
+</span><span class='line'># The value for 3 is d
+</span><span class='line'># The value for 5 is 6</span></code></pre></td></tr></table></div></figure>
 
 </div>
 
@@ -268,7 +275,7 @@
   
 
 
-<time datetime="2013-07-28T20:21:00+10:00" pubdate data-updated="true">Jul 28<span>th</span>, 2013</time>
+<time datetime="2013-07-29T22:46:00+10:00" pubdate data-updated="true">Jul 29<span>th</span>, 2013</time>
       
 
 <span class="categories">
@@ -282,7 +289,7 @@
     
       <div class="sharing">
   
-  <a href="/ruby-intro-site//twitter.com/share" class="twitter-share-button" data-url="http://nizhu.github.io/ruby-intro-site/blog/2013/07/28/arrays/" data-via="" data-counturl="http://nizhu.github.io/ruby-intro-site/blog/2013/07/28/arrays/" >Tweet</a>
+  <a href="/ruby-intro-site//twitter.com/share" class="twitter-share-button" data-url="http://nizhu.github.io/ruby-intro-site/blog/2013/07/29/hash-and-symbols/" data-via="" data-counturl="http://nizhu.github.io/ruby-intro-site/blog/2013/07/29/hash-and-symbols/" >Tweet</a>
   
   
   
@@ -291,10 +298,10 @@
     
     <p class="meta">
       
-        <a class="basic-alignment left" href="/ruby-intro-site/blog/2013/07/28/truthiness-and-control-flow/" title="Previous Post: Truthiness &amp; Control Flow">&laquo; Truthiness &amp; Control Flow</a>
+        <a class="basic-alignment left" href="/ruby-intro-site/blog/2013/07/28/loops/" title="Previous Post: Loops">&laquo; Loops</a>
       
       
-        <a class="basic-alignment right" href="/ruby-intro-site/blog/2013/07/28/loops/" title="Next Post: Loops">Loops &raquo;</a>
+        <a class="basic-alignment right" href="/ruby-intro-site/blog/2013/07/30/functions/" title="Next Post: Functions">Functions &raquo;</a>
       
     </p>
   </footer>
