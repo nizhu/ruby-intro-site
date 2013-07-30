@@ -6,7 +6,7 @@ comments: true
 categories: [Ruby, SENG2011]
 ---
 
-Ruby is a dynamic, object oriented programming language that first appeared toward the end of 1995, so it's a bit younger than the other 2 similar, mainstream languages, Python and Perl. In my opinion, it's more hipster and better looking than its cousins, and intuitively, it's as close to English as general purpose programming languages go.
+Ruby is a dynamic, object oriented programming language that first appeared toward the end of 1995, so it's a bit younger than the other 2 similar, mainstream languages, Python and Perl. In my opinion, it's more hipster and better looking than its cousins, and intuitively, it's as close to English as general purpose programming languages go. As such Ruby is one of the easiest languages to grok.
 
 It really only appeared out of obscurity in 2005 with the rise in popularity of the Ruby-based web application framework, Rails. It has however, greatly matured since then.
 
