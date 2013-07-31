@@ -1,0 +1,73 @@
+---
+layout: post
+title: "Classes"
+date: 2013-07-31 09:14
+comments: true
+categories: [Ruby, SENG2011]
+---
+
+Ruby is a Object Oriented language so it's no less than intuitive to have classes. The following code block shows the basic syntax of a Ruby class.
+
+{% codeblock %}
+class Counter
+  @@classCount = 0
+  @instanceCount
+
+  def initialize(startInstanceCount)
+    @instanceCount = startInstanceCount
+  end
+
+  def icIncrement
+    @instanceCount += 1
+  end
+
+  def self.ccIncrement
+    @@classCount += 1
+  end
+
+  def to_s
+    "classCount = #{@@classCount} and instanceCount = #{@instanceCount}"
+  end
+end
+{% endcodeblock %}
+
+We have a Class variable, ```@@classCount```. This is equivalent to the keyword ```static``` in Java. There's an Instance variable ```@instanceCount```.
+
+Then there are the methods. ```initialize``` is the constructor used when you run ```Counter.new```, ```icIncrement``` is an instance method, while ```self.ccIncrement``` is a class method - called with ```Counter.ccIncrement```.
+
+Finally ```to_s``` is the conversion of the class to a String, just like ```toString()```.
+
+{% codeblock %}
+a = Counter.new 0
+b = Counter.new 0
+
+a.ccIncrement
+a.icIncrement
+
+puts b
+# classCount = 1 and instanceCount = 0
+
+b = Counter.new 5
+puts b
+# classCount = 1 and instanceCount = 5
+{% endcodeblock %}
+
+## Variable Scope
+
+Scope-wise, there are 5 different types of variables in Ruby and they are simply differentiated by the first character of their name.
+
+1. $: Global
+2. @@: Class
+3. @: Instance
+4. [A-Z]: Constant
+5. [a-z_]: Local
+
+Note that Constants can still be changed. The interpreter will simply issue a warning that that is the case, but the value assigning will proceed.
+
+{% codeblock %}
+Aconstant = 1
+Aconstant = 2
+# warning: already initialized constant Aconstant
+# warning: previous definition of Aconstant was here
+# 2
+{% endcodeblock %}
