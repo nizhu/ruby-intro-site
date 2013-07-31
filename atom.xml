@@ -4,7 +4,7 @@
   <title><![CDATA[Ruby Intro]]></title>
   <link href="http://nizhu.github.io/ruby-intro-site/atom.xml" rel="self"/>
   <link href="http://nizhu.github.io/ruby-intro-site/"/>
-  <updated>2013-07-31T20:05:50+10:00</updated>
+  <updated>2013-07-31T20:17:35+10:00</updated>
   <id>http://nizhu.github.io/ruby-intro-site/</id>
   <author>
     <name><![CDATA[Nick Zhu]]></name>
@@ -119,6 +119,8 @@
 </span><span class='line'># warning: already initialized constant Aconstant
 </span><span class='line'># warning: previous definition of Aconstant was here
 </span><span class='line'># 2</span></code></pre></td></tr></table></div></figure>
+
+
 
 ]]></content>
   </entry>
@@ -460,6 +462,8 @@
 </span><span class='line'># The value for 3 is d
 </span><span class='line'># The value for 5 is 6</span></code></pre></td></tr></table></div></figure>
 
+
+
 ]]></content>
   </entry>
   
@@ -700,6 +704,8 @@
 </span><span class='line'># j is 1
 </span><span class='line'># i is 1
 </span><span class='line'># j is 2</span></code></pre></td></tr></table></div></figure>
+
+
 
 ]]></content>
   </entry>

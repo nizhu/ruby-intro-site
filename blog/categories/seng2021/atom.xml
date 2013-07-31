@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
 
-  <title><![CDATA[Category: SENG2011 | Ruby Intro]]></title>
-  <link href="http://nizhu.github.io/ruby-intro-site/blog/categories/seng2011/atom.xml" rel="self"/>
+  <title><![CDATA[Category: SENG2021 | Ruby Intro]]></title>
+  <link href="http://nizhu.github.io/ruby-intro-site/blog/categories/seng2021/atom.xml" rel="self"/>
   <link href="http://nizhu.github.io/ruby-intro-site/"/>
-  <updated>2013-07-31T20:05:50+10:00</updated>
+  <updated>2013-07-31T20:17:35+10:00</updated>
   <id>http://nizhu.github.io/ruby-intro-site/</id>
   <author>
     <name><![CDATA[Nick Zhu]]></name>
