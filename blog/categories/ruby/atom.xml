@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Ruby | Ruby Intro]]></title>
   <link href="http://nizhu.github.io/ruby-intro-site/blog/categories/ruby/atom.xml" rel="self"/>
   <link href="http://nizhu.github.io/ruby-intro-site/"/>
-  <updated>2013-07-31T21:44:38+10:00</updated>
+  <updated>2013-07-31T22:17:45+10:00</updated>
   <id>http://nizhu.github.io/ruby-intro-site/</id>
   <author>
     <name><![CDATA[Nick Zhu]]></name>
@@ -18,7 +18,16 @@
     <link href="http://nizhu.github.io/ruby-intro-site/blog/2013/07/31/consuming-json-resources-through-http/"/>
     <updated>2013-07-31T21:44:00+10:00</updated>
     <id>http://nizhu.github.io/ruby-intro-site/blog/2013/07/31/consuming-json-resources-through-http</id>
-    <content type="html"><![CDATA[
+    <content type="html"><![CDATA[<p>I will be demonstrating</p>
+
+<ol>
+<li><a href="https://github.com/sferik/twitter">RubyGem &ndash; Twitter</a></li>
+<li><a href="https://github.com/tweetstream/tweetstream">RubyGem &ndash; Tweetstream</a></li>
+<li><a href="https://dev.twitter.com/docs/auth">Twitter API Authentication Documentation</a></li>
+<li><a href="https://dev.twitter.com/docs/api/1.1">Twitter API</a></li>
+<li><a href="https://dev.twitter.com/apps">Twitter Developer Apps</a></li>
+</ol>
+
 ]]></content>
   </entry>
   
@@ -27,7 +36,7 @@
     <link href="http://nizhu.github.io/ruby-intro-site/blog/2013/07/31/parsing-xml-with-xmlsimple/"/>
     <updated>2013-07-31T20:19:00+10:00</updated>
     <id>http://nizhu.github.io/ruby-intro-site/blog/2013/07/31/parsing-xml-with-xmlsimple</id>
-    <content type="html"><![CDATA[<p>For the purpose of this exercise, I&rsquo;ve downloaded and extracted a zip file from the AEC&rsquo;s site <code>ftp://results.aec.gov.au/15508/Detailed/Light/aec-mediafeed-Detailed-Light-15508-20100817220150.zip</code>. Ruby has an XML parser called REXML in its standard library, but it&rsquo;s known to be very slow &ndash; <a href="http://www.rubyinside.com/ruby-xml-performance-benchmarks-1641.html">Some 50 times slower than Nokogiri</a>. I would love to demonstrate Nokogiri, but unfortunately it&rsquo;s more complex to use than XmlSimple. XmlSimple parses the data into a native Ruby hash whereas Nokogiri has its own set of classes.</p>
+    <content type="html"><![CDATA[<p>For the purpose of this exercise, I&rsquo;ve downloaded and extracted a zip file from the AEC&rsquo;s site <code>ftp://results.aec.gov.au/15508/Detailed/Light/aec-mediafeed-Detailed-Light-15508-20100817220150.zip</code> Ruby has an XML parser called REXML in its standard library, but it&rsquo;s known to be very slow &ndash; <a href="http://www.rubyinside.com/ruby-xml-performance-benchmarks-1641.html">Some 50 times slower than Nokogiri</a>. I would love to demonstrate Nokogiri, but unfortunately it&rsquo;s more complex to use than XmlSimple. XmlSimple parses the data into a native Ruby hash whereas Nokogiri has its own set of classes.</p>
 
 <h1>Third Party libraries</h1>
 
