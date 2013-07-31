@@ -6,7 +6,7 @@ comments: true
 categories: [Ruby, SENG2021]
 ---
 
-For the purpose of this exercise, I've downloaded and extracted a zip file from the AEC's site ```ftp://results.aec.gov.au/15508/Detailed/Light/aec-mediafeed-Detailed-Light-15508-20100817220150.zip```. Ruby has an XML parser called REXML in its standard library, but it's known to be very slow - [Some 50 times slower than Nokogiri][1]. I would love to demonstrate Nokogiri, but unfortunately it's more complex to use than XmlSimple. XmlSimple parses the data into a native Ruby hash whereas Nokogiri has its own set of classes.
+For the purpose of this exercise, I've downloaded and extracted a zip file from the AEC's site ```ftp://results.aec.gov.au/15508/Detailed/Light/aec-mediafeed-Detailed-Light-15508-20100817220150.zip``` Ruby has an XML parser called REXML in its standard library, but it's known to be very slow - [Some 50 times slower than Nokogiri][1]. I would love to demonstrate Nokogiri, but unfortunately it's more complex to use than XmlSimple. XmlSimple parses the data into a native Ruby hash whereas Nokogiri has its own set of classes.
 
 # Third Party libraries
 
