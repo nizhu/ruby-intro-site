@@ -4,7 +4,7 @@
   <title><![CDATA[Ruby Intro]]></title>
   <link href="http://nizhu.github.io/ruby-intro-site/atom.xml" rel="self"/>
   <link href="http://nizhu.github.io/ruby-intro-site/"/>
-  <updated>2013-07-30T19:06:00+10:00</updated>
+  <updated>2013-07-31T20:05:50+10:00</updated>
   <id>http://nizhu.github.io/ruby-intro-site/</id>
   <author>
     <name><![CDATA[Nick Zhu]]></name>
@@ -12,6 +12,116 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Classes]]></title>
+    <link href="http://nizhu.github.io/ruby-intro-site/blog/2013/07/31/classes/"/>
+    <updated>2013-07-31T09:14:00+10:00</updated>
+    <id>http://nizhu.github.io/ruby-intro-site/blog/2013/07/31/classes</id>
+    <content type="html"><![CDATA[<p>Ruby is a Object Oriented language so it&rsquo;s no less than intuitive to have classes. The following code block shows the basic syntax of a Ruby class.</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>class Counter
+</span><span class='line'>  @@classCount = 0
+</span><span class='line'>  @instanceCount
+</span><span class='line'>
+</span><span class='line'>  def initialize(startInstanceCount)
+</span><span class='line'>    @instanceCount = startInstanceCount
+</span><span class='line'>  end
+</span><span class='line'>
+</span><span class='line'>  def icIncrement
+</span><span class='line'>    @instanceCount += 1
+</span><span class='line'>  end
+</span><span class='line'>
+</span><span class='line'>  def self.ccIncrement
+</span><span class='line'>    @@classCount += 1
+</span><span class='line'>  end
+</span><span class='line'>
+</span><span class='line'>  def to_s
+</span><span class='line'>    "classCount = #{@@classCount} and instanceCount = #{@instanceCount}"
+</span><span class='line'>  end
+</span><span class='line'>end</span></code></pre></td></tr></table></div></figure>
+
+
+<p>We have a Class variable, <code>@@classCount</code>. This is equivalent to the keyword <code>static</code> in Java. There&rsquo;s an Instance variable <code>@instanceCount</code>.</p>
+
+<p>Then there are the methods. <code>initialize</code> is the constructor used when you run <code>Counter.new</code>, <code>icIncrement</code> is an instance method, while <code>self.ccIncrement</code> is a class method &ndash; called with <code>Counter.ccIncrement</code>.</p>
+
+<p>Finally <code>to_s</code> is the conversion of the class to a String, just like <code>toString()</code>.</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>a = Counter.new 0
+</span><span class='line'>b = Counter.new 0
+</span><span class='line'>
+</span><span class='line'>a.ccIncrement
+</span><span class='line'>a.icIncrement
+</span><span class='line'>
+</span><span class='line'>puts b
+</span><span class='line'># classCount = 1 and instanceCount = 0
+</span><span class='line'>
+</span><span class='line'>b = Counter.new 5
+</span><span class='line'>puts b
+</span><span class='line'># classCount = 1 and instanceCount = 5</span></code></pre></td></tr></table></div></figure>
+
+
+<h2>Variable Scope</h2>
+
+<p>Scope-wise, there are 5 different types of variables in Ruby and they are simply differentiated by the first character of their name.</p>
+
+<ol>
+<li>$: Global</li>
+<li>@@: Class</li>
+<li>@: Instance</li>
+<li>[A-Z]: Constant</li>
+<li>[a-z_]: Local</li>
+</ol>
+
+
+<p>Note that Constants can still be changed. The interpreter will simply issue a warning that that is the case, but the value assigning will proceed.</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>Aconstant = 1
+</span><span class='line'>Aconstant = 2
+</span><span class='line'># warning: already initialized constant Aconstant
+</span><span class='line'># warning: previous definition of Aconstant was here
+</span><span class='line'># 2</span></code></pre></td></tr></table></div></figure>
+
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Functions]]></title>
@@ -117,6 +227,70 @@
 
 
 <p>Because <code>print "add successful"</code> returns <code>nil</code>, <code>add_print</code> returns nil.</p>
+
+<h1>Error Handling</h1>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>def do_something
+</span><span class='line'>  raise "Failed to do something"
+</span><span class='line'>end
+</span><span class='line'>
+</span><span class='line'>raise_exception
+</span><span class='line'># RuntimeError: Failed to do something
+</span><span class='line'>
+</span><span class='line'>begin
+</span><span class='line'>  do_something
+</span><span class='line'>  puts "Done something"
+</span><span class='line'>rescue
+</span><span class='line'>  puts "Rescuing from exception"
+</span><span class='line'>end
+</span><span class='line'># Rescuing from exception</span></code></pre></td></tr></table></div></figure>
+
+
+<p><code>retry</code> will return the cursor to start of the begin block it belongs to</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>i = 0
+</span><span class='line'>begin
+</span><span class='line'>  puts "#{i}"
+</span><span class='line'>  i += 1
+</span><span class='line'>  if i &lt; 2
+</span><span class='line'>    do_something
+</span><span class='line'>  end
+</span><span class='line'>  puts "All done!"
+</span><span class='line'>rescue
+</span><span class='line'>  retry
+</span><span class='line'>end
+</span><span class='line'># 0
+</span><span class='line'># 1
+</span><span class='line'># All done!</span></code></pre></td></tr></table></div></figure>
+
 
 <p>Also relevant later on, <a href="http://innig.net/software/ruby/closures-in-ruby">Closures</a> and <a href="https://rubymonk.com/learning/books/2-metaprogramming-ruby/chapters/32-introduction-to-metaprogramming/lessons/75-being-meta">Metaprogramming</a></p>
 ]]></content>

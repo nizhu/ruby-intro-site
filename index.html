@@ -9,15 +9,7 @@
   <meta name="author" content="Nick Zhu">
 
   
-  <meta name="description" content="Firstly the syntax. Let&rsquo;s first define a very basic function we can use for this post. 1
-2
-3
-4
-5
-6
-7
-8
-def print_stuff(str1, str2, reverse = &hellip;">
+  <meta name="description" content="Ruby is a Object Oriented language so it&rsquo;s no less than intuitive to have classes. The following code block shows the basic syntax of a Ruby &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -73,6 +65,143 @@ def print_stuff(str1, str2, reverse = &hellip;">
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/ruby-intro-site/blog/2013/07/31/classes/">Classes</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-07-31T09:14:00+10:00" pubdate data-updated="true">Jul 31<span>st</span>, 2013</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Ruby is a Object Oriented language so it&rsquo;s no less than intuitive to have classes. The following code block shows the basic syntax of a Ruby class.</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>class Counter
+</span><span class='line'>  @@classCount = 0
+</span><span class='line'>  @instanceCount
+</span><span class='line'>
+</span><span class='line'>  def initialize(startInstanceCount)
+</span><span class='line'>    @instanceCount = startInstanceCount
+</span><span class='line'>  end
+</span><span class='line'>
+</span><span class='line'>  def icIncrement
+</span><span class='line'>    @instanceCount += 1
+</span><span class='line'>  end
+</span><span class='line'>
+</span><span class='line'>  def self.ccIncrement
+</span><span class='line'>    @@classCount += 1
+</span><span class='line'>  end
+</span><span class='line'>
+</span><span class='line'>  def to_s
+</span><span class='line'>    "classCount = #{@@classCount} and instanceCount = #{@instanceCount}"
+</span><span class='line'>  end
+</span><span class='line'>end</span></code></pre></td></tr></table></div></figure>
+
+
+<p>We have a Class variable, <code>@@classCount</code>. This is equivalent to the keyword <code>static</code> in Java. There&rsquo;s an Instance variable <code>@instanceCount</code>.</p>
+
+<p>Then there are the methods. <code>initialize</code> is the constructor used when you run <code>Counter.new</code>, <code>icIncrement</code> is an instance method, while <code>self.ccIncrement</code> is a class method &ndash; called with <code>Counter.ccIncrement</code>.</p>
+
+<p>Finally <code>to_s</code> is the conversion of the class to a String, just like <code>toString()</code>.</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>a = Counter.new 0
+</span><span class='line'>b = Counter.new 0
+</span><span class='line'>
+</span><span class='line'>a.ccIncrement
+</span><span class='line'>a.icIncrement
+</span><span class='line'>
+</span><span class='line'>puts b
+</span><span class='line'># classCount = 1 and instanceCount = 0
+</span><span class='line'>
+</span><span class='line'>b = Counter.new 5
+</span><span class='line'>puts b
+</span><span class='line'># classCount = 1 and instanceCount = 5</span></code></pre></td></tr></table></div></figure>
+
+
+<h2>Variable Scope</h2>
+
+<p>Scope-wise, there are 5 different types of variables in Ruby and they are simply differentiated by the first character of their name.</p>
+
+<ol>
+<li>$: Global</li>
+<li>@@: Class</li>
+<li>@: Instance</li>
+<li>[A-Z]: Constant</li>
+<li>[a-z_]: Local</li>
+</ol>
+
+
+<p>Note that Constants can still be changed. The interpreter will simply issue a warning that that is the case, but the value assigning will proceed.</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>Aconstant = 1
+</span><span class='line'>Aconstant = 2
+</span><span class='line'># warning: already initialized constant Aconstant
+</span><span class='line'># warning: previous definition of Aconstant was here
+</span><span class='line'># 2</span></code></pre></td></tr></table></div></figure>
+
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -201,6 +330,70 @@ def print_stuff(str1, str2, reverse = &hellip;">
 
 
 <p>Because <code>print "add successful"</code> returns <code>nil</code>, <code>add_print</code> returns nil.</p>
+
+<h1>Error Handling</h1>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>def do_something
+</span><span class='line'>  raise "Failed to do something"
+</span><span class='line'>end
+</span><span class='line'>
+</span><span class='line'>raise_exception
+</span><span class='line'># RuntimeError: Failed to do something
+</span><span class='line'>
+</span><span class='line'>begin
+</span><span class='line'>  do_something
+</span><span class='line'>  puts "Done something"
+</span><span class='line'>rescue
+</span><span class='line'>  puts "Rescuing from exception"
+</span><span class='line'>end
+</span><span class='line'># Rescuing from exception</span></code></pre></td></tr></table></div></figure>
+
+
+<p><code>retry</code> will return the cursor to start of the begin block it belongs to</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>i = 0
+</span><span class='line'>begin
+</span><span class='line'>  puts "#{i}"
+</span><span class='line'>  i += 1
+</span><span class='line'>  if i &lt; 2
+</span><span class='line'>    do_something
+</span><span class='line'>  end
+</span><span class='line'>  puts "All done!"
+</span><span class='line'>rescue
+</span><span class='line'>  retry
+</span><span class='line'>end
+</span><span class='line'># 0
+</span><span class='line'># 1
+</span><span class='line'># All done!</span></code></pre></td></tr></table></div></figure>
+
 
 <p>Also relevant later on, <a href="http://innig.net/software/ruby/closures-in-ruby">Closures</a> and <a href="https://rubymonk.com/learning/books/2-metaprogramming-ruby/chapters/32-introduction-to-metaprogramming/lessons/75-being-meta">Metaprogramming</a></p>
 </div>
@@ -1921,57 +2114,9 @@ def print_stuff(str1, str2, reverse = &hellip;">
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/ruby-intro-site/blog/2013/07/27/intro-to-intro/">Intro to Intro</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2013-07-27T10:37:00+10:00" pubdate data-updated="true">Jul 27<span>th</span>, 2013</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>Ruby is a dynamic, object oriented programming language that first appeared toward the end of 1995, so it&rsquo;s a bit younger than the other 2 similar, mainstream languages, Python and Perl. In my opinion, it&rsquo;s more hipster and better looking than its cousins, and intuitively, it&rsquo;s as close to English as general purpose programming languages go. As such Ruby is one of the easiest languages to grok.</p>
-
-<p>It really only appeared out of obscurity in 2005 with the rise in popularity of the Ruby-based web application framework, Rails. It has however, greatly matured since then.</p>
-
-<p>There are many different implementations around, including one (JRuby) which compiles your Ruby code to run on the JVM. It allows you to use native Java classes in your Ruby code, and Ruby classes in your Java code. I&rsquo;m not familiar with the obvious benefits of using these features, but if you ever feel like writing a Swing app with Ruby, you have that option.</p>
-
-<p>The main C-based implementation, also known as MRI, is now up to version 2.0.0-p247. The first version of 2.0.0 was released less than 6 months ago, but the release was designed to be backward compatible with 1.9.3 (with 5 minor exceptions) so one should be able to use any Ruby documentation from the last 6 or so years with little issue.</p>
-
-<ol>
-<li><a href="http://www.ruby-lang.org/en/about/">Official About Ruby</a></li>
-<li><a href="http://en.wikipedia.org/wiki/Ruby_(programming_language)">Wikipedia on Ruby</a></li>
-<li><a href="http://en.wikipedia.org/wiki/JRuby">Wikipedia on JRuby</a></li>
-<li><a href="http://www.ruby-lang.org/en/news/2013/02/24/ruby-2-0-0-p0-is-released/">Ruby 2.0.0 Release Notes</a></li>
-</ol>
-
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
+    
+      <a class="prev" href="/ruby-intro-site/blog/page/2/">&larr; Older</a>
     
     <a href="/ruby-intro-site/blog/archives">Blog Archives</a>
     
@@ -1982,6 +2127,10 @@ def print_stuff(str1, str2, reverse = &hellip;">
     <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/ruby-intro-site/blog/2013/07/31/classes/">Classes</a>
+      </li>
     
       <li class="post">
         <a href="/ruby-intro-site/blog/2013/07/30/functions/">Functions</a>
@@ -1997,10 +2146,6 @@ def print_stuff(str1, str2, reverse = &hellip;">
     
       <li class="post">
         <a href="/ruby-intro-site/blog/2013/07/28/arrays/">Arrays</a>
-      </li>
-    
-      <li class="post">
-        <a href="/ruby-intro-site/blog/2013/07/28/truthiness-and-control-flow/">Truthiness &amp; Control Flow</a>
       </li>
     
   </ul>

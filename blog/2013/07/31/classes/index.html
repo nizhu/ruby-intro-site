@@ -5,11 +5,11 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>Arrays - Ruby Intro</title>
+  <title>Classes - Ruby Intro</title>
   <meta name="author" content="Nick Zhu">
 
   
-  <meta name="description" content="Arrays in Ruby are very similar to those in other dynamic programming languages. It&rsquo;s all very standard and the documentation has loads of &hellip;">
+  <meta name="description" content="Ruby is a Object Oriented language so it&rsquo;s no less than intuitive to have classes. The following code block shows the basic syntax of a Ruby &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -18,7 +18,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://nizhu.github.io/ruby-intro-site/blog/2013/07/28/arrays">
+  <link rel="canonical" href="http://nizhu.github.io/ruby-intro-site/blog/2013/07/31/classes">
   <link href="/ruby-intro-site/favicon.png" rel="icon">
   <link href="/ruby-intro-site/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <link href="/ruby-intro-site/atom.xml" rel="alternate" title="Ruby Intro" type="application/atom+xml">
@@ -68,7 +68,7 @@
   
   <header>
     
-      <h1 class="entry-title">Arrays</h1>
+      <h1 class="entry-title">Classes</h1>
     
     
       <p class="meta">
@@ -84,44 +84,14 @@
   
 
 
-<time datetime="2013-07-28T20:21:00+10:00" pubdate data-updated="true">Jul 28<span>th</span>, 2013</time>
+<time datetime="2013-07-31T09:14:00+10:00" pubdate data-updated="true">Jul 31<span>st</span>, 2013</time>
         
       </p>
     
   </header>
 
 
-<div class="entry-content"><p>Arrays in Ruby are very similar to those in other dynamic programming languages. It&rsquo;s all very standard and the documentation has loads of examples anyway, so I&rsquo;ll go through only the most basic and obvious to get started.</p>
-
-<h3>Construction</h3>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>[1, "foo", nil, "bar"]
-</span><span class='line'># [1, "foo", nil, "bar"]
-</span><span class='line'>
-</span><span class='line'>Array.new
-</span><span class='line'># []
-</span><span class='line'>Array.new(3, true)
-</span><span class='line'># [true, true, true]
-</span><span class='line'>
-</span><span class='line'>(1..10).to_a
-</span><span class='line'># [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
-</span><span class='line'>("a7".."b5").to_a
-</span><span class='line'># ["a7", "a8", "a9", "b0", "b1", "b2", "b3", "b4", "b5"]</span></code></pre></td></tr></table></div></figure>
-
-
-<h3>Accessing elements and array info</h3>
+<div class="entry-content"><p>Ruby is a Object Oriented language so it&rsquo;s no less than intuitive to have classes. The following code block shows the basic syntax of a Ruby class.</p>
 
 <figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
@@ -143,53 +113,33 @@
 <span class='line-number'>18</span>
 <span class='line-number'>19</span>
 <span class='line-number'>20</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>arr = [1, 2, 3, 4, 5, 6]
-</span><span class='line'>arr[2]
-</span><span class='line'># 3
-</span><span class='line'>arr[100]
-</span><span class='line'># nil
-</span><span class='line'>arr[-3]
-</span><span class='line'># 4
-</span><span class='line'>arr[2, 3]
-</span><span class='line'># [3, 4, 5]
-</span><span class='line'>arr[1..4]
-</span><span class='line'># [2, 3, 4, 5]
-</span><span class='line'>arr.at(0)
-</span><span class='line'># 1
+</pre></td><td class='code'><pre><code class=''><span class='line'>class Counter
+</span><span class='line'>  @@classCount = 0
+</span><span class='line'>  @instanceCount
 </span><span class='line'>
-</span><span class='line'>arr.length
-</span><span class='line'># 6
-</span><span class='line'>arr.empty?
-</span><span class='line'># false
-</span><span class='line'>arr.include?(7)
-</span><span class='line'># false</span></code></pre></td></tr></table></div></figure>
-
-
-<h3>Adding to the array</h3>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>arr.push(7)
-</span><span class='line'># [1, 2, 3, 4, 5, 6, 7]
-</span><span class='line'>arr &lt;&lt; 8
-</span><span class='line'># [1, 2, 3, 4, 5, 6, 7, 8]
+</span><span class='line'>  def initialize(startInstanceCount)
+</span><span class='line'>    @instanceCount = startInstanceCount
+</span><span class='line'>  end
 </span><span class='line'>
-</span><span class='line'>arr.unshift(0)
-</span><span class='line'># [0, 1, 2, 3, 4, 5, 6, 7]
+</span><span class='line'>  def icIncrement
+</span><span class='line'>    @instanceCount += 1
+</span><span class='line'>  end
 </span><span class='line'>
-</span><span class='line'>arr.insert(3, 2.5)
-</span><span class='line'># [0, 1, 2, 2.5, 3, 4, 5, 6, 7]</span></code></pre></td></tr></table></div></figure>
+</span><span class='line'>  def self.ccIncrement
+</span><span class='line'>    @@classCount += 1
+</span><span class='line'>  end
+</span><span class='line'>
+</span><span class='line'>  def to_s
+</span><span class='line'>    "classCount = #{@@classCount} and instanceCount = #{@instanceCount}"
+</span><span class='line'>  end
+</span><span class='line'>end</span></code></pre></td></tr></table></div></figure>
 
 
-<h3>Removing from Array</h3>
+<p>We have a Class variable, <code>@@classCount</code>. This is equivalent to the keyword <code>static</code> in Java. There&rsquo;s an Instance variable <code>@instanceCount</code>.</p>
+
+<p>Then there are the methods. <code>initialize</code> is the constructor used when you run <code>Counter.new</code>, <code>icIncrement</code> is an instance method, while <code>self.ccIncrement</code> is a class method &ndash; called with <code>Counter.ccIncrement</code>.</p>
+
+<p>Finally <code>to_s</code> is the conversion of the class to a String, just like <code>toString()</code>.</p>
 
 <figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
@@ -203,48 +153,45 @@
 <span class='line-number'>10</span>
 <span class='line-number'>11</span>
 <span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>arr
-</span><span class='line'># [0, 1, 2, 2.5, 3, 4, 5, 6, 7]
+</pre></td><td class='code'><pre><code class=''><span class='line'>a = Counter.new 0
+</span><span class='line'>b = Counter.new 0
 </span><span class='line'>
-</span><span class='line'>arr.pop
-</span><span class='line'># 7
-</span><span class='line'># arr = [0, 1, 2, 2.5, 3, 4, 5, 6]
+</span><span class='line'>a.ccIncrement
+</span><span class='line'>a.icIncrement
 </span><span class='line'>
-</span><span class='line'>arr.shift
-</span><span class='line'># 0
-</span><span class='line'># arr = [1, 2, 2.5, 3, 4, 5, 6]
+</span><span class='line'>puts b
+</span><span class='line'># classCount = 1 and instanceCount = 0
 </span><span class='line'>
-</span><span class='line'>arr.delete(3)
-</span><span class='line'># 2.5
-</span><span class='line'># arr = [1, 2. 3, 4, 5, 6]</span></code></pre></td></tr></table></div></figure>
+</span><span class='line'>b = Counter.new 5
+</span><span class='line'>puts b
+</span><span class='line'># classCount = 1 and instanceCount = 5</span></code></pre></td></tr></table></div></figure>
 
 
-<h2>Print vs Puts</h2>
+<h2>Variable Scope</h2>
 
-<p>Both these functions can be used to output text. To put it simply, puts adds a newline character to the end of each argument and outputs nil as an invisible character rather than a String. Refer to the link at the bottom for more discussion.</p>
+<p>Scope-wise, there are 5 different types of variables in Ruby and they are simply differentiated by the first character of their name.</p>
+
+<ol>
+<li>$: Global</li>
+<li>@@: Class</li>
+<li>@: Instance</li>
+<li>[A-Z]: Constant</li>
+<li>[a-z_]: Local</li>
+</ol>
+
+
+<p>Note that Constants can still be changed. The interpreter will simply issue a warning that that is the case, but the value assigning will proceed.</p>
 
 <figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
 <span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>print [nil, 1, 2]
-</span><span class='line'># [nil, 1, 2]=> nil
-</span><span class='line'>
-</span><span class='line'>puts [nil, 1, 2]
-</span><span class='line'># 
-</span><span class='line'># 1
+</pre></td><td class='code'><pre><code class=''><span class='line'>Aconstant = 1
+</span><span class='line'>Aconstant = 2
+</span><span class='line'># warning: already initialized constant Aconstant
+</span><span class='line'># warning: previous definition of Aconstant was here
 </span><span class='line'># 2</span></code></pre></td></tr></table></div></figure>
-
-
-<ol>
-<li><a href="http://ruby-doc.org/core-2.0/Array.html">Ruby-Docs Array</a></li>
-<li><a href="http://stackoverflow.com/questions/5018633/what-is-the-difference-between-print-and-puts">Stack Overflow &ndash; What is the difference between print and puts</a></li>
-</ol>
 
 </div>
 
@@ -268,7 +215,7 @@
   
 
 
-<time datetime="2013-07-28T20:21:00+10:00" pubdate data-updated="true">Jul 28<span>th</span>, 2013</time>
+<time datetime="2013-07-31T09:14:00+10:00" pubdate data-updated="true">Jul 31<span>st</span>, 2013</time>
       
 
 <span class="categories">
@@ -282,7 +229,7 @@
     
       <div class="sharing">
   
-  <a href="/ruby-intro-site//twitter.com/share" class="twitter-share-button" data-url="http://nizhu.github.io/ruby-intro-site/blog/2013/07/28/arrays/" data-via="" data-counturl="http://nizhu.github.io/ruby-intro-site/blog/2013/07/28/arrays/" >Tweet</a>
+  <a href="/ruby-intro-site//twitter.com/share" class="twitter-share-button" data-url="http://nizhu.github.io/ruby-intro-site/blog/2013/07/31/classes/" data-via="" data-counturl="http://nizhu.github.io/ruby-intro-site/blog/2013/07/31/classes/" >Tweet</a>
   
   
   
@@ -291,10 +238,8 @@
     
     <p class="meta">
       
-        <a class="basic-alignment left" href="/ruby-intro-site/blog/2013/07/28/truthiness-and-control-flow/" title="Previous Post: Truthiness &amp; Control Flow">&laquo; Truthiness &amp; Control Flow</a>
+        <a class="basic-alignment left" href="/ruby-intro-site/blog/2013/07/30/functions/" title="Previous Post: Functions">&laquo; Functions</a>
       
-      
-        <a class="basic-alignment right" href="/ruby-intro-site/blog/2013/07/28/loops/" title="Next Post: Loops">Loops &raquo;</a>
       
     </p>
   </footer>

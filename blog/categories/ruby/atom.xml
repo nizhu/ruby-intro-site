@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Ruby | Ruby Intro]]></title>
   <link href="http://nizhu.github.io/ruby-intro-site/blog/categories/ruby/atom.xml" rel="self"/>
   <link href="http://nizhu.github.io/ruby-intro-site/"/>
-  <updated>2013-07-30T19:06:00+10:00</updated>
+  <updated>2013-07-31T20:05:50+10:00</updated>
   <id>http://nizhu.github.io/ruby-intro-site/</id>
   <author>
     <name><![CDATA[Nick Zhu]]></name>
@@ -12,6 +12,155 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Classes]]></title>
+    <link href="http://nizhu.github.io/ruby-intro-site/blog/2013/07/31/classes/"/>
+    <updated>2013-07-31T09:14:00+10:00</updated>
+    <id>http://nizhu.github.io/ruby-intro-site/blog/2013/07/31/classes</id>
+    <content type="html"><![CDATA[<p>Ruby is a Object Oriented language so it&rsquo;s no less than intuitive to have classes. The following code block shows the basic syntax of a Ruby class.</p>
+
+<p><div class='bogus-wrapper'><notextile><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+<span class='line-number'>30</span>
+<span class='line-number'>31</span>
+<span class='line-number'>32</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>class Counter
+</span><span class='line'>  @@classCount = 0
+</span><span class='line'>  @instanceCount&lt;/p>
+</span><span class='line'>
+</span><span class='line'>&lt;p>  def initialize(startInstanceCount)&lt;/p>
+</span><span class='line'>
+</span><span class='line'>&lt;pre>&lt;code>@instanceCount = startInstanceCount
+</span><span class='line'>&lt;/code>&lt;/pre>
+</span><span class='line'>
+</span><span class='line'>&lt;p>  end&lt;/p>
+</span><span class='line'>
+</span><span class='line'>&lt;p>  def icIncrement&lt;/p>
+</span><span class='line'>
+</span><span class='line'>&lt;pre>&lt;code>@instanceCount += 1
+</span><span class='line'>&lt;/code>&lt;/pre>
+</span><span class='line'>
+</span><span class='line'>&lt;p>  end&lt;/p>
+</span><span class='line'>
+</span><span class='line'>&lt;p>  def self.ccIncrement&lt;/p>
+</span><span class='line'>
+</span><span class='line'>&lt;pre>&lt;code>@@classCount += 1
+</span><span class='line'>&lt;/code>&lt;/pre>
+</span><span class='line'>
+</span><span class='line'>&lt;p>  end&lt;/p>
+</span><span class='line'>
+</span><span class='line'>&lt;p>  def to_s&lt;/p>
+</span><span class='line'>
+</span><span class='line'>&lt;pre>&lt;code>"classCount = #{@@classCount} and instanceCount = #{@instanceCount}"
+</span><span class='line'>&lt;/code>&lt;/pre>
+</span><span class='line'>
+</span><span class='line'>&lt;p>  end
+</span><span class='line'>end</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+
+<p>We have a Class variable, <code>@@classCount</code>. This is equivalent to the keyword <code>static</code> in Java. There&rsquo;s an Instance variable <code>@instanceCount</code>.</p>
+
+<p>Then there are the methods. <code>initialize</code> is the constructor used when you run <code>Counter.new</code>, <code>icIncrement</code> is an instance method, while <code>self.ccIncrement</code> is a class method &ndash; called with <code>Counter.ccIncrement</code>.</p>
+
+<p>Finally <code>to_s</code> is the conversion of the class to a String, just like <code>toString()</code>.</p>
+
+<p><div class='bogus-wrapper'><notextile><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>a = Counter.new 0
+</span><span class='line'>b = Counter.new 0&lt;/p>
+</span><span class='line'>
+</span><span class='line'>&lt;p>a.ccIncrement
+</span><span class='line'>a.icIncrement&lt;/p>
+</span><span class='line'>
+</span><span class='line'>&lt;p>puts b&lt;/p>
+</span><span class='line'>
+</span><span class='line'>&lt;h1>classCount = 1 and instanceCount = 0&lt;/h1>
+</span><span class='line'>
+</span><span class='line'>&lt;p>b = Counter.new 5
+</span><span class='line'>puts b&lt;/p>
+</span><span class='line'>
+</span><span class='line'>&lt;h1>classCount = 1 and instanceCount = 5&lt;/h1>
+</span><span class='line'>
+</span><span class='line'>&lt;p></span></code></pre></td></tr></table></div></figure></notextile></div></p>
+
+<h2>Variable Scope</h2>
+
+<p>Scope-wise, there are 5 different types of variables in Ruby and they are simply differentiated by the first character of their name.</p>
+
+<ol>
+<li>$: Global</li>
+<li>@@: Class</li>
+<li>@: Instance</li>
+<li>[A-Z]: Constant</li>
+<li>[a-z_]: Local</li>
+</ol>
+
+
+<p>Note that Constants can still be changed. The interpreter will simply issue a warning that that is the case, but the value assigning will proceed.</p>
+
+<p><div class='bogus-wrapper'><notextile><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>Aconstant = 1
+</span><span class='line'>Aconstant = 2&lt;/p>
+</span><span class='line'>
+</span><span class='line'>&lt;h1>warning: already initialized constant Aconstant&lt;/h1>
+</span><span class='line'>
+</span><span class='line'>&lt;h1>warning: previous definition of Aconstant was here&lt;/h1>
+</span><span class='line'>
+</span><span class='line'>&lt;h1>2&lt;/h1>
+</span><span class='line'>
+</span><span class='line'>&lt;p></span></code></pre></td></tr></table></div></figure></notextile></div></p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Functions]]></title>
@@ -151,6 +300,92 @@
 </span><span class='line'>&lt;p></span></code></pre></td></tr></table></div></figure></notextile></div></p>
 
 <p>Because <code>print "add successful"</code> returns <code>nil</code>, <code>add_print</code> returns nil.</p>
+
+<h1>Error Handling</h1>
+
+<p><div class='bogus-wrapper'><notextile><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>def do_something
+</span><span class='line'>  raise &ldquo;Failed to do something&rdquo;
+</span><span class='line'>end&lt;/p>
+</span><span class='line'>
+</span><span class='line'>&lt;p>raise_exception&lt;/p>
+</span><span class='line'>
+</span><span class='line'>&lt;h1>RuntimeError: Failed to do something&lt;/h1>
+</span><span class='line'>
+</span><span class='line'>&lt;p>begin
+</span><span class='line'>  do_something
+</span><span class='line'>  puts &ldquo;Done something&rdquo;
+</span><span class='line'>rescue
+</span><span class='line'>  puts &ldquo;Rescuing from exception&rdquo;
+</span><span class='line'>end&lt;/p>
+</span><span class='line'>
+</span><span class='line'>&lt;h1>Rescuing from exception&lt;/h1>
+</span><span class='line'>
+</span><span class='line'>&lt;p></span></code></pre></td></tr></table></div></figure></notextile></div></p>
+
+<p><code>retry</code> will return the cursor to start of the begin block it belongs to</p>
+
+<p><div class='bogus-wrapper'><notextile><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>i = 0
+</span><span class='line'>begin
+</span><span class='line'>  puts &ldquo;#{i}&rdquo;
+</span><span class='line'>  i += 1
+</span><span class='line'>  if i &lt; 2&lt;/p>
+</span><span class='line'>
+</span><span class='line'>&lt;pre>&lt;code>do_something
+</span><span class='line'>&lt;/code>&lt;/pre>
+</span><span class='line'>
+</span><span class='line'>&lt;p>  end
+</span><span class='line'>  puts &ldquo;All done!&rdquo;
+</span><span class='line'>rescue
+</span><span class='line'>  retry
+</span><span class='line'>end&lt;/p>
+</span><span class='line'>
+</span><span class='line'>&lt;h1>0&lt;/h1>
+</span><span class='line'>
+</span><span class='line'>&lt;h1>1&lt;/h1>
+</span><span class='line'>
+</span><span class='line'>&lt;h1>All done!&lt;/h1>
+</span><span class='line'>
+</span><span class='line'>&lt;p></span></code></pre></td></tr></table></div></figure></notextile></div></p>
 
 <p>Also relevant later on, <a href="http://innig.net/software/ruby/closures-in-ruby">Closures</a> and <a href="https://rubymonk.com/learning/books/2-metaprogramming-ruby/chapters/32-introduction-to-metaprogramming/lessons/75-being-meta">Metaprogramming</a></p>
 ]]></content>
@@ -1013,323 +1248,6 @@
 <ol>
 <li><a href="http://ruby-doc.org/core-2.0/Array.html">Ruby-Docs Array</a></li>
 <li><a href="http://stackoverflow.com/questions/5018633/what-is-the-difference-between-print-and-puts">Stack Overflow &ndash; What is the difference between print and puts</a></li>
-</ol>
-
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Truthiness &amp; Control Flow]]></title>
-    <link href="http://nizhu.github.io/ruby-intro-site/blog/2013/07/28/truthiness-and-control-flow/"/>
-    <updated>2013-07-28T15:25:00+10:00</updated>
-    <id>http://nizhu.github.io/ruby-intro-site/blog/2013/07/28/truthiness-and-control-flow</id>
-    <content type="html"><![CDATA[<p>Ruby uses keywords true and false to represent truthiness and nil to represent a reference that points to nothing (usually some variation of null in other languages).</p>
-
-<p>Like Fixnum from the previous post, these 3 keywords are immediate values.</p>
-
-<p><div class='bogus-wrapper'><notextile><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-<span class='line-number'>15</span>
-<span class='line-number'>16</span>
-<span class='line-number'>17</span>
-<span class='line-number'>18</span>
-<span class='line-number'>19</span>
-<span class='line-number'>20</span>
-<span class='line-number'>21</span>
-<span class='line-number'>22</span>
-<span class='line-number'>23</span>
-<span class='line-number'>24</span>
-<span class='line-number'>25</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>true.object_id&lt;/p>
-</span><span class='line'>
-</span><span class='line'>&lt;h1>20&lt;/h1>
-</span><span class='line'>
-</span><span class='line'>&lt;p>true.object_id&lt;/p>
-</span><span class='line'>
-</span><span class='line'>&lt;h1>20&lt;/h1>
-</span><span class='line'>
-</span><span class='line'>&lt;p>false.object_id&lt;/p>
-</span><span class='line'>
-</span><span class='line'>&lt;h1>0&lt;/h1>
-</span><span class='line'>
-</span><span class='line'>&lt;p>false.object_id&lt;/p>
-</span><span class='line'>
-</span><span class='line'>&lt;h1>0&lt;/h1>
-</span><span class='line'>
-</span><span class='line'>&lt;p>nil.object_id&lt;/p>
-</span><span class='line'>
-</span><span class='line'>&lt;h1>8&lt;/h1>
-</span><span class='line'>
-</span><span class='line'>&lt;p>nil.object_id&lt;/p>
-</span><span class='line'>
-</span><span class='line'>&lt;h1>8&lt;/h1>
-</span><span class='line'>
-</span><span class='line'>&lt;p></span></code></pre></td></tr></table></div></figure></notextile></div></p>
-
-<h2>Equality Testing</h2>
-
-<p>There are 4 ways of testing for equality in Ruby. You&rsquo;ll be using one of them a majority of the time&hellip; <code>==</code>. Generally <code>==</code> represents equality of the values within the object while <code>.equal?</code> ensures that the 2 objects are one and the same (reference pointer comparison). However, as always, make sure you test your code thoroughly since these are just methods that are easy to override (more on this later). The other two are more obscure and depends much more on the implementation.</p>
-
-<p><div class='bogus-wrapper'><notextile><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-<span class='line-number'>15</span>
-<span class='line-number'>16</span>
-<span class='line-number'>17</span>
-<span class='line-number'>18</span>
-<span class='line-number'>19</span>
-<span class='line-number'>20</span>
-<span class='line-number'>21</span>
-<span class='line-number'>22</span>
-<span class='line-number'>23</span>
-<span class='line-number'>24</span>
-<span class='line-number'>25</span>
-<span class='line-number'>26</span>
-<span class='line-number'>27</span>
-<span class='line-number'>28</span>
-<span class='line-number'>29</span>
-<span class='line-number'>30</span>
-<span class='line-number'>31</span>
-<span class='line-number'>32</span>
-<span class='line-number'>33</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>&ldquo;abc&rdquo; == &ldquo;abc&rdquo;&lt;/p>
-</span><span class='line'>
-</span><span class='line'>&lt;h1>true&lt;/h1>
-</span><span class='line'>
-</span><span class='line'>&lt;p>&ldquo;abc&rdquo;.equal? &ldquo;abc&rdquo;&lt;/p>
-</span><span class='line'>
-</span><span class='line'>&lt;h1>false&lt;/h1>
-</span><span class='line'>
-</span><span class='line'>&lt;p>1 == 1&lt;/p>
-</span><span class='line'>
-</span><span class='line'>&lt;h1>true&lt;/h1>
-</span><span class='line'>
-</span><span class='line'>&lt;p>1.equal? 1&lt;/p>
-</span><span class='line'>
-</span><span class='line'>&lt;h1>true&lt;/h1>
-</span><span class='line'>
-</span><span class='line'>&lt;p>1.eql? 1&lt;/p>
-</span><span class='line'>
-</span><span class='line'>&lt;h1>true&lt;/h1>
-</span><span class='line'>
-</span><span class='line'>&lt;p>1.0 == 1&lt;/p>
-</span><span class='line'>
-</span><span class='line'>&lt;h1>true&lt;/h1>
-</span><span class='line'>
-</span><span class='line'>&lt;p>1.0.equal? 1&lt;/p>
-</span><span class='line'>
-</span><span class='line'>&lt;h1>false&lt;/h1>
-</span><span class='line'>
-</span><span class='line'>&lt;p>1.0.eql? 1&lt;/p>
-</span><span class='line'>
-</span><span class='line'>&lt;h1>false&lt;/h1>
-</span><span class='line'>
-</span><span class='line'>&lt;p></span></code></pre></td></tr></table></div></figure></notextile></div></p>
-
-<h1>Control Flow</h1>
-
-<p>As mentioned in the first post, Ruby was designed to be readable and flexible. I think control flow statements are the highlight. Further, it&rsquo;s important to always remember that false and nil are the only objects that can be &lsquo;untruthy&rsquo; (including 0).</p>
-
-<p>Firstly, we have the very standard if-then-else statements.</p>
-
-<p><div class='bogus-wrapper'><notextile><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-<span class='line-number'>15</span>
-<span class='line-number'>16</span>
-<span class='line-number'>17</span>
-<span class='line-number'>18</span>
-<span class='line-number'>19</span>
-<span class='line-number'>20</span>
-<span class='line-number'>21</span>
-<span class='line-number'>22</span>
-<span class='line-number'>23</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>t = true&lt;/p>
-</span><span class='line'>
-</span><span class='line'>&lt;p>if t
-</span><span class='line'>  puts &ldquo;t is true&rdquo;
-</span><span class='line'>else
-</span><span class='line'>  puts &ldquo;t is false&rdquo;
-</span><span class='line'>end&lt;/p>
-</span><span class='line'>
-</span><span class='line'>&lt;h1>t is true&lt;/h1>
-</span><span class='line'>
-</span><span class='line'>&lt;p>num = 0&lt;/p>
-</span><span class='line'>
-</span><span class='line'>&lt;p>if num &lt; 0
-</span><span class='line'>  puts &ldquo;num is negative&rdquo;
-</span><span class='line'>elsif num == 0
-</span><span class='line'>  puts &ldquo;num is zero&rdquo;
-</span><span class='line'>else
-</span><span class='line'>  puts &ldquo;num is positive&rdquo;
-</span><span class='line'>end&lt;/p>
-</span><span class='line'>
-</span><span class='line'>&lt;h1>num is zero&lt;/h1>
-</span><span class='line'>
-</span><span class='line'>&lt;p></span></code></pre></td></tr></table></div></figure></notextile></div></p>
-
-<p>Then we have unless, which literally means if not. However, please avoid this if you need to use else (there is no secondary guard like elsif or elsunless) &ndash; it&rsquo;s only useful in causing confusion.</p>
-
-<p><div class='bogus-wrapper'><notextile><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>t = true&lt;/p>
-</span><span class='line'>
-</span><span class='line'>&lt;p>unless t
-</span><span class='line'>  puts &ldquo;t is false&rdquo;
-</span><span class='line'>else
-</span><span class='line'>  puts &ldquo;t is true&rdquo;
-</span><span class='line'>end&lt;/p>
-</span><span class='line'>
-</span><span class='line'>&lt;h1>t is true&lt;/h1>
-</span><span class='line'>
-</span><span class='line'>&lt;p></span></code></pre></td></tr></table></div></figure></notextile></div></p>
-
-<p>A popular way of writing terse simple control flow without sacrificing on readability is to suffix the control to the line itself</p>
-
-<p><div class='bogus-wrapper'><notextile><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>puts &ldquo;true&rdquo; if true&lt;/p>
-</span><span class='line'>
-</span><span class='line'>&lt;h1>true&lt;/h1>
-</span><span class='line'>
-</span><span class='line'>&lt;h1>=> nil&lt;/h1>
-</span><span class='line'>
-</span><span class='line'>&lt;p>puts &ldquo;false&rdquo; unless true&lt;/p>
-</span><span class='line'>
-</span><span class='line'>&lt;h1>=> nil&lt;/h1>
-</span><span class='line'>
-</span><span class='line'>&lt;p></span></code></pre></td></tr></table></div></figure></notextile></div></p>
-
-<p>Finally, we have the C-style single line statements</p>
-
-<p><div class='bogus-wrapper'><notextile><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>true ? true : false&lt;/p>
-</span><span class='line'>
-</span><span class='line'>&lt;h1>true&lt;/h1>
-</span><span class='line'>
-</span><span class='line'>&lt;p>false ? true : false&lt;/p>
-</span><span class='line'>
-</span><span class='line'>&lt;h1>false&lt;/h1>
-</span><span class='line'>
-</span><span class='line'>&lt;p></span></code></pre></td></tr></table></div></figure></notextile></div></p>
-
-<p>And many more complex variations of them. They&rsquo;re just another way of formatting the first option since they Ruby treats <code>;</code> as a new line. Please never write code like this :)</p>
-
-<p><div class='bogus-wrapper'><notextile><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-<span class='line-number'>15</span>
-<span class='line-number'>16</span>
-<span class='line-number'>17</span>
-<span class='line-number'>18</span>
-<span class='line-number'>19</span>
-<span class='line-number'>20</span>
-<span class='line-number'>21</span>
-<span class='line-number'>22</span>
-<span class='line-number'>23</span>
-<span class='line-number'>24</span>
-<span class='line-number'>25</span>
-<span class='line-number'>26</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>if true then true else false end&lt;/p>
-</span><span class='line'>
-</span><span class='line'>&lt;h1>true&lt;/h1>
-</span><span class='line'>
-</span><span class='line'>&lt;p>if true; true else false end&lt;/p>
-</span><span class='line'>
-</span><span class='line'>&lt;h1>true&lt;/h1>
-</span><span class='line'>
-</span><span class='line'>&lt;p>num = 0
-</span><span class='line'>if num &lt; 0; puts &ldquo;negative&rdquo;; puts &ldquo;lalala&rdquo; elsif num > 0; puts &ldquo;positive&rdquo; else puts &ldquo;zero&rdquo; end&lt;/p>
-</span><span class='line'>
-</span><span class='line'>&lt;h1>zero&lt;/h1>
-</span><span class='line'>
-</span><span class='line'>&lt;p>num = -1
-</span><span class='line'>if num &lt; 0; puts &ldquo;negative&rdquo;; puts &ldquo;lalala&rdquo; elsif num > 0; puts &ldquo;positive&rdquo; else puts &ldquo;zero&rdquo; end&lt;/p>
-</span><span class='line'>
-</span><span class='line'>&lt;h1>negative&lt;/h1>
-</span><span class='line'>
-</span><span class='line'>&lt;h1>lalala&lt;/h1>
-</span><span class='line'>
-</span><span class='line'>&lt;p>num = 1
-</span><span class='line'>if num &lt; 0; puts &ldquo;negative&rdquo;; puts &ldquo;lalala&rdquo; elsif num > 0; puts &ldquo;positive&rdquo; else puts &ldquo;zero&rdquo; end&lt;/p>
-</span><span class='line'>
-</span><span class='line'>&lt;h1>positive&lt;/h1>
-</span><span class='line'>
-</span><span class='line'>&lt;p></span></code></pre></td></tr></table></div></figure></notextile></div></p>
-
-<ol>
-<li><a href="http://stackoverflow.com/questions/7156955/whats-the-difference-between-equal-eql-and/7157051#7157051">Stack Overflow &ndash; What&rsquo;s the difference between equal?, eql?, ===, and ==?</a></li>
 </ol>
 
 ]]></content>

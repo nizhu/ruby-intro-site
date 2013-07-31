@@ -199,6 +199,70 @@ def print_stuff(str1, str2, reverse = &hellip;">
 
 <p>Because <code>print "add successful"</code> returns <code>nil</code>, <code>add_print</code> returns nil.</p>
 
+<h1>Error Handling</h1>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>def do_something
+</span><span class='line'>  raise "Failed to do something"
+</span><span class='line'>end
+</span><span class='line'>
+</span><span class='line'>raise_exception
+</span><span class='line'># RuntimeError: Failed to do something
+</span><span class='line'>
+</span><span class='line'>begin
+</span><span class='line'>  do_something
+</span><span class='line'>  puts "Done something"
+</span><span class='line'>rescue
+</span><span class='line'>  puts "Rescuing from exception"
+</span><span class='line'>end
+</span><span class='line'># Rescuing from exception</span></code></pre></td></tr></table></div></figure>
+
+
+<p><code>retry</code> will return the cursor to start of the begin block it belongs to</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>i = 0
+</span><span class='line'>begin
+</span><span class='line'>  puts "#{i}"
+</span><span class='line'>  i += 1
+</span><span class='line'>  if i &lt; 2
+</span><span class='line'>    do_something
+</span><span class='line'>  end
+</span><span class='line'>  puts "All done!"
+</span><span class='line'>rescue
+</span><span class='line'>  retry
+</span><span class='line'>end
+</span><span class='line'># 0
+</span><span class='line'># 1
+</span><span class='line'># All done!</span></code></pre></td></tr></table></div></figure>
+
+
 <p>Also relevant later on, <a href="http://innig.net/software/ruby/closures-in-ruby">Closures</a> and <a href="https://rubymonk.com/learning/books/2-metaprogramming-ruby/chapters/32-introduction-to-metaprogramming/lessons/75-being-meta">Metaprogramming</a></p>
 </div>
 
@@ -248,6 +312,8 @@ def print_stuff(str1, str2, reverse = &hellip;">
         <a class="basic-alignment left" href="/ruby-intro-site/blog/2013/07/29/hash-and-symbols/" title="Previous Post: Hash &amp; Symbols">&laquo; Hash &amp; Symbols</a>
       
       
+        <a class="basic-alignment right" href="/ruby-intro-site/blog/2013/07/31/classes/" title="Next Post: Classes">Classes &raquo;</a>
+      
     </p>
   </footer>
 </article>
@@ -259,6 +325,10 @@ def print_stuff(str1, str2, reverse = &hellip;">
     <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/ruby-intro-site/blog/2013/07/31/classes/">Classes</a>
+      </li>
     
       <li class="post">
         <a href="/ruby-intro-site/blog/2013/07/30/functions/">Functions</a>
@@ -274,10 +344,6 @@ def print_stuff(str1, str2, reverse = &hellip;">
     
       <li class="post">
         <a href="/ruby-intro-site/blog/2013/07/28/arrays/">Arrays</a>
-      </li>
-    
-      <li class="post">
-        <a href="/ruby-intro-site/blog/2013/07/28/truthiness-and-control-flow/">Truthiness &amp; Control Flow</a>
       </li>
     
   </ul>
