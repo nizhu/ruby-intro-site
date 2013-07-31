@@ -3,7 +3,7 @@ layout: post
 title: "Truthiness &amp; Control Flow"
 date: 2013-07-28 15:25
 comments: true
-categories: [Ruby, SENG2011]
+categories: [Ruby, SENG2021]
 ---
 
 Ruby uses keywords true and false to represent truthiness and nil to represent a reference that points to nothing (usually some variation of null in other languages).

@@ -3,7 +3,7 @@ layout: post
 title: "Arrays"
 date: 2013-07-28 20:21
 comments: true
-categories: [Ruby, SENG2011]
+categories: [Ruby, SENG2021]
 ---
 
 Arrays in Ruby are very similar to those in other dynamic programming languages. It's all very standard and the documentation has loads of examples anyway, so I'll go through only the most basic and obvious to get started.

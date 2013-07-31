@@ -3,7 +3,7 @@ layout: post
 title: "Numbers"
 date: 2013-07-28 14:48
 comments: true
-categories: [Ruby, SENG2011]
+categories: [Ruby, SENG2021]
 ---
 
 Like most (if not all) object oriented programming languages out there, Ruby has an Integer class and a Float class. Less common in standard libraries however, are the classes Rational and Complex which are used to represent fractions and complex numbers respectively.

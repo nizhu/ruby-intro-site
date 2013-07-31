@@ -3,7 +3,7 @@ layout: post
 title: "Hash &amp; Symbols"
 date: 2013-07-29 22:46
 comments: true
-categories: [Ruby, SENG2011]
+categories: [Ruby, SENG2021]
 ---
 
 Maps in the data structure sense is referred to in Ruby as Hashes. Map in Ruby is used in its functional programming definition.

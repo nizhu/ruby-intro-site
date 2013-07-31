@@ -3,7 +3,7 @@ layout: post
 title: "Hello World"
 date: 2013-07-27 14:10
 comments: true
-categories: [Ruby, SENG2011]
+categories: [Ruby, SENG2021]
 ---
 
 It's finally time to start coding. Start by cloning the git repository I've prepared for this demonstration.

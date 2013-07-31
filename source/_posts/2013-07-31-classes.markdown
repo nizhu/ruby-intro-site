@@ -3,7 +3,7 @@ layout: post
 title: "Classes"
 date: 2013-07-31 09:14
 comments: true
-categories: [Ruby, SENG2011]
+categories: [Ruby, SENG2021]
 ---
 
 Ruby is a Object Oriented language so it's no less than intuitive to have classes. The following code block shows the basic syntax of a Ruby class.

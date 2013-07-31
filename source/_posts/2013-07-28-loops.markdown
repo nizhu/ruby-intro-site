@@ -3,7 +3,7 @@ layout: post
 title: "Loops"
 date: 2013-07-28 21:09
 comments: true
-categories: [Ruby, SENG2011]
+categories: [Ruby, SENG2021]
 ---
 
 Like the if statements you saw 2 posts prior, there are many ways to construct loops. Not that there is no increment/decrement, ```++/--```, operation in Ruby.

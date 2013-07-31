@@ -3,7 +3,7 @@ layout: post
 title: "Functions"
 date: 2013-07-30 12:55
 comments: true
-categories: [Ruby, SENG2011]
+categories: [Ruby, SENG2021]
 ---
 
 Firstly the syntax. Let's first define a very basic function we can use for this post.

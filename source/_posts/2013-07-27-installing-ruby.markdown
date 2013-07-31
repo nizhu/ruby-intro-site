@@ -3,7 +3,7 @@ layout: post
 title: "Installing Ruby"
 date: 2013-07-27 12:21
 comments: true
-categories: [Ruby, SENG2011]
+categories: [Ruby, SENG2021]
 ---
 
 When I was first starting out in Ruby, this is what gave me the biggest problems. One can install from their operating system's package manager easily enough (likely be installed already with the system), but because of how quickly the Ruby community moves, using system Ruby is generally not a good idea. Every now and then, you'll come across version incompatibility issues and if you need to work on different apps with different versions of Ruby, then you're in a bit of a mess. Not to mention the permission issues.

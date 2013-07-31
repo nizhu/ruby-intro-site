@@ -3,7 +3,7 @@ layout: post
 title: "Strings"
 date: 2013-07-27 17:34
 comments: true
-categories: [Ruby, SENG2011]
+categories: [Ruby, SENG2021]
 ---
 
 There isn't much special about Ruby strings. Try the code snippets below in irb.
