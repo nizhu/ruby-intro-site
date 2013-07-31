@@ -4,7 +4,7 @@
   <title><![CDATA[Ruby Intro]]></title>
   <link href="http://nizhu.github.io/ruby-intro-site/atom.xml" rel="self"/>
   <link href="http://nizhu.github.io/ruby-intro-site/"/>
-  <updated>2013-07-31T20:17:35+10:00</updated>
+  <updated>2013-07-31T21:44:38+10:00</updated>
   <id>http://nizhu.github.io/ruby-intro-site/</id>
   <author>
     <name><![CDATA[Nick Zhu]]></name>
@@ -12,6 +12,90 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Consuming JSON resources through HTTP]]></title>
+    <link href="http://nizhu.github.io/ruby-intro-site/blog/2013/07/31/consuming-json-resources-through-http/"/>
+    <updated>2013-07-31T21:44:00+10:00</updated>
+    <id>http://nizhu.github.io/ruby-intro-site/blog/2013/07/31/consuming-json-resources-through-http</id>
+    <content type="html"><![CDATA[
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Parsing XML with XMLSimple]]></title>
+    <link href="http://nizhu.github.io/ruby-intro-site/blog/2013/07/31/parsing-xml-with-xmlsimple/"/>
+    <updated>2013-07-31T20:19:00+10:00</updated>
+    <id>http://nizhu.github.io/ruby-intro-site/blog/2013/07/31/parsing-xml-with-xmlsimple</id>
+    <content type="html"><![CDATA[<p>For the purpose of this exercise, I&rsquo;ve downloaded and extracted a zip file from the AEC&rsquo;s site <code>ftp://results.aec.gov.au/15508/Detailed/Light/aec-mediafeed-Detailed-Light-15508-20100817220150.zip</code>. Ruby has an XML parser called REXML in its standard library, but it&rsquo;s known to be very slow &ndash; <a href="http://www.rubyinside.com/ruby-xml-performance-benchmarks-1641.html">Some 50 times slower than Nokogiri</a>. I would love to demonstrate Nokogiri, but unfortunately it&rsquo;s more complex to use than XmlSimple. XmlSimple parses the data into a native Ruby hash whereas Nokogiri has its own set of classes.</p>
+
+<h1>Third Party libraries</h1>
+
+<p>Third party libraries in Ruby are referred to as gems. Gem is an executable that comes with Ruby. Tell it to install, along with the name of the gem and it will download and install the gem that you want as well as all its dependencies.</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>gem install xml-simple</span></code></pre></td></tr></table></div></figure>
+
+
+<h1>Let&rsquo;s Parse!</h1>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>require 'xmlsimple'
+</span><span class='line'>xml = File.read 'data/xml/aec-mediafeed-results-detailed-light-15508.xml'
+</span><span class='line'>data = XmlSimple.xml_in xml</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Parsing XML takes a little while, and XmlSimple isn&rsquo;t the most efficient of parsers. If speed is a concern at all, you should definitely look into <a href="http://nokogiri.org/">Nokogiri</a>.</p>
+
+<p>Once it&rsquo;s done we can see what&rsquo;s in there one step at a time.</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>data.keys
+</span><span class='line'># ["Id", "Created", "SchemaVersion", "EmlVersion", "xmlns", "xmlns:eml", "xmlns:ds", "xmlns:xal", "xmlns:xnl", "xmlns:ts", "xmlns:xs", "xs:schemaLocation", "ManagingAuthority", "MessageLanguage", "MessageGenerator", "Cycle", "Results"]
+</span><span class='line'>
+</span><span class='line'>data.["Results"].keys
+</span><span class='line'># NoMethodError
+</span><span class='line'>
+</span><span class='line'>data.["Results"].class
+</span><span class='line'># Array
+</span><span class='line'>
+</span><span class='line'>data.["Results"][0].class
+</span><span class='line'># Hash
+</span><span class='line'>
+</span><span class='line'>data["Results"][0]["Election"][0]["House"][0]["Contests"][0]["Contest"][0].keys
+</span><span class='line'># ["Projected", "ContestIdentifier", "Enrolment", "FirstPreferences", "TwoCandidatePreferred", "TwoPartyPreferred", "PollingPlaces"]
+</span><span class='line'>
+</span><span class='line'>data["Results"][0]["Election"][0]["House"][0]["Contests"][0]["Contest"][0]["TwoPartyPreferred"][0]["Coalition"][0]["Votes"]
+</span><span class='line'># 0
+</span><span class='line'>
+</span><span class='line'>data["Results"][0]["Election"][0]["House"][0]["Contests"][0]["Contest"][0]["Enrolment"]
+</span><span class='line'># 124215</span></code></pre></td></tr></table></div></figure>
+
+
+
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Classes]]></title>

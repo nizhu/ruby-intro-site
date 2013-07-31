@@ -5,11 +5,11 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>Classes - Ruby Intro</title>
+  <title>Parsing XML with XMLSimple - Ruby Intro</title>
   <meta name="author" content="Nick Zhu">
 
   
-  <meta name="description" content="Ruby is a Object Oriented language so it&rsquo;s no less than intuitive to have classes. The following code block shows the basic syntax of a Ruby &hellip;">
+  <meta name="description" content="For the purpose of this exercise, I&rsquo;ve downloaded and extracted a zip file from the AEC&rsquo;s site ftp://results.aec.gov.au/15508/Detailed/ &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -18,7 +18,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://nizhu.github.io/ruby-intro-site/blog/2013/07/31/classes">
+  <link rel="canonical" href="http://nizhu.github.io/ruby-intro-site/blog/2013/07/31/parsing-xml-with-xmlsimple">
   <link href="/ruby-intro-site/favicon.png" rel="icon">
   <link href="/ruby-intro-site/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <link href="/ruby-intro-site/atom.xml" rel="alternate" title="Ruby Intro" type="application/atom+xml">
@@ -68,7 +68,7 @@
   
   <header>
     
-      <h1 class="entry-title">Classes</h1>
+      <h1 class="entry-title">Parsing XML With XMLSimple</h1>
     
     
       <p class="meta">
@@ -84,14 +84,36 @@
   
 
 
-<time datetime="2013-07-31T09:14:00+10:00" pubdate data-updated="true">Jul 31<span>st</span>, 2013</time>
+<time datetime="2013-07-31T20:19:00+10:00" pubdate data-updated="true">Jul 31<span>st</span>, 2013</time>
         
       </p>
     
   </header>
 
 
-<div class="entry-content"><p>Ruby is a Object Oriented language so it&rsquo;s no less than intuitive to have classes. The following code block shows the basic syntax of a Ruby class.</p>
+<div class="entry-content"><p>For the purpose of this exercise, I&rsquo;ve downloaded and extracted a zip file from the AEC&rsquo;s site <code>ftp://results.aec.gov.au/15508/Detailed/Light/aec-mediafeed-Detailed-Light-15508-20100817220150.zip</code>. Ruby has an XML parser called REXML in its standard library, but it&rsquo;s known to be very slow &ndash; <a href="http://www.rubyinside.com/ruby-xml-performance-benchmarks-1641.html">Some 50 times slower than Nokogiri</a>. I would love to demonstrate Nokogiri, but unfortunately it&rsquo;s more complex to use than XmlSimple. XmlSimple parses the data into a native Ruby hash whereas Nokogiri has its own set of classes.</p>
+
+<h1>Third Party libraries</h1>
+
+<p>Third party libraries in Ruby are referred to as gems. Gem is an executable that comes with Ruby. Tell it to install, along with the name of the gem and it will download and install the gem that you want as well as all its dependencies.</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>gem install xml-simple</span></code></pre></td></tr></table></div></figure>
+
+
+<h1>Let&rsquo;s Parse!</h1>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>require 'xmlsimple'
+</span><span class='line'>xml = File.read 'data/xml/aec-mediafeed-results-detailed-light-15508.xml'
+</span><span class='line'>data = XmlSimple.xml_in xml</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Parsing XML takes a little while, and XmlSimple isn&rsquo;t the most efficient of parsers. If speed is a concern at all, you should definitely look into <a href="http://nokogiri.org/">Nokogiri</a>.</p>
+
+<p>Once it&rsquo;s done we can see what&rsquo;s in there one step at a time.</p>
 
 <figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
@@ -113,85 +135,26 @@
 <span class='line-number'>18</span>
 <span class='line-number'>19</span>
 <span class='line-number'>20</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>class Counter
-</span><span class='line'>  @@classCount = 0
-</span><span class='line'>  @instanceCount
+</pre></td><td class='code'><pre><code class=''><span class='line'>data.keys
+</span><span class='line'># ["Id", "Created", "SchemaVersion", "EmlVersion", "xmlns", "xmlns:eml", "xmlns:ds", "xmlns:xal", "xmlns:xnl", "xmlns:ts", "xmlns:xs", "xs:schemaLocation", "ManagingAuthority", "MessageLanguage", "MessageGenerator", "Cycle", "Results"]
 </span><span class='line'>
-</span><span class='line'>  def initialize(startInstanceCount)
-</span><span class='line'>    @instanceCount = startInstanceCount
-</span><span class='line'>  end
+</span><span class='line'>data.["Results"].keys
+</span><span class='line'># NoMethodError
 </span><span class='line'>
-</span><span class='line'>  def icIncrement
-</span><span class='line'>    @instanceCount += 1
-</span><span class='line'>  end
+</span><span class='line'>data.["Results"].class
+</span><span class='line'># Array
 </span><span class='line'>
-</span><span class='line'>  def self.ccIncrement
-</span><span class='line'>    @@classCount += 1
-</span><span class='line'>  end
+</span><span class='line'>data.["Results"][0].class
+</span><span class='line'># Hash
 </span><span class='line'>
-</span><span class='line'>  def to_s
-</span><span class='line'>    "classCount = #{@@classCount} and instanceCount = #{@instanceCount}"
-</span><span class='line'>  end
-</span><span class='line'>end</span></code></pre></td></tr></table></div></figure>
-
-
-<p>We have a Class variable, <code>@@classCount</code>. This is equivalent to the keyword <code>static</code> in Java. There&rsquo;s an Instance variable <code>@instanceCount</code>.</p>
-
-<p>Then there are the methods. <code>initialize</code> is the constructor used when you run <code>Counter.new</code>, <code>icIncrement</code> is an instance method, while <code>self.ccIncrement</code> is a class method &ndash; called with <code>Counter.ccIncrement</code>.</p>
-
-<p>Finally <code>to_s</code> is the conversion of the class to a String, just like <code>toString()</code>.</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>a = Counter.new 0
-</span><span class='line'>b = Counter.new 0
+</span><span class='line'>data["Results"][0]["Election"][0]["House"][0]["Contests"][0]["Contest"][0].keys
+</span><span class='line'># ["Projected", "ContestIdentifier", "Enrolment", "FirstPreferences", "TwoCandidatePreferred", "TwoPartyPreferred", "PollingPlaces"]
 </span><span class='line'>
-</span><span class='line'>a.ccIncrement
-</span><span class='line'>a.icIncrement
+</span><span class='line'>data["Results"][0]["Election"][0]["House"][0]["Contests"][0]["Contest"][0]["TwoPartyPreferred"][0]["Coalition"][0]["Votes"]
+</span><span class='line'># 0
 </span><span class='line'>
-</span><span class='line'>puts b
-</span><span class='line'># classCount = 1 and instanceCount = 0
-</span><span class='line'>
-</span><span class='line'>b = Counter.new 5
-</span><span class='line'>puts b
-</span><span class='line'># classCount = 1 and instanceCount = 5</span></code></pre></td></tr></table></div></figure>
-
-
-<h2>Variable Scope</h2>
-
-<p>Scope-wise, there are 5 different types of variables in Ruby and they are simply differentiated by the first character of their name.</p>
-
-<ol>
-<li>$: Global</li>
-<li>@@: Class</li>
-<li>@: Instance</li>
-<li>[A-Z]: Constant</li>
-<li>[a-z_]: Local</li>
-</ol>
-
-
-<p>Note that Constants can still be changed. The interpreter will simply issue a warning that that is the case, but the value assigning will proceed.</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>Aconstant = 1
-</span><span class='line'>Aconstant = 2
-</span><span class='line'># warning: already initialized constant Aconstant
-</span><span class='line'># warning: previous definition of Aconstant was here
-</span><span class='line'># 2</span></code></pre></td></tr></table></div></figure>
+</span><span class='line'>data["Results"][0]["Election"][0]["House"][0]["Contests"][0]["Contest"][0]["Enrolment"]
+</span><span class='line'># 124215</span></code></pre></td></tr></table></div></figure>
 
 
 
@@ -217,7 +180,7 @@
   
 
 
-<time datetime="2013-07-31T09:14:00+10:00" pubdate data-updated="true">Jul 31<span>st</span>, 2013</time>
+<time datetime="2013-07-31T20:19:00+10:00" pubdate data-updated="true">Jul 31<span>st</span>, 2013</time>
       
 
 <span class="categories">
@@ -231,7 +194,7 @@
     
       <div class="sharing">
   
-  <a href="/ruby-intro-site//twitter.com/share" class="twitter-share-button" data-url="http://nizhu.github.io/ruby-intro-site/blog/2013/07/31/classes/" data-via="" data-counturl="http://nizhu.github.io/ruby-intro-site/blog/2013/07/31/classes/" >Tweet</a>
+  <a href="/ruby-intro-site//twitter.com/share" class="twitter-share-button" data-url="http://nizhu.github.io/ruby-intro-site/blog/2013/07/31/parsing-xml-with-xmlsimple/" data-via="" data-counturl="http://nizhu.github.io/ruby-intro-site/blog/2013/07/31/parsing-xml-with-xmlsimple/" >Tweet</a>
   
   
   
@@ -240,10 +203,10 @@
     
     <p class="meta">
       
-        <a class="basic-alignment left" href="/ruby-intro-site/blog/2013/07/30/functions/" title="Previous Post: Functions">&laquo; Functions</a>
+        <a class="basic-alignment left" href="/ruby-intro-site/blog/2013/07/31/classes/" title="Previous Post: Classes">&laquo; Classes</a>
       
       
-        <a class="basic-alignment right" href="/ruby-intro-site/blog/2013/07/31/parsing-xml-with-xmlsimple/" title="Next Post: Parsing XML with XMLSimple">Parsing XML with XMLSimple &raquo;</a>
+        <a class="basic-alignment right" href="/ruby-intro-site/blog/2013/07/31/consuming-json-resources-through-http/" title="Next Post: Consuming JSON resources through HTTP">Consuming JSON resources through HTTP &raquo;</a>
       
     </p>
   </footer>

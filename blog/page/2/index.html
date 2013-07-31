@@ -9,7 +9,10 @@
   <meta name="author" content="Nick Zhu">
 
   
-  <meta name="description" content="Ruby is a dynamic, object oriented programming language that first appeared toward the end of 1995, so it&rsquo;s a bit younger than the other 2 &hellip;">
+  <meta name="description" content="It&rsquo;s finally time to start coding. Start by cloning the git repository I&rsquo;ve prepared for this demonstration. 1
+2
+3
+git clone git@github. &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -65,6 +68,362 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/ruby-intro-site/blog/2013/07/27/hello-world/">Hello World</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-07-27T14:10:00+10:00" pubdate data-updated="true">Jul 27<span>th</span>, 2013</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>It&rsquo;s finally time to start coding. Start by cloning the git repository I&rsquo;ve prepared for this demonstration.</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>git clone git@github.com:nizhu/ruby-intro.git ~/ruby-intro
+</span><span class='line'>cd ~/ruby-intro
+</span><span class='line'>ls</span></code></pre></td></tr></table></div></figure>
+
+
+<p>You&rsquo;ll notice that there are lots of files here, most of which you don&rsquo;t need yet so let&rsquo;s get rid of them for now</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>git checkout hello-world
+</span><span class='line'>ls</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Now there&rsquo;s only a license file, telling you that you have permission to use all of the code in this repository for whatever purpose, but I will not take any responsibility for any side effects caused by it&hellip;. in lawyer-speak, and a README file that doesn&rsquo;t tell you very much.</p>
+
+<p>I promise we&rsquo;re almost there, just open your favourite text editor</p>
+
+<figure class='code'><figcaption><span>hello_world.rb </span></figcaption>
+ <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="nb">puts</span> <span class="s2">&quot;Hello World&quot;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>That&rsquo;s it! Save it as hello_world.rb, exit, and now we can run the file. Note that # is the comment delimiter in Ruby and Shell so I will be using that to give you an idea of the expected result of the line preceding it.</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>ruby hello_world.rb
+</span><span class='line'># Hello World</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Like shell scripts, you can also run them as executables. Create another file:</p>
+
+<figure class='code'><figcaption><span>hello_world_exe.rb </span></figcaption>
+ <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="c1">#!/usr/bin/env ruby</span>
+</span><span class='line'><span class="nb">puts</span> <span class="s2">&quot;Hello World&quot;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>And give it executable permission, and run it.</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>chmod +x hello_world_exe.rb
+</span><span class='line'>./hello_world_exe.rb</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Hashbangs will be explained at the end of this post for those curious</p>
+
+<h2>Interactive Ruby Shell</h2>
+
+<p>irb is a tool that provides an interface to Ruby. It&rsquo;s a great feature, especially for developers new to Ruby because it allows one to interact with Ruby for instant feedback, and build up to a complex script line by line. Code behaves exactly the same way in irb as it would in the method described above. So open up irb and write Hello World again.</p>
+
+<p>You&rsquo;ll notice that after printing Hello World, it also says nil. This is the &lsquo;null&rsquo; value in Ruby, but don&rsquo;t worry about why it&rsquo;s doing so for now. This will be explained in the Functions section.</p>
+
+<p>If you want to import files that you&rsquo;ve written, there are two ways to do so. A file that is imported in irb is executed just as it would if it had been imported through normal code, and it is the same as if it had been copy and pasted into irb. The following demonstrates the two major difference between the two options so try this out in irb:</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>load 'hello_world.rb'
+</span><span class='line'># Hello World
+</span><span class='line'># => true
+</span><span class='line'>load 'hello_world.rb'
+</span><span class='line'># Hello World
+</span><span class='line'># => true
+</span><span class='line'>require 'hello_world'
+</span><span class='line'># Hello World
+</span><span class='line'># => true
+</span><span class='line'>require 'hello_world'
+</span><span class='line'># => false</span></code></pre></td></tr></table></div></figure>
+
+
+<p>The differences are:
+* require will not import a file more than once
+* file extension is not necessary when importing with require</p>
+
+<p>Generally it&rsquo;s more appropriate to use require unless you do need to execute some code more than once.</p>
+
+<h2>Hashbangs</h2>
+
+<p>You might have come across this in COMP2041. This is the line at the top of scripts that tells your shell what to execute it with &ndash; your shell will simply interpret it as a shell script without it.</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>chmod +x hello_world.rb
+</span><span class='line'>./hello_world.rb
+</span><span class='line'># ./hello_world.rb: line 1: puts: command not found</span></code></pre></td></tr></table></div></figure>
+
+
+<h3>/usr/bin/env</h3>
+
+<p>The characters following the exclamation mark is the path of the executable that you want to run the script with.</p>
+
+<p>Since you now have several different versions of Ruby installed, it&rsquo;s best to make the script run with the version that you intend to. rbenv controls the Ruby version in your environment, so that&rsquo;s the best one to use! By <code>/usr/bin/env ruby</code>, the script will be run with the same ruby as typing ruby in the command line. To demonstrate, create the 2 files below, and then enter the following commands (make note of the versions):</p>
+
+<figure class='code'><figcaption><span>version_system.rb </span></figcaption>
+ <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="c1">#!/usr/bin/ruby</span>
+</span><span class='line'><span class="nb">puts</span> <span class="no">RUBY_VERSION</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+
+
+<figure class='code'><figcaption><span>version_env.rb </span></figcaption>
+ <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="c1">#!/usr/bin/env ruby</span>
+</span><span class='line'><span class="nb">puts</span> <span class="no">RUBY_VERSION</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>ruby -v
+</span><span class='line'># ruby 2.0.0p247 (2013-06-27 revision 41674) [x86_64-darwin12.4.0]
+</span><span class='line'>/usr/bin/ruby -v
+</span><span class='line'># ruby 1.8.7 (2012-02-08 patchlevel 358) [universal-darwin12.0]
+</span><span class='line'>chmod +x version_env.rb
+</span><span class='line'>./version_env.rb
+</span><span class='line'># 2.0.0
+</span><span class='line'>chmod +x version_system.rb
+</span><span class='line'>./version_system.rb
+</span><span class='line'># 1.8.7</span></code></pre></td></tr></table></div></figure>
+
+
+<ol>
+<li><a href="http://en.wikipedia.org/wiki/Interactive_Ruby_Shell">Wikipedia on Hashbangs</a></li>
+<li><a href="http://en.wikipedia.org/wiki/Shebang_(Unix)">Wikipedia on irb</a></li>
+<li><a href="http://www.skorks.com/2009/08/digging-into-a-ruby-installation-require-vs-load/">Alan Skorkin on Require vs Load</a></li>
+</ol>
+
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/ruby-intro-site/blog/2013/07/27/installing-ruby/">Installing Ruby</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-07-27T12:21:00+10:00" pubdate data-updated="true">Jul 27<span>th</span>, 2013</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>When I was first starting out in Ruby, this is what gave me the biggest problems. One can install from their operating system&rsquo;s package manager easily enough (likely be installed already with the system), but because of how quickly the Ruby community moves, using system Ruby is generally not a good idea. Every now and then, you&rsquo;ll come across version incompatibility issues and if you need to work on different apps with different versions of Ruby, then you&rsquo;re in a bit of a mess. Not to mention the permission issues.</p>
+
+<p>To get around this, we use a Ruby version manager &ndash; one named simply rvm, and another, rbenv.</p>
+
+<p>I will be going through installing Ruby with rbenv on Bash with you simply because I&rsquo;ve personally had fewer issues with it integrating with our Bamboo continuous integration environment, but that&rsquo;s a story for another day. You&rsquo;ll no doubt come across problems that I didn&rsquo;t foresee. If it tells you of a missing dependency, just install it. Setting up Ruby was a great exercise in google-fu for me; don&rsquo;t be discouraged if you end up having to reinstall several times.</p>
+
+<p>Please read the OSX comments even if you don&rsquo;t have OSX!</p>
+
+<h2>OSX</h2>
+
+<p>If you have a Mac, you&rsquo;re in luck &ndash; you have Homebrew. If you don&rsquo;t, just install it with <code>ruby -e "$(curl -fsSL https://raw.github.com/mxcl/homebrew/go)"</code></p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>brew update
+</span><span class='line'>brew install rbenv</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Unfortunately, a plugin is required to install Ruby with rbenv</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>brew install ruby-build</span></code></pre></td></tr></table></div></figure>
+
+
+<p>&lsquo;Turn on&rsquo; rbenv</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Set up bash to always enable rbenv if available</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>echo 'if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi' >> ~/.profile</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Add rbenv&rsquo;s executables to your PATH</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'># My rbenv is installed in /usr/loca/opt/rbenv, but yours may be in ~/.rbenv
+</span><span class='line'># Change the line below appropriately
+</span><span class='line'>echo 'export PATH=/usr/local/opt/rbenv/shims:$PATH'</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Finally install Ruby 2.0.0-p247</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>rbenv install 2.0.0-p247
+</span><span class='line'># Command below refreshes rbenv's executables.
+</span><span class='line'># Make sure you run this every time you (un)install a ruby or a gem - more on this later
+</span><span class='line'>rbenv rehash</span></code></pre></td></tr></table></div></figure>
+
+
+<h2>Debian/Ubuntu/Linux Mint</h2>
+
+<p>For fun times, install these dependencies</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>apt-get install build-essential openssl libreadline6 libreadline6-dev curl git-core zlib1g zlib1g-dev libssl-dev libyaml-dev libsqlite3-dev sqlite3 libxml2-dev libxslt-dev autoconf libc6-dev ncurses-dev automake libtool bison subversion pkg-config</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Install rbenv + ruby-build</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>git clone https://github.com/sstephenson/rbenv.git ~/.rbenv
+</span><span class='line'>echo 'export PATH="$HOME/.rbenv/bin:$PATH"' >> ~/.bashrc
+</span><span class='line'>echo 'eval "$(rbenv init -)"' >> ~/.bashrc
+</span><span class='line'>exec $SHELL -l
+</span><span class='line'>mkdir -p ~/.rbenv/plugins
+</span><span class='line'>git clone https://github.com/sstephenson/ruby-build.git ~/.rbenv/plugins/ruby-build
+</span><span class='line'>rbenv install 2.0.0-p247
+</span><span class='line'>rbenv rehash</span></code></pre></td></tr></table></div></figure>
+
+
+<h2>Keeping legacy code consistent</h2>
+
+<p>You may have Ruby scripts before installing rbenv that ran with system Ruby, so it&rsquo;s best to keep it that way. To ensure that this happens, we can make system ruby the default for rbenv.</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>rbenv global system
+</span><span class='line'>rbenv version
+</span><span class='line'># system (set by /usr/local/opt/rbenv/version)</span></code></pre></td></tr></table></div></figure>
+
+
+<h2>Make rbenv use a specific version</h2>
+
+<p>Whenever you interact with rbenv, it will look in your current directory for a file named .rbenv-version before falling back to the global default. Try the following:</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>cd /tmp
+</span><span class='line'>rbenv version
+</span><span class='line'># system (set by /usr/local/opt/rbenv/version)
+</span><span class='line'>echo '2.0.0-p247' > .rbenv-version
+</span><span class='line'># 2.0.0-p247 (set by /tmp/.rbenv-version)</span></code></pre></td></tr></table></div></figure>
+
+
+<p>The best thing about forcing versions is that you can commit this file to your code repository, and it will ensure that developer on every machine using rbenv will be using the version of Ruby that is intended.</p>
+
+<ol>
+<li><a href="https://rvm.io/">rvm</a></li>
+<li><a href="https://github.com/sstephenson/rbenv">rbenv</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Continuous_integration">Wikipedia on Continuous Integration</a></li>
+<li><a href="https://www.atlassian.com/software/bamboo">Atlassian Bamboo</a></li>
+<li><a href="http://brew.sh/">Homebrew</a></li>
+<li><a href="https://github.com/sstephenson/rbenv#installation">Installing rbenv</a></li>
+<li><a href="https://github.com/sstephenson/ruby-build">ruby-build rbenv plugin</a></li>
+</ol>
+
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -131,6 +490,14 @@
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/ruby-intro-site/blog/2013/07/31/consuming-json-resources-through-http/">Consuming JSON Resources Through HTTP</a>
+      </li>
+    
+      <li class="post">
+        <a href="/ruby-intro-site/blog/2013/07/31/parsing-xml-with-xmlsimple/">Parsing XML With XMLSimple</a>
+      </li>
+    
+      <li class="post">
         <a href="/ruby-intro-site/blog/2013/07/31/classes/">Classes</a>
       </li>
     
@@ -140,14 +507,6 @@
     
       <li class="post">
         <a href="/ruby-intro-site/blog/2013/07/29/hash-and-symbols/">Hash &amp; Symbols</a>
-      </li>
-    
-      <li class="post">
-        <a href="/ruby-intro-site/blog/2013/07/28/loops/">Loops</a>
-      </li>
-    
-      <li class="post">
-        <a href="/ruby-intro-site/blog/2013/07/28/arrays/">Arrays</a>
       </li>
     
   </ul>

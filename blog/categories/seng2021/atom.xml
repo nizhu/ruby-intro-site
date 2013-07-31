@@ -4,7 +4,7 @@
   <title><![CDATA[Category: SENG2021 | Ruby Intro]]></title>
   <link href="http://nizhu.github.io/ruby-intro-site/blog/categories/seng2021/atom.xml" rel="self"/>
   <link href="http://nizhu.github.io/ruby-intro-site/"/>
-  <updated>2013-07-31T20:17:35+10:00</updated>
+  <updated>2013-07-31T21:44:38+10:00</updated>
   <id>http://nizhu.github.io/ruby-intro-site/</id>
   <author>
     <name><![CDATA[Nick Zhu]]></name>
@@ -12,6 +12,103 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Consuming JSON resources through HTTP]]></title>
+    <link href="http://nizhu.github.io/ruby-intro-site/blog/2013/07/31/consuming-json-resources-through-http/"/>
+    <updated>2013-07-31T21:44:00+10:00</updated>
+    <id>http://nizhu.github.io/ruby-intro-site/blog/2013/07/31/consuming-json-resources-through-http</id>
+    <content type="html"><![CDATA[
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Parsing XML with XMLSimple]]></title>
+    <link href="http://nizhu.github.io/ruby-intro-site/blog/2013/07/31/parsing-xml-with-xmlsimple/"/>
+    <updated>2013-07-31T20:19:00+10:00</updated>
+    <id>http://nizhu.github.io/ruby-intro-site/blog/2013/07/31/parsing-xml-with-xmlsimple</id>
+    <content type="html"><![CDATA[<p>For the purpose of this exercise, I&rsquo;ve downloaded and extracted a zip file from the AEC&rsquo;s site <code>ftp://results.aec.gov.au/15508/Detailed/Light/aec-mediafeed-Detailed-Light-15508-20100817220150.zip</code>. Ruby has an XML parser called REXML in its standard library, but it&rsquo;s known to be very slow &ndash; <a href="http://www.rubyinside.com/ruby-xml-performance-benchmarks-1641.html">Some 50 times slower than Nokogiri</a>. I would love to demonstrate Nokogiri, but unfortunately it&rsquo;s more complex to use than XmlSimple. XmlSimple parses the data into a native Ruby hash whereas Nokogiri has its own set of classes.</p>
+
+<h1>Third Party libraries</h1>
+
+<p>Third party libraries in Ruby are referred to as gems. Gem is an executable that comes with Ruby. Tell it to install, along with the name of the gem and it will download and install the gem that you want as well as all its dependencies.</p>
+
+<p><div class='bogus-wrapper'><notextile><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>gem install xml-simple</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+
+<h1>Let&rsquo;s Parse!</h1>
+
+<p><div class='bogus-wrapper'><notextile><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>require &lsquo;xmlsimple&rsquo;
+</span><span class='line'>xml = File.read &lsquo;data/xml/aec-mediafeed-results-detailed-light-15508.xml&rsquo;
+</span><span class='line'>data = XmlSimple.xml_in xml</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+
+<p>Parsing XML takes a little while, and XmlSimple isn&rsquo;t the most efficient of parsers. If speed is a concern at all, you should definitely look into <a href="http://nokogiri.org/">Nokogiri</a>.</p>
+
+<p>Once it&rsquo;s done we can see what&rsquo;s in there one step at a time.</p>
+
+<p><div class='bogus-wrapper'><notextile><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>data.keys&lt;/p>
+</span><span class='line'>
+</span><span class='line'>&lt;h1>[&ldquo;Id&rdquo;, &ldquo;Created&rdquo;, &ldquo;SchemaVersion&rdquo;, &ldquo;EmlVersion&rdquo;, &ldquo;xmlns&rdquo;, &ldquo;xmlns:eml&rdquo;, &ldquo;xmlns:ds&rdquo;, &ldquo;xmlns:xal&rdquo;, &ldquo;xmlns:xnl&rdquo;, &ldquo;xmlns:ts&rdquo;, &ldquo;xmlns:xs&rdquo;, &ldquo;xs:schemaLocation&rdquo;, &ldquo;ManagingAuthority&rdquo;, &ldquo;MessageLanguage&rdquo;, &ldquo;MessageGenerator&rdquo;, &ldquo;Cycle&rdquo;, &ldquo;Results&rdquo;]&lt;/h1>
+</span><span class='line'>
+</span><span class='line'>&lt;p>data.[&ldquo;Results&rdquo;].keys&lt;/p>
+</span><span class='line'>
+</span><span class='line'>&lt;h1>NoMethodError&lt;/h1>
+</span><span class='line'>
+</span><span class='line'>&lt;p>data.[&ldquo;Results&rdquo;].class&lt;/p>
+</span><span class='line'>
+</span><span class='line'>&lt;h1>Array&lt;/h1>
+</span><span class='line'>
+</span><span class='line'>&lt;p>data.[&ldquo;Results&rdquo;][0].class&lt;/p>
+</span><span class='line'>
+</span><span class='line'>&lt;h1>Hash&lt;/h1>
+</span><span class='line'>
+</span><span class='line'>&lt;p>data[&ldquo;Results&rdquo;][0][&ldquo;Election&rdquo;][0][&ldquo;House&rdquo;][0][&ldquo;Contests&rdquo;][0][&ldquo;Contest&rdquo;][0].keys&lt;/p>
+</span><span class='line'>
+</span><span class='line'>&lt;h1>[&ldquo;Projected&rdquo;, &ldquo;ContestIdentifier&rdquo;, &ldquo;Enrolment&rdquo;, &ldquo;FirstPreferences&rdquo;, &ldquo;TwoCandidatePreferred&rdquo;, &ldquo;TwoPartyPreferred&rdquo;, &ldquo;PollingPlaces&rdquo;]&lt;/h1>
+</span><span class='line'>
+</span><span class='line'>&lt;p>data[&ldquo;Results&rdquo;][0][&ldquo;Election&rdquo;][0][&ldquo;House&rdquo;][0][&ldquo;Contests&rdquo;][0][&ldquo;Contest&rdquo;][0][&ldquo;TwoPartyPreferred&rdquo;][0][&ldquo;Coalition&rdquo;][0][&ldquo;Votes&rdquo;]&lt;/p>
+</span><span class='line'>
+</span><span class='line'>&lt;h1>0&lt;/h1>
+</span><span class='line'>
+</span><span class='line'>&lt;p>data[&ldquo;Results&rdquo;][0][&ldquo;Election&rdquo;][0][&ldquo;House&rdquo;][0][&ldquo;Contests&rdquo;][0][&ldquo;Contest&rdquo;][0][&ldquo;Enrolment&rdquo;]&lt;/p>
+</span><span class='line'>
+</span><span class='line'>&lt;h1>124215&lt;/h1>
+</span><span class='line'>
+</span><span class='line'>&lt;p></span></code></pre></td></tr></table></div></figure></notextile></div></p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Classes]]></title>
@@ -641,615 +738,6 @@
 </span><span class='line'>&lt;h1>The value for 5 is 6&lt;/h1>
 </span><span class='line'>
 </span><span class='line'>&lt;p></span></code></pre></td></tr></table></div></figure></notextile></div></p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Loops]]></title>
-    <link href="http://nizhu.github.io/ruby-intro-site/blog/2013/07/28/loops/"/>
-    <updated>2013-07-28T21:09:00+10:00</updated>
-    <id>http://nizhu.github.io/ruby-intro-site/blog/2013/07/28/loops</id>
-    <content type="html"><![CDATA[<p>Like the if statements you saw 2 posts prior, there are many ways to construct loops. Not that there is no increment/decrement, <code>++/--</code>, operation in Ruby.</p>
-
-<p>There is the while loop you&rsquo;re used to</p>
-
-<p><div class='bogus-wrapper'><notextile><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>i = 0
-</span><span class='line'>while i &lt; 3 do
-</span><span class='line'>  puts i
-</span><span class='line'>  i += 1
-</span><span class='line'>end&lt;/p>
-</span><span class='line'>
-</span><span class='line'>&lt;h1>0&lt;/h1>
-</span><span class='line'>
-</span><span class='line'>&lt;h1>1&lt;/h1>
-</span><span class='line'>
-</span><span class='line'>&lt;h1>2&lt;/h1>
-</span><span class='line'>
-</span><span class='line'>&lt;p></span></code></pre></td></tr></table></div></figure></notextile></div></p>
-
-<p>While loops with the test at the end</p>
-
-<p><div class='bogus-wrapper'><notextile><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-<span class='line-number'>15</span>
-<span class='line-number'>16</span>
-<span class='line-number'>17</span>
-<span class='line-number'>18</span>
-<span class='line-number'>19</span>
-<span class='line-number'>20</span>
-<span class='line-number'>21</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>i = 0
-</span><span class='line'>begin
-</span><span class='line'>  puts i
-</span><span class='line'>  i += 1
-</span><span class='line'>end while i &lt; 3&lt;/p>
-</span><span class='line'>
-</span><span class='line'>&lt;h1>0&lt;/h1>
-</span><span class='line'>
-</span><span class='line'>&lt;h1>1&lt;/h1>
-</span><span class='line'>
-</span><span class='line'>&lt;h1>2&lt;/h1>
-</span><span class='line'>
-</span><span class='line'>&lt;p>i = 0
-</span><span class='line'>begin
-</span><span class='line'>  puts i
-</span><span class='line'>  i += 1
-</span><span class='line'>end while i &lt; 0&lt;/p>
-</span><span class='line'>
-</span><span class='line'>&lt;h1>0&lt;/h1>
-</span><span class='line'>
-</span><span class='line'>&lt;p></span></code></pre></td></tr></table></div></figure></notextile></div></p>
-
-<p>There&rsquo;s the until loops which run while the condition is false</p>
-
-<p><div class='bogus-wrapper'><notextile><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-<span class='line-number'>15</span>
-<span class='line-number'>16</span>
-<span class='line-number'>17</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>i = 0
-</span><span class='line'>until i > 2
-</span><span class='line'>  puts i
-</span><span class='line'>  i += 1
-</span><span class='line'>end&lt;/p>
-</span><span class='line'>
-</span><span class='line'>&lt;h1>0&lt;/h1>
-</span><span class='line'>
-</span><span class='line'>&lt;h1>1&lt;/h1>
-</span><span class='line'>
-</span><span class='line'>&lt;h1>2&lt;/h1>
-</span><span class='line'>
-</span><span class='line'>&lt;p>i = 0
-</span><span class='line'>begin
-</span><span class='line'>  puts i
-</span><span class='line'>  i += 1
-</span><span class='line'>end until i >= 0</span></code></pre></td></tr></table></div></figure></notextile></div></p>
-
-<p>And finally, my favourite &ndash; the for loops. If you already have a list to iterate through, great.</p>
-
-<p><div class='bogus-wrapper'><notextile><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>a = [0, 1, 2]
-</span><span class='line'>for i in a
-</span><span class='line'>  puts i
-</span><span class='line'>end&lt;/p>
-</span><span class='line'>
-</span><span class='line'>&lt;h1>0&lt;/h1>
-</span><span class='line'>
-</span><span class='line'>&lt;h1>1&lt;/h1>
-</span><span class='line'>
-</span><span class='line'>&lt;h1>2&lt;/h1>
-</span><span class='line'>
-</span><span class='line'>&lt;p></span></code></pre></td></tr></table></div></figure></notextile></div></p>
-
-<p>If not, it&rsquo;s great too</p>
-
-<p><div class='bogus-wrapper'><notextile><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-<span class='line-number'>15</span>
-<span class='line-number'>16</span>
-<span class='line-number'>17</span>
-<span class='line-number'>18</span>
-<span class='line-number'>19</span>
-<span class='line-number'>20</span>
-<span class='line-number'>21</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>for i in 0..2
-</span><span class='line'>  puts i
-</span><span class='line'>end&lt;/p>
-</span><span class='line'>
-</span><span class='line'>&lt;h1>0&lt;/h1>
-</span><span class='line'>
-</span><span class='line'>&lt;h1>1&lt;/h1>
-</span><span class='line'>
-</span><span class='line'>&lt;h1>2&lt;/h1>
-</span><span class='line'>
-</span><span class='line'>&lt;p>(0..2).each do |i|
-</span><span class='line'>  puts i
-</span><span class='line'>end&lt;/p>
-</span><span class='line'>
-</span><span class='line'>&lt;h1>0&lt;/h1>
-</span><span class='line'>
-</span><span class='line'>&lt;h1>1&lt;/h1>
-</span><span class='line'>
-</span><span class='line'>&lt;h1>2&lt;/h1>
-</span><span class='line'>
-</span><span class='line'>&lt;p></span></code></pre></td></tr></table></div></figure></notextile></div></p>
-
-<p>There&rsquo;s also 4 keywords to help you manage the control of flow <code>break</code>, <code>next</code>, <code>redo</code> and finally <code>retry</code> which I&rsquo;ll bring up in the Error Handling section. <code>break</code> exits the inner most loop</p>
-
-<p><div class='bogus-wrapper'><notextile><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-<span class='line-number'>15</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>for i in 0..2
-</span><span class='line'>  puts i
-</span><span class='line'>  if i == 1&lt;/p>
-</span><span class='line'>
-</span><span class='line'>&lt;pre>&lt;code>break
-</span><span class='line'>&lt;/code>&lt;/pre>
-</span><span class='line'>
-</span><span class='line'>&lt;p>  end
-</span><span class='line'>end&lt;/p>
-</span><span class='line'>
-</span><span class='line'>&lt;h1>0&lt;/h1>
-</span><span class='line'>
-</span><span class='line'>&lt;h1>1&lt;/h1>
-</span><span class='line'>
-</span><span class='line'>&lt;p></span></code></pre></td></tr></table></div></figure></notextile></div></p>
-
-<p>While <code>next</code> jumps to the next iteration of the loop</p>
-
-<p><div class='bogus-wrapper'><notextile><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-<span class='line-number'>15</span>
-<span class='line-number'>16</span>
-<span class='line-number'>17</span>
-<span class='line-number'>18</span>
-<span class='line-number'>19</span>
-<span class='line-number'>20</span>
-<span class='line-number'>21</span>
-<span class='line-number'>22</span>
-<span class='line-number'>23</span>
-<span class='line-number'>24</span>
-<span class='line-number'>25</span>
-<span class='line-number'>26</span>
-<span class='line-number'>27</span>
-<span class='line-number'>28</span>
-<span class='line-number'>29</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>for i in 0..2
-</span><span class='line'>  if i == 1&lt;/p>
-</span><span class='line'>
-</span><span class='line'>&lt;pre>&lt;code>next
-</span><span class='line'>&lt;/code>&lt;/pre>
-</span><span class='line'>
-</span><span class='line'>&lt;p>  end
-</span><span class='line'>  puts i
-</span><span class='line'>end&lt;/p>
-</span><span class='line'>
-</span><span class='line'>&lt;h1>0&lt;/h1>
-</span><span class='line'>
-</span><span class='line'>&lt;h1>2&lt;/h1>
-</span><span class='line'>
-</span><span class='line'>&lt;p>for i in 0..2
-</span><span class='line'>  if i == 2&lt;/p>
-</span><span class='line'>
-</span><span class='line'>&lt;pre>&lt;code>next
-</span><span class='line'>&lt;/code>&lt;/pre>
-</span><span class='line'>
-</span><span class='line'>&lt;p>  end
-</span><span class='line'>  puts i
-</span><span class='line'>end&lt;/p>
-</span><span class='line'>
-</span><span class='line'>&lt;h1>0&lt;/h1>
-</span><span class='line'>
-</span><span class='line'>&lt;h1>1&lt;/h1>
-</span><span class='line'>
-</span><span class='line'>&lt;p></span></code></pre></td></tr></table></div></figure></notextile></div></p>
-
-<p>And <code>redo</code> jumps back to the beginning of the current iteration in this loop</p>
-
-<p><div class='bogus-wrapper'><notextile><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-<span class='line-number'>15</span>
-<span class='line-number'>16</span>
-<span class='line-number'>17</span>
-<span class='line-number'>18</span>
-<span class='line-number'>19</span>
-<span class='line-number'>20</span>
-<span class='line-number'>21</span>
-<span class='line-number'>22</span>
-<span class='line-number'>23</span>
-<span class='line-number'>24</span>
-<span class='line-number'>25</span>
-<span class='line-number'>26</span>
-<span class='line-number'>27</span>
-<span class='line-number'>28</span>
-<span class='line-number'>29</span>
-<span class='line-number'>30</span>
-<span class='line-number'>31</span>
-<span class='line-number'>32</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>j = 0
-</span><span class='line'>for i in 0..2
-</span><span class='line'>  puts &ldquo;i is #{i}&rdquo;
-</span><span class='line'>  puts &ldquo;j is #{j}&rdquo;
-</span><span class='line'>  j += 1
-</span><span class='line'>  if j > 2&lt;/p>
-</span><span class='line'>
-</span><span class='line'>&lt;pre>&lt;code>break
-</span><span class='line'>&lt;/code>&lt;/pre>
-</span><span class='line'>
-</span><span class='line'>&lt;p>  end
-</span><span class='line'>  if i == 1&lt;/p>
-</span><span class='line'>
-</span><span class='line'>&lt;pre>&lt;code>redo
-</span><span class='line'>&lt;/code>&lt;/pre>
-</span><span class='line'>
-</span><span class='line'>&lt;p>  end
-</span><span class='line'>end&lt;/p>
-</span><span class='line'>
-</span><span class='line'>&lt;h1>i is 0&lt;/h1>
-</span><span class='line'>
-</span><span class='line'>&lt;h1>j is 0&lt;/h1>
-</span><span class='line'>
-</span><span class='line'>&lt;h1>i is 1&lt;/h1>
-</span><span class='line'>
-</span><span class='line'>&lt;h1>j is 1&lt;/h1>
-</span><span class='line'>
-</span><span class='line'>&lt;h1>i is 1&lt;/h1>
-</span><span class='line'>
-</span><span class='line'>&lt;h1>j is 2&lt;/h1>
-</span><span class='line'>
-</span><span class='line'>&lt;p></span></code></pre></td></tr></table></div></figure></notextile></div></p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Arrays]]></title>
-    <link href="http://nizhu.github.io/ruby-intro-site/blog/2013/07/28/arrays/"/>
-    <updated>2013-07-28T20:21:00+10:00</updated>
-    <id>http://nizhu.github.io/ruby-intro-site/blog/2013/07/28/arrays</id>
-    <content type="html"><![CDATA[<p>Arrays in Ruby are very similar to those in other dynamic programming languages. It&rsquo;s all very standard and the documentation has loads of examples anyway, so I&rsquo;ll go through only the most basic and obvious to get started.</p>
-
-<h3>Construction</h3>
-
-<p><div class='bogus-wrapper'><notextile><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-<span class='line-number'>15</span>
-<span class='line-number'>16</span>
-<span class='line-number'>17</span>
-<span class='line-number'>18</span>
-<span class='line-number'>19</span>
-<span class='line-number'>20</span>
-<span class='line-number'>21</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>[1, &ldquo;foo&rdquo;, nil, &ldquo;bar&rdquo;]&lt;/p>
-</span><span class='line'>
-</span><span class='line'>&lt;h1>[1, &ldquo;foo&rdquo;, nil, &ldquo;bar&rdquo;]&lt;/h1>
-</span><span class='line'>
-</span><span class='line'>&lt;p>Array.new&lt;/p>
-</span><span class='line'>
-</span><span class='line'>&lt;h1>[]&lt;/h1>
-</span><span class='line'>
-</span><span class='line'>&lt;p>Array.new(3, true)&lt;/p>
-</span><span class='line'>
-</span><span class='line'>&lt;h1>[true, true, true]&lt;/h1>
-</span><span class='line'>
-</span><span class='line'>&lt;p>(1..10).to_a&lt;/p>
-</span><span class='line'>
-</span><span class='line'>&lt;h1>[1, 2, 3, 4, 5, 6, 7, 8, 9, 10]&lt;/h1>
-</span><span class='line'>
-</span><span class='line'>&lt;p>(&ldquo;a7&rdquo;..&ldquo;b5&rdquo;).to_a&lt;/p>
-</span><span class='line'>
-</span><span class='line'>&lt;h1>[&ldquo;a7&rdquo;, &ldquo;a8&rdquo;, &ldquo;a9&rdquo;, &ldquo;b0&rdquo;, &ldquo;b1&rdquo;, &ldquo;b2&rdquo;, &ldquo;b3&rdquo;, &ldquo;b4&rdquo;, &ldquo;b5&rdquo;]&lt;/h1>
-</span><span class='line'>
-</span><span class='line'>&lt;p></span></code></pre></td></tr></table></div></figure></notextile></div></p>
-
-<h3>Accessing elements and array info</h3>
-
-<p><div class='bogus-wrapper'><notextile><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-<span class='line-number'>15</span>
-<span class='line-number'>16</span>
-<span class='line-number'>17</span>
-<span class='line-number'>18</span>
-<span class='line-number'>19</span>
-<span class='line-number'>20</span>
-<span class='line-number'>21</span>
-<span class='line-number'>22</span>
-<span class='line-number'>23</span>
-<span class='line-number'>24</span>
-<span class='line-number'>25</span>
-<span class='line-number'>26</span>
-<span class='line-number'>27</span>
-<span class='line-number'>28</span>
-<span class='line-number'>29</span>
-<span class='line-number'>30</span>
-<span class='line-number'>31</span>
-<span class='line-number'>32</span>
-<span class='line-number'>33</span>
-<span class='line-number'>34</span>
-<span class='line-number'>35</span>
-<span class='line-number'>36</span>
-<span class='line-number'>37</span>
-<span class='line-number'>38</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>arr = [1, 2, 3, 4, 5, 6]
-</span><span class='line'>arr&lt;a href="http://stackoverflow.com/questions/5018633/what-is-the-difference-between-print-and-puts">2&lt;/a>&lt;/p>
-</span><span class='line'>
-</span><span class='line'>&lt;h1>3&lt;/h1>
-</span><span class='line'>
-</span><span class='line'>&lt;p>arr[100]&lt;/p>
-</span><span class='line'>
-</span><span class='line'>&lt;h1>nil&lt;/h1>
-</span><span class='line'>
-</span><span class='line'>&lt;p>arr[-3]&lt;/p>
-</span><span class='line'>
-</span><span class='line'>&lt;h1>4&lt;/h1>
-</span><span class='line'>
-</span><span class='line'>&lt;p>arr[2, 3]&lt;/p>
-</span><span class='line'>
-</span><span class='line'>&lt;h1>[3, 4, 5]&lt;/h1>
-</span><span class='line'>
-</span><span class='line'>&lt;p>arr[1..4]&lt;/p>
-</span><span class='line'>
-</span><span class='line'>&lt;h1>[2, 3, 4, 5]&lt;/h1>
-</span><span class='line'>
-</span><span class='line'>&lt;p>arr.at(0)&lt;/p>
-</span><span class='line'>
-</span><span class='line'>&lt;h1>1&lt;/h1>
-</span><span class='line'>
-</span><span class='line'>&lt;p>arr.length&lt;/p>
-</span><span class='line'>
-</span><span class='line'>&lt;h1>6&lt;/h1>
-</span><span class='line'>
-</span><span class='line'>&lt;p>arr.empty?&lt;/p>
-</span><span class='line'>
-</span><span class='line'>&lt;h1>false&lt;/h1>
-</span><span class='line'>
-</span><span class='line'>&lt;p>arr.include?(7)&lt;/p>
-</span><span class='line'>
-</span><span class='line'>&lt;h1>false&lt;/h1>
-</span><span class='line'>
-</span><span class='line'>&lt;p></span></code></pre></td></tr></table></div></figure></notextile></div></p>
-
-<h3>Adding to the array</h3>
-
-<p><div class='bogus-wrapper'><notextile><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-<span class='line-number'>15</span>
-<span class='line-number'>16</span>
-<span class='line-number'>17</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>arr.push(7)&lt;/p>
-</span><span class='line'>
-</span><span class='line'>&lt;h1>[1, 2, 3, 4, 5, 6, 7]&lt;/h1>
-</span><span class='line'>
-</span><span class='line'>&lt;p>arr &lt;&lt; 8&lt;/p>
-</span><span class='line'>
-</span><span class='line'>&lt;h1>[1, 2, 3, 4, 5, 6, 7, 8]&lt;/h1>
-</span><span class='line'>
-</span><span class='line'>&lt;p>arr.unshift(0)&lt;/p>
-</span><span class='line'>
-</span><span class='line'>&lt;h1>[0, 1, 2, 3, 4, 5, 6, 7]&lt;/h1>
-</span><span class='line'>
-</span><span class='line'>&lt;p>arr.insert(3, 2.5)&lt;/p>
-</span><span class='line'>
-</span><span class='line'>&lt;h1>[0, 1, 2, 2.5, 3, 4, 5, 6, 7]&lt;/h1>
-</span><span class='line'>
-</span><span class='line'>&lt;p></span></code></pre></td></tr></table></div></figure></notextile></div></p>
-
-<h3>Removing from Array</h3>
-
-<p><div class='bogus-wrapper'><notextile><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-<span class='line-number'>15</span>
-<span class='line-number'>16</span>
-<span class='line-number'>17</span>
-<span class='line-number'>18</span>
-<span class='line-number'>19</span>
-<span class='line-number'>20</span>
-<span class='line-number'>21</span>
-<span class='line-number'>22</span>
-<span class='line-number'>23</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>arr&lt;/p>
-</span><span class='line'>
-</span><span class='line'>&lt;h1>[0, 1, 2, 2.5, 3, 4, 5, 6, 7]&lt;/h1>
-</span><span class='line'>
-</span><span class='line'>&lt;p>arr.pop&lt;/p>
-</span><span class='line'>
-</span><span class='line'>&lt;h1>7&lt;/h1>
-</span><span class='line'>
-</span><span class='line'>&lt;h1>arr = [0, 1, 2, 2.5, 3, 4, 5, 6]&lt;/h1>
-</span><span class='line'>
-</span><span class='line'>&lt;p>arr.shift&lt;/p>
-</span><span class='line'>
-</span><span class='line'>&lt;h1>0&lt;/h1>
-</span><span class='line'>
-</span><span class='line'>&lt;h1>arr = [1, 2, 2.5, 3, 4, 5, 6]&lt;/h1>
-</span><span class='line'>
-</span><span class='line'>&lt;p>arr.delete(3)&lt;/p>
-</span><span class='line'>
-</span><span class='line'>&lt;h1>2.5&lt;/h1>
-</span><span class='line'>
-</span><span class='line'>&lt;h1>arr = [1, 2. 3, 4, 5, 6]&lt;/h1>
-</span><span class='line'>
-</span><span class='line'>&lt;p></span></code></pre></td></tr></table></div></figure></notextile></div></p>
-
-<h2>Print vs Puts</h2>
-
-<p>Both these functions can be used to output text. To put it simply, puts adds a newline character to the end of each argument and outputs nil as an invisible character rather than a String. Refer to the link at the bottom for more discussion.</p>
-
-<p><div class='bogus-wrapper'><notextile><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>print [nil, 1, 2]&lt;/p>
-</span><span class='line'>
-</span><span class='line'>&lt;h1>[nil, 1, 2]=> nil&lt;/h1>
-</span><span class='line'>
-</span><span class='line'>&lt;p>puts [nil, 1, 2]&lt;/p>
-</span><span class='line'>
-</span><span class='line'>&lt;h1>&lt;/h1>
-</span><span class='line'>
-</span><span class='line'>&lt;h1>1&lt;/h1>
-</span><span class='line'>
-</span><span class='line'>&lt;h1>2&lt;/h1>
-</span><span class='line'>
-</span><span class='line'>&lt;p></span></code></pre></td></tr></table></div></figure></notextile></div></p>
-
-<ol>
-<li><a href="http://ruby-doc.org/core-2.0/Array.html">Ruby-Docs Array</a></li>
-<li><a href="http://stackoverflow.com/questions/5018633/what-is-the-difference-between-print-and-puts">Stack Overflow &ndash; What is the difference between print and puts</a></li>
-</ol>
-
 ]]></content>
   </entry>
   

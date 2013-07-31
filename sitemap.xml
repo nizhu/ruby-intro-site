@@ -47,12 +47,24 @@
         <lastmod>2013-07-31T20:17:13+10:00</lastmod>
     </url>
     <url>
+        <loc>
+            http://nizhu.github.io/ruby-intro-site/blog/2013/07/31/parsing-xml-with-xmlsimple/
+        </loc>
+        <lastmod>2013-07-31T21:42:55+10:00</lastmod>
+    </url>
+    <url>
+        <loc>
+            http://nizhu.github.io/ruby-intro-site/blog/2013/07/31/consuming-json-resources-through-http/
+        </loc>
+        <lastmod>2013-07-31T21:44:38+10:00</lastmod>
+    </url>
+    <url>
         <loc>http://nizhu.github.io/ruby-intro-site/blog/archives/</loc>
-        <lastmod>2013-07-31T20:17:13+10:00</lastmod>
+        <lastmod>2013-07-31T21:44:38+10:00</lastmod>
     </url>
     <url>
         <loc>http://nizhu.github.io/ruby-intro-site/</loc>
-        <lastmod>2013-07-31T20:17:13+10:00</lastmod>
+        <lastmod>2013-07-31T21:44:38+10:00</lastmod>
     </url>
     <url>
         <loc>http://nizhu.github.io/ruby-intro-site/robots.txt</loc>
