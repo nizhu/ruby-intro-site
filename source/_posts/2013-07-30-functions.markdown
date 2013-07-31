@@ -71,6 +71,44 @@ puts add_print(1,2)
 
 Because ```print "add successful"``` returns ```nil```, ```add_print``` returns nil.
 
+# Error Handling
+
+{% codeblock %}
+def do_something
+  raise "Failed to do something"
+end
+
+raise_exception
+# RuntimeError: Failed to do something
+
+begin
+  do_something
+  puts "Done something"
+rescue
+  puts "Rescuing from exception"
+end
+# Rescuing from exception
+{% endcodeblock %}
+
+```retry``` will return the cursor to start of the begin block it belongs to
+
+{% codeblock %}
+i = 0
+begin
+  puts "#{i}"
+  i += 1
+  if i < 2
+    do_something
+  end
+  puts "All done!"
+rescue
+  retry
+end
+# 0
+# 1
+# All done!
+{% endcodeblock %}
+
 Also relevant later on, [Closures][1] and [Metaprogramming][2]
 
   [1]: http://innig.net/software/ruby/closures-in-ruby
