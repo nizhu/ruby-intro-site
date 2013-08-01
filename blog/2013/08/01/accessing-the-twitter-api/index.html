@@ -5,11 +5,11 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>Parsing XML with XMLSimple - Ruby Intro</title>
+  <title>Accessing Twitter's API - Ruby Intro</title>
   <meta name="author" content="Nick Zhu">
 
   
-  <meta name="description" content="For the purpose of this exercise, I&rsquo;ve downloaded and extracted a zip file from the AEC&rsquo;s site ftp://results.aec.gov.au/15508/Detailed/ &hellip;">
+  <meta name="description" content="Since mid June this year, the Twitter has forced users to use OAuth to authenticate and access its API. You can no longer access its data in a &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -18,7 +18,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://nizhu.github.io/ruby-intro-site/blog/2013/07/31/parsing-xml-with-xmlsimple">
+  <link rel="canonical" href="http://nizhu.github.io/ruby-intro-site/blog/2013/08/01/accessing-the-twitter-api">
   <link href="/ruby-intro-site/favicon.png" rel="icon">
   <link href="/ruby-intro-site/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <link href="/ruby-intro-site/atom.xml" rel="alternate" title="Ruby Intro" type="application/atom+xml">
@@ -68,7 +68,7 @@
   
   <header>
     
-      <h1 class="entry-title">Parsing XML With XMLSimple</h1>
+      <h1 class="entry-title">Accessing Twitter's API</h1>
     
     
       <p class="meta">
@@ -84,36 +84,38 @@
   
 
 
-<time datetime="2013-07-31T20:19:00+10:00" pubdate data-updated="true">Jul 31<span>st</span>, 2013</time>
+<time datetime="2013-08-01T19:25:00+10:00" pubdate data-updated="true">Aug 1<span>st</span>, 2013</time>
         
       </p>
     
   </header>
 
 
-<div class="entry-content"><p>For the purpose of this exercise, I&rsquo;ve downloaded and extracted a zip file from the AEC&rsquo;s site <code>ftp://results.aec.gov.au/15508/Detailed/Light/aec-mediafeed-Detailed-Light-15508-20100817220150.zip</code> Ruby has an XML parser called REXML in its standard library, but it&rsquo;s known to be very slow &ndash; <a href="http://www.rubyinside.com/ruby-xml-performance-benchmarks-1641.html">Some 50 times slower than Nokogiri</a>. I would love to demonstrate Nokogiri, but unfortunately it&rsquo;s more complex to use than XmlSimple. XmlSimple parses the data into a native Ruby hash whereas Nokogiri has its own set of classes.</p>
+<div class="entry-content"><p>Since mid June this year, the Twitter has forced users to use OAuth to authenticate and access its API. You can no longer access its data in a trivial way like the GitHub example before. You must get 4 keys from <a href="https://dev.twitter.com/apps">Twitter&rsquo;s developer page</a>: <code>Consumer key</code>, <code>Consumer secret</code>, <code>Access token</code> and <code>Access secret</code> &ndash; don&rsquo;t need to know what they mean yet, but the 2 secret keys should not be shared. OAuth is a real pain. These 4 keys won&rsquo;t give you access. They&rsquo;ll let you get 3 more one use keys which you can then use to access the API.</p>
 
-<h1>Third Party libraries</h1>
-
-<p>Third party libraries in Ruby are referred to as gems. Gem is an executable that comes with Ruby. Tell it to install, along with the name of the gem and it will download and install the gem that you want as well as all its dependencies.</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>gem install xml-simple</span></code></pre></td></tr></table></div></figure>
-
-
-<h1>Let&rsquo;s Parse!</h1>
+<p>Fortunately for you as a Ruby user, there are two libraries to make your life easier. <a href="https://github.com/sferik/twitter">Twitter</a> is a conveniently named library to access the standard Twitter API (it is not developed by Twitter Inc) while the other is <a href="https://github.com/tweetstream/tweetstream">Tweetstream</a> is designed to use Twitter&rsquo;s streaming API.</p>
 
 <figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
-<span class='line-number'>3</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>require 'xmlsimple'
-</span><span class='line'>xml = File.read 'data/xml/aec-mediafeed-results-detailed-light-15508.xml'
-</span><span class='line'>data = XmlSimple.xml_in xml</span></code></pre></td></tr></table></div></figure>
+</pre></td><td class='code'><pre><code class=''><span class='line'>gem install twitter
+</span><span class='line'>gem install tweetstream</span></code></pre></td></tr></table></div></figure>
 
 
-<p>Parsing XML takes a little while, and XmlSimple isn&rsquo;t the most efficient of parsers. If speed is a concern at all, you should definitely look into <a href="http://nokogiri.org/">Nokogiri</a>.</p>
+<h2>Twitter Gem</h2>
 
-<p>Once it&rsquo;s done we can see what&rsquo;s in there one step at a time.</p>
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>git checkout twitter</span></code></pre></td></tr></table></div></figure>
+
+
+<p>I&rsquo;ve made a file out of the gem&rsquo;s authentication configuration code taken from its documentation. Just replace the strings with the your Twitter developer keys in twitter_config.rb. There are some usage examples <a href="https://github.com/sferik/twitter#usage-examples">here</a>, but there&rsquo;s plenty more functionality so do refer to the <a href="http://rdoc.info/gems/twitter">documentation</a>.</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>require 'twitter'
+</span><span class='line'>load 'twitter_config.rb'</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Lets find the last person to have proposed to Justin Bieber</p>
 
 <figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
@@ -122,41 +124,23 @@
 <span class='line-number'>5</span>
 <span class='line-number'>6</span>
 <span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-<span class='line-number'>15</span>
-<span class='line-number'>16</span>
-<span class='line-number'>17</span>
-<span class='line-number'>18</span>
-<span class='line-number'>19</span>
-<span class='line-number'>20</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>data.keys
-</span><span class='line'># ["Id", "Created", "SchemaVersion", "EmlVersion", "xmlns", "xmlns:eml", "xmlns:ds", "xmlns:xal", "xmlns:xnl", "xmlns:ts", "xmlns:xs", "xs:schemaLocation", "ManagingAuthority", "MessageLanguage", "MessageGenerator", "Cycle", "Results"]
+</pre></td><td class='code'><pre><code class=''><span class='line'>result = Twitter.search("to:justinbieber marry me", :count => 1, :result_type => "recent")
 </span><span class='line'>
-</span><span class='line'>data.["Results"].keys
-</span><span class='line'># NoMethodError
+</span><span class='line'>result.class
+</span><span class='line'># Twitter::SearchResults
 </span><span class='line'>
-</span><span class='line'>data.["Results"].class
-</span><span class='line'># Array
-</span><span class='line'>
-</span><span class='line'>data.["Results"][0].class
-</span><span class='line'># Hash
-</span><span class='line'>
-</span><span class='line'>data["Results"][0]["Election"][0]["House"][0]["Contests"][0]["Contest"][0].keys
-</span><span class='line'># ["Projected", "ContestIdentifier", "Enrolment", "FirstPreferences", "TwoCandidatePreferred", "TwoPartyPreferred", "PollingPlaces"]
-</span><span class='line'>
-</span><span class='line'>data["Results"][0]["Election"][0]["House"][0]["Contests"][0]["Contest"][0]["TwoPartyPreferred"][0]["Coalition"][0]["Votes"]
-</span><span class='line'># 0
-</span><span class='line'>
-</span><span class='line'>data["Results"][0]["Election"][0]["House"][0]["Contests"][0]["Contest"][0]["Enrolment"]
-</span><span class='line'># 124215</span></code></pre></td></tr></table></div></figure>
+</span><span class='line'>result.statuses[0].user.screen_name
+</span><span class='line'># 4ever_beliebing</span></code></pre></td></tr></table></div></figure>
 
 
+<ol>
+<li><a href="https://github.com/sferik/twitter">RubyGem &ndash; Twitter</a></li>
+<li><a href="https://github.com/tweetstream/tweetstream">RubyGem &ndash; Tweetstream</a></li>
+<li><a href="https://dev.twitter.com/docs/auth">Twitter API Authentication Documentation</a></li>
+<li><a href="https://dev.twitter.com/docs/api/1.1">Twitter API</a></li>
+<li><a href="https://dev.twitter.com/apps">Twitter Developer Apps</a></li>
+<li><a href="http://rdoc.info/gems/twitter">RDoc Twitter</a></li>
+</ol>
 
 </div>
 
@@ -180,7 +164,7 @@
   
 
 
-<time datetime="2013-07-31T20:19:00+10:00" pubdate data-updated="true">Jul 31<span>st</span>, 2013</time>
+<time datetime="2013-08-01T19:25:00+10:00" pubdate data-updated="true">Aug 1<span>st</span>, 2013</time>
       
 
 <span class="categories">
@@ -194,7 +178,7 @@
     
       <div class="sharing">
   
-  <a href="/ruby-intro-site//twitter.com/share" class="twitter-share-button" data-url="http://nizhu.github.io/ruby-intro-site/blog/2013/07/31/parsing-xml-with-xmlsimple/" data-via="" data-counturl="http://nizhu.github.io/ruby-intro-site/blog/2013/07/31/parsing-xml-with-xmlsimple/" >Tweet</a>
+  <a href="/ruby-intro-site//twitter.com/share" class="twitter-share-button" data-url="http://nizhu.github.io/ruby-intro-site/blog/2013/08/01/accessing-the-twitter-api/" data-via="" data-counturl="http://nizhu.github.io/ruby-intro-site/blog/2013/08/01/accessing-the-twitter-api/" >Tweet</a>
   
   
   
@@ -203,10 +187,8 @@
     
     <p class="meta">
       
-        <a class="basic-alignment left" href="/ruby-intro-site/blog/2013/07/31/classes/" title="Previous Post: Classes">&laquo; Classes</a>
+        <a class="basic-alignment left" href="/ruby-intro-site/blog/2013/07/31/consuming-json-rest-resource-through-http/" title="Previous Post: Consuming JSON REST resource through HTTP">&laquo; Consuming JSON REST resource through HTTP</a>
       
-      
-        <a class="basic-alignment right" href="/ruby-intro-site/blog/2013/07/31/consuming-json-rest-resource-through-http/" title="Next Post: Consuming JSON REST resource through HTTP">Consuming JSON REST resource through HTTP &raquo;</a>
       
     </p>
   </footer>

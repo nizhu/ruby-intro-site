@@ -4,7 +4,7 @@
   <title><![CDATA[Category: SENG2021 | Ruby Intro]]></title>
   <link href="http://nizhu.github.io/ruby-intro-site/blog/categories/seng2021/atom.xml" rel="self"/>
   <link href="http://nizhu.github.io/ruby-intro-site/"/>
-  <updated>2013-07-31T22:35:39+10:00</updated>
+  <updated>2013-08-01T23:05:27+10:00</updated>
   <id>http://nizhu.github.io/ruby-intro-site/</id>
   <author>
     <name><![CDATA[Nick Zhu]]></name>
@@ -14,11 +14,55 @@
 
   
   <entry>
-    <title type="html"><![CDATA[Consuming JSON resources through HTTP]]></title>
-    <link href="http://nizhu.github.io/ruby-intro-site/blog/2013/07/31/consuming-json-resources-through-http/"/>
-    <updated>2013-07-31T21:44:00+10:00</updated>
-    <id>http://nizhu.github.io/ruby-intro-site/blog/2013/07/31/consuming-json-resources-through-http</id>
-    <content type="html"><![CDATA[<p>I will be demonstrating</p>
+    <title type="html"><![CDATA[Accessing Twitter's API]]></title>
+    <link href="http://nizhu.github.io/ruby-intro-site/blog/2013/08/01/accessing-the-twitter-api/"/>
+    <updated>2013-08-01T19:25:00+10:00</updated>
+    <id>http://nizhu.github.io/ruby-intro-site/blog/2013/08/01/accessing-the-twitter-api</id>
+    <content type="html"><![CDATA[<p>Since mid June this year, the Twitter has forced users to use OAuth to authenticate and access its API. You can no longer access its data in a trivial way like the GitHub example before. You must get 4 keys from <a href="https://dev.twitter.com/apps">Twitter&rsquo;s developer page</a>: <code>Consumer key</code>, <code>Consumer secret</code>, <code>Access token</code> and <code>Access secret</code> &ndash; don&rsquo;t need to know what they mean yet, but the 2 secret keys should not be shared. OAuth is a real pain. These 4 keys won&rsquo;t give you access. They&rsquo;ll let you get 3 more one use keys which you can then use to access the API.</p>
+
+<p>Fortunately for you as a Ruby user, there are two libraries to make your life easier. <a href="https://github.com/sferik/twitter">Twitter</a> is a conveniently named library to access the standard Twitter API (it is not developed by Twitter Inc) while the other is <a href="https://github.com/tweetstream/tweetstream">Tweetstream</a> is designed to use Twitter&rsquo;s streaming API.</p>
+
+<p><div class='bogus-wrapper'><notextile><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>gem install twitter
+</span><span class='line'>gem install tweetstream</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+
+<h2>Twitter Gem</h2>
+
+<p><div class='bogus-wrapper'><notextile><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>git checkout twitter</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+
+<p>I&rsquo;ve made a file out of the gem&rsquo;s authentication configuration code taken from its documentation. Just replace the strings with the your Twitter developer keys in twitter_config.rb. There are some usage examples <a href="https://github.com/sferik/twitter#usage-examples">here</a>, but there&rsquo;s plenty more functionality so do refer to the <a href="http://rdoc.info/gems/twitter">documentation</a>.</p>
+
+<p><div class='bogus-wrapper'><notextile><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>require &lsquo;twitter&rsquo;
+</span><span class='line'>load &lsquo;twitter_config.rb&rsquo;</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+
+<p>Lets find the last person to have proposed to Justin Bieber</p>
+
+<p><div class='bogus-wrapper'><notextile><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>result = Twitter.search(&ldquo;to:justinbieber marry me&rdquo;, :count => 1, :result_type => &ldquo;recent&rdquo;)&lt;/p>
+</span><span class='line'>
+</span><span class='line'>&lt;p>result.class&lt;/p>
+</span><span class='line'>
+</span><span class='line'>&lt;h1>Twitter::SearchResults&lt;/h1>
+</span><span class='line'>
+</span><span class='line'>&lt;p>result.statuses[0].user.screen_name&lt;/p>
+</span><span class='line'>
+</span><span class='line'>&lt;h1>4ever_beliebing&lt;/h1>
+</span><span class='line'>
+</span><span class='line'>&lt;p></span></code></pre></td></tr></table></div></figure></notextile></div></p>
 
 <ol>
 <li><a href="https://github.com/sferik/twitter">RubyGem &ndash; Twitter</a></li>
@@ -26,6 +70,125 @@
 <li><a href="https://dev.twitter.com/docs/auth">Twitter API Authentication Documentation</a></li>
 <li><a href="https://dev.twitter.com/docs/api/1.1">Twitter API</a></li>
 <li><a href="https://dev.twitter.com/apps">Twitter Developer Apps</a></li>
+<li><a href="http://rdoc.info/gems/twitter">RDoc Twitter</a></li>
+</ol>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Consuming JSON REST resource through HTTP]]></title>
+    <link href="http://nizhu.github.io/ruby-intro-site/blog/2013/07/31/consuming-json-rest-resource-through-http/"/>
+    <updated>2013-07-31T21:44:00+10:00</updated>
+    <id>http://nizhu.github.io/ruby-intro-site/blog/2013/07/31/consuming-json-rest-resource-through-http</id>
+    <content type="html"><![CDATA[<p>As you saw in the previous post, XML is an overly verbose format so in the last few years, what we call JSON (JavaScript Object Notation) has come to dominate web communication. Ideally I&rsquo;d be demonstrating this with Twitter&rsquo;s API since you&rsquo;re likely to use it for this assignment, but since mid June this year, the Twitter API requires OAuth to access. I will be address this in the next post.</p>
+
+<p>If you&rsquo;ve been writing Javascript, you love JSON. If you haven&rsquo;t, you soon will. Note that spaces, tabs and line breaks are all optional. I&rsquo;ve just added those to make it easier to read.</p>
+
+<p><div class='bogus-wrapper'><notextile><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>{
+</span><span class='line'>  &ldquo;id&rdquo;: 32,
+</span><span class='line'>  &ldquo;name&rdquo;: &ldquo;Mother Duck&rdquo;,
+</span><span class='line'>  &ldquo;children&rdquo;:[&lt;/p>
+</span><span class='line'>
+</span><span class='line'>&lt;pre>&lt;code>{
+</span><span class='line'>  "id": 12345,
+</span><span class='line'>  "name": "Claire"
+</span><span class='line'>},
+</span><span class='line'>{
+</span><span class='line'>  "id": 12372,
+</span><span class='line'>  "name": "Daniel"
+</span><span class='line'>}
+</span><span class='line'>&lt;/code>&lt;/pre>
+</span><span class='line'>
+</span><span class='line'>&lt;p>  ],
+</span><span class='line'>  &ldquo;isAlive&rdquo;: true
+</span><span class='line'>}</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+
+<p>That&rsquo;s all there is to JSON, very simple, very clear. <code>{}</code> encapsulates object/map/hash, while <code>[]</code> encapsulates an array, both of which can be nested infinitely. Otherwise only strings, numbers, booleans and null are supported values.</p>
+
+<h2>Github API</h2>
+
+<p>GitHub is an online source repository, extremely popular with open source projects. You won&rsquo;t be using any data from it for your projects, but it&rsquo;s the first public JSON API that came across my mind. I&rsquo;m sure you&rsquo;ll be using it somewhere in your career though. For this demonstration, I&rsquo;ll just be using the most simple of calls, retrieving the details of the GitHub user octocat. The documentation for GitHub&rsquo;s API is available <a href="http://developer.github.com/v3/">here</a>.</p>
+
+<p>The easiest way to access this data, is to simply open a web browser and go to <code>https://api.github.com/users/octocat</code>. Next step further is accessing it through cURL.. <code>curl https://api.github.com/users/octocat</code>. Let&rsquo;s do it in Ruby.</p>
+
+<h2>Retrieving with Net/HTTP and parsing with json</h2>
+
+<p><a href="http://ruby-doc.org/stdlib-2.0/libdoc/net/http/rdoc/Net/HTTP.html">Net/HTTP</a> is a standard Ruby library, and it&rsquo;ll be your interface to the internet. JSON is a simple parser, but is not standard. As before, install the gem with <code>gem install json</code></p>
+
+<p><div class='bogus-wrapper'><notextile><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>require &lsquo;net/http&rsquo;
+</span><span class='line'>require &lsquo;json&rsquo;&lt;/p>
+</span><span class='line'>
+</span><span class='line'>&lt;p>uri = URI(&lsquo;&lt;a href="https://api.github.com/users/octocat">https://api.github.com/users/octocat&lt;/a>&rsquo;)
+</span><span class='line'>response = Net::HTTP.get uri
+</span><span class='line'>octocat = JSON.parse response&lt;/p>
+</span><span class='line'>
+</span><span class='line'>&lt;p>octocat.keys&lt;/p>
+</span><span class='line'>
+</span><span class='line'>&lt;h1>[&ldquo;login&rdquo;, &ldquo;id&rdquo;, &ldquo;avatar_url&rdquo;, &ldquo;gravatar_id&rdquo;, &ldquo;url&rdquo;, &ldquo;html_url&rdquo;, &ldquo;followers_url&rdquo;, &ldquo;following_url&rdquo;, &ldquo;gists_url&rdquo;, &ldquo;starred_url&rdquo;, &ldquo;subscriptions_url&rdquo;, &ldquo;organizations_url&rdquo;, &ldquo;repos_url&rdquo;, &ldquo;events_url&rdquo;, &ldquo;received_events_url&rdquo;, &ldquo;type&rdquo;, &ldquo;name&rdquo;, &ldquo;company&rdquo;, &ldquo;blog&rdquo;, &ldquo;location&rdquo;, &ldquo;email&rdquo;, &ldquo;hireable&rdquo;, &ldquo;bio&rdquo;, &ldquo;public_repos&rdquo;, &ldquo;followers&rdquo;, &ldquo;following&rdquo;, &ldquo;created_at&rdquo;, &ldquo;updated_at&rdquo;, &ldquo;public_gists&rdquo;]&lt;/h1>
+</span><span class='line'>
+</span><span class='line'>&lt;p>octocat[&ldquo;followers&rdquo;]&lt;/p>
+</span><span class='line'>
+</span><span class='line'>&lt;h1>398&lt;/h1>
+</span><span class='line'>
+</span><span class='line'>&lt;p>octocat[&ldquo;public_repos&rdquo;]&lt;/p>
+</span><span class='line'>
+</span><span class='line'>&lt;h1>3&lt;/h1>
+</span><span class='line'>
+</span><span class='line'>&lt;p>octocat[&ldquo;hireable&rdquo;]&lt;/p>
+</span><span class='line'>
+</span><span class='line'>&lt;h1>false&lt;/h1>
+</span><span class='line'>
+</span><span class='line'>&lt;p></span></code></pre></td></tr></table></div></figure></notextile></div></p>
+
+<p>I had some issues here with openssl on the Mac, but the update instructions with Homebrew found <a href="http://railsapps.github.io/openssl-certificate-verify-failed.html">here</a> worked perfectly.</p>
+
+<ol>
+<li><a href="http://json.org/example.html">JSON Examples</a></li>
+<li><a href="http://ruby-doc.org/stdlib-2.0/libdoc/net/http/rdoc/Net/HTTP.html">Ruby Net/HTTP</a></li>
+<li><a href="http://flori.github.io/json/doc/index.html">Rubygem json</a></li>
 </ol>
 
 ]]></content>
@@ -494,259 +657,6 @@
 </span><span class='line'>&lt;p></span></code></pre></td></tr></table></div></figure></notextile></div></p>
 
 <p>Also relevant later on, <a href="http://innig.net/software/ruby/closures-in-ruby">Closures</a> and <a href="https://rubymonk.com/learning/books/2-metaprogramming-ruby/chapters/32-introduction-to-metaprogramming/lessons/75-being-meta">Metaprogramming</a></p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Hash &amp; Symbols]]></title>
-    <link href="http://nizhu.github.io/ruby-intro-site/blog/2013/07/29/hash-and-symbols/"/>
-    <updated>2013-07-29T22:46:00+10:00</updated>
-    <id>http://nizhu.github.io/ruby-intro-site/blog/2013/07/29/hash-and-symbols</id>
-    <content type="html"><![CDATA[<p>Maps in the data structure sense is referred to in Ruby as Hashes. Map in Ruby is used in its functional programming definition.</p>
-
-<h3>Construction</h3>
-
-<p><div class='bogus-wrapper'><notextile><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>a = { &ldquo;a&rdquo; => &ldquo;b&rdquo;, 3 => &ldquo;d&rdquo; }&lt;/p>
-</span><span class='line'>
-</span><span class='line'>&lt;h1>{&ldquo;a&rdquo;=>&ldquo;b&rdquo;, 3=>&ldquo;d&rdquo;}&lt;/h1>
-</span><span class='line'>
-</span><span class='line'>&lt;p>b = Hash(&ldquo;a&rdquo; => &ldquo;b&rdquo;, 3 => &ldquo;d&rdquo;)&lt;/p>
-</span><span class='line'>
-</span><span class='line'>&lt;h1>{&ldquo;a&rdquo;=>&ldquo;b&rdquo;, 3=>&ldquo;d&rdquo;}&lt;/h1>
-</span><span class='line'>
-</span><span class='line'>&lt;p>c = {}
-</span><span class='line'>d = Hash.new&lt;/p>
-</span><span class='line'>
-</span><span class='line'>&lt;p>e = Hash.new(0)</span></code></pre></td></tr></table></div></figure></notextile></div></p>
-
-<h3>Testing for Equality</h3>
-
-<p><div class='bogus-wrapper'><notextile><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-<span class='line-number'>15</span>
-<span class='line-number'>16</span>
-<span class='line-number'>17</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>a==b&lt;/p>
-</span><span class='line'>
-</span><span class='line'>&lt;h1>true&lt;/h1>
-</span><span class='line'>
-</span><span class='line'>&lt;p>a.equal? b&lt;/p>
-</span><span class='line'>
-</span><span class='line'>&lt;h1>false&lt;/h1>
-</span><span class='line'>
-</span><span class='line'>&lt;p>c==d&lt;/p>
-</span><span class='line'>
-</span><span class='line'>&lt;h1>true&lt;/h1>
-</span><span class='line'>
-</span><span class='line'>&lt;p>c.equal? d&lt;/p>
-</span><span class='line'>
-</span><span class='line'>&lt;h1>false&lt;/h1>
-</span><span class='line'>
-</span><span class='line'>&lt;p></span></code></pre></td></tr></table></div></figure></notextile></div></p>
-
-<h3>Retrieving from Hash</h3>
-
-<p><div class='bogus-wrapper'><notextile><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-<span class='line-number'>15</span>
-<span class='line-number'>16</span>
-<span class='line-number'>17</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>a[&ldquo;a&rdquo;]&lt;/p>
-</span><span class='line'>
-</span><span class='line'>&lt;h1>&ldquo;b&rdquo;&lt;/h1>
-</span><span class='line'>
-</span><span class='line'>&lt;p>a[3]&lt;/p>
-</span><span class='line'>
-</span><span class='line'>&lt;h1>&ldquo;d&rdquo;&lt;/h1>
-</span><span class='line'>
-</span><span class='line'>&lt;p>a[4]&lt;/p>
-</span><span class='line'>
-</span><span class='line'>&lt;h1>nil&lt;/h1>
-</span><span class='line'>
-</span><span class='line'>&lt;p>e[4]&lt;/p>
-</span><span class='line'>
-</span><span class='line'>&lt;h1>0&lt;/h1>
-</span><span class='line'>
-</span><span class='line'>&lt;p></span></code></pre></td></tr></table></div></figure></notextile></div></p>
-
-<h3>Adding values to the Hash</h3>
-
-<p><div class='bogus-wrapper'><notextile><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>a[5] = 6
-</span><span class='line'>puts a&lt;/p>
-</span><span class='line'>
-</span><span class='line'>&lt;h1>{&ldquo;a&rdquo;=>&ldquo;b&rdquo;, 3=>&ldquo;d&rdquo;, 5=>6}&lt;/h1>
-</span><span class='line'>
-</span><span class='line'>&lt;p></span></code></pre></td></tr></table></div></figure></notextile></div></p>
-
-<h3>Other useful functions</h3>
-
-<p><div class='bogus-wrapper'><notextile><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-<span class='line-number'>15</span>
-<span class='line-number'>16</span>
-<span class='line-number'>17</span>
-<span class='line-number'>18</span>
-<span class='line-number'>19</span>
-<span class='line-number'>20</span>
-<span class='line-number'>21</span>
-<span class='line-number'>22</span>
-<span class='line-number'>23</span>
-<span class='line-number'>24</span>
-<span class='line-number'>25</span>
-<span class='line-number'>26</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>b.clear
-</span><span class='line'>puts b&lt;/p>
-</span><span class='line'>
-</span><span class='line'>&lt;h1>{}&lt;/h1>
-</span><span class='line'>
-</span><span class='line'>&lt;p>a.empty?&lt;/p>
-</span><span class='line'>
-</span><span class='line'>&lt;h1>false&lt;/h1>
-</span><span class='line'>
-</span><span class='line'>&lt;p>b.empty?&lt;/p>
-</span><span class='line'>
-</span><span class='line'>&lt;h1>true&lt;/h1>
-</span><span class='line'>
-</span><span class='line'>&lt;p>a.length&lt;/p>
-</span><span class='line'>
-</span><span class='line'>&lt;h1>3&lt;/h1>
-</span><span class='line'>
-</span><span class='line'>&lt;p>a.keys&lt;/p>
-</span><span class='line'>
-</span><span class='line'>&lt;h1>[&ldquo;a&rdquo;, 3, 5]&lt;/h1>
-</span><span class='line'>
-</span><span class='line'>&lt;p>a.values&lt;/p>
-</span><span class='line'>
-</span><span class='line'>&lt;h1>[&ldquo;b&rdquo;, &ldquo;d&rdquo;, 6]&lt;/h1>
-</span><span class='line'>
-</span><span class='line'>&lt;p></span></code></pre></td></tr></table></div></figure></notextile></div></p>
-
-<h3>Iterating through the hash</h3>
-
-<p><div class='bogus-wrapper'><notextile><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-<span class='line-number'>15</span>
-<span class='line-number'>16</span>
-<span class='line-number'>17</span>
-<span class='line-number'>18</span>
-<span class='line-number'>19</span>
-<span class='line-number'>20</span>
-<span class='line-number'>21</span>
-<span class='line-number'>22</span>
-<span class='line-number'>23</span>
-<span class='line-number'>24</span>
-<span class='line-number'>25</span>
-<span class='line-number'>26</span>
-<span class='line-number'>27</span>
-<span class='line-number'>28</span>
-<span class='line-number'>29</span>
-<span class='line-number'>30</span>
-<span class='line-number'>31</span>
-<span class='line-number'>32</span>
-<span class='line-number'>33</span>
-<span class='line-number'>34</span>
-<span class='line-number'>35</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>a.each { |k,v| puts &ldquo;The value for #{k} is #{v}&rdquo; }&lt;/p>
-</span><span class='line'>
-</span><span class='line'>&lt;h1>The value for a is b&lt;/h1>
-</span><span class='line'>
-</span><span class='line'>&lt;h1>The value for 3 is d&lt;/h1>
-</span><span class='line'>
-</span><span class='line'>&lt;h1>The value for 5 is&lt;/h1>
-</span><span class='line'>
-</span><span class='line'>&lt;p>a.each_key { |k| puts &ldquo;The value for #{k} is #{a[k]}&rdquo; }&lt;/p>
-</span><span class='line'>
-</span><span class='line'>&lt;h1>The value for a is b&lt;/h1>
-</span><span class='line'>
-</span><span class='line'>&lt;h1>The value for 3 is d&lt;/h1>
-</span><span class='line'>
-</span><span class='line'>&lt;h1>The value for 5 is 6&lt;/h1>
-</span><span class='line'>
-</span><span class='line'>&lt;p>a.each_value { |v| puts v }&lt;/p>
-</span><span class='line'>
-</span><span class='line'>&lt;h1>b&lt;/h1>
-</span><span class='line'>
-</span><span class='line'>&lt;h1>d&lt;/h1>
-</span><span class='line'>
-</span><span class='line'>&lt;h1>6&lt;/h1>
-</span><span class='line'>
-</span><span class='line'>&lt;p>a.each do |k,v|
-</span><span class='line'>  puts &ldquo;The value for #{k} is #{v}&rdquo;
-</span><span class='line'>end&lt;/p>
-</span><span class='line'>
-</span><span class='line'>&lt;h1>The value for a is b&lt;/h1>
-</span><span class='line'>
-</span><span class='line'>&lt;h1>The value for 3 is d&lt;/h1>
-</span><span class='line'>
-</span><span class='line'>&lt;h1>The value for 5 is 6&lt;/h1>
-</span><span class='line'>
-</span><span class='line'>&lt;p></span></code></pre></td></tr></table></div></figure></notextile></div></p>
 ]]></content>
   </entry>
   

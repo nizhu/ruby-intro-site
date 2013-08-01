@@ -4,7 +4,7 @@
   <title><![CDATA[Ruby Intro]]></title>
   <link href="http://nizhu.github.io/ruby-intro-site/atom.xml" rel="self"/>
   <link href="http://nizhu.github.io/ruby-intro-site/"/>
-  <updated>2013-07-31T22:35:39+10:00</updated>
+  <updated>2013-08-01T23:05:27+10:00</updated>
   <id>http://nizhu.github.io/ruby-intro-site/</id>
   <author>
     <name><![CDATA[Nick Zhu]]></name>
@@ -14,11 +14,51 @@
 
   
   <entry>
-    <title type="html"><![CDATA[Consuming JSON resources through HTTP]]></title>
-    <link href="http://nizhu.github.io/ruby-intro-site/blog/2013/07/31/consuming-json-resources-through-http/"/>
-    <updated>2013-07-31T21:44:00+10:00</updated>
-    <id>http://nizhu.github.io/ruby-intro-site/blog/2013/07/31/consuming-json-resources-through-http</id>
-    <content type="html"><![CDATA[<p>I will be demonstrating</p>
+    <title type="html"><![CDATA[Accessing Twitter's API]]></title>
+    <link href="http://nizhu.github.io/ruby-intro-site/blog/2013/08/01/accessing-the-twitter-api/"/>
+    <updated>2013-08-01T19:25:00+10:00</updated>
+    <id>http://nizhu.github.io/ruby-intro-site/blog/2013/08/01/accessing-the-twitter-api</id>
+    <content type="html"><![CDATA[<p>Since mid June this year, the Twitter has forced users to use OAuth to authenticate and access its API. You can no longer access its data in a trivial way like the GitHub example before. You must get 4 keys from <a href="https://dev.twitter.com/apps">Twitter&rsquo;s developer page</a>: <code>Consumer key</code>, <code>Consumer secret</code>, <code>Access token</code> and <code>Access secret</code> &ndash; don&rsquo;t need to know what they mean yet, but the 2 secret keys should not be shared. OAuth is a real pain. These 4 keys won&rsquo;t give you access. They&rsquo;ll let you get 3 more one use keys which you can then use to access the API.</p>
+
+<p>Fortunately for you as a Ruby user, there are two libraries to make your life easier. <a href="https://github.com/sferik/twitter">Twitter</a> is a conveniently named library to access the standard Twitter API (it is not developed by Twitter Inc) while the other is <a href="https://github.com/tweetstream/tweetstream">Tweetstream</a> is designed to use Twitter&rsquo;s streaming API.</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>gem install twitter
+</span><span class='line'>gem install tweetstream</span></code></pre></td></tr></table></div></figure>
+
+
+<h2>Twitter Gem</h2>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>git checkout twitter</span></code></pre></td></tr></table></div></figure>
+
+
+<p>I&rsquo;ve made a file out of the gem&rsquo;s authentication configuration code taken from its documentation. Just replace the strings with the your Twitter developer keys in twitter_config.rb. There are some usage examples <a href="https://github.com/sferik/twitter#usage-examples">here</a>, but there&rsquo;s plenty more functionality so do refer to the <a href="http://rdoc.info/gems/twitter">documentation</a>.</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>require 'twitter'
+</span><span class='line'>load 'twitter_config.rb'</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Lets find the last person to have proposed to Justin Bieber</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>result = Twitter.search("to:justinbieber marry me", :count => 1, :result_type => "recent")
+</span><span class='line'>
+</span><span class='line'>result.class
+</span><span class='line'># Twitter::SearchResults
+</span><span class='line'>
+</span><span class='line'>result.statuses[0].user.screen_name
+</span><span class='line'># 4ever_beliebing</span></code></pre></td></tr></table></div></figure>
+
 
 <ol>
 <li><a href="https://github.com/sferik/twitter">RubyGem &ndash; Twitter</a></li>
@@ -26,6 +66,105 @@
 <li><a href="https://dev.twitter.com/docs/auth">Twitter API Authentication Documentation</a></li>
 <li><a href="https://dev.twitter.com/docs/api/1.1">Twitter API</a></li>
 <li><a href="https://dev.twitter.com/apps">Twitter Developer Apps</a></li>
+<li><a href="http://rdoc.info/gems/twitter">RDoc Twitter</a></li>
+</ol>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Consuming JSON REST resource through HTTP]]></title>
+    <link href="http://nizhu.github.io/ruby-intro-site/blog/2013/07/31/consuming-json-rest-resource-through-http/"/>
+    <updated>2013-07-31T21:44:00+10:00</updated>
+    <id>http://nizhu.github.io/ruby-intro-site/blog/2013/07/31/consuming-json-rest-resource-through-http</id>
+    <content type="html"><![CDATA[<p>As you saw in the previous post, XML is an overly verbose format so in the last few years, what we call JSON (JavaScript Object Notation) has come to dominate web communication. Ideally I&rsquo;d be demonstrating this with Twitter&rsquo;s API since you&rsquo;re likely to use it for this assignment, but since mid June this year, the Twitter API requires OAuth to access. I will be address this in the next post.</p>
+
+<p>If you&rsquo;ve been writing Javascript, you love JSON. If you haven&rsquo;t, you soon will. Note that spaces, tabs and line breaks are all optional. I&rsquo;ve just added those to make it easier to read.</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>{
+</span><span class='line'>  "id": 32,
+</span><span class='line'>  "name": "Mother Duck",
+</span><span class='line'>  "children":[
+</span><span class='line'>    {
+</span><span class='line'>      "id": 12345,
+</span><span class='line'>      "name": "Claire"
+</span><span class='line'>    },
+</span><span class='line'>    {
+</span><span class='line'>      "id": 12372,
+</span><span class='line'>      "name": "Daniel"
+</span><span class='line'>    }
+</span><span class='line'>  ],
+</span><span class='line'>  "isAlive": true
+</span><span class='line'>}</span></code></pre></td></tr></table></div></figure>
+
+
+<p>That&rsquo;s all there is to JSON, very simple, very clear. <code>{}</code> encapsulates object/map/hash, while <code>[]</code> encapsulates an array, both of which can be nested infinitely. Otherwise only strings, numbers, booleans and null are supported values.</p>
+
+<h2>Github API</h2>
+
+<p>GitHub is an online source repository, extremely popular with open source projects. You won&rsquo;t be using any data from it for your projects, but it&rsquo;s the first public JSON API that came across my mind. I&rsquo;m sure you&rsquo;ll be using it somewhere in your career though. For this demonstration, I&rsquo;ll just be using the most simple of calls, retrieving the details of the GitHub user octocat. The documentation for GitHub&rsquo;s API is available <a href="http://developer.github.com/v3/">here</a>.</p>
+
+<p>The easiest way to access this data, is to simply open a web browser and go to <code>https://api.github.com/users/octocat</code>. Next step further is accessing it through cURL.. <code>curl https://api.github.com/users/octocat</code>. Let&rsquo;s do it in Ruby.</p>
+
+<h2>Retrieving with Net/HTTP and parsing with json</h2>
+
+<p><a href="http://ruby-doc.org/stdlib-2.0/libdoc/net/http/rdoc/Net/HTTP.html">Net/HTTP</a> is a standard Ruby library, and it&rsquo;ll be your interface to the internet. JSON is a simple parser, but is not standard. As before, install the gem with <code>gem install json</code></p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>require 'net/http'
+</span><span class='line'>require 'json'
+</span><span class='line'>
+</span><span class='line'>uri = URI('https://api.github.com/users/octocat')
+</span><span class='line'>response = Net::HTTP.get uri
+</span><span class='line'>octocat = JSON.parse response
+</span><span class='line'>
+</span><span class='line'>octocat.keys
+</span><span class='line'># ["login", "id", "avatar_url", "gravatar_id", "url", "html_url", "followers_url", "following_url", "gists_url", "starred_url", "subscriptions_url", "organizations_url", "repos_url", "events_url", "received_events_url", "type", "name", "company", "blog", "location", "email", "hireable", "bio", "public_repos", "followers", "following", "created_at", "updated_at", "public_gists"]
+</span><span class='line'>
+</span><span class='line'>octocat["followers"]
+</span><span class='line'># 398
+</span><span class='line'>octocat["public_repos"]
+</span><span class='line'># 3
+</span><span class='line'>octocat["hireable"]
+</span><span class='line'># false</span></code></pre></td></tr></table></div></figure>
+
+
+<p>I had some issues here with openssl on the Mac, but the update instructions with Homebrew found <a href="http://railsapps.github.io/openssl-certificate-verify-failed.html">here</a> worked perfectly.</p>
+
+<ol>
+<li><a href="http://json.org/example.html">JSON Examples</a></li>
+<li><a href="http://ruby-doc.org/stdlib-2.0/libdoc/net/http/rdoc/Net/HTTP.html">Ruby Net/HTTP</a></li>
+<li><a href="http://flori.github.io/json/doc/index.html">Rubygem json</a></li>
 </ol>
 
 ]]></content>
@@ -554,6 +693,59 @@
 </span><span class='line'># The value for a is b
 </span><span class='line'># The value for 3 is d
 </span><span class='line'># The value for 5 is 6</span></code></pre></td></tr></table></div></figure>
+
+
+<h1>Symbols</h1>
+
+<p>Fixnum always have the same object_id, and we can tell Ruby to do that to Strings too &ndash; it&rsquo;s what we call a Symbol. While a new string will be created every time the same String literal is used, the same symbol will always point to the same object in memory. This also means that Ruby&rsquo;s automatic garbage collection will not recycle symbols.</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>"abc".object_id
+</span><span class='line'># 70139181776180
+</span><span class='line'>"abc".object_id
+</span><span class='line'># 70139181819060
+</span><span class='line'>
+</span><span class='line'>:abc.object_id
+</span><span class='line'># 1024808
+</span><span class='line'>:abc.object_id
+</span><span class='line'># 1024808</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Because of this, Symbols are the preferred way to set and get Hash elements.</p>
+
+<p><a href="http://shop.oreilly.com/product/9780596523695.do">Ruby Cookbook</a> attributes this quote to <a href="http://onestepback.org/">Jim Weirich</a>:</p>
+
+<blockquote><p>If the contents (the sequence of characters) of the object are important, use a string.
+If the identity of the object is important, use a symbol.</p></blockquote>
+
+<p>Do this..</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>h = Hash.new
+</span><span class='line'>h[:abc] = "xyz"
+</span><span class='line'>puts h[:abc]</span></code></pre></td></tr></table></div></figure>
+
+
+<p>but don&rsquo;t do this..</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>h = Hash.new
+</span><span class='line'>h["abc"] = :xyz
+</span><span class='line'>puts ["abc"]
+</span><span class='line'># xyz</span></code></pre></td></tr></table></div></figure>
 
 
 

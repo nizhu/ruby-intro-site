@@ -41,7 +41,7 @@
   <header role="banner"><hgroup>
   <h1><a href="/ruby-intro-site/">Ruby Intro</a></h1>
   
-    <h2>SENG2021</h2>
+    <h2>SENG2011</h2>
   
 </hgroup>
 
@@ -254,6 +254,59 @@
 </span><span class='line'># The value for 5 is 6</span></code></pre></td></tr></table></div></figure>
 
 
+<h1>Symbols</h1>
+
+<p>Fixnum always have the same object_id, and we can tell Ruby to do that to Strings too &ndash; it&rsquo;s what we call a Symbol. While a new string will be created every time the same String literal is used, the same symbol will always point to the same object in memory. This also means that Ruby&rsquo;s automatic garbage collection will not recycle symbols.</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>"abc".object_id
+</span><span class='line'># 70139181776180
+</span><span class='line'>"abc".object_id
+</span><span class='line'># 70139181819060
+</span><span class='line'>
+</span><span class='line'>:abc.object_id
+</span><span class='line'># 1024808
+</span><span class='line'>:abc.object_id
+</span><span class='line'># 1024808</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Because of this, Symbols are the preferred way to set and get Hash elements.</p>
+
+<p><a href="http://shop.oreilly.com/product/9780596523695.do">Ruby Cookbook</a> attributes this quote to <a href="http://onestepback.org/">Jim Weirich</a>:</p>
+
+<blockquote><p>If the contents (the sequence of characters) of the object are important, use a string.
+If the identity of the object is important, use a symbol.</p></blockquote>
+
+<p>Do this..</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>h = Hash.new
+</span><span class='line'>h[:abc] = "xyz"
+</span><span class='line'>puts h[:abc]</span></code></pre></td></tr></table></div></figure>
+
+
+<p>but don&rsquo;t do this..</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>h = Hash.new
+</span><span class='line'>h["abc"] = :xyz
+</span><span class='line'>puts ["abc"]
+</span><span class='line'># xyz</span></code></pre></td></tr></table></div></figure>
+
+
 
 </div>
 
@@ -318,7 +371,11 @@
   <ul id="recent_posts">
     
       <li class="post">
-        <a href="/ruby-intro-site/blog/2013/07/31/consuming-json-resources-through-http/">Consuming JSON Resources Through HTTP</a>
+        <a href="/ruby-intro-site/blog/2013/08/01/accessing-the-twitter-api/">Accessing Twitter's API</a>
+      </li>
+    
+      <li class="post">
+        <a href="/ruby-intro-site/blog/2013/07/31/consuming-json-rest-resource-through-http/">Consuming JSON REST Resource Through HTTP</a>
       </li>
     
       <li class="post">
@@ -331,42 +388,6 @@
     
       <li class="post">
         <a href="/ruby-intro-site/blog/2013/07/30/functions/">Functions</a>
-      </li>
-    
-      <li class="post">
-        <a href="/ruby-intro-site/blog/2013/07/29/hash-and-symbols/">Hash &amp; Symbols</a>
-      </li>
-    
-      <li class="post">
-        <a href="/ruby-intro-site/blog/2013/07/28/loops/">Loops</a>
-      </li>
-    
-      <li class="post">
-        <a href="/ruby-intro-site/blog/2013/07/28/arrays/">Arrays</a>
-      </li>
-    
-      <li class="post">
-        <a href="/ruby-intro-site/blog/2013/07/28/truthiness-and-control-flow/">Truthiness &amp; Control Flow</a>
-      </li>
-    
-      <li class="post">
-        <a href="/ruby-intro-site/blog/2013/07/28/numbers/">Numbers</a>
-      </li>
-    
-      <li class="post">
-        <a href="/ruby-intro-site/blog/2013/07/27/strings/">Strings</a>
-      </li>
-    
-      <li class="post">
-        <a href="/ruby-intro-site/blog/2013/07/27/hello-world/">Hello World</a>
-      </li>
-    
-      <li class="post">
-        <a href="/ruby-intro-site/blog/2013/07/27/installing-ruby/">Installing Ruby</a>
-      </li>
-    
-      <li class="post">
-        <a href="/ruby-intro-site/blog/2013/07/27/intro-to-intro/">Intro to Intro</a>
       </li>
     
   </ul>
