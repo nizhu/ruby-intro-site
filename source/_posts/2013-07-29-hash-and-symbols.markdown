@@ -104,3 +104,45 @@ end
 # The value for 3 is d
 # The value for 5 is 6
 {% endcodeblock %}
+
+# Symbols
+
+Fixnum always have the same object_id, and we can tell Ruby to do that to Strings too - it's what we call a Symbol. While a new string will be created every time the same String literal is used, the same symbol will always point to the same object in memory. This also means that Ruby's automatic garbage collection will not recycle symbols.
+
+{% codeblock %}
+"abc".object_id
+# 70139181776180
+"abc".object_id
+# 70139181819060
+
+:abc.object_id
+# 1024808
+:abc.object_id
+# 1024808
+{% endcodeblock %}
+
+Because of this, Symbols are the preferred way to set and get Hash elements.
+
+[Ruby Cookbook][1] attributes this quote to [Jim Weirich][2]:
+> If the contents (the sequence of characters) of the object are important, use a string.
+> If the identity of the object is important, use a symbol.
+
+Do this..
+
+{% codeblock %}
+h = Hash.new
+h[:abc] = "xyz"
+puts h[:abc]
+{% endcodeblock %}
+
+but don't do this..
+
+{% codeblock %}
+h = Hash.new
+h["abc"] = :xyz
+puts ["abc"]
+# xyz
+{% endcodeblock %}
+
+  [1]: http://shop.oreilly.com/product/9780596523695.do
+  [2]: http://onestepback.org/
