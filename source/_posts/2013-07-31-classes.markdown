@@ -71,3 +71,105 @@ Aconstant = 2
 # warning: previous definition of Aconstant was here
 # 2
 {% endcodeblock %}
+
+## Dynamic Typing
+
+Ruby doesn't care what class an object is, as long as it does what you want it to do. If it quacks like a duck, it is a duck.
+
+I've prepared the 3 files below already. To see them, checkout the branch ```git checkout dynamic_typing```. This code is based on the code snippets in the Ruby Cookbook which was based on Ruby 1.8
+
+{% codeblock lang:ruby duck.rb %}
+class Duck
+  def quack
+    'Quack!'
+  end
+end
+{% endcodeblock %}
+
+{% codeblock lang:ruby humans.rb %}
+class Man
+  def quack
+    'Moo!'
+  end
+
+  def scream
+    'AHHHHHH'
+  end
+end
+
+class Woman
+  def scream
+     'AHHHH'
+  end
+end
+{% endcodeblock %}
+
+{% codeblock lang:ruby make_it_quack.rb %}
+def make_it_quack(duck)
+  puts duck.quack
+end
+{% endcodeblock %}
+
+Let's play with again. This time, load irb with ```irb -I .```. This will add the current directory to the path that the require command uses so it can find the 3 files above.
+
+{% codeblock %}
+d = Duck.new
+m = Man.new
+w = Woman.new
+
+make_it_quack(d)
+# Quack!
+make_it_quack(m)
+# Moo!
+make_it_quack(w)
+# NoMethodError: undefined method `quack' for #<Woman:0x007fb2d91ab3d0>
+{% endcodeblock %}
+
+Unfortunately it seems like function parameters can no longer be given a type so the example isn't the most clear. This is what it looks like in the book.
+
+{% codeblock %}
+def make_it_quack(Duck duck)
+  puts duck.quack
+end
+
+w = Woman.new
+make_it_quack(w)
+# TypeException: object not of type Duck
+{% endcodeblock %}
+
+## Duck Punching
+
+So what if our ducks (Man) don't quack? Then we punch them until it does.
+
+{% codeblock %}
+make_it_quack(m)
+# Moo!
+
+class Man
+  def quack
+    "Quack!"
+  end
+end
+
+make_it_quack(m)
+# Quack!
+
+m.scream
+# AHHHHHH
+{% endcodeblock %}
+
+Just to be clear, we can also do the same to the Woman class.
+
+{% codeblock %}
+make_it_quack(w)
+NoMethodError: undefined method `quack' for #<Woman:0x007fbe7b99e800>
+
+class Woman
+  def quack
+    "Quack!"
+  end
+end
+
+make_it_quack(w)
+# Quack!
+{% endcodeblock %}
