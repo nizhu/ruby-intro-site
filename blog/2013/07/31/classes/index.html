@@ -194,6 +194,174 @@
 </span><span class='line'># 2</span></code></pre></td></tr></table></div></figure>
 
 
+<h2>Dynamic Typing</h2>
+
+<p>Ruby doesn&rsquo;t care what class an object is, as long as it does what you want it to do. If it quacks like a duck, it is a duck.</p>
+
+<p>I&rsquo;ve prepared the 3 files below already. To see them, checkout the branch <code>git checkout dynamic_typing</code>. This code is based on the code snippets in the Ruby Cookbook which was based on Ruby 1.8</p>
+
+<figure class='code'><figcaption><span>duck.rb </span></figcaption>
+ <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="k">class</span> <span class="nc">Duck</span>
+</span><span class='line'>  <span class="k">def</span> <span class="nf">quack</span>
+</span><span class='line'>    <span class="s1">&#39;Quack!&#39;</span>
+</span><span class='line'>  <span class="k">end</span>
+</span><span class='line'><span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+
+
+<figure class='code'><figcaption><span>humans.rb </span></figcaption>
+ <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="k">class</span> <span class="nc">Man</span>
+</span><span class='line'>  <span class="k">def</span> <span class="nf">quack</span>
+</span><span class='line'>    <span class="s1">&#39;Moo!&#39;</span>
+</span><span class='line'>  <span class="k">end</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="k">def</span> <span class="nf">scream</span>
+</span><span class='line'>    <span class="s1">&#39;AHHHHHH&#39;</span>
+</span><span class='line'>  <span class="k">end</span>
+</span><span class='line'><span class="k">end</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">class</span> <span class="nc">Woman</span>
+</span><span class='line'>  <span class="k">def</span> <span class="nf">scream</span>
+</span><span class='line'>     <span class="s1">&#39;AHHHH&#39;</span>
+</span><span class='line'>  <span class="k">end</span>
+</span><span class='line'><span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+
+
+<figure class='code'><figcaption><span>make_it_quack.rb </span></figcaption>
+ <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="k">def</span> <span class="nf">make_it_quack</span><span class="p">(</span><span class="n">duck</span><span class="p">)</span>
+</span><span class='line'>  <span class="nb">puts</span> <span class="n">duck</span><span class="o">.</span><span class="n">quack</span>
+</span><span class='line'><span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Let&rsquo;s play with again. This time, load irb with <code>irb -I .</code>. This will add the current directory to the path that the require command uses so it can find the 3 files above.</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>d = Duck.new
+</span><span class='line'>m = Man.new
+</span><span class='line'>w = Woman.new
+</span><span class='line'>
+</span><span class='line'>make_it_quack(d)
+</span><span class='line'># Quack!
+</span><span class='line'>make_it_quack(m)
+</span><span class='line'># Moo!
+</span><span class='line'>make_it_quack(w)
+</span><span class='line'># NoMethodError: undefined method `quack' for #&lt;Woman:0x007fb2d91ab3d0></span></code></pre></td></tr></table></div></figure>
+
+
+<p>Unfortunately it seems like function parameters can no longer be given a type so the example isn&rsquo;t the most clear. This is what it looks like in the book.</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>def make_it_quack(Duck duck)
+</span><span class='line'>  puts duck.quack
+</span><span class='line'>end
+</span><span class='line'>
+</span><span class='line'>w = Woman.new
+</span><span class='line'>make_it_quack(w)
+</span><span class='line'># TypeException: object not of type Duck</span></code></pre></td></tr></table></div></figure>
+
+
+<h2>Duck Punching</h2>
+
+<p>So what if our ducks (Man) don&rsquo;t quack? Then we punch them until it does.</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>make_it_quack(m)
+</span><span class='line'># Moo!
+</span><span class='line'>
+</span><span class='line'>class Man
+</span><span class='line'>  def quack
+</span><span class='line'>    "Quack!"
+</span><span class='line'>  end
+</span><span class='line'>end
+</span><span class='line'>
+</span><span class='line'>make_it_quack(m)
+</span><span class='line'># Quack!
+</span><span class='line'>
+</span><span class='line'>m.scream
+</span><span class='line'># AHHHHHH</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Just to be clear, we can also do the same to the Woman class.</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>make_it_quack(w)
+</span><span class='line'>NoMethodError: undefined method `quack' for #&lt;Woman:0x007fbe7b99e800>
+</span><span class='line'>
+</span><span class='line'>class Woman
+</span><span class='line'>  def quack
+</span><span class='line'>    "Quack!"
+</span><span class='line'>  end
+</span><span class='line'>end
+</span><span class='line'>
+</span><span class='line'>make_it_quack(w)
+</span><span class='line'># Quack!</span></code></pre></td></tr></table></div></figure>
 
 </div>
 

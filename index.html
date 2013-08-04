@@ -96,18 +96,14 @@
 
   <div class="entry-content"><p>Since mid June this year, the Twitter has forced users to use OAuth to authenticate and access its API. You can no longer access its data in a trivial way like the GitHub example before. You must get 4 keys from <a href="https://dev.twitter.com/apps">Twitter&rsquo;s developer page</a>: <code>Consumer key</code>, <code>Consumer secret</code>, <code>Access token</code> and <code>Access secret</code> &ndash; don&rsquo;t need to know what they mean yet, but the 2 secret keys should not be shared. OAuth is a real pain. These 4 keys won&rsquo;t give you access. They&rsquo;ll let you get 3 more one use keys which you can then use to access the API.</p>
 
-<p>Fortunately for you as a Ruby user, there are two libraries to make your life easier. <a href="https://github.com/sferik/twitter">Twitter</a> is a conveniently named library to access the standard Twitter API (it is not developed by Twitter Inc) while the other is <a href="https://github.com/tweetstream/tweetstream">Tweetstream</a> is designed to use Twitter&rsquo;s streaming API.</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>gem install twitter
-</span><span class='line'>gem install tweetstream</span></code></pre></td></tr></table></div></figure>
-
+<p>Fortunately for you as a Ruby user, there are two libraries that will do all the menial work for you. <a href="https://github.com/sferik/twitter">Twitter</a> is a conveniently named library to access the standard Twitter API (it is not developed by Twitter Inc) while the other is <a href="https://github.com/tweetstream/tweetstream">TweetStream</a> is designed to use Twitter&rsquo;s streaming API. It&rsquo;s unlikely that you&rsquo;ll need to use the streaming API for this assignment so I won&rsquo;t be showing you TweetStream.</p>
 
 <h2>Twitter Gem</h2>
 
 <figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>git checkout twitter</span></code></pre></td></tr></table></div></figure>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>git checkout twitter
+</span><span class='line'>gem install twitter</span></code></pre></td></tr></table></div></figure>
 
 
 <p>I&rsquo;ve made a file out of the gem&rsquo;s authentication configuration code taken from its documentation. Just replace the strings with the your Twitter developer keys in twitter_config.rb. There are some usage examples <a href="https://github.com/sferik/twitter#usage-examples">here</a>, but there&rsquo;s plenty more functionality so do refer to the <a href="http://rdoc.info/gems/twitter">documentation</a>.</p>
@@ -134,6 +130,148 @@
 </span><span class='line'>
 </span><span class='line'>result.statuses[0].user.screen_name
 </span><span class='line'># 4ever_beliebing</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Just to give another example, I&rsquo;m going to get the last tweet from each of users I&rsquo;m stalking.</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>f = Twitter.friends
+</span><span class='line'>f.class
+</span><span class='line'># Twitter::Cursor
+</span><span class='line'># -- http://rdoc.info/gems/twitter/Twitter/Cursor
+</span><span class='line'>
+</span><span class='line'>f.collection.class
+</span><span class='line'># Array
+</span><span class='line'>
+</span><span class='line'>f.collection[0].class
+</span><span class='line'># Twitter::User
+</span><span class='line'># -- http://rdoc.info/gems/twitter/Twitter/User
+</span><span class='line'>
+</span><span class='line'>f.collection[0].name
+</span><span class='line'># "John Oliver"
+</span><span class='line'>
+</span><span class='line'>f.collection[0].status
+</span><span class='line'>f.collection[0].status.class
+</span><span class='line'># Twitter::Tweet
+</span><span class='line'># -- http://rdoc.info/gems/twitter/Twitter/Tweet
+</span><span class='line'>
+</span><span class='line'>f.collection[0].status.text
+</span><span class='line'># "Mugabe is the Harlem Globetrotters of democracy. His winning record is undeniably impressive, but he doesn't really play by the rules."
+</span><span class='line'>
+</span><span class='line'>for user in f.collection.each
+</span><span class='line'>  puts "#{user.name} said '#{user.status.text}'"
+</span><span class='line'>end</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Because we don&rsquo;t care about the return value, let&rsquo;s not do this in <code>irb</code></p>
+
+<figure class='code'><figcaption><span>last_twitter_status.rb </span></figcaption>
+ <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="c1">#!/usr/bin/env ruby</span>
+</span><span class='line'><span class="nb">require</span> <span class="s1">&#39;twitter&#39;</span>
+</span><span class='line'><span class="nb">load</span> <span class="s1">&#39;mine_twitter_config.rb&#39;</span>
+</span><span class='line'>
+</span><span class='line'><span class="n">f</span> <span class="o">=</span> <span class="no">Twitter</span><span class="o">.</span><span class="n">friends</span>
+</span><span class='line'><span class="k">for</span> <span class="n">user</span> <span class="k">in</span> <span class="n">f</span><span class="o">.</span><span class="n">collection</span><span class="o">.</span><span class="n">each</span>
+</span><span class='line'>  <span class="nb">puts</span> <span class="s2">&quot;</span><span class="si">#{</span><span class="n">user</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="s2"> said &#39;</span><span class="si">#{</span><span class="n">user</span><span class="o">.</span><span class="n">status</span><span class="o">.</span><span class="n">text</span><span class="si">}</span><span class="s2">&#39;&quot;</span>
+</span><span class='line'><span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>But there&rsquo;s still a problem, I&rsquo;m following more users than this.</p>
+
+<p>This is because Twitter paginates the results to 20 by default.  So if there is more than 20 records, you&rsquo;ll have to iterate through each page to get all the results.</p>
+
+<figure class='code'><figcaption><span>lots_twitter_status.rb </span></figcaption>
+ <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="c1">#!/usr/bin/env ruby</span>
+</span><span class='line'><span class="nb">require</span> <span class="s1">&#39;twitter&#39;</span>
+</span><span class='line'><span class="nb">load</span> <span class="s1">&#39;mine_twitter_config.rb&#39;</span>
+</span><span class='line'>
+</span><span class='line'><span class="n">cursor</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span>
+</span><span class='line'><span class="k">while</span> <span class="n">cursor</span> <span class="o">!=</span> <span class="mi">0</span> <span class="k">do</span>
+</span><span class='line'>  <span class="n">f</span> <span class="o">=</span> <span class="no">Twitter</span><span class="o">.</span><span class="n">friends</span> <span class="ss">:cursor</span> <span class="o">=&gt;</span> <span class="n">cursor</span>
+</span><span class='line'>  <span class="k">for</span> <span class="n">user</span> <span class="k">in</span> <span class="n">f</span><span class="o">.</span><span class="n">collection</span><span class="o">.</span><span class="n">each</span>
+</span><span class='line'>    <span class="nb">puts</span> <span class="s2">&quot;</span><span class="si">#{</span><span class="n">user</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="s2"> said &#39;</span><span class="si">#{</span><span class="n">user</span><span class="o">.</span><span class="n">status</span><span class="o">.</span><span class="n">text</span><span class="si">}</span><span class="s2">&#39;&quot;</span>
+</span><span class='line'>  <span class="k">end</span>
+</span><span class='line'>  <span class="n">cursor</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">next_cursor</span>
+</span><span class='line'><span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Just to a more relevant example, this is to get the last 200 tweets with #ausvotes excluding retweets. Search results pagination work slightly different to friends &ndash; refer to documentation!!</p>
+
+<p>Note that the count parameter refers to the number you want per page, although the maximum is 100.</p>
+
+<figure class='code'><figcaption><span>recent_ausvotes.rb </span></figcaption>
+ <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="c1">#!/usr/bin/env ruby</span>
+</span><span class='line'><span class="nb">require</span> <span class="s1">&#39;twitter&#39;</span>
+</span><span class='line'><span class="nb">load</span> <span class="s1">&#39;mine_twitter_config.rb&#39;</span>
+</span><span class='line'>
+</span><span class='line'><span class="n">max_id</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span>
+</span><span class='line'><span class="k">for</span> <span class="n">i</span> <span class="k">in</span> <span class="p">(</span><span class="mi">0</span><span class="o">.</span><span class="n">.</span><span class="mi">1</span><span class="p">)</span>
+</span><span class='line'>  <span class="n">t</span> <span class="o">=</span> <span class="no">Twitter</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="s2">&quot;#ausvotes -rt&quot;</span><span class="p">,</span> <span class="ss">:count</span> <span class="o">=&gt;</span> <span class="mi">100</span><span class="p">,</span> <span class="ss">:result_type</span> <span class="o">=&gt;</span> <span class="s2">&quot;recent&quot;</span><span class="p">,</span> <span class="ss">:max_id</span> <span class="o">=&gt;</span> <span class="n">max_id</span><span class="p">)</span>
+</span><span class='line'>  <span class="n">t</span><span class="o">.</span><span class="n">statuses</span><span class="o">.</span><span class="n">each</span> <span class="k">do</span> <span class="o">|</span> <span class="n">tweet</span> <span class="o">|</span>
+</span><span class='line'>    <span class="nb">puts</span> <span class="s2">&quot;</span><span class="si">#{</span><span class="n">tweet</span><span class="o">.</span><span class="n">user</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="s2"> said </span><span class="si">#{</span><span class="n">tweet</span><span class="o">.</span><span class="n">text</span><span class="si">}</span><span class="s2">&quot;</span>
+</span><span class='line'>  <span class="k">end</span>
+</span><span class='line'>  <span class="n">max_id</span> <span class="o">=</span> <span class="n">t</span><span class="o">.</span><span class="n">next_results</span><span class="o">[</span><span class="ss">:max_id</span><span class="o">]</span>
+</span><span class='line'><span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure>
 
 
 <ol>
@@ -510,6 +648,174 @@
 </span><span class='line'># 2</span></code></pre></td></tr></table></div></figure>
 
 
+<h2>Dynamic Typing</h2>
+
+<p>Ruby doesn&rsquo;t care what class an object is, as long as it does what you want it to do. If it quacks like a duck, it is a duck.</p>
+
+<p>I&rsquo;ve prepared the 3 files below already. To see them, checkout the branch <code>git checkout dynamic_typing</code>. This code is based on the code snippets in the Ruby Cookbook which was based on Ruby 1.8</p>
+
+<figure class='code'><figcaption><span>duck.rb </span></figcaption>
+ <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="k">class</span> <span class="nc">Duck</span>
+</span><span class='line'>  <span class="k">def</span> <span class="nf">quack</span>
+</span><span class='line'>    <span class="s1">&#39;Quack!&#39;</span>
+</span><span class='line'>  <span class="k">end</span>
+</span><span class='line'><span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+
+
+<figure class='code'><figcaption><span>humans.rb </span></figcaption>
+ <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="k">class</span> <span class="nc">Man</span>
+</span><span class='line'>  <span class="k">def</span> <span class="nf">quack</span>
+</span><span class='line'>    <span class="s1">&#39;Moo!&#39;</span>
+</span><span class='line'>  <span class="k">end</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="k">def</span> <span class="nf">scream</span>
+</span><span class='line'>    <span class="s1">&#39;AHHHHHH&#39;</span>
+</span><span class='line'>  <span class="k">end</span>
+</span><span class='line'><span class="k">end</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">class</span> <span class="nc">Woman</span>
+</span><span class='line'>  <span class="k">def</span> <span class="nf">scream</span>
+</span><span class='line'>     <span class="s1">&#39;AHHHH&#39;</span>
+</span><span class='line'>  <span class="k">end</span>
+</span><span class='line'><span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+
+
+<figure class='code'><figcaption><span>make_it_quack.rb </span></figcaption>
+ <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="k">def</span> <span class="nf">make_it_quack</span><span class="p">(</span><span class="n">duck</span><span class="p">)</span>
+</span><span class='line'>  <span class="nb">puts</span> <span class="n">duck</span><span class="o">.</span><span class="n">quack</span>
+</span><span class='line'><span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Let&rsquo;s play with again. This time, load irb with <code>irb -I .</code>. This will add the current directory to the path that the require command uses so it can find the 3 files above.</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>d = Duck.new
+</span><span class='line'>m = Man.new
+</span><span class='line'>w = Woman.new
+</span><span class='line'>
+</span><span class='line'>make_it_quack(d)
+</span><span class='line'># Quack!
+</span><span class='line'>make_it_quack(m)
+</span><span class='line'># Moo!
+</span><span class='line'>make_it_quack(w)
+</span><span class='line'># NoMethodError: undefined method `quack' for #&lt;Woman:0x007fb2d91ab3d0></span></code></pre></td></tr></table></div></figure>
+
+
+<p>Unfortunately it seems like function parameters can no longer be given a type so the example isn&rsquo;t the most clear. This is what it looks like in the book.</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>def make_it_quack(Duck duck)
+</span><span class='line'>  puts duck.quack
+</span><span class='line'>end
+</span><span class='line'>
+</span><span class='line'>w = Woman.new
+</span><span class='line'>make_it_quack(w)
+</span><span class='line'># TypeException: object not of type Duck</span></code></pre></td></tr></table></div></figure>
+
+
+<h2>Duck Punching</h2>
+
+<p>So what if our ducks (Man) don&rsquo;t quack? Then we punch them until it does.</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>make_it_quack(m)
+</span><span class='line'># Moo!
+</span><span class='line'>
+</span><span class='line'>class Man
+</span><span class='line'>  def quack
+</span><span class='line'>    "Quack!"
+</span><span class='line'>  end
+</span><span class='line'>end
+</span><span class='line'>
+</span><span class='line'>make_it_quack(m)
+</span><span class='line'># Quack!
+</span><span class='line'>
+</span><span class='line'>m.scream
+</span><span class='line'># AHHHHHH</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Just to be clear, we can also do the same to the Woman class.</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>make_it_quack(w)
+</span><span class='line'>NoMethodError: undefined method `quack' for #&lt;Woman:0x007fbe7b99e800>
+</span><span class='line'>
+</span><span class='line'>class Woman
+</span><span class='line'>  def quack
+</span><span class='line'>    "Quack!"
+</span><span class='line'>  end
+</span><span class='line'>end
+</span><span class='line'>
+</span><span class='line'>make_it_quack(w)
+</span><span class='line'># Quack!</span></code></pre></td></tr></table></div></figure>
 
 </div>
   
