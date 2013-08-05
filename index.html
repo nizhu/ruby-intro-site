@@ -9,7 +9,7 @@
   <meta name="author" content="Nick Zhu">
 
   
-  <meta name="description" content="Since mid June this year, the Twitter has forced users to use OAuth to authenticate and access its API. You can no longer access its data in a &hellip;">
+  <meta name="description" content="As I mentioned in the very first post, Rails has been credited with Ruby&rsquo;s sudden, meteoric rise in popularity. It&rsquo;s not the only web &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -65,6 +65,284 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/ruby-intro-site/blog/2013/08/04/ruby-on-rails/">Ruby on Rails</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-08-04T19:58:00+10:00" pubdate data-updated="true">Aug 4<span>th</span>, 2013</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>As I mentioned in the very first post, Rails has been credited with Ruby&rsquo;s sudden, meteoric rise in popularity. It&rsquo;s not the only web application framework for Ruby, but it remains by far the most popular to this day. If you&rsquo;re interested in a career in web development and want to stay away from corporate enterprises, this is a great way to go about it.</p>
+
+<p>Rails emphasises the Model-View-Controller principle, and if you&rsquo;re not familiar with the concept, it&rsquo;s essentially the separation of the data, to the logic of processing the data, and the display of the processing results (links at the bottom for more details). The application I&rsquo;ll be demoing will ignore the Model part however. This is a very simple application will retrieve some data from Twitter, same as the previous post, and display it on a webpage.</p>
+
+<p>As always, start by installing it&hellip;<code>gem install rails</code></p>
+
+<h2>Scaffolding</h2>
+
+<p>One of the big features of rails is scaffolding &ndash; automatically generating common parts of an application. This is the first step of development.</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>rails new twitter_app
+</span><span class='line'>cd twitter_app
+</span><span class='line'>rails generate controller twitter</span></code></pre></td></tr></table></div></figure>
+
+
+<p>The rails generator has created a lot of new files &ndash; about 80 in fact &ndash; but aren&rsquo;t many that to worry about.</p>
+
+<p>Before you begin editing the files, copy the twitter configuration file from the previous pages to the <code>config/initializers</code> directory. Files in this directory are run when the server is started.</p>
+
+<h2>The Rails Router</h2>
+
+<p>It&rsquo;s advisable that you leave the commented out lines here until you get the hand of routing just for your reference.</p>
+
+<figure class='code'><figcaption><span>config/routes.rb </span></figcaption>
+ <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="ss">TwitterApp</span><span class="p">:</span><span class="ss">:Application</span><span class="o">.</span><span class="n">routes</span><span class="o">.</span><span class="n">draw</span> <span class="k">do</span>
+</span><span class='line'>  <span class="n">root</span> <span class="s1">&#39;twitter#proposals&#39;</span>
+</span><span class='line'>  <span class="n">get</span> <span class="s1">&#39;proposals&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;twitter#proposals&#39;</span>
+</span><span class='line'>  <span class="n">get</span> <span class="s1">&#39;ausvotes&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;twitter#ausvotes&#39;</span>
+</span><span class='line'><span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>The first line in the block points the root path, <code>/</code> to the proposals function in the twitter controller. The second and third points <code>/proposals`` and</code>/ausvotes&#8220;` paths to their respective functions in the same controller.</p>
+
+<h2>The Twitter controller</h2>
+
+<p>The code here is almost identical to that from the previous Twitter post. Now, we&rsquo;re just keeping all the tweets in an array instead of just printing it. At the end of the processing, Rails will first render <code>views/layouts/application.html.erb</code>. Unless you specify which HTML template to use with the <code>render</code> function, rails will automatically look for the template <code>views/&lt;controller name&gt;/&lt;function name&gt;.*</code>.</p>
+
+<figure class='code'><figcaption><span>app/controllers/twitter_controller.rb </span></figcaption>
+ <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="nb">require</span> <span class="s1">&#39;twitter&#39;</span>
+</span><span class='line'><span class="k">class</span> <span class="nc">TwitterController</span> <span class="o">&lt;</span> <span class="no">ApplicationController</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="k">def</span> <span class="nf">proposals</span>
+</span><span class='line'>    <span class="vi">@tweets</span> <span class="o">=</span> <span class="o">[]</span><span class="p">;</span>
+</span><span class='line'>    <span class="n">max_id</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span>
+</span><span class='line'>    <span class="k">for</span> <span class="n">i</span> <span class="k">in</span> <span class="p">(</span><span class="mi">0</span><span class="o">.</span><span class="n">.</span><span class="mi">1</span><span class="p">)</span>
+</span><span class='line'>      <span class="n">t</span> <span class="o">=</span> <span class="no">Twitter</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="s2">&quot;to:justinbieber marry me&quot;</span><span class="p">,</span> <span class="ss">:count</span> <span class="o">=&gt;</span> <span class="mi">100</span><span class="p">,</span> <span class="ss">:result_type</span> <span class="o">=&gt;</span> <span class="s2">&quot;recent&quot;</span><span class="p">)</span>
+</span><span class='line'>      <span class="n">t</span><span class="o">.</span><span class="n">statuses</span><span class="o">.</span><span class="n">each</span> <span class="k">do</span> <span class="o">|</span> <span class="n">tweet</span> <span class="o">|</span>
+</span><span class='line'>        <span class="vi">@tweets</span><span class="o">.</span><span class="n">push</span> <span class="n">tweet</span>
+</span><span class='line'>      <span class="k">end</span>
+</span><span class='line'>      <span class="n">max_id</span> <span class="o">=</span> <span class="n">t</span><span class="o">.</span><span class="n">next_results</span><span class="o">[</span><span class="ss">:max_id</span><span class="o">]</span>
+</span><span class='line'>    <span class="k">end</span>
+</span><span class='line'>  <span class="k">end</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="k">def</span> <span class="nf">ausvotes</span>
+</span><span class='line'>    <span class="vi">@tweets</span> <span class="o">=</span> <span class="o">[]</span><span class="p">;</span>
+</span><span class='line'>    <span class="n">max_id</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span>
+</span><span class='line'>    <span class="k">for</span> <span class="n">i</span> <span class="k">in</span> <span class="p">(</span><span class="mi">0</span><span class="o">.</span><span class="n">.</span><span class="mi">1</span><span class="p">)</span>
+</span><span class='line'>      <span class="n">t</span> <span class="o">=</span> <span class="no">Twitter</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="s2">&quot;#ausvotes -rt&quot;</span><span class="p">,</span> <span class="ss">:count</span> <span class="o">=&gt;</span> <span class="mi">100</span><span class="p">,</span> <span class="ss">:result_type</span> <span class="o">=&gt;</span> <span class="s2">&quot;recent&quot;</span><span class="p">,</span> <span class="ss">:max_id</span> <span class="o">=&gt;</span> <span class="n">max_id</span><span class="p">)</span>
+</span><span class='line'>      <span class="n">t</span><span class="o">.</span><span class="n">statuses</span><span class="o">.</span><span class="n">each</span> <span class="k">do</span> <span class="o">|</span> <span class="n">tweet</span> <span class="o">|</span>
+</span><span class='line'>        <span class="vi">@tweets</span><span class="o">.</span><span class="n">push</span> <span class="n">tweet</span>
+</span><span class='line'>      <span class="k">end</span>
+</span><span class='line'>      <span class="n">max_id</span> <span class="o">=</span> <span class="n">t</span><span class="o">.</span><span class="n">next_results</span><span class="o">[</span><span class="ss">:max_id</span><span class="o">]</span>
+</span><span class='line'>    <span class="k">end</span>
+</span><span class='line'>  <span class="k">end</span>
+</span><span class='line'><span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h2>Justin Bieber Proposals page</h2>
+
+<p>If you&rsquo;re familiar with JSP or PHP, this is very much the same &ndash; HTML mixed in with some code. Here, we&rsquo;re making a simple table but we&rsquo;re creating a row for each tweet.</p>
+
+<figure class='code'><figcaption><span>app/views/twitter/proposals.html.erb </span></figcaption>
+ <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+</pre></td><td class='code'><pre><code class='html'><span class='line'><span class="nt">&lt;h1&gt;</span>Last 200 Justin Bieber Proposals<span class="nt">&lt;/h1&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="nt">&lt;table&gt;</span>
+</span><span class='line'>  <span class="nt">&lt;tr&gt;</span>
+</span><span class='line'>    <span class="nt">&lt;th&gt;</span>User<span class="nt">&lt;/th&gt;</span>
+</span><span class='line'>    <span class="nt">&lt;th&gt;</span>Text<span class="nt">&lt;/th&gt;</span>
+</span><span class='line'>  <span class="nt">&lt;/tr&gt;</span>
+</span><span class='line'><span class="err">&lt;</span>% @tweets.each do |tweet| %&gt;
+</span><span class='line'>  <span class="nt">&lt;tr&gt;</span>
+</span><span class='line'>    <span class="nt">&lt;td&gt;</span><span class="err">&lt;</span>%= tweet.user.name %&gt;<span class="nt">&lt;/td&gt;</span>
+</span><span class='line'>    <span class="nt">&lt;td&gt;</span><span class="err">&lt;</span>%= tweet.text %&gt;<span class="nt">&lt;/td&gt;</span>
+</span><span class='line'>  <span class="nt">&lt;/tr&gt;</span>
+</span><span class='line'><span class="err">&lt;</span>% end %&gt;
+</span><span class='line'><span class="nt">&lt;/table&gt;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h2>#ausvotes page</h2>
+
+<p>Identical to the above. Do try to refactor this :)</p>
+
+<figure class='code'><figcaption><span>app/views/twitter/ausvotes.html.erb </span></figcaption>
+ <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+</pre></td><td class='code'><pre><code class='html'><span class='line'><span class="nt">&lt;h1&gt;</span>Last 200 Tweets with #ausvotes<span class="nt">&lt;/h1&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="nt">&lt;table&gt;</span>
+</span><span class='line'>  <span class="nt">&lt;tr&gt;</span>
+</span><span class='line'>    <span class="nt">&lt;th&gt;</span>User<span class="nt">&lt;/th&gt;</span>
+</span><span class='line'>    <span class="nt">&lt;th&gt;</span>Text<span class="nt">&lt;/th&gt;</span>
+</span><span class='line'>  <span class="nt">&lt;/tr&gt;</span>
+</span><span class='line'><span class="err">&lt;</span>% @tweets.each do |tweet| %&gt;
+</span><span class='line'>  <span class="nt">&lt;tr&gt;</span>
+</span><span class='line'>    <span class="nt">&lt;td&gt;</span><span class="err">&lt;</span>%= tweet.user.name %&gt;<span class="nt">&lt;/td&gt;</span>
+</span><span class='line'>    <span class="nt">&lt;td&gt;</span><span class="err">&lt;</span>%= tweet.text %&gt;<span class="nt">&lt;/td&gt;</span>
+</span><span class='line'>  <span class="nt">&lt;/tr&gt;</span>
+</span><span class='line'><span class="err">&lt;</span>% end %&gt;
+</span><span class='line'><span class="nt">&lt;/table&gt;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h2>Deploying with WEBrick</h2>
+
+<p>WEBrick is a very simple Rails web server, perfect for dev testing. Just go to the root directory of the application and type in <code>rails server</code>. WEBrick listens to port 3000 by default, but look carefully at its output if you come across any problems. The JB Proposals page will be available in @ <code>http://0.0.0.0:3000</code> and <code>http://0.0.0.0:3000/proposals</code> while the #ausvotes page will be available at <code>http://0.0.0.0:3000/ausvotes</code>.</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>$ rails server
+</span><span class='line'>=> Booting WEBrick
+</span><span class='line'>=> Rails 4.0.0 application starting in development on http://0.0.0.0:3000
+</span><span class='line'>=> Run `rails server -h` for more startup options
+</span><span class='line'>=> Ctrl-C to shutdown server
+</span><span class='line'>[2013-08-05 22:13:15] INFO  WEBrick 1.3.1
+</span><span class='line'>[2013-08-05 22:13:15] INFO  ruby 2.0.0 (2013-06-27) [x86_64-darwin12.4.0]
+</span><span class='line'>[2013-08-05 22:13:15] INFO  WEBrick::HTTPServer#start: pid=25428 port=3000</span></code></pre></td></tr></table></div></figure>
+
+
+<h2>Adding links between the 2 pages</h2>
+
+<p>We want the user to be able to easily manuever between the 2 pages so let&rsquo;s put hyperlinks to the 2 pages at the top of every page (just add the 2 anchor bits in the html below).</p>
+
+<figure class='code'><figcaption><span>app/views/layouts/application.html.erb </span></figcaption>
+ <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+</pre></td><td class='code'><pre><code class='html'><span class='line'><span class="cp">&lt;!DOCTYPE html&gt;</span>
+</span><span class='line'><span class="nt">&lt;html&gt;</span>
+</span><span class='line'><span class="nt">&lt;head&gt;</span>
+</span><span class='line'>  <span class="nt">&lt;title&gt;</span>TwitterApp<span class="nt">&lt;/title&gt;</span>
+</span><span class='line'>  <span class="err">&lt;</span>%= stylesheet_link_tag    &quot;application&quot;, media: &quot;all&quot;, &quot;data-turbolinks-track&quot; =&gt; true %&gt;
+</span><span class='line'>  <span class="err">&lt;</span>%= javascript_include_tag &quot;application&quot;, &quot;data-turbolinks-track&quot; =&gt; true %&gt;
+</span><span class='line'>  <span class="err">&lt;</span>%= csrf_meta_tags %&gt;
+</span><span class='line'><span class="nt">&lt;/head&gt;</span>
+</span><span class='line'><span class="nt">&lt;body&gt;</span>
+</span><span class='line'>  <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">&quot;/proposals&quot;</span><span class="nt">&gt;</span>JB Proposals<span class="nt">&lt;/a&gt;</span>
+</span><span class='line'>  <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">&quot;/ausvotes&quot;</span><span class="nt">&gt;</span>#ausvotes<span class="nt">&lt;/a&gt;</span>
+</span><span class='line'><span class="err">&lt;</span>%= yield %&gt;
+</span><span class='line'>
+</span><span class='line'><span class="nt">&lt;/body&gt;</span>
+</span><span class='line'><span class="nt">&lt;/html&gt;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Just refresh the page to take affect. Notice that this change did not require you to restart WEBrick. Some changes, eg. config changes, will require you to do so.</p>
+
+<ol>
+<li><a href="http://en.wikipedia.org/wiki/Model%E2%80%93view%E2%80%93controller">Wikipedia on MVC</a></li>
+<li><a href="http://www.codinghorror.com/blog/2008/05/understanding-model-view-controller.html">Jeff Atwood on MVC</a></li>
+</ol>
+
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -1990,227 +2268,6 @@ If the identity of the object is important, use a symbol.</p></blockquote>
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/ruby-intro-site/blog/2013/07/28/numbers/">Numbers</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2013-07-28T14:48:00+10:00" pubdate data-updated="true">Jul 28<span>th</span>, 2013</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>Like most (if not all) object oriented programming languages out there, Ruby has an Integer class and a Float class. Less common in standard libraries however, are the classes Rational and Complex which are used to represent fractions and complex numbers respectively.</p>
-
-<h1>Integers</h1>
-
-<p>In terms of functionality, there&rsquo;s little interesting with Integers. There&rsquo;s obviously adding, subtracting, multiplication, division, modulo and exponentials.</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>1 + 2
-</span><span class='line'># 3
-</span><span class='line'>1 - 2
-</span><span class='line'># -1 
-</span><span class='line'>1 * 2
-</span><span class='line'># 2
-</span><span class='line'>2 / 1
-</span><span class='line'># 2
-</span><span class='line'>5 % 2
-</span><span class='line'># 1
-</span><span class='line'>2 ** 2
-</span><span class='line'># 4</span></code></pre></td></tr></table></div></figure>
-
-
-<p>There are also several methods for common operations</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>1.next
-</span><span class='line'># 2
-</span><span class='line'>1.even?
-</span><span class='line'># false
-</span><span class='line'>10.gcd(2)
-</span><span class='line'># 2
-</span><span class='line'>"10".to_i
-</span><span class='line'># 10</span></code></pre></td></tr></table></div></figure>
-
-
-<h2>Fixnum vs Bignum</h2>
-
-<p>To make an analogy to Java and C, this is the comparison between int and long. In Ruby however, integers are not actually of the class Integer.</p>
-
-<p>What we think of Integer is the Fixnum. It&rsquo;s used for all integers that would fit in a machine&rsquo;s &lsquo;word&rsquo;, otherwise it&rsquo;s a Bignum. Both these types inherit from the Integer class.</p>
-
-<p>On this 64bit Mac, a word is 8 bytes. The class uses 1 bit mark the number as positive or negative, and another to mark the integer as value as opposed to a pointer (this is why object_id for Fixnum are always odd). As such, the maximum value for a Fixnum is 4611686018427387903 (2<sup>62</sup>-1) and the minimum is -4611686018427387904 (-2<sup>62</sup>). If an Fixnum leaves this range, Ruby automatically converts it to a Bignum and vice versa.</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>FIXNUM_MAX = (2**(0.size * 8 -2) -1)
-</span><span class='line'># 4611686018427387903
-</span><span class='line'>FIXNUM_MIN = -(2**(0.size * 8 -2))
-</span><span class='line'># -4611686018427387904
-</span><span class='line'>FIXNUM_MAX.class
-</span><span class='line'># Fixnum
-</span><span class='line'>bignum = FIXNUM_MAX + 1
-</span><span class='line'>bignum.class
-</span><span class='line'># Bignum
-</span><span class='line'>(bignum-1).class
-</span><span class='line'># Fixnum</span></code></pre></td></tr></table></div></figure>
-
-
-<p>The biggest difference between these classes is that, like Java ints, Fixnum objects are immediate value. They are not references to another object. Remember in the last post when repeating <code>"xyzxyz".object_id</code> would return a different number everytime? This won&rsquo;t be the case for Fixnum. In fact, object_id of Fixnum are predictable. For positive numbers, the id is simply 2 * value + 1. Similarly, 2 * value &ndash; 1 for negative numbers.</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>4611686018427387903.object_id
-</span><span class='line'># 9223372036854775807
-</span><span class='line'>4611686018427387903.object_id
-</span><span class='line'># 9223372036854775807
-</span><span class='line'>
-</span><span class='line'>-4611686018427387904.object_id
-</span><span class='line'># -9223372036854775807</span></code></pre></td></tr></table></div></figure>
-
-
-<h1>Rationals</h1>
-
-<p>Rationals are useful for calculations because they come with the accuracy that&rsquo;s missing from floats. There are 3 ways to create them</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>Rational(1, 2)
-</span><span class='line'># (1/2)
-</span><span class='line'>"1/2".to_r
-</span><span class='line'># (1/2)
-</span><span class='line'>0.5.rationalize
-</span><span class='line'># (1/2)
-</span><span class='line'>
-</span><span class='line'>Rational(1,2) + Rational(2,3)
-</span><span class='line'># (7/6)
-</span><span class='line'>Rational(7,6).to_f
-</span><span class='line'># 1.1666666666666667</span></code></pre></td></tr></table></div></figure>
-
-
-<h1>Float</h1>
-
-<p>Like integers, Float&rsquo;s methods are quite standard.</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>1.2345.to_i
-</span><span class='line'># 1
-</span><span class='line'>1.2345.floor
-</span><span class='line'># 1
-</span><span class='line'>9.87654321.round(3)
-</span><span class='line'># 9.877
-</span><span class='line'>(0.0).infinite?
-</span><span class='line'># nil
-</span><span class='line'>(-1.0/0.0).infinite?
-</span><span class='line'># -1
-</span><span class='line'>(+1.0/0.0).infinite?
-</span><span class='line'># 1
-</span><span class='line'>0.3.rationalize
-</span><span class='line'># (3/10)</span></code></pre></td></tr></table></div></figure>
-
-
-<p>However, it&rsquo;s important to note that floating point calculations are inaccurate, like almost every programming langauge (can&rsquo;t name any with).</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>0.3.to_r
-</span><span class='line'># (5404319552844595/18014398509481984)
-</span><span class='line'>printf("%.55f\n", 1.9)
-</span><span class='line'>1.8999999999999999111821580299874767661094665527343750000</span></code></pre></td></tr></table></div></figure>
-
-
-<ol>
-<li><a href="http://www.ruby-doc.org/core-2.0/Integer.html">Ruby-Docs Integer</a></li>
-<li><a href="http://www.ruby-doc.org/core-2.0/Fixnum.html">Ruby-Docs Fixnum</a></li>
-<li><a href="http://www.ruby-doc.org/core-2.0/Bignum.html">Ruby-Dics Bignum</a></li>
-<li><a href="http://www.ruby-doc.org/core-2.0/Float.html">Ruby-Docs Float</a></li>
-<li><a href="http://www.ruby-doc.org/core-2.0/Rational.html">Ruby-Docs Rationals</a></li>
-<li><a href="http://www.ruby-doc.org/core-2.0/Complex.html">Ruby-Docs Complex</a></li>
-<li><a href="http://stackoverflow.com/questions/535721/ruby-max-integer">Stack Overflow Ruby max integer</a></li>
-</ol>
-
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/ruby-intro-site/blog/page/2/">&larr; Older</a>
@@ -2226,6 +2283,10 @@ If the identity of the object is important, use a symbol.</p></blockquote>
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/ruby-intro-site/blog/2013/08/04/ruby-on-rails/">Ruby on Rails</a>
+      </li>
+    
+      <li class="post">
         <a href="/ruby-intro-site/blog/2013/08/01/accessing-the-twitter-api/">Accessing Twitter&#8217;s API</a>
       </li>
     
@@ -2239,10 +2300,6 @@ If the identity of the object is important, use a symbol.</p></blockquote>
     
       <li class="post">
         <a href="/ruby-intro-site/blog/2013/07/31/classes/">Classes</a>
-      </li>
-    
-      <li class="post">
-        <a href="/ruby-intro-site/blog/2013/07/30/functions/">Functions</a>
       </li>
     
   </ul>

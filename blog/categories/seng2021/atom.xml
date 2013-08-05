@@ -4,7 +4,7 @@
   <title><![CDATA[Category: SENG2021 | Ruby Intro]]></title>
   <link href="http://nizhu.github.io/ruby-intro-site/blog/categories/seng2021/atom.xml" rel="self"/>
   <link href="http://nizhu.github.io/ruby-intro-site/"/>
-  <updated>2013-08-04T17:32:21+10:00</updated>
+  <updated>2013-08-05T22:24:40+10:00</updated>
   <id>http://nizhu.github.io/ruby-intro-site/</id>
   <author>
     <name><![CDATA[Nick Zhu]]></name>
@@ -12,6 +12,294 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Ruby on Rails]]></title>
+    <link href="http://nizhu.github.io/ruby-intro-site/blog/2013/08/04/ruby-on-rails/"/>
+    <updated>2013-08-04T19:58:00+10:00</updated>
+    <id>http://nizhu.github.io/ruby-intro-site/blog/2013/08/04/ruby-on-rails</id>
+    <content type="html"><![CDATA[<p>As I mentioned in the very first post, Rails has been credited with Ruby&rsquo;s sudden, meteoric rise in popularity. It&rsquo;s not the only web application framework for Ruby, but it remains by far the most popular to this day. If you&rsquo;re interested in a career in web development and want to stay away from corporate enterprises, this is a great way to go about it.</p>
+
+<p>Rails emphasises the Model-View-Controller principle, and if you&rsquo;re not familiar with the concept, it&rsquo;s essentially the separation of the data, to the logic of processing the data, and the display of the processing results (links at the bottom for more details). The application I&rsquo;ll be demoing will ignore the Model part however. This is a very simple application will retrieve some data from Twitter, same as the previous post, and display it on a webpage.</p>
+
+<p>As always, start by installing it&hellip;<code>gem install rails</code></p>
+
+<h2>Scaffolding</h2>
+
+<p>One of the big features of rails is scaffolding &ndash; automatically generating common parts of an application. This is the first step of development.</p>
+
+<p><div class='bogus-wrapper'><notextile><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>rails new twitter_app
+</span><span class='line'>cd twitter_app
+</span><span class='line'>rails generate controller twitter</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+
+<p>The rails generator has created a lot of new files &ndash; about 80 in fact &ndash; but aren&rsquo;t many that to worry about.</p>
+
+<p>Before you begin editing the files, copy the twitter configuration file from the previous pages to the <code>config/initializers</code> directory. Files in this directory are run when the server is started.</p>
+
+<h2>The Rails Router</h2>
+
+<p>It&rsquo;s advisable that you leave the commented out lines here until you get the hand of routing just for your reference.</p>
+
+<p><div class='bogus-wrapper'><notextile><figure class='code'><figcaption><span>config/routes.rb </span></figcaption>
+ <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="ss">TwitterApp</span><span class="p">:</span><span class="ss">:Application</span><span class="o">.</span><span class="n">routes</span><span class="o">.</span><span class="n">draw</span> <span class="k">do</span>
+</span><span class='line'>  <span class="n">root</span> <span class="o">&amp;</span><span class="n">lsquo</span><span class="p">;</span><span class="n">twitter</span><span class="c1">#proposals&amp;rsquo;</span>
+</span><span class='line'>  <span class="n">get</span> <span class="o">&amp;</span><span class="n">lsquo</span><span class="p">;</span><span class="n">proposals</span><span class="o">&amp;</span><span class="n">rsquo</span><span class="p">;</span> <span class="o">=&gt;</span> <span class="o">&amp;</span><span class="n">lsquo</span><span class="p">;</span><span class="n">twitter</span><span class="c1">#proposals&amp;rsquo;</span>
+</span><span class='line'>  <span class="n">get</span> <span class="o">&amp;</span><span class="n">lsquo</span><span class="p">;</span><span class="n">ausvotes</span><span class="o">&amp;</span><span class="n">rsquo</span><span class="p">;</span> <span class="o">=&gt;</span> <span class="o">&amp;</span><span class="n">lsquo</span><span class="p">;</span><span class="n">twitter</span><span class="c1">#ausvotes&amp;rsquo;</span>
+</span><span class='line'><span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+
+<p>The first line in the block points the root path, <code>/</code> to the proposals function in the twitter controller. The second and third points <code>/proposals`` and</code>/ausvotes``` paths to their respective functions in the same controller.</p>
+
+<h2>The Twitter controller</h2>
+
+<p>The code here is almost identical to that from the previous Twitter post. Now, we&rsquo;re just keeping all the tweets in an array instead of just printing it. At the end of the processing, Rails will first render <code>views/layouts/application.html.erb</code>. Unless you specify which HTML template to use with the <code>render</code> function, rails will automatically look for the template <code>views/&lt;controller name&gt;/&lt;function name&gt;.*</code>.</p>
+
+<p><div class='bogus-wrapper'><notextile><figure class='code'><figcaption><span>app/controllers/twitter_controller.rb </span></figcaption>
+ <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+<span class='line-number'>30</span>
+<span class='line-number'>31</span>
+<span class='line-number'>32</span>
+<span class='line-number'>33</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="nb">require</span> <span class="o">&amp;</span><span class="n">lsquo</span><span class="p">;</span><span class="n">twitter</span><span class="o">&amp;</span><span class="n">rsquo</span><span class="p">;</span>
+</span><span class='line'><span class="k">class</span> <span class="nc">TwitterController</span> <span class="o">&amp;</span><span class="n">lt</span><span class="p">;</span> <span class="no">ApplicationController</span><span class="o">&lt;</span><span class="sr">/p&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="sr">&lt;p&gt;  def proposals&lt;/</span><span class="nb">p</span><span class="o">&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="n">pre</span><span class="o">&gt;&lt;</span><span class="n">code</span><span class="o">&gt;</span><span class="vi">@tweets</span> <span class="o">=</span> <span class="o">[]</span><span class="p">;</span>
+</span><span class='line'><span class="n">max_id</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span>
+</span><span class='line'><span class="k">for</span> <span class="n">i</span> <span class="k">in</span> <span class="p">(</span><span class="mi">0</span><span class="o">.</span><span class="n">.</span><span class="mi">1</span><span class="p">)</span>
+</span><span class='line'>  <span class="n">t</span> <span class="o">=</span> <span class="no">Twitter</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="s2">&quot;to:justinbieber marry me&quot;</span><span class="p">,</span> <span class="ss">:count</span> <span class="o">=&amp;</span><span class="n">gt</span><span class="p">;</span> <span class="mi">100</span><span class="p">,</span> <span class="ss">:result_type</span> <span class="o">=&amp;</span><span class="n">gt</span><span class="p">;</span> <span class="s2">&quot;recent&quot;</span><span class="p">)</span>
+</span><span class='line'>  <span class="n">t</span><span class="o">.</span><span class="n">statuses</span><span class="o">.</span><span class="n">each</span> <span class="k">do</span> <span class="o">|</span> <span class="n">tweet</span> <span class="o">|</span>
+</span><span class='line'>    <span class="vi">@tweets</span><span class="o">.</span><span class="n">push</span> <span class="n">tweet</span>
+</span><span class='line'>  <span class="k">end</span>
+</span><span class='line'>  <span class="n">max_id</span> <span class="o">=</span> <span class="n">t</span><span class="o">.</span><span class="n">next_results</span><span class="o">[</span><span class="ss">:max_id</span><span class="o">]</span>
+</span><span class='line'><span class="k">end</span>
+</span><span class='line'><span class="o">&lt;</span><span class="sr">/code&gt;&lt;/</span><span class="n">pre</span><span class="o">&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="nb">p</span><span class="o">&gt;</span>  <span class="k">end</span><span class="o">&lt;</span><span class="sr">/p&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="sr">&lt;p&gt;  def ausvotes&lt;/</span><span class="nb">p</span><span class="o">&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="n">pre</span><span class="o">&gt;&lt;</span><span class="n">code</span><span class="o">&gt;</span><span class="vi">@tweets</span> <span class="o">=</span> <span class="o">[]</span><span class="p">;</span>
+</span><span class='line'><span class="n">max_id</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span>
+</span><span class='line'><span class="k">for</span> <span class="n">i</span> <span class="k">in</span> <span class="p">(</span><span class="mi">0</span><span class="o">.</span><span class="n">.</span><span class="mi">1</span><span class="p">)</span>
+</span><span class='line'>  <span class="n">t</span> <span class="o">=</span> <span class="no">Twitter</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="s2">&quot;#ausvotes -rt&quot;</span><span class="p">,</span> <span class="ss">:count</span> <span class="o">=&amp;</span><span class="n">gt</span><span class="p">;</span> <span class="mi">100</span><span class="p">,</span> <span class="ss">:result_type</span> <span class="o">=&amp;</span><span class="n">gt</span><span class="p">;</span> <span class="s2">&quot;recent&quot;</span><span class="p">,</span> <span class="ss">:max_id</span> <span class="o">=&amp;</span><span class="n">gt</span><span class="p">;</span> <span class="n">max_id</span><span class="p">)</span>
+</span><span class='line'>  <span class="n">t</span><span class="o">.</span><span class="n">statuses</span><span class="o">.</span><span class="n">each</span> <span class="k">do</span> <span class="o">|</span> <span class="n">tweet</span> <span class="o">|</span>
+</span><span class='line'>    <span class="vi">@tweets</span><span class="o">.</span><span class="n">push</span> <span class="n">tweet</span>
+</span><span class='line'>  <span class="k">end</span>
+</span><span class='line'>  <span class="n">max_id</span> <span class="o">=</span> <span class="n">t</span><span class="o">.</span><span class="n">next_results</span><span class="o">[</span><span class="ss">:max_id</span><span class="o">]</span>
+</span><span class='line'><span class="k">end</span>
+</span><span class='line'><span class="o">&lt;</span><span class="sr">/code&gt;&lt;/</span><span class="n">pre</span><span class="o">&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="nb">p</span><span class="o">&gt;</span>  <span class="k">end</span>
+</span><span class='line'><span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+
+<h2>Justin Bieber Proposals page</h2>
+
+<p>If you&rsquo;re familiar with JSP or PHP, this is very much the same &ndash; HTML mixed in with some code. Here, we&rsquo;re making a simple table but we&rsquo;re creating a row for each tweet.</p>
+
+<p><div class='bogus-wrapper'><notextile><figure class='code'><figcaption><span>app/views/twitter/proposals.html.erb </span></figcaption>
+ <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+</pre></td><td class='code'><pre><code class='html'><span class='line'><span class="nt">&lt;/p&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="nt">&lt;h1&gt;</span>Last 200 Justin Bieber Proposals<span class="nt">&lt;/h1&gt;</span>
+</span><span class='line'>
+</span><span class='line'>
+</span><span class='line'>
+</span><span class='line'>
+</span><span class='line'><span class="nt">&lt;table&gt;</span>
+</span><span class='line'>  <span class="nt">&lt;tr&gt;</span>
+</span><span class='line'>    <span class="nt">&lt;th&gt;</span>User<span class="nt">&lt;/th&gt;</span>
+</span><span class='line'>    <span class="nt">&lt;th&gt;</span>Text<span class="nt">&lt;/th&gt;</span>
+</span><span class='line'>  <span class="nt">&lt;/tr&gt;</span>
+</span><span class='line'><span class="err">&lt;</span>% @tweets.each do |tweet| %&gt;
+</span><span class='line'>  <span class="nt">&lt;tr&gt;</span>
+</span><span class='line'>    <span class="nt">&lt;td&gt;</span><span class="err">&lt;</span>%= tweet.user.name %&gt;<span class="nt">&lt;/td&gt;</span>
+</span><span class='line'>    <span class="nt">&lt;td&gt;</span><span class="err">&lt;</span>%= tweet.text %&gt;<span class="nt">&lt;/td&gt;</span>
+</span><span class='line'>  <span class="nt">&lt;/tr&gt;</span>
+</span><span class='line'><span class="err">&lt;</span>% end %&gt;
+</span><span class='line'><span class="nt">&lt;/table&gt;</span>
+</span><span class='line'>
+</span><span class='line'>
+</span><span class='line'><span class="nt">&lt;p&gt;</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+
+<h2>#ausvotes page</h2>
+
+<p>Identical to the above. Do try to refactor this :)</p>
+
+<p><div class='bogus-wrapper'><notextile><figure class='code'><figcaption><span>app/views/twitter/ausvotes.html.erb </span></figcaption>
+ <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+</pre></td><td class='code'><pre><code class='html'><span class='line'><span class="nt">&lt;/p&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="nt">&lt;h1&gt;</span>Last 200 Tweets with #ausvotes<span class="nt">&lt;/h1&gt;</span>
+</span><span class='line'>
+</span><span class='line'>
+</span><span class='line'>
+</span><span class='line'>
+</span><span class='line'><span class="nt">&lt;table&gt;</span>
+</span><span class='line'>  <span class="nt">&lt;tr&gt;</span>
+</span><span class='line'>    <span class="nt">&lt;th&gt;</span>User<span class="nt">&lt;/th&gt;</span>
+</span><span class='line'>    <span class="nt">&lt;th&gt;</span>Text<span class="nt">&lt;/th&gt;</span>
+</span><span class='line'>  <span class="nt">&lt;/tr&gt;</span>
+</span><span class='line'><span class="err">&lt;</span>% @tweets.each do |tweet| %&gt;
+</span><span class='line'>  <span class="nt">&lt;tr&gt;</span>
+</span><span class='line'>    <span class="nt">&lt;td&gt;</span><span class="err">&lt;</span>%= tweet.user.name %&gt;<span class="nt">&lt;/td&gt;</span>
+</span><span class='line'>    <span class="nt">&lt;td&gt;</span><span class="err">&lt;</span>%= tweet.text %&gt;<span class="nt">&lt;/td&gt;</span>
+</span><span class='line'>  <span class="nt">&lt;/tr&gt;</span>
+</span><span class='line'><span class="err">&lt;</span>% end %&gt;
+</span><span class='line'><span class="nt">&lt;/table&gt;</span>
+</span><span class='line'>
+</span><span class='line'>
+</span><span class='line'><span class="nt">&lt;p&gt;</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+
+<h2>Deploying with WEBrick</h2>
+
+<p>WEBrick is a very simple Rails web server, perfect for dev testing. Just go to the root directory of the application and type in <code>rails server</code>. WEBrick listens to port 3000 by default, but look carefully at its output if you come across any problems. The JB Proposals page will be available in @ <code>http://0.0.0.0:3000</code> and <code>http://0.0.0.0:3000/proposals</code> while the #ausvotes page will be available at <code>http://0.0.0.0:3000/ausvotes</code>.</p>
+
+<p><div class='bogus-wrapper'><notextile><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>$ rails server
+</span><span class='line'>=> Booting WEBrick
+</span><span class='line'>=> Rails 4.0.0 application starting in development on &lt;a href="http://0.0.0.0:3000">http://0.0.0.0:3000&lt;/a>
+</span><span class='line'>=> Run &lt;code>rails server -h&lt;/code> for more startup options
+</span><span class='line'>=> Ctrl-C to shutdown server
+</span><span class='line'>[2013-08-05 22:13:15] INFO  WEBrick 1.3.1
+</span><span class='line'>[2013-08-05 22:13:15] INFO  ruby 2.0.0 (2013-06-27) [x86_64-darwin12.4.0]
+</span><span class='line'>[2013-08-05 22:13:15] INFO  WEBrick::HTTPServer#start: pid=25428 port=3000</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+
+<h2>Adding links between the 2 pages</h2>
+
+<p>We want the user to be able to easily manuever between the 2 pages so let&rsquo;s put hyperlinks to the 2 pages at the top of every page (just add the 2 anchor bits in the html below).</p>
+
+<p><div class='bogus-wrapper'><notextile><figure class='code'><figcaption><span>app/views/layouts/application.html.erb </span></figcaption>
+ <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+</pre></td><td class='code'><pre><code class='html'><span class='line'><span class="ni">&amp;lt;</span>!DOCTYPE html&gt;
+</span><span class='line'><span class="nt">&lt;html&gt;</span>
+</span><span class='line'><span class="nt">&lt;head&gt;</span>
+</span><span class='line'>  <span class="nt">&lt;title&gt;</span>TwitterApp<span class="nt">&lt;/title&gt;</span>
+</span><span class='line'>  <span class="ni">&amp;lt;</span>%= stylesheet_link_tag    <span class="ni">&amp;ldquo;</span>application<span class="ni">&amp;rdquo;</span>, media: <span class="ni">&amp;ldquo;</span>all<span class="ni">&amp;rdquo;</span>, <span class="ni">&amp;ldquo;</span>data-turbolinks-track<span class="ni">&amp;rdquo;</span> =&gt; true %&gt;
+</span><span class='line'>  <span class="ni">&amp;lt;</span>%= javascript_include_tag <span class="ni">&amp;ldquo;</span>application<span class="ni">&amp;rdquo;</span>, <span class="ni">&amp;ldquo;</span>data-turbolinks-track<span class="ni">&amp;rdquo;</span> =&gt; true %&gt;
+</span><span class='line'>  <span class="ni">&amp;lt;</span>%= csrf_meta_tags %&gt;
+</span><span class='line'><span class="nt">&lt;/head&gt;</span>
+</span><span class='line'><span class="nt">&lt;body&gt;</span>
+</span><span class='line'>  <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">&quot;http://nizhu.github.io/ruby-intro-site/proposals&quot;</span><span class="nt">&gt;</span>JB Proposals<span class="nt">&lt;/a&gt;</span>
+</span><span class='line'>  <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">&quot;http://nizhu.github.io/ruby-intro-site/ausvotes&quot;</span><span class="nt">&gt;</span>#ausvotes<span class="nt">&lt;/a&gt;</span>
+</span><span class='line'><span class="ni">&amp;lt;</span>%= yield %&gt;<span class="nt">&lt;/p&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="nt">&lt;p&gt;&lt;/body&gt;</span>
+</span><span class='line'><span class="nt">&lt;/html&gt;</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+
+<p>Just refresh the page to take affect. Notice that this change did not require you to restart WEBrick. Some changes, eg. config changes, will require you to do so.</p>
+
+<ol>
+<li><a href="http://en.wikipedia.org/wiki/Model%E2%80%93view%E2%80%93controller">Wikipedia on MVC</a></li>
+<li><a href="http://www.codinghorror.com/blog/2008/05/understanding-model-view-controller.html">Jeff Atwood on MVC</a></li>
+</ol>
+
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Accessing Twitter's API]]></title>
@@ -842,235 +1130,6 @@
 </span><span class='line'>&lt;h1>Quack!&lt;/h1>
 </span><span class='line'>
 </span><span class='line'>&lt;p></span></code></pre></td></tr></table></div></figure></notextile></div></p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Functions]]></title>
-    <link href="http://nizhu.github.io/ruby-intro-site/blog/2013/07/30/functions/"/>
-    <updated>2013-07-30T12:55:00+10:00</updated>
-    <id>http://nizhu.github.io/ruby-intro-site/blog/2013/07/30/functions</id>
-    <content type="html"><![CDATA[<p>Firstly the syntax. Let&rsquo;s first define a very basic function we can use for this post.</p>
-
-<p><div class='bogus-wrapper'><notextile><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>def print_stuff(str1, str2, reverse = false)
-</span><span class='line'>  if reverse&lt;/p>
-</span><span class='line'>
-</span><span class='line'>&lt;pre>&lt;code>puts "#{str2} and #{str1} received!"
-</span><span class='line'>&lt;/code>&lt;/pre>
-</span><span class='line'>
-</span><span class='line'>&lt;p>  else&lt;/p>
-</span><span class='line'>
-</span><span class='line'>&lt;pre>&lt;code>puts "#{str1} and #{str2} received!"
-</span><span class='line'>&lt;/code>&lt;/pre>
-</span><span class='line'>
-</span><span class='line'>&lt;p>  end
-</span><span class='line'>  str = str1 + str2
-</span><span class='line'>end</span></code></pre></td></tr></table></div></figure></notextile></div></p>
-
-<h3>Calling functions</h3>
-
-<p>Brackets around function parameters is optional in Ruby. However, sometimes it&rsquo;s useful to include them regardless for clarity&rsquo;s sake.</p>
-
-<p><div class='bogus-wrapper'><notextile><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>print_stuff(&ldquo;First argument&rdquo;, &ldquo;Second argument&rdquo;)&lt;/p>
-</span><span class='line'>
-</span><span class='line'>&lt;h1>First argument and Second argument received!&lt;/h1>
-</span><span class='line'>
-</span><span class='line'>&lt;p>print_stuff &ldquo;First argument&rdquo;, &ldquo;Second argument&rdquo;&lt;/p>
-</span><span class='line'>
-</span><span class='line'>&lt;h1>First argument and Second argument received!&lt;/h1>
-</span><span class='line'>
-</span><span class='line'>&lt;p></span></code></pre></td></tr></table></div></figure></notextile></div></p>
-
-<p>Arguments can be made optional by giving them a default value.</p>
-
-<p><div class='bogus-wrapper'><notextile><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>print_stuff(&ldquo;First argument&rdquo;, &ldquo;Second argument&rdquo;, false)&lt;/p>
-</span><span class='line'>
-</span><span class='line'>&lt;h1>First argument and Second argument received!&lt;/h1>
-</span><span class='line'>
-</span><span class='line'>&lt;p>print_stuff(&ldquo;First argument&rdquo;, &ldquo;Second argument&rdquo;, true)&lt;/p>
-</span><span class='line'>
-</span><span class='line'>&lt;h1>Second argument and First argument received!&lt;/h1>
-</span><span class='line'>
-</span><span class='line'>&lt;p></span></code></pre></td></tr></table></div></figure></notextile></div></p>
-
-<h3>Return value</h3>
-
-<p>As you may have already noticed, <code>print_stuff</code> does use <code>return</code> even though it does exist in Ruby and it does exactly what you&rsquo;d expect. If the return value is not specified, Ruby will return the value returned in the last executed line of the block</p>
-
-<p><div class='bogus-wrapper'><notextile><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-<span class='line-number'>15</span>
-<span class='line-number'>16</span>
-<span class='line-number'>17</span>
-<span class='line-number'>18</span>
-<span class='line-number'>19</span>
-<span class='line-number'>20</span>
-<span class='line-number'>21</span>
-<span class='line-number'>22</span>
-<span class='line-number'>23</span>
-<span class='line-number'>24</span>
-<span class='line-number'>25</span>
-<span class='line-number'>26</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>def add(a, b)
-</span><span class='line'>  a + b
-</span><span class='line'>end&lt;/p>
-</span><span class='line'>
-</span><span class='line'>&lt;p>puts add(1, 2)&lt;/p>
-</span><span class='line'>
-</span><span class='line'>&lt;h1>3&lt;/h1>
-</span><span class='line'>
-</span><span class='line'>&lt;p>def add_return(a, b)
-</span><span class='line'>  return a + b
-</span><span class='line'>end&lt;/p>
-</span><span class='line'>
-</span><span class='line'>&lt;p>puts add_return(1,2)&lt;/p>
-</span><span class='line'>
-</span><span class='line'>&lt;h1>3&lt;/h1>
-</span><span class='line'>
-</span><span class='line'>&lt;p>def add_print(a, b)
-</span><span class='line'>  a + b
-</span><span class='line'>  print &ldquo;add successful&rdquo;
-</span><span class='line'>end&lt;/p>
-</span><span class='line'>
-</span><span class='line'>&lt;p>puts add_print(1,2)&lt;/p>
-</span><span class='line'>
-</span><span class='line'>&lt;h1>add successful&lt;/h1>
-</span><span class='line'>
-</span><span class='line'>&lt;p></span></code></pre></td></tr></table></div></figure></notextile></div></p>
-
-<p>Because <code>print "add successful"</code> returns <code>nil</code>, <code>add_print</code> returns nil.</p>
-
-<h1>Error Handling</h1>
-
-<p><div class='bogus-wrapper'><notextile><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-<span class='line-number'>15</span>
-<span class='line-number'>16</span>
-<span class='line-number'>17</span>
-<span class='line-number'>18</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>def do_something
-</span><span class='line'>  raise &ldquo;Failed to do something&rdquo;
-</span><span class='line'>end&lt;/p>
-</span><span class='line'>
-</span><span class='line'>&lt;p>raise_exception&lt;/p>
-</span><span class='line'>
-</span><span class='line'>&lt;h1>RuntimeError: Failed to do something&lt;/h1>
-</span><span class='line'>
-</span><span class='line'>&lt;p>begin
-</span><span class='line'>  do_something
-</span><span class='line'>  puts &ldquo;Done something&rdquo;
-</span><span class='line'>rescue
-</span><span class='line'>  puts &ldquo;Rescuing from exception&rdquo;
-</span><span class='line'>end&lt;/p>
-</span><span class='line'>
-</span><span class='line'>&lt;h1>Rescuing from exception&lt;/h1>
-</span><span class='line'>
-</span><span class='line'>&lt;p></span></code></pre></td></tr></table></div></figure></notextile></div></p>
-
-<p><code>retry</code> will return the cursor to start of the begin block it belongs to</p>
-
-<p><div class='bogus-wrapper'><notextile><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-<span class='line-number'>15</span>
-<span class='line-number'>16</span>
-<span class='line-number'>17</span>
-<span class='line-number'>18</span>
-<span class='line-number'>19</span>
-<span class='line-number'>20</span>
-<span class='line-number'>21</span>
-<span class='line-number'>22</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>i = 0
-</span><span class='line'>begin
-</span><span class='line'>  puts &ldquo;#{i}&rdquo;
-</span><span class='line'>  i += 1
-</span><span class='line'>  if i &lt; 2&lt;/p>
-</span><span class='line'>
-</span><span class='line'>&lt;pre>&lt;code>do_something
-</span><span class='line'>&lt;/code>&lt;/pre>
-</span><span class='line'>
-</span><span class='line'>&lt;p>  end
-</span><span class='line'>  puts &ldquo;All done!&rdquo;
-</span><span class='line'>rescue
-</span><span class='line'>  retry
-</span><span class='line'>end&lt;/p>
-</span><span class='line'>
-</span><span class='line'>&lt;h1>0&lt;/h1>
-</span><span class='line'>
-</span><span class='line'>&lt;h1>1&lt;/h1>
-</span><span class='line'>
-</span><span class='line'>&lt;h1>All done!&lt;/h1>
-</span><span class='line'>
-</span><span class='line'>&lt;p></span></code></pre></td></tr></table></div></figure></notextile></div></p>
-
-<p>Also relevant later on, <a href="http://innig.net/software/ruby/closures-in-ruby">Closures</a> and <a href="https://rubymonk.com/learning/books/2-metaprogramming-ruby/chapters/32-introduction-to-metaprogramming/lessons/75-being-meta">Metaprogramming</a></p>
 ]]></content>
   </entry>
   

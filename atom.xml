@@ -4,7 +4,7 @@
   <title><![CDATA[Ruby Intro]]></title>
   <link href="http://nizhu.github.io/ruby-intro-site/atom.xml" rel="self"/>
   <link href="http://nizhu.github.io/ruby-intro-site/"/>
-  <updated>2013-08-04T17:32:21+10:00</updated>
+  <updated>2013-08-05T22:24:40+10:00</updated>
   <id>http://nizhu.github.io/ruby-intro-site/</id>
   <author>
     <name><![CDATA[Nick Zhu]]></name>
@@ -12,6 +12,257 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Ruby on Rails]]></title>
+    <link href="http://nizhu.github.io/ruby-intro-site/blog/2013/08/04/ruby-on-rails/"/>
+    <updated>2013-08-04T19:58:00+10:00</updated>
+    <id>http://nizhu.github.io/ruby-intro-site/blog/2013/08/04/ruby-on-rails</id>
+    <content type="html"><![CDATA[<p>As I mentioned in the very first post, Rails has been credited with Ruby&rsquo;s sudden, meteoric rise in popularity. It&rsquo;s not the only web application framework for Ruby, but it remains by far the most popular to this day. If you&rsquo;re interested in a career in web development and want to stay away from corporate enterprises, this is a great way to go about it.</p>
+
+<p>Rails emphasises the Model-View-Controller principle, and if you&rsquo;re not familiar with the concept, it&rsquo;s essentially the separation of the data, to the logic of processing the data, and the display of the processing results (links at the bottom for more details). The application I&rsquo;ll be demoing will ignore the Model part however. This is a very simple application will retrieve some data from Twitter, same as the previous post, and display it on a webpage.</p>
+
+<p>As always, start by installing it&hellip;<code>gem install rails</code></p>
+
+<h2>Scaffolding</h2>
+
+<p>One of the big features of rails is scaffolding &ndash; automatically generating common parts of an application. This is the first step of development.</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>rails new twitter_app
+</span><span class='line'>cd twitter_app
+</span><span class='line'>rails generate controller twitter</span></code></pre></td></tr></table></div></figure>
+
+
+<p>The rails generator has created a lot of new files &ndash; about 80 in fact &ndash; but aren&rsquo;t many that to worry about.</p>
+
+<p>Before you begin editing the files, copy the twitter configuration file from the previous pages to the <code>config/initializers</code> directory. Files in this directory are run when the server is started.</p>
+
+<h2>The Rails Router</h2>
+
+<p>It&rsquo;s advisable that you leave the commented out lines here until you get the hand of routing just for your reference.</p>
+
+<figure class='code'><figcaption><span>config/routes.rb </span></figcaption>
+ <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="ss">TwitterApp</span><span class="p">:</span><span class="ss">:Application</span><span class="o">.</span><span class="n">routes</span><span class="o">.</span><span class="n">draw</span> <span class="k">do</span>
+</span><span class='line'>  <span class="n">root</span> <span class="s1">&#39;twitter#proposals&#39;</span>
+</span><span class='line'>  <span class="n">get</span> <span class="s1">&#39;proposals&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;twitter#proposals&#39;</span>
+</span><span class='line'>  <span class="n">get</span> <span class="s1">&#39;ausvotes&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;twitter#ausvotes&#39;</span>
+</span><span class='line'><span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>The first line in the block points the root path, <code>/</code> to the proposals function in the twitter controller. The second and third points <code>/proposals`` and</code>/ausvotes&#8220;` paths to their respective functions in the same controller.</p>
+
+<h2>The Twitter controller</h2>
+
+<p>The code here is almost identical to that from the previous Twitter post. Now, we&rsquo;re just keeping all the tweets in an array instead of just printing it. At the end of the processing, Rails will first render <code>views/layouts/application.html.erb</code>. Unless you specify which HTML template to use with the <code>render</code> function, rails will automatically look for the template <code>views/&lt;controller name&gt;/&lt;function name&gt;.*</code>.</p>
+
+<figure class='code'><figcaption><span>app/controllers/twitter_controller.rb </span></figcaption>
+ <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="nb">require</span> <span class="s1">&#39;twitter&#39;</span>
+</span><span class='line'><span class="k">class</span> <span class="nc">TwitterController</span> <span class="o">&lt;</span> <span class="no">ApplicationController</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="k">def</span> <span class="nf">proposals</span>
+</span><span class='line'>    <span class="vi">@tweets</span> <span class="o">=</span> <span class="o">[]</span><span class="p">;</span>
+</span><span class='line'>    <span class="n">max_id</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span>
+</span><span class='line'>    <span class="k">for</span> <span class="n">i</span> <span class="k">in</span> <span class="p">(</span><span class="mi">0</span><span class="o">.</span><span class="n">.</span><span class="mi">1</span><span class="p">)</span>
+</span><span class='line'>      <span class="n">t</span> <span class="o">=</span> <span class="no">Twitter</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="s2">&quot;to:justinbieber marry me&quot;</span><span class="p">,</span> <span class="ss">:count</span> <span class="o">=&gt;</span> <span class="mi">100</span><span class="p">,</span> <span class="ss">:result_type</span> <span class="o">=&gt;</span> <span class="s2">&quot;recent&quot;</span><span class="p">)</span>
+</span><span class='line'>      <span class="n">t</span><span class="o">.</span><span class="n">statuses</span><span class="o">.</span><span class="n">each</span> <span class="k">do</span> <span class="o">|</span> <span class="n">tweet</span> <span class="o">|</span>
+</span><span class='line'>        <span class="vi">@tweets</span><span class="o">.</span><span class="n">push</span> <span class="n">tweet</span>
+</span><span class='line'>      <span class="k">end</span>
+</span><span class='line'>      <span class="n">max_id</span> <span class="o">=</span> <span class="n">t</span><span class="o">.</span><span class="n">next_results</span><span class="o">[</span><span class="ss">:max_id</span><span class="o">]</span>
+</span><span class='line'>    <span class="k">end</span>
+</span><span class='line'>  <span class="k">end</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="k">def</span> <span class="nf">ausvotes</span>
+</span><span class='line'>    <span class="vi">@tweets</span> <span class="o">=</span> <span class="o">[]</span><span class="p">;</span>
+</span><span class='line'>    <span class="n">max_id</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span>
+</span><span class='line'>    <span class="k">for</span> <span class="n">i</span> <span class="k">in</span> <span class="p">(</span><span class="mi">0</span><span class="o">.</span><span class="n">.</span><span class="mi">1</span><span class="p">)</span>
+</span><span class='line'>      <span class="n">t</span> <span class="o">=</span> <span class="no">Twitter</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="s2">&quot;#ausvotes -rt&quot;</span><span class="p">,</span> <span class="ss">:count</span> <span class="o">=&gt;</span> <span class="mi">100</span><span class="p">,</span> <span class="ss">:result_type</span> <span class="o">=&gt;</span> <span class="s2">&quot;recent&quot;</span><span class="p">,</span> <span class="ss">:max_id</span> <span class="o">=&gt;</span> <span class="n">max_id</span><span class="p">)</span>
+</span><span class='line'>      <span class="n">t</span><span class="o">.</span><span class="n">statuses</span><span class="o">.</span><span class="n">each</span> <span class="k">do</span> <span class="o">|</span> <span class="n">tweet</span> <span class="o">|</span>
+</span><span class='line'>        <span class="vi">@tweets</span><span class="o">.</span><span class="n">push</span> <span class="n">tweet</span>
+</span><span class='line'>      <span class="k">end</span>
+</span><span class='line'>      <span class="n">max_id</span> <span class="o">=</span> <span class="n">t</span><span class="o">.</span><span class="n">next_results</span><span class="o">[</span><span class="ss">:max_id</span><span class="o">]</span>
+</span><span class='line'>    <span class="k">end</span>
+</span><span class='line'>  <span class="k">end</span>
+</span><span class='line'><span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h2>Justin Bieber Proposals page</h2>
+
+<p>If you&rsquo;re familiar with JSP or PHP, this is very much the same &ndash; HTML mixed in with some code. Here, we&rsquo;re making a simple table but we&rsquo;re creating a row for each tweet.</p>
+
+<figure class='code'><figcaption><span>app/views/twitter/proposals.html.erb </span></figcaption>
+ <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+</pre></td><td class='code'><pre><code class='html'><span class='line'><span class="nt">&lt;h1&gt;</span>Last 200 Justin Bieber Proposals<span class="nt">&lt;/h1&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="nt">&lt;table&gt;</span>
+</span><span class='line'>  <span class="nt">&lt;tr&gt;</span>
+</span><span class='line'>    <span class="nt">&lt;th&gt;</span>User<span class="nt">&lt;/th&gt;</span>
+</span><span class='line'>    <span class="nt">&lt;th&gt;</span>Text<span class="nt">&lt;/th&gt;</span>
+</span><span class='line'>  <span class="nt">&lt;/tr&gt;</span>
+</span><span class='line'><span class="err">&lt;</span>% @tweets.each do |tweet| %&gt;
+</span><span class='line'>  <span class="nt">&lt;tr&gt;</span>
+</span><span class='line'>    <span class="nt">&lt;td&gt;</span><span class="err">&lt;</span>%= tweet.user.name %&gt;<span class="nt">&lt;/td&gt;</span>
+</span><span class='line'>    <span class="nt">&lt;td&gt;</span><span class="err">&lt;</span>%= tweet.text %&gt;<span class="nt">&lt;/td&gt;</span>
+</span><span class='line'>  <span class="nt">&lt;/tr&gt;</span>
+</span><span class='line'><span class="err">&lt;</span>% end %&gt;
+</span><span class='line'><span class="nt">&lt;/table&gt;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h2>#ausvotes page</h2>
+
+<p>Identical to the above. Do try to refactor this :)</p>
+
+<figure class='code'><figcaption><span>app/views/twitter/ausvotes.html.erb </span></figcaption>
+ <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+</pre></td><td class='code'><pre><code class='html'><span class='line'><span class="nt">&lt;h1&gt;</span>Last 200 Tweets with #ausvotes<span class="nt">&lt;/h1&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="nt">&lt;table&gt;</span>
+</span><span class='line'>  <span class="nt">&lt;tr&gt;</span>
+</span><span class='line'>    <span class="nt">&lt;th&gt;</span>User<span class="nt">&lt;/th&gt;</span>
+</span><span class='line'>    <span class="nt">&lt;th&gt;</span>Text<span class="nt">&lt;/th&gt;</span>
+</span><span class='line'>  <span class="nt">&lt;/tr&gt;</span>
+</span><span class='line'><span class="err">&lt;</span>% @tweets.each do |tweet| %&gt;
+</span><span class='line'>  <span class="nt">&lt;tr&gt;</span>
+</span><span class='line'>    <span class="nt">&lt;td&gt;</span><span class="err">&lt;</span>%= tweet.user.name %&gt;<span class="nt">&lt;/td&gt;</span>
+</span><span class='line'>    <span class="nt">&lt;td&gt;</span><span class="err">&lt;</span>%= tweet.text %&gt;<span class="nt">&lt;/td&gt;</span>
+</span><span class='line'>  <span class="nt">&lt;/tr&gt;</span>
+</span><span class='line'><span class="err">&lt;</span>% end %&gt;
+</span><span class='line'><span class="nt">&lt;/table&gt;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h2>Deploying with WEBrick</h2>
+
+<p>WEBrick is a very simple Rails web server, perfect for dev testing. Just go to the root directory of the application and type in <code>rails server</code>. WEBrick listens to port 3000 by default, but look carefully at its output if you come across any problems. The JB Proposals page will be available in @ <code>http://0.0.0.0:3000</code> and <code>http://0.0.0.0:3000/proposals</code> while the #ausvotes page will be available at <code>http://0.0.0.0:3000/ausvotes</code>.</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>$ rails server
+</span><span class='line'>=> Booting WEBrick
+</span><span class='line'>=> Rails 4.0.0 application starting in development on http://0.0.0.0:3000
+</span><span class='line'>=> Run `rails server -h` for more startup options
+</span><span class='line'>=> Ctrl-C to shutdown server
+</span><span class='line'>[2013-08-05 22:13:15] INFO  WEBrick 1.3.1
+</span><span class='line'>[2013-08-05 22:13:15] INFO  ruby 2.0.0 (2013-06-27) [x86_64-darwin12.4.0]
+</span><span class='line'>[2013-08-05 22:13:15] INFO  WEBrick::HTTPServer#start: pid=25428 port=3000</span></code></pre></td></tr></table></div></figure>
+
+
+<h2>Adding links between the 2 pages</h2>
+
+<p>We want the user to be able to easily manuever between the 2 pages so let&rsquo;s put hyperlinks to the 2 pages at the top of every page (just add the 2 anchor bits in the html below).</p>
+
+<figure class='code'><figcaption><span>app/views/layouts/application.html.erb </span></figcaption>
+ <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+</pre></td><td class='code'><pre><code class='html'><span class='line'><span class="cp">&lt;!DOCTYPE html&gt;</span>
+</span><span class='line'><span class="nt">&lt;html&gt;</span>
+</span><span class='line'><span class="nt">&lt;head&gt;</span>
+</span><span class='line'>  <span class="nt">&lt;title&gt;</span>TwitterApp<span class="nt">&lt;/title&gt;</span>
+</span><span class='line'>  <span class="err">&lt;</span>%= stylesheet_link_tag    &quot;application&quot;, media: &quot;all&quot;, &quot;data-turbolinks-track&quot; =&gt; true %&gt;
+</span><span class='line'>  <span class="err">&lt;</span>%= javascript_include_tag &quot;application&quot;, &quot;data-turbolinks-track&quot; =&gt; true %&gt;
+</span><span class='line'>  <span class="err">&lt;</span>%= csrf_meta_tags %&gt;
+</span><span class='line'><span class="nt">&lt;/head&gt;</span>
+</span><span class='line'><span class="nt">&lt;body&gt;</span>
+</span><span class='line'>  <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">&quot;/proposals&quot;</span><span class="nt">&gt;</span>JB Proposals<span class="nt">&lt;/a&gt;</span>
+</span><span class='line'>  <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">&quot;/ausvotes&quot;</span><span class="nt">&gt;</span>#ausvotes<span class="nt">&lt;/a&gt;</span>
+</span><span class='line'><span class="err">&lt;</span>%= yield %&gt;
+</span><span class='line'>
+</span><span class='line'><span class="nt">&lt;/body&gt;</span>
+</span><span class='line'><span class="nt">&lt;/html&gt;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Just refresh the page to take affect. Notice that this change did not require you to restart WEBrick. Some changes, eg. config changes, will require you to do so.</p>
+
+<ol>
+<li><a href="http://en.wikipedia.org/wiki/Model%E2%80%93view%E2%80%93controller">Wikipedia on MVC</a></li>
+<li><a href="http://www.codinghorror.com/blog/2008/05/understanding-model-view-controller.html">Jeff Atwood on MVC</a></li>
+</ol>
+
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Accessing Twitter's API]]></title>
