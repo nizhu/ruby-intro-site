@@ -22,7 +22,7 @@ cd twitter_app
 rails generate controller twitter
 {% endcodeblock %}
 
-The rails generator has created a lot of new files - about 80 in fact - but aren't many that to worry about.
+The rails generator has created a lot of new files - about 80 in fact - but there aren't that many we need to worry about.
 
 Before you begin editing the files, copy the twitter configuration file from the previous pages to the ```config/initializers``` directory. Files in this directory are run when the server is started.
 
