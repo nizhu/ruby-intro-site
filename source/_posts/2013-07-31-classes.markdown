@@ -8,7 +8,7 @@ categories: [Ruby, SENG2021]
 
 Ruby is a Object Oriented language so it's no less than intuitive to have classes. The following code block shows the basic syntax of a Ruby class.
 
-{% codeblock %}
+{% codeblock lang:ruby %}
 class Counter
   @@classCount = 0
   @instanceCount
@@ -37,7 +37,7 @@ Then there are the methods. ```initialize``` is the constructor used when you ru
 
 Finally ```to_s``` is the conversion of the class to a String, just like ```toString()```.
 
-{% codeblock %}
+{% codeblock lang:ruby %}
 a = Counter.new 0
 b = Counter.new 0
 
@@ -64,7 +64,7 @@ Scope-wise, there are 5 different types of variables in Ruby and they are simply
 
 Note that Constants can still be changed. The interpreter will simply issue a warning that that is the case, but the value assigning will proceed.
 
-{% codeblock %}
+{% codeblock lang:ruby %}
 Aconstant = 1
 Aconstant = 2
 # warning: already initialized constant Aconstant
@@ -112,7 +112,7 @@ end
 
 Let's play with again. This time, load irb with ```irb -I .```. This will add the current directory to the path that the require command uses so it can find the 3 files above.
 
-{% codeblock %}
+{% codeblock lang:ruby %}
 d = Duck.new
 m = Man.new
 w = Woman.new
@@ -127,7 +127,7 @@ make_it_quack(w)
 
 Unfortunately it seems like function parameters can no longer be given a type so the example isn't the most clear. This is what it looks like in the book.
 
-{% codeblock %}
+{% codeblock lang:ruby %}
 def make_it_quack(Duck duck)
   puts duck.quack
 end
@@ -141,7 +141,7 @@ make_it_quack(w)
 
 So what if our ducks (Man) don't quack? Then we punch them until it does.
 
-{% codeblock %}
+{% codeblock lang:ruby %}
 make_it_quack(m)
 # Moo!
 
@@ -160,7 +160,7 @@ m.scream
 
 Just to be clear, we can also do the same to the Woman class.
 
-{% codeblock %}
+{% codeblock lang:ruby %}
 make_it_quack(w)
 NoMethodError: undefined method `quack' for #<Woman:0x007fbe7b99e800>
 

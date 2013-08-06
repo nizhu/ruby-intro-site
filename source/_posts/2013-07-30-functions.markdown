@@ -8,7 +8,7 @@ categories: [Ruby, SENG2021]
 
 Firstly the syntax. Let's first define a very basic function we can use for this post.
 
-{% codeblock %}
+{% codeblock lang:ruby %}
 def print_stuff(str1, str2, reverse = false)
   if reverse
     puts "#{str2} and #{str1} received!"
@@ -23,7 +23,7 @@ end
 
 Brackets around function parameters is optional in Ruby. However, sometimes it's useful to include them regardless for clarity's sake.
 
-{% codeblock %}
+{% codeblock lang:ruby %}
 print_stuff("First argument", "Second argument")
 # First argument and Second argument received!
 
@@ -33,7 +33,7 @@ print_stuff "First argument", "Second argument"
 
 Arguments can be made optional by giving them a default value.
 
-{% codeblock %}
+{% codeblock lang:ruby %}
 print_stuff("First argument", "Second argument", false)
 # First argument and Second argument received!
 
@@ -45,7 +45,7 @@ print_stuff("First argument", "Second argument", true)
 
 As you may have already noticed, ```print_stuff``` does use ```return``` even though it does exist in Ruby and it does exactly what you'd expect. If the return value is not specified, Ruby will return the value returned in the last executed line of the block
 
-{% codeblock %}
+{% codeblock lang:ruby %}
 def add(a, b)
   a + b
 end
@@ -73,7 +73,7 @@ Because ```print "add successful"``` returns ```nil```, ```add_print``` returns 
 
 # Error Handling
 
-{% codeblock %}
+{% codeblock lang:ruby %}
 def do_something
   raise "Failed to do something"
 end
@@ -92,7 +92,7 @@ end
 
 ```retry``` will return the cursor to start of the begin block it belongs to
 
-{% codeblock %}
+{% codeblock lang:ruby %}
 i = 0
 begin
   puts "#{i}"

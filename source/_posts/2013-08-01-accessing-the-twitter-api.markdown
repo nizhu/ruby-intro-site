@@ -12,21 +12,21 @@ Fortunately for you as a Ruby user, there are two libraries that will do all the
 
 ## Twitter Gem
 
-{% codeblock %}
+{% codeblock lang:sh %}
 git checkout twitter
 gem install twitter
 {% endcodeblock %}
 
 I've made a file out of the gem's authentication configuration code taken from its documentation. Just replace the strings with the your Twitter developer keys in twitter_config.rb. There are some usage examples [here][7], but there's plenty more functionality so do refer to the [documentation][6].
 
-{% codeblock %}
+{% codeblock lang:ruby %}
 require 'twitter'
 load 'twitter_config.rb'
 {% endcodeblock %}
 
 Lets find the last person to have proposed to Justin Bieber
 
-{% codeblock %}
+{% codeblock lang:ruby %}
 result = Twitter.search("to:justinbieber marry me", :count => 1, :result_type => "recent")
 
 result.class
@@ -38,7 +38,7 @@ result.statuses[0].user.screen_name
 
 Just to give another example, I'm going to get the last tweet from each of users I'm stalking.
 
-{% codeblock %}
+{% codeblock lang:ruby %}
 f = Twitter.friends
 f.class
 # Twitter::Cursor

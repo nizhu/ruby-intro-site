@@ -12,7 +12,7 @@ There isn't much special about Ruby strings. Try the code snippets below in irb.
 
 Strings can be created either using literals, or the new function.
 
-{% codeblock %}
+{% codeblock lang:ruby %}
 a = "abcde"
 puts a
 # abcde
@@ -28,7 +28,7 @@ puts b
 
 Like ```java.lang.String```, there are loads of predefined methods for the class. Remeber to refer to the Class documentation; there are code samples in there too. I'm just going to give you a taste of what's available.
 
-{% codeblock %}
+{% codeblock lang:ruby %}
 a.length
 # 1
 a.next
@@ -43,7 +43,7 @@ a.slice(3, 5)
 
 You'll notice that the methods above only returns the result of the function. Some methods makes changes to the string in place.
 
-{% codeblock %}
+{% codeblock lang:ruby %}
 c = "ababab"
 c.reverse!
 puts c
@@ -56,7 +56,7 @@ puts c
 
 Like Perl, Strings in Ruby are mutable. The object_id method I'm using below returns the id of the object, similar to the & operator in C. Strings inherit this from the Object class. Note that String objects are created every time a String literal is used.
 
-{% codeblock %}
+{% codeblock lang:ruby %}
 "xyzxyz".object_id
 # 70243133245180
 "xyzxyz".object_id
@@ -75,7 +75,7 @@ d.object_id
 
 Strings can be built from variables in 4 different ways. The first two is probably the most commonly used
 
-{% codeblock %}
+{% codeblock lang:ruby %}
 e = "abc"
 f = "def"
 g = 10
@@ -88,7 +88,7 @@ puts i
 
 The third way is appending to strings. It's more efficient in that it simply adds to a string instead of creating a new one, but it does change the string that is being appended to.
 
-{% codeblock %}
+{% codeblock lang:ruby %}
 j = e << " + " << f << " is not equal to " << g.to_s
 # abc + def is not equal to 10
 
@@ -111,7 +111,7 @@ The first line basically means, append " + " to e, then append f to e, then appe
 
 If the String you're after is literally ```#{e} + #{f} is not equal to #{g}```, ie. you don't want Ruby to evaluate e, f, and g, you can escape the ```#{}``` blocks by prepending the # with a backslash ```\```. Alternatively, you can use single quotes instead of double quotes, and Ruby will escape those characters for you.
 
-{% codeblock %}
+{% codeblock lang:ruby %}
 puts "\#{e} + \#{f} is not equal to \#{g}""
 # #{e} + #{f} is not equal to #{g}
 puts '#{e} + #{f} is not equal to #{g}'
@@ -124,7 +124,7 @@ a = '#{e} + #{f} is not equal to #{g}'
 
 There's two way to access the API documentation, online through [http://ruby-doc.org/](http://ruby-doc.org/), or offline in your command line with ri.
 
-{% codeblock %}
+{% codeblock lang:sh %}
 ri String
 ri String#object_id
 {% endcodeblock %}

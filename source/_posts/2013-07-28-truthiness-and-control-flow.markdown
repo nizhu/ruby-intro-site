@@ -10,7 +10,7 @@ Ruby uses keywords true and false to represent truthiness and nil to represent a
 
 Like Fixnum from the previous post, these 3 keywords are immediate values.
 
-{% codeblock %}
+{% codeblock lang:ruby %}
 true.object_id
 # 20
 true.object_id
@@ -31,7 +31,7 @@ nil.object_id
 
 There are 4 ways of testing for equality in Ruby. You'll be using one of them a majority of the time... ```==```. Generally ```==``` represents equality of the values within the object while ```.equal?``` ensures that the 2 objects are one and the same (reference pointer comparison). However, as always, make sure you test your code thoroughly since these are just methods that are easy to override (more on this later). The other two are more obscure and depends much more on the implementation.
 
-{% codeblock %}
+{% codeblock lang:ruby %}
 "abc" == "abc"
 # true
 "abc".equal? "abc"
@@ -58,7 +58,7 @@ As mentioned in the first post, Ruby was designed to be readable and flexible. I
 
 Firstly, we have the very standard if-then-else statements.
 
-{% codeblock %}
+{% codeblock lang:ruby %}
 t = true
 
 if t
@@ -84,7 +84,7 @@ end
 
 Then we have unless, which literally means if not. However, please avoid this if you need to use else (there is no secondary guard like elsif or elsunless) - it's only useful in causing confusion.
 
-{% codeblock %}
+{% codeblock lang:ruby %}
 t = true
 
 unless t
@@ -98,7 +98,7 @@ end
 
 A popular way of writing terse simple control flow without sacrificing on readability is to suffix the control to the line itself
 
-{% codeblock %}
+{% codeblock lang:ruby %}
 puts "true" if true
 # true
 # => nil
@@ -109,7 +109,7 @@ puts "false" unless true
 
 Finally, we have the C-style single line statements
 
-{% codeblock %}
+{% codeblock lang:ruby %}
 true ? true : false
 # true
 
@@ -119,7 +119,7 @@ false ? true : false
 
 And many more complex variations of them. They're just another way of formatting the first option since they Ruby treats ```;``` as a new line. Please never write code like this :)
 
-{% codeblock %}
+{% codeblock lang:ruby %}
 if true then true else false end
 # true
 

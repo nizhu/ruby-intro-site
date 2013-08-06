@@ -10,15 +10,11 @@ For the purpose of this exercise, I've downloaded and extracted a zip file from 
 
 # Third Party libraries
 
-Third party libraries in Ruby are referred to as gems. Gem is an executable that comes with Ruby. Tell it to install, along with the name of the gem and it will download and install the gem that you want as well as all its dependencies.
-
-{% codeblock %}
-gem install xml-simple
-{% endcodeblock %}
+Third party libraries in Ruby are referred to as gems. Gem is an executable that comes with Ruby. Tell it to install, along with the name of the gem and it will download and install the gem that you want as well as all its dependencies...```gem install xml-simple```
 
 # Let's Parse!
 
-{% codeblock %}
+{% codeblock lang:ruby %}
 require 'xmlsimple'
 xml = File.read 'data/xml/aec-mediafeed-results-detailed-light-15508.xml'
 data = XmlSimple.xml_in xml
@@ -28,7 +24,7 @@ Parsing XML takes a little while, and XmlSimple isn't the most efficient of pars
 
 Once it's done we can see what's in there one step at a time.
 
-{% codeblock %}
+{% codeblock lang:ruby %}
 data.keys
 # ["Id", "Created", "SchemaVersion", "EmlVersion", "xmlns", "xmlns:eml", "xmlns:ds", "xmlns:xal", "xmlns:xnl", "xmlns:ts", "xmlns:xs", "xs:schemaLocation", "ManagingAuthority", "MessageLanguage", "MessageGenerator", "Cycle", "Results"]
 

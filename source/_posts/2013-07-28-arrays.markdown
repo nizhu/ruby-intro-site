@@ -10,7 +10,7 @@ Arrays in Ruby are very similar to those in other dynamic programming languages.
 
 ### Construction
 
-{% codeblock %}
+{% codeblock lang:ruby %}
 [1, "foo", nil, "bar"]
 # [1, "foo", nil, "bar"]
 
@@ -28,7 +28,7 @@ Array.new(3, true)
 
 ### Accessing elements and array info
 
-{% codeblock %}
+{% codeblock lang:ruby %}
 arr = [1, 2, 3, 4, 5, 6]
 arr[2]
 # 3
@@ -53,7 +53,7 @@ arr.include?(7)
 
 ### Adding to the array
 
-{% codeblock %}
+{% codeblock lang:ruby %}
 arr.push(7)
 # [1, 2, 3, 4, 5, 6, 7]
 arr << 8
@@ -68,7 +68,7 @@ arr.insert(3, 2.5)
 
 ### Removing from Array
 
-{% codeblock %}
+{% codeblock lang:ruby %}
 arr
 # [0, 1, 2, 2.5, 3, 4, 5, 6, 7]
 
@@ -89,7 +89,7 @@ arr.delete(3)
 
 Both these functions can be used to output text. To put it simply, puts adds a newline character to the end of each argument and outputs nil as an invisible character rather than a String. Refer to the link at the bottom for more discussion.
 
-{% codeblock %}
+{% codeblock lang:ruby %}
 print [nil, 1, 2]
 # [nil, 1, 2]=> nil
 

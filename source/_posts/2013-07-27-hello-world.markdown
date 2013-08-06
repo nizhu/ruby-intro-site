@@ -7,7 +7,7 @@ categories: [Ruby, SENG2021]
 ---
 
 It's finally time to start coding. Start by cloning the git repository I've prepared for this demonstration.
-{% codeblock %}
+{% codeblock lang:sh %}
 git clone git@github.com:nizhu/ruby-intro.git ~/ruby-intro
 cd ~/ruby-intro
 ls
@@ -15,7 +15,7 @@ ls
 
 You'll notice that there are lots of files here, most of which you don't need yet so let's get rid of them for now
 
-{% codeblock %}
+{% codeblock lang:sh %}
 git checkout hello-world
 ls
 {% endcodeblock %}
@@ -30,7 +30,7 @@ puts "Hello World"
 
 That's it! Save it as hello_world.rb, exit, and now we can run the file. Note that # is the comment delimiter in Ruby and Shell so I will be using that to give you an idea of the expected result of the line preceding it.
 
-{% codeblock %}
+{% codeblock lang:sh %}
 ruby hello_world.rb
 # Hello World
 {% endcodeblock %}
@@ -44,7 +44,7 @@ puts "Hello World"
 
 And give it executable permission, and run it. 
 
-{% codeblock %}
+{% codeblock lang:sh %}
 chmod +x hello_world_exe.rb
 ./hello_world_exe.rb
 {% endcodeblock %}
@@ -59,7 +59,7 @@ You'll notice that after printing Hello World, it also says nil. This is the 'nu
 
 If you want to import files that you've written, there are two ways to do so. A file that is imported in irb is executed just as it would if it had been imported through normal code, and it is the same as if it had been copy and pasted into irb. The following demonstrates the two major difference between the two options so try this out in irb:
 
-{% codeblock %}
+{% codeblock lang:ruby %}
 load 'hello_world.rb'
 # Hello World
 # => true
@@ -83,7 +83,7 @@ Generally it's more appropriate to use require unless you do need to execute som
 
 You might have come across this in COMP2041. This is the line at the top of scripts that tells your shell what to execute it with - your shell will simply interpret it as a shell script without it.
 
-{% codeblock %}
+{% codeblock lang:sh %}
 chmod +x hello_world.rb
 ./hello_world.rb
 # ./hello_world.rb: line 1: puts: command not found
@@ -105,7 +105,7 @@ puts RUBY_VERSION
 puts RUBY_VERSION
 {% endcodeblock %}
 
-{% codeblock %}
+{% codeblock lang:sh %}
 ruby -v
 # ruby 2.0.0p247 (2013-06-27 revision 41674) [x86_64-darwin12.4.0]
 /usr/bin/ruby -v

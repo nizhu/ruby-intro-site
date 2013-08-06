@@ -12,7 +12,7 @@ Like most (if not all) object oriented programming languages out there, Ruby has
 
 In terms of functionality, there's little interesting with Integers. There's obviously adding, subtracting, multiplication, division, modulo and exponentials. 
 
-{% codeblock %}
+{% codeblock lang:ruby %}
 1 + 2
 # 3
 1 - 2
@@ -29,7 +29,7 @@ In terms of functionality, there's little interesting with Integers. There's obv
 
 There are also several methods for common operations
 
-{% codeblock %}
+{% codeblock lang:ruby %}
 1.next
 # 2
 1.even?
@@ -48,7 +48,7 @@ What we think of Integer is the Fixnum. It's used for all integers that would fi
 
 On this 64bit Mac, a word is 8 bytes. The class uses 1 bit mark the number as positive or negative, and another to mark the integer as value as opposed to a pointer (this is why object_id for Fixnum are always odd). As such, the maximum value for a Fixnum is 4611686018427387903 (2^62-1) and the minimum is -4611686018427387904 (-2^62). If an Fixnum leaves this range, Ruby automatically converts it to a Bignum and vice versa.
 
-{% codeblock %}
+{% codeblock lang:ruby %}
 FIXNUM_MAX = (2**(0.size * 8 -2) -1)
 # 4611686018427387903
 FIXNUM_MIN = -(2**(0.size * 8 -2))
@@ -64,7 +64,7 @@ bignum.class
 
 The biggest difference between these classes is that, like Java ints, Fixnum objects are immediate value. They are not references to another object. Remember in the last post when repeating ```"xyzxyz".object_id``` would return a different number everytime? This won't be the case for Fixnum. In fact, object_id of Fixnum are predictable. For positive numbers, the id is simply 2 * value + 1. Similarly, 2 * value - 1 for negative numbers.
 
-{% codeblock %}
+{% codeblock lang:ruby %}
 4611686018427387903.object_id
 # 9223372036854775807
 4611686018427387903.object_id
@@ -78,7 +78,7 @@ The biggest difference between these classes is that, like Java ints, Fixnum obj
 
 Rationals are useful for calculations because they come with the accuracy that's missing from floats. There are 3 ways to create them
 
-{% codeblock %}
+{% codeblock lang:ruby %}
 Rational(1, 2)
 # (1/2)
 "1/2".to_r
@@ -96,7 +96,7 @@ Rational(7,6).to_f
 
 Like integers, Float's methods are quite standard.
 
-{% codeblock %}
+{% codeblock lang:ruby %}
 1.2345.to_i
 # 1
 1.2345.floor
@@ -115,7 +115,7 @@ Like integers, Float's methods are quite standard.
 
 However, it's important to note that floating point calculations are inaccurate, like almost every programming langauge (can't name any with).
 
-{% codeblock %}
+{% codeblock lang:ruby %}
 0.3.to_r
 # (5404319552844595/18014398509481984)
 printf("%.55f\n", 1.9)

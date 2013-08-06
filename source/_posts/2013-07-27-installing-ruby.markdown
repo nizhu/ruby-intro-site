@@ -18,36 +18,36 @@ Please read the OSX comments even if you don't have OSX!
 
 If you have a Mac, you're in luck - you have Homebrew. If you don't, just install it with ```ruby -e "$(curl -fsSL https://raw.github.com/mxcl/homebrew/go)"```
 
-{% codeblock %}
+{% codeblock lang:sh %}
 brew update
 brew install rbenv
 {% endcodeblock %}
 
 Unfortunately, a plugin is required to install Ruby with rbenv
 
-{% codeblock %}
+{% codeblock lang:sh %}
 brew install ruby-build
 {% endcodeblock %}
 
 'Turn on' rbenv
-{% codeblock %}
+{% codeblock lang:sh %}
 if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
 {% endcodeblock %}
 
 Set up bash to always enable rbenv if available
-{% codeblock %}
+{% codeblock lang:sh %}
 echo 'if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi' >> ~/.profile
 {% endcodeblock %}
 
 Add rbenv's executables to your PATH
-{% codeblock %}
+{% codeblock lang:sh %}
 # My rbenv is installed in /usr/loca/opt/rbenv, but yours may be in ~/.rbenv
 # Change the line below appropriately
 echo 'export PATH=/usr/local/opt/rbenv/shims:$PATH'
 {% endcodeblock %}
 
 Finally install Ruby 2.0.0-p247
-{% codeblock %}
+{% codeblock lang:sh %}
 rbenv install 2.0.0-p247
 # Command below refreshes rbenv's executables.
 # Make sure you run this every time you (un)install a ruby or a gem - more on this later
@@ -57,12 +57,12 @@ rbenv rehash
 ## Debian/Ubuntu/Linux Mint
 
 For fun times, install these dependencies
-{% codeblock %}
+{% codeblock lang:sh %}
 apt-get install build-essential openssl libreadline6 libreadline6-dev curl git-core zlib1g zlib1g-dev libssl-dev libyaml-dev libsqlite3-dev sqlite3 libxml2-dev libxslt-dev autoconf libc6-dev ncurses-dev automake libtool bison subversion pkg-config
 {% endcodeblock %}
 
 Install rbenv + ruby-build
-{% codeblock %}
+{% codeblock lang:sh %}
 git clone https://github.com/sstephenson/rbenv.git ~/.rbenv
 echo 'export PATH="$HOME/.rbenv/bin:$PATH"' >> ~/.bashrc
 echo 'eval "$(rbenv init -)"' >> ~/.bashrc
@@ -77,7 +77,7 @@ rbenv rehash
 
 You may have Ruby scripts before installing rbenv that ran with system Ruby, so it's best to keep it that way. To ensure that this happens, we can make system ruby the default for rbenv.
 
-{% codeblock %}
+{% codeblock lang:sh %}
 rbenv global system
 rbenv version
 # system (set by /usr/local/opt/rbenv/version)
@@ -87,7 +87,7 @@ rbenv version
 
 Whenever you interact with rbenv, it will look in your current directory for a file named .rbenv-version before falling back to the global default. Try the following:
 
-{% codeblock %}
+{% codeblock lang:sh %}
 cd /tmp
 rbenv version
 # system (set by /usr/local/opt/rbenv/version)

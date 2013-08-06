@@ -22,7 +22,7 @@ The newcomer in town is [Appfog][6]. They're a lot cheaper than Heroku and suppo
 
 In the root folder of your application, type in the following commands
 
-{% codeblock lang:shell %}
+{% codeblock lang:sh %}
 # Initialize a git repository
 git init
 

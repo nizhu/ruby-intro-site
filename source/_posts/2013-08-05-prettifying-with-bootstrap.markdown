@@ -10,7 +10,7 @@ Since Twitter open sourced their CSS framework several years ago, Bootstrap has 
 
 I've opted for a slightly older version (2.3.2) here since the new version 3 is not yet stable at the time of writing. The documentation for 2.3.2 can be found [here][1]. Regardless, there's only 3 files to change.
 
-<% codeblock lang:html app/views/layouts/application.html.erb %>
+{% codeblock lang:html app/views/layouts/application.html.erb %}
 <!DOCTYPE html>
 <html>
 <head>
@@ -35,11 +35,11 @@ I've opted for a slightly older version (2.3.2) here since the new version 3 is 
   </div>
 </body>
 </html>
-<% endcodeblock %>
+{% endcodeblock %}
 
 And add ```class="table"``` to the 2 table tags
 
-<% codeblock lang:html app/views/twitter/ausvotes.html.erb %>
+{% codeblock lang:html app/views/twitter/ausvotes.html.erb %}
 <h1>Last 200 Tweets with #ausvotes</h1>
 
 <table class="table">
@@ -54,9 +54,9 @@ And add ```class="table"``` to the 2 table tags
   </tr>
 <% end %>
 </table>
-<% endcodeblock
+{% endcodeblock %}
 
-<% codeblock lang:html app/views/twitter/proposals.html.erb %>
+{% codeblock lang:html app/views/twitter/proposals.html.erb %}
 <h1>Last 200 Justin Bieber Proposals</h1>
 
 <table class="table">
@@ -71,7 +71,7 @@ And add ```class="table"``` to the 2 table tags
   </tr>
 <% end %>
 </table>
-<% endcodeblock %>
+{% endcodeblock %}
 
 1. [Twitter Bootstrap][1]
 

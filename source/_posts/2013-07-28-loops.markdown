@@ -10,7 +10,7 @@ Like the if statements you saw 2 posts prior, there are many ways to construct l
 
 There is the while loop you're used to
 
-{% codeblock %}
+{% codeblock lang:ruby %}
 i = 0
 while i < 3 do
   puts i
@@ -23,7 +23,7 @@ end
 
 While loops with the test at the end
 
-{% codeblock %}
+{% codeblock lang:ruby %}
 i = 0
 begin
   puts i
@@ -43,7 +43,7 @@ end while i < 0
 
 There's the until loops which run while the condition is false
 
-{% codeblock %}
+{% codeblock lang:ruby %}
 i = 0
 until i > 2
   puts i
@@ -62,7 +62,7 @@ end until i >= 0
 
 And finally, my favourite - the for loops. If you already have a list to iterate through, great.
 
-{% codeblock %}
+{% codeblock lang:ruby %}
 a = [0, 1, 2]
 for i in a
   puts i
@@ -74,7 +74,7 @@ end
 
 If not, it's great too
 
-{% codeblock %}
+{% codeblock lang:ruby %}
 for i in 0..2
   puts i
 end
@@ -92,7 +92,7 @@ end
 
 There's also 4 keywords to help you manage the control of flow ```break```, ```next```, ```redo``` and finally ```retry``` which I'll bring up in the Error Handling section. ```break``` exits the inner most loop
 
-{% codeblock %}
+{% codeblock lang:ruby %}
 for i in 0..2
   puts i
   if i == 1
@@ -105,7 +105,7 @@ end
 
 While ```next``` jumps to the next iteration of the loop
 
-{% codeblock %}
+{% codeblock lang:ruby %}
 for i in 0..2
   if i == 1
     next
@@ -127,7 +127,7 @@ end
 
 And ```redo``` jumps back to the beginning of the current iteration in this loop
 
-{% codeblock %}
+{% codeblock lang:ruby %}
 j = 0
 for i in 0..2
   puts "i is #{i}"

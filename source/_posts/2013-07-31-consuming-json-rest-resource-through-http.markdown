@@ -10,7 +10,7 @@ As you saw in the previous post, XML is an overly verbose format so in the last 
 
 If you've been writing Javascript, you love JSON. If you haven't, you soon will. Note that spaces, tabs and line breaks are all optional. I've just added those to make it easier to read.
 
-{% codeblock %}
+{% codeblock lang:javascript %}
 {
   "id": 32,
   "name": "Mother Duck",
@@ -40,7 +40,7 @@ The easiest way to access this data, is to simply open a web browser and go to `
 
 [Net/HTTP][3] is a standard Ruby library, and it'll be your interface to the internet. JSON is a simple parser, but is not standard. As before, install the gem with ```gem install json```
 
-{% codeblock %}
+{% codeblock lang:ruby %}
 require 'net/http'
 require 'json'
 

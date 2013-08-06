@@ -16,7 +16,7 @@ As always, start by installing it...```gem install rails```
 
 One of the big features of rails is scaffolding - automatically generating common parts of an application. This is the first step of development. Here, we're asking rails to scaffold the project without support for a database.
 
-{% codeblock %}
+{% codeblock lang:sh %}
 cd ~
 rails new twitter_app -O
 cd twitter_app
@@ -121,7 +121,7 @@ Identical to the above. Do try to refactor this :)
 
 WEBrick is a very simple Rails web server, perfect for dev testing. Just go to the root directory of the application and type in ```rails server```. WEBrick listens to port 3000 by default, but look carefully at its output if you come across any problems. The JB Proposals page will be available in @ ```http://0.0.0.0:3000``` and ```http://0.0.0.0:3000/proposals``` while the #ausvotes page will be available at ```http://0.0.0.0:3000/ausvotes```.
 
-{% codeblock %}
+{% codeblock lang:sh %}
 $ rails server
 => Booting WEBrick
 => Rails 4.0.0 application starting in development on http://0.0.0.0:3000

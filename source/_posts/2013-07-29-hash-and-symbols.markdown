@@ -10,7 +10,7 @@ Maps in the data structure sense is referred to in Ruby as Hashes. Map in Ruby i
 
 ### Construction
 
-{% codeblock %}
+{% codeblock lang:ruby %}
 a = { "a" => "b", 3 => "d" }
 # {"a"=>"b", 3=>"d"}
 b = Hash("a" => "b", 3 => "d")
@@ -24,7 +24,7 @@ e = Hash.new(0)
 
 ### Testing for Equality
 
-{% codeblock %}
+{% codeblock lang:ruby %}
 a==b
 # true
 a.equal? b
@@ -38,7 +38,7 @@ c.equal? d
 
 ### Retrieving from Hash
 
-{% codeblock %}
+{% codeblock lang:ruby %}
 a["a"]
 # "b"
 a[3]
@@ -52,7 +52,7 @@ e[4]
 
 ### Adding values to the Hash
 
-{% codeblock %}
+{% codeblock lang:ruby %}
 a[5] = 6
 puts a
 # {"a"=>"b", 3=>"d", 5=>6}
@@ -60,7 +60,7 @@ puts a
 
 ### Other useful functions
 
-{% codeblock %}
+{% codeblock lang:ruby %}
 b.clear
 puts b
 # {}
@@ -81,7 +81,7 @@ a.values
 
 ### Iterating through the hash
 
-{% codeblock %}
+{% codeblock lang:ruby %}
 a.each { |k,v| puts "The value for #{k} is #{v}" }
 # The value for a is b
 # The value for 3 is d
@@ -109,7 +109,7 @@ end
 
 Fixnum always have the same object_id, and we can tell Ruby to do that to Strings too - it's what we call a Symbol. While a new string will be created every time the same String literal is used, the same symbol will always point to the same object in memory. This also means that Ruby's automatic garbage collection will not recycle symbols.
 
-{% codeblock %}
+{% codeblock lang:ruby %}
 "abc".object_id
 # 70139181776180
 "abc".object_id
@@ -129,7 +129,7 @@ Because of this, Symbols are the preferred way to set and get Hash elements.
 
 Do this..
 
-{% codeblock %}
+{% codeblock lang:ruby %}
 h = Hash.new
 h[:abc] = "xyz"
 puts h[:abc]
@@ -137,7 +137,7 @@ puts h[:abc]
 
 but don't do this..
 
-{% codeblock %}
+{% codeblock lang:ruby %}
 h = Hash.new
 h["abc"] = :xyz
 puts ["abc"]
