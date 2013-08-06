@@ -38,7 +38,7 @@
   <header role="banner"><hgroup>
   <h1><a href="/ruby-intro-site/">Ruby Intro</a></h1>
   
-    <h2>SENG2011</h2>
+    <h2>SENG2021</h2>
   
 </hgroup>
 
@@ -93,7 +93,88 @@
 
 <div class="entry-content"><p>Heroku is a pioneer in what we now call Platform-As-A-Service. It&rsquo;s a little on the expensive side to scale on it, but its great for developing with as there is a freebie tier and its service makes deploying to the internet a breeze. Be aware however that if you need a database, PostgreSQL is your only option.</p>
 
+<p>The newcomer in town is <a href="https://www.appfog.com/pricing/">Appfog</a>. They&rsquo;re a lot cheaper than Heroku and supports MySQL in addition to PostgreSQL, but I haven&rsquo;t had the chance to check them out yet.</p>
+
 <h2>Step 1</h2>
+
+<p><a href="https://id.heroku.com/signup">Sign up to Heroku</a></p>
+
+<h2>Step 2</h2>
+
+<p><a href="https://toolbelt.heroku.com">Install the Heroku Toolbelt</a></p>
+
+<h2>Step 3</h2>
+
+<p>In the root folder of your application, type in the following commands</p>
+
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+</pre></td><td class='code'><pre><code class='sh'><span class='line'><span class="c"># Initialize a git repository</span>
+</span><span class='line'>git init
+</span><span class='line'>
+</span><span class='line'><span class="c"># Login to heroku (enter your username and password as prompted, generate ssh key if required)</span>
+</span><span class='line'>heroku login
+</span><span class='line'>
+</span><span class='line'><span class="c"># Create a new app on heroku</span>
+</span><span class='line'><span class="c"># Make note of the output of this command</span>
+</span><span class='line'><span class="c"># The http url is where your application will be available - http://&lt;app name&gt;.heroku.com</span>
+</span><span class='line'><span class="c"># The git url is where you will be deploying the application to - git://heroku.com:&lt;app name&gt;.git</span>
+</span><span class='line'><span class="c"># The last line should say &#39;Git remote heroku added&#39;</span>
+</span><span class='line'><span class="c"># If it doesn&#39;t, do &#39;heroku git:remote -a &lt;app name&gt;&#39;</span>
+</span><span class='line'>heroku create
+</span><span class='line'>
+</span><span class='line'><span class="c"># Add everything to git staging</span>
+</span><span class='line'>git add .
+</span><span class='line'>
+</span><span class='line'><span class="c"># Commit the repository</span>
+</span><span class='line'>git commit -m <span class="s2">&quot;initial commit&quot;</span>
+</span><span class='line'>
+</span><span class='line'><span class="c"># Push to Heroku for the first time</span>
+</span><span class='line'>git push heroku master
+</span><span class='line'>
+</span><span class='line'><span class="c"># Ensure that only 1 web dyno will be running</span>
+</span><span class='line'>heroku ps:scale <span class="nv">web</span><span class="o">=</span>1
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h2>Step 4</h2>
+
+<p>Your app should now be available in the http url mentioned in step 3. If there are any problems, you can watch your application&rsquo;s live logging by using <code>heroku logs -t</code>. As usual, google your issues :) There are some relevant links to documentation below too.</p>
+
+<ol>
+<li><a href="https://id.heroku.com/signup">Heroku Signup</a></li>
+<li><a href="https://toolbelt.heroku.com">Heroku Toolbelt</a></li>
+<li><a href="https://devcenter.heroku.com/articles/quickstart">Heroku Quickstart</a></li>
+<li><a href="https://devcenter.heroku.com/articles/rails4">Heroku Rails4</a></li>
+<li><a href="https://devcenter.heroku.com/articles/rails3">Heroku Rails3</a></li>
+<li><a href="https://devcenter.heroku.com/articles/usage-and-billing#750-free-dyno-hours-per-app">Heroku Billing</a></li>
+<li><a href="https://www.appfog.com/pricing/">Appfog Pricing</a></li>
+<li><a href="http://seng2021-rails-demo.herokuapp.com/">Demo on Heroku</a></li>
+</ol>
+
 </div>
 
 
@@ -172,6 +253,54 @@
     
       <li class="post">
         <a href="/ruby-intro-site/blog/2013/07/31/consuming-json-rest-resource-through-http/">Consuming JSON REST Resource Through HTTP</a>
+      </li>
+    
+      <li class="post">
+        <a href="/ruby-intro-site/blog/2013/07/31/parsing-xml-with-xmlsimple/">Parsing XML With XMLSimple</a>
+      </li>
+    
+      <li class="post">
+        <a href="/ruby-intro-site/blog/2013/07/31/classes/">Classes</a>
+      </li>
+    
+      <li class="post">
+        <a href="/ruby-intro-site/blog/2013/07/30/functions/">Functions</a>
+      </li>
+    
+      <li class="post">
+        <a href="/ruby-intro-site/blog/2013/07/29/hash-and-symbols/">Hash &amp; Symbols</a>
+      </li>
+    
+      <li class="post">
+        <a href="/ruby-intro-site/blog/2013/07/28/loops/">Loops</a>
+      </li>
+    
+      <li class="post">
+        <a href="/ruby-intro-site/blog/2013/07/28/arrays/">Arrays</a>
+      </li>
+    
+      <li class="post">
+        <a href="/ruby-intro-site/blog/2013/07/28/truthiness-and-control-flow/">Truthiness &amp; Control Flow</a>
+      </li>
+    
+      <li class="post">
+        <a href="/ruby-intro-site/blog/2013/07/28/numbers/">Numbers</a>
+      </li>
+    
+      <li class="post">
+        <a href="/ruby-intro-site/blog/2013/07/27/strings/">Strings</a>
+      </li>
+    
+      <li class="post">
+        <a href="/ruby-intro-site/blog/2013/07/27/hello-world/">Hello World</a>
+      </li>
+    
+      <li class="post">
+        <a href="/ruby-intro-site/blog/2013/07/27/installing-ruby/">Installing Ruby</a>
+      </li>
+    
+      <li class="post">
+        <a href="/ruby-intro-site/blog/2013/07/27/intro-to-intro/">Intro to Intro</a>
       </li>
     
   </ul>
