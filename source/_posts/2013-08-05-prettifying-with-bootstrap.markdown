@@ -3,7 +3,7 @@ layout: post
 title: "Prettifying with Bootstrap"
 date: 2013-08-05 22:27
 comments: true
-categories: 
+categories: [Ruby, SENG2021]
 ---
 
 Since Twitter open sourced their CSS framework several years ago, Bootstrap has become the benchmark for CSS. As a terrible designer, I've very much relied on Bootstrap to make my web pages decent looking, not great - just OK.
