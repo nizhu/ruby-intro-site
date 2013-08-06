@@ -14,10 +14,11 @@ As always, start by installing it...```gem install rails```
 
 ## Scaffolding
 
-One of the big features of rails is scaffolding - automatically generating common parts of an application. This is the first step of development.
+One of the big features of rails is scaffolding - automatically generating common parts of an application. This is the first step of development. Here, we're asking rails to scaffold the project without support for a database.
 
 {% codeblock %}
-rails new twitter_app
+cd ~
+rails new twitter_app -O
 cd twitter_app
 rails generate controller twitter
 {% endcodeblock %}
