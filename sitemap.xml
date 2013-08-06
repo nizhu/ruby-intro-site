@@ -66,15 +66,25 @@
     </url>
     <url>
         <loc>http://nizhu.github.io/ruby-intro-site/blog/2013/08/04/ruby-on-rails/</loc>
-        <lastmod>2013-08-05T22:24:39+10:00</lastmod>
+        <lastmod>2013-08-06T08:17:50+10:00</lastmod>
+    </url>
+    <url>
+        <loc>
+            http://nizhu.github.io/ruby-intro-site/blog/2013/08/05/prettifying-with-bootstrap/
+        </loc>
+        <lastmod>2013-08-05T22:55:45+10:00</lastmod>
+    </url>
+    <url>
+        <loc>http://nizhu.github.io/ruby-intro-site/blog/2013/08/05/deploying-with-heroku/</loc>
+        <lastmod>2013-08-06T20:43:57+10:00</lastmod>
     </url>
     <url>
         <loc>http://nizhu.github.io/ruby-intro-site/blog/archives/</loc>
-        <lastmod>2013-08-05T22:24:39+10:00</lastmod>
+        <lastmod>2013-08-06T20:43:57+10:00</lastmod>
     </url>
     <url>
         <loc>http://nizhu.github.io/ruby-intro-site/</loc>
-        <lastmod>2013-08-05T22:24:39+10:00</lastmod>
+        <lastmod>2013-08-06T20:43:57+10:00</lastmod>
     </url>
     <url>
         <loc>http://nizhu.github.io/ruby-intro-site/robots.txt</loc>

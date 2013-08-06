@@ -9,7 +9,7 @@
   <meta name="author" content="Nick Zhu">
 
   
-  <meta name="description" content="Like most (if not all) object oriented programming languages out there, Ruby has an Integer class and a Float class. Less common in standard &hellip;">
+  <meta name="description" content="Arrays in Ruby are very similar to those in other dynamic programming languages. It&rsquo;s all very standard and the documentation has loads of &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -65,6 +65,453 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/ruby-intro-site/blog/2013/07/28/arrays/">Arrays</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-07-28T20:21:00+10:00" pubdate data-updated="true">Jul 28<span>th</span>, 2013</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Arrays in Ruby are very similar to those in other dynamic programming languages. It&rsquo;s all very standard and the documentation has loads of examples anyway, so I&rsquo;ll go through only the most basic and obvious to get started.</p>
+
+<h3>Construction</h3>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>[1, "foo", nil, "bar"]
+</span><span class='line'># [1, "foo", nil, "bar"]
+</span><span class='line'>
+</span><span class='line'>Array.new
+</span><span class='line'># []
+</span><span class='line'>Array.new(3, true)
+</span><span class='line'># [true, true, true]
+</span><span class='line'>
+</span><span class='line'>(1..10).to_a
+</span><span class='line'># [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+</span><span class='line'>("a7".."b5").to_a
+</span><span class='line'># ["a7", "a8", "a9", "b0", "b1", "b2", "b3", "b4", "b5"]</span></code></pre></td></tr></table></div></figure>
+
+
+<h3>Accessing elements and array info</h3>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>arr = [1, 2, 3, 4, 5, 6]
+</span><span class='line'>arr[2]
+</span><span class='line'># 3
+</span><span class='line'>arr[100]
+</span><span class='line'># nil
+</span><span class='line'>arr[-3]
+</span><span class='line'># 4
+</span><span class='line'>arr[2, 3]
+</span><span class='line'># [3, 4, 5]
+</span><span class='line'>arr[1..4]
+</span><span class='line'># [2, 3, 4, 5]
+</span><span class='line'>arr.at(0)
+</span><span class='line'># 1
+</span><span class='line'>
+</span><span class='line'>arr.length
+</span><span class='line'># 6
+</span><span class='line'>arr.empty?
+</span><span class='line'># false
+</span><span class='line'>arr.include?(7)
+</span><span class='line'># false</span></code></pre></td></tr></table></div></figure>
+
+
+<h3>Adding to the array</h3>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>arr.push(7)
+</span><span class='line'># [1, 2, 3, 4, 5, 6, 7]
+</span><span class='line'>arr &lt;&lt; 8
+</span><span class='line'># [1, 2, 3, 4, 5, 6, 7, 8]
+</span><span class='line'>
+</span><span class='line'>arr.unshift(0)
+</span><span class='line'># [0, 1, 2, 3, 4, 5, 6, 7]
+</span><span class='line'>
+</span><span class='line'>arr.insert(3, 2.5)
+</span><span class='line'># [0, 1, 2, 2.5, 3, 4, 5, 6, 7]</span></code></pre></td></tr></table></div></figure>
+
+
+<h3>Removing from Array</h3>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>arr
+</span><span class='line'># [0, 1, 2, 2.5, 3, 4, 5, 6, 7]
+</span><span class='line'>
+</span><span class='line'>arr.pop
+</span><span class='line'># 7
+</span><span class='line'># arr = [0, 1, 2, 2.5, 3, 4, 5, 6]
+</span><span class='line'>
+</span><span class='line'>arr.shift
+</span><span class='line'># 0
+</span><span class='line'># arr = [1, 2, 2.5, 3, 4, 5, 6]
+</span><span class='line'>
+</span><span class='line'>arr.delete(3)
+</span><span class='line'># 2.5
+</span><span class='line'># arr = [1, 2. 3, 4, 5, 6]</span></code></pre></td></tr></table></div></figure>
+
+
+<h2>Print vs Puts</h2>
+
+<p>Both these functions can be used to output text. To put it simply, puts adds a newline character to the end of each argument and outputs nil as an invisible character rather than a String. Refer to the link at the bottom for more discussion.</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>print [nil, 1, 2]
+</span><span class='line'># [nil, 1, 2]=> nil
+</span><span class='line'>
+</span><span class='line'>puts [nil, 1, 2]
+</span><span class='line'># 
+</span><span class='line'># 1
+</span><span class='line'># 2</span></code></pre></td></tr></table></div></figure>
+
+
+<ol>
+<li><a href="http://ruby-doc.org/core-2.0/Array.html">Ruby-Docs Array</a></li>
+<li><a href="http://stackoverflow.com/questions/5018633/what-is-the-difference-between-print-and-puts">Stack Overflow &ndash; What is the difference between print and puts</a></li>
+</ol>
+
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/ruby-intro-site/blog/2013/07/28/truthiness-and-control-flow/">Truthiness &amp; Control Flow</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-07-28T15:25:00+10:00" pubdate data-updated="true">Jul 28<span>th</span>, 2013</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Ruby uses keywords true and false to represent truthiness and nil to represent a reference that points to nothing (usually some variation of null in other languages).</p>
+
+<p>Like Fixnum from the previous post, these 3 keywords are immediate values.</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>true.object_id
+</span><span class='line'># 20
+</span><span class='line'>true.object_id
+</span><span class='line'># 20
+</span><span class='line'>
+</span><span class='line'>false.object_id
+</span><span class='line'># 0
+</span><span class='line'>false.object_id
+</span><span class='line'># 0
+</span><span class='line'>
+</span><span class='line'>nil.object_id
+</span><span class='line'># 8
+</span><span class='line'>nil.object_id
+</span><span class='line'># 8</span></code></pre></td></tr></table></div></figure>
+
+
+<h2>Equality Testing</h2>
+
+<p>There are 4 ways of testing for equality in Ruby. You&rsquo;ll be using one of them a majority of the time&hellip; <code>==</code>. Generally <code>==</code> represents equality of the values within the object while <code>.equal?</code> ensures that the 2 objects are one and the same (reference pointer comparison). However, as always, make sure you test your code thoroughly since these are just methods that are easy to override (more on this later). The other two are more obscure and depends much more on the implementation.</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>"abc" == "abc"
+</span><span class='line'># true
+</span><span class='line'>"abc".equal? "abc"
+</span><span class='line'># false
+</span><span class='line'>
+</span><span class='line'>1 == 1
+</span><span class='line'># true
+</span><span class='line'>1.equal? 1
+</span><span class='line'># true
+</span><span class='line'>1.eql? 1
+</span><span class='line'># true
+</span><span class='line'>
+</span><span class='line'>1.0 == 1
+</span><span class='line'># true
+</span><span class='line'>1.0.equal? 1
+</span><span class='line'># false
+</span><span class='line'>1.0.eql? 1
+</span><span class='line'># false</span></code></pre></td></tr></table></div></figure>
+
+
+<h1>Control Flow</h1>
+
+<p>As mentioned in the first post, Ruby was designed to be readable and flexible. I think control flow statements are the highlight. Further, it&rsquo;s important to always remember that false and nil are the only objects that can be &lsquo;untruthy&rsquo; (including 0).</p>
+
+<p>Firstly, we have the very standard if-then-else statements.</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>t = true
+</span><span class='line'>
+</span><span class='line'>if t
+</span><span class='line'>  puts "t is true"
+</span><span class='line'>else
+</span><span class='line'>  puts "t is false"
+</span><span class='line'>end
+</span><span class='line'>
+</span><span class='line'># t is true
+</span><span class='line'>
+</span><span class='line'>num = 0
+</span><span class='line'>
+</span><span class='line'>if num &lt; 0
+</span><span class='line'>  puts "num is negative"
+</span><span class='line'>elsif num == 0
+</span><span class='line'>  puts "num is zero"
+</span><span class='line'>else
+</span><span class='line'>  puts "num is positive"
+</span><span class='line'>end
+</span><span class='line'>
+</span><span class='line'># num is zero</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Then we have unless, which literally means if not. However, please avoid this if you need to use else (there is no secondary guard like elsif or elsunless) &ndash; it&rsquo;s only useful in causing confusion.</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>t = true
+</span><span class='line'>
+</span><span class='line'>unless t
+</span><span class='line'>  puts "t is false"
+</span><span class='line'>else
+</span><span class='line'>  puts "t is true"
+</span><span class='line'>end
+</span><span class='line'>
+</span><span class='line'># t is true</span></code></pre></td></tr></table></div></figure>
+
+
+<p>A popular way of writing terse simple control flow without sacrificing on readability is to suffix the control to the line itself</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>puts "true" if true
+</span><span class='line'># true
+</span><span class='line'># => nil
+</span><span class='line'>
+</span><span class='line'>puts "false" unless true
+</span><span class='line'># => nil</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Finally, we have the C-style single line statements</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>true ? true : false
+</span><span class='line'># true
+</span><span class='line'>
+</span><span class='line'>false ? true : false
+</span><span class='line'># false</span></code></pre></td></tr></table></div></figure>
+
+
+<p>And many more complex variations of them. They&rsquo;re just another way of formatting the first option since they Ruby treats <code>;</code> as a new line. Please never write code like this :)</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>if true then true else false end
+</span><span class='line'># true
+</span><span class='line'>
+</span><span class='line'>if true; true else false end
+</span><span class='line'># true
+</span><span class='line'>
+</span><span class='line'>num = 0
+</span><span class='line'>if num &lt; 0; puts "negative"; puts "lalala" elsif num > 0; puts "positive" else puts "zero" end
+</span><span class='line'># zero
+</span><span class='line'>
+</span><span class='line'>num = -1
+</span><span class='line'>if num &lt; 0; puts "negative"; puts "lalala" elsif num > 0; puts "positive" else puts "zero" end
+</span><span class='line'># negative
+</span><span class='line'># lalala
+</span><span class='line'>
+</span><span class='line'>num = 1
+</span><span class='line'>if num &lt; 0; puts "negative"; puts "lalala" elsif num > 0; puts "positive" else puts "zero" end
+</span><span class='line'># positive</span></code></pre></td></tr></table></div></figure>
+
+
+<ol>
+<li><a href="http://stackoverflow.com/questions/7156955/whats-the-difference-between-equal-eql-and/7157051#7157051">Stack Overflow &ndash; What&rsquo;s the difference between equal?, eql?, ===, and ==?</a></li>
+</ol>
+
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -933,6 +1380,14 @@
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/ruby-intro-site/blog/2013/08/05/deploying-with-heroku/">Deploying With Heroku</a>
+      </li>
+    
+      <li class="post">
+        <a href="/ruby-intro-site/blog/2013/08/05/prettifying-with-bootstrap/">Prettifying With Bootstrap</a>
+      </li>
+    
+      <li class="post">
         <a href="/ruby-intro-site/blog/2013/08/04/ruby-on-rails/">Ruby on Rails</a>
       </li>
     
@@ -942,14 +1397,6 @@
     
       <li class="post">
         <a href="/ruby-intro-site/blog/2013/07/31/consuming-json-rest-resource-through-http/">Consuming JSON REST Resource Through HTTP</a>
-      </li>
-    
-      <li class="post">
-        <a href="/ruby-intro-site/blog/2013/07/31/parsing-xml-with-xmlsimple/">Parsing XML With XMLSimple</a>
-      </li>
-    
-      <li class="post">
-        <a href="/ruby-intro-site/blog/2013/07/31/classes/">Classes</a>
       </li>
     
   </ul>

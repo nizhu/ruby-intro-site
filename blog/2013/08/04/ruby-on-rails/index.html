@@ -99,17 +99,19 @@
 
 <h2>Scaffolding</h2>
 
-<p>One of the big features of rails is scaffolding &ndash; automatically generating common parts of an application. This is the first step of development.</p>
+<p>One of the big features of rails is scaffolding &ndash; automatically generating common parts of an application. This is the first step of development. Here, we&rsquo;re asking rails to scaffold the project without support for a database.</p>
 
 <figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>rails new twitter_app
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>cd ~
+</span><span class='line'>rails new twitter_app -O
 </span><span class='line'>cd twitter_app
 </span><span class='line'>rails generate controller twitter</span></code></pre></td></tr></table></div></figure>
 
 
-<p>The rails generator has created a lot of new files &ndash; about 80 in fact &ndash; but aren&rsquo;t many that to worry about.</p>
+<p>The rails generator has created a lot of new files &ndash; about 80 in fact &ndash; but there aren&rsquo;t that many we need to worry about.</p>
 
 <p>Before you begin editing the files, copy the twitter configuration file from the previous pages to the <code>config/initializers</code> directory. Files in this directory are run when the server is started.</p>
 
@@ -382,6 +384,8 @@
         <a class="basic-alignment left" href="/ruby-intro-site/blog/2013/08/01/accessing-the-twitter-api/" title="Previous Post: Accessing Twitter's API">&laquo; Accessing Twitter's API</a>
       
       
+        <a class="basic-alignment right" href="/ruby-intro-site/blog/2013/08/05/prettifying-with-bootstrap/" title="Next Post: Prettifying with Bootstrap">Prettifying with Bootstrap &raquo;</a>
+      
     </p>
   </footer>
 </article>
@@ -395,6 +399,14 @@
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/ruby-intro-site/blog/2013/08/05/deploying-with-heroku/">Deploying With Heroku</a>
+      </li>
+    
+      <li class="post">
+        <a href="/ruby-intro-site/blog/2013/08/05/prettifying-with-bootstrap/">Prettifying With Bootstrap</a>
+      </li>
+    
+      <li class="post">
         <a href="/ruby-intro-site/blog/2013/08/04/ruby-on-rails/">Ruby on Rails</a>
       </li>
     
@@ -404,14 +416,6 @@
     
       <li class="post">
         <a href="/ruby-intro-site/blog/2013/07/31/consuming-json-rest-resource-through-http/">Consuming JSON REST Resource Through HTTP</a>
-      </li>
-    
-      <li class="post">
-        <a href="/ruby-intro-site/blog/2013/07/31/parsing-xml-with-xmlsimple/">Parsing XML With XMLSimple</a>
-      </li>
-    
-      <li class="post">
-        <a href="/ruby-intro-site/blog/2013/07/31/classes/">Classes</a>
       </li>
     
   </ul>

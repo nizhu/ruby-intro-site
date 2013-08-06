@@ -5,11 +5,11 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>Intro to intro - Ruby Intro</title>
+  <title>Prettifying with Bootstrap - Ruby Intro</title>
   <meta name="author" content="Nick Zhu">
 
   
-  <meta name="description" content="Ruby is a dynamic, object oriented programming language that first appeared toward the end of 1995, so it&rsquo;s a bit younger than the other 2 &hellip;">
+  <meta name="description" content="Since Twitter open sourced their CSS framework several years ago, Bootstrap has become the benchmark for CSS. As a terrible designer, I&rsquo;ve very &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -18,7 +18,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://nizhu.github.io/ruby-intro-site/blog/2013/07/27/intro-to-intro">
+  <link rel="canonical" href="http://nizhu.github.io/ruby-intro-site/blog/2013/08/05/prettifying-with-bootstrap">
   <link href="/ruby-intro-site/favicon.png" rel="icon">
   <link href="/ruby-intro-site/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <link href="/ruby-intro-site/atom.xml" rel="alternate" title="Ruby Intro" type="application/atom+xml">
@@ -68,7 +68,7 @@
   
   <header>
     
-      <h1 class="entry-title">Intro to Intro</h1>
+      <h1 class="entry-title">Prettifying With Bootstrap</h1>
     
     
       <p class="meta">
@@ -84,26 +84,97 @@
   
 
 
-<time datetime="2013-07-27T10:37:00+10:00" pubdate data-updated="true">Jul 27<span>th</span>, 2013</time>
+<time datetime="2013-08-05T22:27:00+10:00" pubdate data-updated="true">Aug 5<span>th</span>, 2013</time>
         
       </p>
     
   </header>
 
 
-<div class="entry-content"><p>Ruby is a dynamic, object oriented programming language that first appeared toward the end of 1995, so it&rsquo;s a bit younger than the other 2 similar, mainstream languages, Python and Perl. In my opinion, it&rsquo;s more hipster and better looking than its cousins, and intuitively, it&rsquo;s as close to English as general purpose programming languages go. As such Ruby is one of the easiest languages to grok.</p>
+<div class="entry-content"><p>Since Twitter open sourced their CSS framework several years ago, Bootstrap has become the benchmark for CSS. As a terrible designer, I&rsquo;ve very much relied on Bootstrap to make my web pages decent looking, not great &ndash; just OK.</p>
 
-<p>It really only appeared out of obscurity in 2005 with the rise in popularity of the Ruby-based web application framework, Rails. It has however, greatly matured since then.</p>
+<p>I&rsquo;ve opted for a slightly older version (2.3.2) here since the new version 3 is not yet stable at the time of writing. The documentation for 2.3.2 can be found <a href="http://getbootstrap.com/2.3.2/">here</a>. Regardless, there&rsquo;s only 3 files to change.</p>
 
-<p>There are many different implementations around, including one (JRuby) which compiles your Ruby code to run on the JVM. It allows you to use native Java classes in your Ruby code, and Ruby classes in your Java code. I&rsquo;m not familiar with the obvious benefits of using these features, but if you ever feel like writing a Swing app with Ruby, you have that option.</p>
+<p>&lt;% codeblock lang:html app/views/layouts/application.html.erb %>
+&lt;!DOCTYPE html>
+<html>
+<head>
+  <title>TwitterApp</title>
+  <link href="/ruby-intro-site//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.min.css" rel="stylesheet">
+  &lt;%= stylesheet_link_tag    &ldquo;application&rdquo;, media: &ldquo;all&rdquo;, &ldquo;data-turbolinks-track&rdquo; => true %>
+  &lt;%= javascript_include_tag &ldquo;application&rdquo;, &ldquo;data-turbolinks-track&rdquo; => true %>
+  &lt;%= csrf_meta_tags %>
+</head>
+<body>
+  <div class="container"></p>
 
-<p>The main C-based implementation, also known as MRI, is now up to version 2.0.0-p247. The first version of 2.0.0 was released less than 6 months ago, but the release was designed to be backward compatible with 1.9.3 (with 5 minor exceptions) so one should be able to use any Ruby documentation from the last 6 or so years with little issue.</p>
+<pre><code>&lt;div class="navbar"&gt;
+  &lt;div class="navbar-inner"&gt;
+    &lt;a class="brand" href="/ruby-intro-site/"&gt;Twitter App&lt;/a&gt;
+    &lt;ul class="nav"&gt;
+      &lt;li&gt;&lt;a href="/ruby-intro-site/proposals"&gt;JB Proposals&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href="/ruby-intro-site/ausvotes"&gt;#ausvotes&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+</code></pre>
+
+<p>&lt;%= yield %>
+  </div>
+</body>
+</html>
+&lt;% endcodeblock %></p>
+
+<p>And add <code>class="table"</code> to the 2 table tags</p>
+
+<p>&lt;% codeblock lang:html app/views/twitter/ausvotes.html.erb %></p>
+
+<h1>Last 200 Tweets with #ausvotes</h1>
+
+
+
+
+<table class="table">
+  <tr>
+    <th>User</th>
+    <th>Text</th>
+  </tr>
+<% @tweets.each do |tweet| %>
+  <tr>
+    <td><%= tweet.user.name %></td>
+    <td><%= tweet.text %></td>
+  </tr>
+<% end %>
+</table>
+
+
+<p>&lt;% endcodeblock</p>
+
+<p>&lt;% codeblock lang:html app/views/twitter/proposals.html.erb %></p>
+
+<h1>Last 200 Justin Bieber Proposals</h1>
+
+
+
+
+<table class="table">
+  <tr>
+    <th>User</th>
+    <th>Text</th>
+  </tr>
+<% @tweets.each do |tweet| %>
+  <tr>
+    <td><%= tweet.user.name %></td>
+    <td><%= tweet.text %></td>
+  </tr>
+<% end %>
+</table>
+
+
+<p>&lt;% endcodeblock %></p>
 
 <ol>
-<li><a href="http://www.ruby-lang.org/en/about/">Official About Ruby</a></li>
-<li><a href="http://en.wikipedia.org/wiki/Ruby_(programming_language)">Wikipedia on Ruby</a></li>
-<li><a href="http://en.wikipedia.org/wiki/JRuby">Wikipedia on JRuby</a></li>
-<li><a href="http://www.ruby-lang.org/en/news/2013/02/24/ruby-2-0-0-p0-is-released/">Ruby 2.0.0 Release Notes</a></li>
+<li><a href="http://getbootstrap.com/2.3.2/">Twitter Bootstrap</a></li>
 </ol>
 
 </div>
@@ -128,7 +199,7 @@
   
 
 
-<time datetime="2013-07-27T10:37:00+10:00" pubdate data-updated="true">Jul 27<span>th</span>, 2013</time>
+<time datetime="2013-08-05T22:27:00+10:00" pubdate data-updated="true">Aug 5<span>th</span>, 2013</time>
       
 
 <span class="categories">
@@ -142,7 +213,7 @@
     
       <div class="sharing">
   
-  <a href="/ruby-intro-site//twitter.com/share" class="twitter-share-button" data-url="http://nizhu.github.io/ruby-intro-site/blog/2013/07/27/intro-to-intro/" data-via="" data-counturl="http://nizhu.github.io/ruby-intro-site/blog/2013/07/27/intro-to-intro/" >Tweet</a>
+  <a href="/ruby-intro-site//twitter.com/share" class="twitter-share-button" data-url="http://nizhu.github.io/ruby-intro-site/blog/2013/08/05/prettifying-with-bootstrap/" data-via="" data-counturl="http://nizhu.github.io/ruby-intro-site/blog/2013/08/05/prettifying-with-bootstrap/" >Tweet</a>
   
   
   
@@ -151,8 +222,10 @@
     
     <p class="meta">
       
+        <a class="basic-alignment left" href="/ruby-intro-site/blog/2013/08/04/ruby-on-rails/" title="Previous Post: Ruby on Rails">&laquo; Ruby on Rails</a>
       
-        <a class="basic-alignment right" href="/ruby-intro-site/blog/2013/07/27/installing-ruby/" title="Next Post: Installing Ruby">Installing Ruby &raquo;</a>
+      
+        <a class="basic-alignment right" href="/ruby-intro-site/blog/2013/08/05/deploying-with-heroku/" title="Next Post: Deploying with Heroku">Deploying with Heroku &raquo;</a>
       
     </p>
   </footer>

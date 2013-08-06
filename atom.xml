@@ -4,7 +4,7 @@
   <title><![CDATA[Ruby Intro]]></title>
   <link href="http://nizhu.github.io/ruby-intro-site/atom.xml" rel="self"/>
   <link href="http://nizhu.github.io/ruby-intro-site/"/>
-  <updated>2013-08-05T22:24:40+10:00</updated>
+  <updated>2013-08-06T20:19:56+10:00</updated>
   <id>http://nizhu.github.io/ruby-intro-site/</id>
   <author>
     <name><![CDATA[Nick Zhu]]></name>
@@ -12,6 +12,111 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Deploying with Heroku]]></title>
+    <link href="http://nizhu.github.io/ruby-intro-site/blog/2013/08/05/deploying-with-heroku/"/>
+    <updated>2013-08-05T22:55:00+10:00</updated>
+    <id>http://nizhu.github.io/ruby-intro-site/blog/2013/08/05/deploying-with-heroku</id>
+    <content type="html"><![CDATA[<p>Heroku is a pioneer in what we now call Platform-As-A-Service. It&rsquo;s a little on the expensive side to scale on it, but its great for developing with as there is a freebie tier and its service makes deploying to the internet a breeze. Be aware however that if you need a database, PostgreSQL is your only option.</p>
+
+<h2>Step 1</h2>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Prettifying with Bootstrap]]></title>
+    <link href="http://nizhu.github.io/ruby-intro-site/blog/2013/08/05/prettifying-with-bootstrap/"/>
+    <updated>2013-08-05T22:27:00+10:00</updated>
+    <id>http://nizhu.github.io/ruby-intro-site/blog/2013/08/05/prettifying-with-bootstrap</id>
+    <content type="html"><![CDATA[<p>Since Twitter open sourced their CSS framework several years ago, Bootstrap has become the benchmark for CSS. As a terrible designer, I&rsquo;ve very much relied on Bootstrap to make my web pages decent looking, not great &ndash; just OK.</p>
+
+<p>I&rsquo;ve opted for a slightly older version (2.3.2) here since the new version 3 is not yet stable at the time of writing. The documentation for 2.3.2 can be found <a href="http://getbootstrap.com/2.3.2/">here</a>. Regardless, there&rsquo;s only 3 files to change.</p>
+
+<p>&lt;% codeblock lang:html app/views/layouts/application.html.erb %>
+&lt;!DOCTYPE html>
+<html>
+<head>
+  <title>TwitterApp</title>
+  <link href="http://nizhu.github.io/ruby-intro-site//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.min.css" rel="stylesheet">
+  &lt;%= stylesheet_link_tag    &ldquo;application&rdquo;, media: &ldquo;all&rdquo;, &ldquo;data-turbolinks-track&rdquo; => true %>
+  &lt;%= javascript_include_tag &ldquo;application&rdquo;, &ldquo;data-turbolinks-track&rdquo; => true %>
+  &lt;%= csrf_meta_tags %>
+</head>
+<body>
+  <div class="container"></p>
+
+<pre><code>&lt;div class="navbar"&gt;
+  &lt;div class="navbar-inner"&gt;
+    &lt;a class="brand" href="http://nizhu.github.io/ruby-intro-site/"&gt;Twitter App&lt;/a&gt;
+    &lt;ul class="nav"&gt;
+      &lt;li&gt;&lt;a href="http://nizhu.github.io/ruby-intro-site/proposals"&gt;JB Proposals&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href="http://nizhu.github.io/ruby-intro-site/ausvotes"&gt;#ausvotes&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+</code></pre>
+
+<p>&lt;%= yield %>
+  </div>
+</body>
+</html>
+&lt;% endcodeblock %></p>
+
+<p>And add <code>class="table"</code> to the 2 table tags</p>
+
+<p>&lt;% codeblock lang:html app/views/twitter/ausvotes.html.erb %></p>
+
+<h1>Last 200 Tweets with #ausvotes</h1>
+
+
+
+
+<table class="table">
+  <tr>
+    <th>User</th>
+    <th>Text</th>
+  </tr>
+<% @tweets.each do |tweet| %>
+  <tr>
+    <td><%= tweet.user.name %></td>
+    <td><%= tweet.text %></td>
+  </tr>
+<% end %>
+</table>
+
+
+<p>&lt;% endcodeblock</p>
+
+<p>&lt;% codeblock lang:html app/views/twitter/proposals.html.erb %></p>
+
+<h1>Last 200 Justin Bieber Proposals</h1>
+
+
+
+
+<table class="table">
+  <tr>
+    <th>User</th>
+    <th>Text</th>
+  </tr>
+<% @tweets.each do |tweet| %>
+  <tr>
+    <td><%= tweet.user.name %></td>
+    <td><%= tweet.text %></td>
+  </tr>
+<% end %>
+</table>
+
+
+<p>&lt;% endcodeblock %></p>
+
+<ol>
+<li><a href="http://getbootstrap.com/2.3.2/">Twitter Bootstrap</a></li>
+</ol>
+
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Ruby on Rails]]></title>
@@ -26,17 +131,19 @@
 
 <h2>Scaffolding</h2>
 
-<p>One of the big features of rails is scaffolding &ndash; automatically generating common parts of an application. This is the first step of development.</p>
+<p>One of the big features of rails is scaffolding &ndash; automatically generating common parts of an application. This is the first step of development. Here, we&rsquo;re asking rails to scaffold the project without support for a database.</p>
 
 <figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>rails new twitter_app
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>cd ~
+</span><span class='line'>rails new twitter_app -O
 </span><span class='line'>cd twitter_app
 </span><span class='line'>rails generate controller twitter</span></code></pre></td></tr></table></div></figure>
 
 
-<p>The rails generator has created a lot of new files &ndash; about 80 in fact &ndash; but aren&rsquo;t many that to worry about.</p>
+<p>The rails generator has created a lot of new files &ndash; about 80 in fact &ndash; but there aren&rsquo;t that many we need to worry about.</p>
 
 <p>Before you begin editing the files, copy the twitter configuration file from the previous pages to the <code>config/initializers</code> directory. Files in this directory are run when the server is started.</p>
 
