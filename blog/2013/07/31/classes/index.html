@@ -93,7 +93,7 @@
 
 <div class="entry-content"><p>Ruby is a Object Oriented language so it&rsquo;s no less than intuitive to have classes. The following code block shows the basic syntax of a Ruby class.</p>
 
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
@@ -113,26 +113,27 @@
 <span class='line-number'>18</span>
 <span class='line-number'>19</span>
 <span class='line-number'>20</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>class Counter
-</span><span class='line'>  @@classCount = 0
-</span><span class='line'>  @instanceCount
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="k">class</span> <span class="nc">Counter</span>
+</span><span class='line'>  <span class="vc">@@classCount</span> <span class="o">=</span> <span class="mi">0</span>
+</span><span class='line'>  <span class="vi">@instanceCount</span>
 </span><span class='line'>
-</span><span class='line'>  def initialize(startInstanceCount)
-</span><span class='line'>    @instanceCount = startInstanceCount
-</span><span class='line'>  end
+</span><span class='line'>  <span class="k">def</span> <span class="nf">initialize</span><span class="p">(</span><span class="n">startInstanceCount</span><span class="p">)</span>
+</span><span class='line'>    <span class="vi">@instanceCount</span> <span class="o">=</span> <span class="n">startInstanceCount</span>
+</span><span class='line'>  <span class="k">end</span>
 </span><span class='line'>
-</span><span class='line'>  def icIncrement
-</span><span class='line'>    @instanceCount += 1
-</span><span class='line'>  end
+</span><span class='line'>  <span class="k">def</span> <span class="nf">icIncrement</span>
+</span><span class='line'>    <span class="vi">@instanceCount</span> <span class="o">+=</span> <span class="mi">1</span>
+</span><span class='line'>  <span class="k">end</span>
 </span><span class='line'>
-</span><span class='line'>  def self.ccIncrement
-</span><span class='line'>    @@classCount += 1
-</span><span class='line'>  end
+</span><span class='line'>  <span class="k">def</span> <span class="nc">self</span><span class="o">.</span><span class="nf">ccIncrement</span>
+</span><span class='line'>    <span class="vc">@@classCount</span> <span class="o">+=</span> <span class="mi">1</span>
+</span><span class='line'>  <span class="k">end</span>
 </span><span class='line'>
-</span><span class='line'>  def to_s
-</span><span class='line'>    "classCount = #{@@classCount} and instanceCount = #{@instanceCount}"
-</span><span class='line'>  end
-</span><span class='line'>end</span></code></pre></td></tr></table></div></figure>
+</span><span class='line'>  <span class="k">def</span> <span class="nf">to_s</span>
+</span><span class='line'>    <span class="s2">&quot;classCount = </span><span class="si">#{</span><span class="vc">@@classCount</span><span class="si">}</span><span class="s2"> and instanceCount = </span><span class="si">#{</span><span class="vi">@instanceCount</span><span class="si">}</span><span class="s2">&quot;</span>
+</span><span class='line'>  <span class="k">end</span>
+</span><span class='line'><span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure>
 
 
 <p>We have a Class variable, <code>@@classCount</code>. This is equivalent to the keyword <code>static</code> in Java. There&rsquo;s an Instance variable <code>@instanceCount</code>.</p>
@@ -141,7 +142,7 @@
 
 <p>Finally <code>to_s</code> is the conversion of the class to a String, just like <code>toString()</code>.</p>
 
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
@@ -153,18 +154,19 @@
 <span class='line-number'>10</span>
 <span class='line-number'>11</span>
 <span class='line-number'>12</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>a = Counter.new 0
-</span><span class='line'>b = Counter.new 0
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">a</span> <span class="o">=</span> <span class="no">Counter</span><span class="o">.</span><span class="n">new</span> <span class="mi">0</span>
+</span><span class='line'><span class="n">b</span> <span class="o">=</span> <span class="no">Counter</span><span class="o">.</span><span class="n">new</span> <span class="mi">0</span>
 </span><span class='line'>
-</span><span class='line'>a.ccIncrement
-</span><span class='line'>a.icIncrement
+</span><span class='line'><span class="n">a</span><span class="o">.</span><span class="n">ccIncrement</span>
+</span><span class='line'><span class="n">a</span><span class="o">.</span><span class="n">icIncrement</span>
 </span><span class='line'>
-</span><span class='line'>puts b
-</span><span class='line'># classCount = 1 and instanceCount = 0
+</span><span class='line'><span class="nb">puts</span> <span class="n">b</span>
+</span><span class='line'><span class="c1"># classCount = 1 and instanceCount = 0</span>
 </span><span class='line'>
-</span><span class='line'>b = Counter.new 5
-</span><span class='line'>puts b
-</span><span class='line'># classCount = 1 and instanceCount = 5</span></code></pre></td></tr></table></div></figure>
+</span><span class='line'><span class="n">b</span> <span class="o">=</span> <span class="no">Counter</span><span class="o">.</span><span class="n">new</span> <span class="mi">5</span>
+</span><span class='line'><span class="nb">puts</span> <span class="n">b</span>
+</span><span class='line'><span class="c1"># classCount = 1 and instanceCount = 5</span>
+</span></code></pre></td></tr></table></div></figure>
 
 
 <h2>Variable Scope</h2>
@@ -182,16 +184,17 @@
 
 <p>Note that Constants can still be changed. The interpreter will simply issue a warning that that is the case, but the value assigning will proceed.</p>
 
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
 <span class='line-number'>5</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>Aconstant = 1
-</span><span class='line'>Aconstant = 2
-</span><span class='line'># warning: already initialized constant Aconstant
-</span><span class='line'># warning: previous definition of Aconstant was here
-</span><span class='line'># 2</span></code></pre></td></tr></table></div></figure>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="no">Aconstant</span> <span class="o">=</span> <span class="mi">1</span>
+</span><span class='line'><span class="no">Aconstant</span> <span class="o">=</span> <span class="mi">2</span>
+</span><span class='line'><span class="c1"># warning: already initialized constant Aconstant</span>
+</span><span class='line'><span class="c1"># warning: previous definition of Aconstant was here</span>
+</span><span class='line'><span class="c1"># 2</span>
+</span></code></pre></td></tr></table></div></figure>
 
 
 <h2>Dynamic Typing</h2>
@@ -264,7 +267,7 @@
 
 <p>Let&rsquo;s play with again. This time, load irb with <code>irb -I .</code>. This will add the current directory to the path that the require command uses so it can find the 3 files above.</p>
 
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
@@ -274,41 +277,43 @@
 <span class='line-number'>8</span>
 <span class='line-number'>9</span>
 <span class='line-number'>10</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>d = Duck.new
-</span><span class='line'>m = Man.new
-</span><span class='line'>w = Woman.new
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">d</span> <span class="o">=</span> <span class="no">Duck</span><span class="o">.</span><span class="n">new</span>
+</span><span class='line'><span class="n">m</span> <span class="o">=</span> <span class="no">Man</span><span class="o">.</span><span class="n">new</span>
+</span><span class='line'><span class="n">w</span> <span class="o">=</span> <span class="no">Woman</span><span class="o">.</span><span class="n">new</span>
 </span><span class='line'>
-</span><span class='line'>make_it_quack(d)
-</span><span class='line'># Quack!
-</span><span class='line'>make_it_quack(m)
-</span><span class='line'># Moo!
-</span><span class='line'>make_it_quack(w)
-</span><span class='line'># NoMethodError: undefined method `quack' for #&lt;Woman:0x007fb2d91ab3d0></span></code></pre></td></tr></table></div></figure>
+</span><span class='line'><span class="n">make_it_quack</span><span class="p">(</span><span class="n">d</span><span class="p">)</span>
+</span><span class='line'><span class="c1"># Quack!</span>
+</span><span class='line'><span class="n">make_it_quack</span><span class="p">(</span><span class="n">m</span><span class="p">)</span>
+</span><span class='line'><span class="c1"># Moo!</span>
+</span><span class='line'><span class="n">make_it_quack</span><span class="p">(</span><span class="n">w</span><span class="p">)</span>
+</span><span class='line'><span class="c1"># NoMethodError: undefined method `quack&#39; for #&lt;Woman:0x007fb2d91ab3d0&gt;</span>
+</span></code></pre></td></tr></table></div></figure>
 
 
 <p>Unfortunately it seems like function parameters can no longer be given a type so the example isn&rsquo;t the most clear. This is what it looks like in the book.</p>
 
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
 <span class='line-number'>5</span>
 <span class='line-number'>6</span>
 <span class='line-number'>7</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>def make_it_quack(Duck duck)
-</span><span class='line'>  puts duck.quack
-</span><span class='line'>end
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="k">def</span> <span class="nf">make_it_quack</span><span class="p">(</span><span class="no">Duck</span> <span class="n">duck</span><span class="p">)</span>
+</span><span class='line'>  <span class="nb">puts</span> <span class="n">duck</span><span class="o">.</span><span class="n">quack</span>
+</span><span class='line'><span class="k">end</span>
 </span><span class='line'>
-</span><span class='line'>w = Woman.new
-</span><span class='line'>make_it_quack(w)
-</span><span class='line'># TypeException: object not of type Duck</span></code></pre></td></tr></table></div></figure>
+</span><span class='line'><span class="n">w</span> <span class="o">=</span> <span class="no">Woman</span><span class="o">.</span><span class="n">new</span>
+</span><span class='line'><span class="n">make_it_quack</span><span class="p">(</span><span class="n">w</span><span class="p">)</span>
+</span><span class='line'><span class="c1"># TypeException: object not of type Duck</span>
+</span></code></pre></td></tr></table></div></figure>
 
 
 <h2>Duck Punching</h2>
 
 <p>So what if our ducks (Man) don&rsquo;t quack? Then we punch them until it does.</p>
 
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
@@ -322,25 +327,26 @@
 <span class='line-number'>12</span>
 <span class='line-number'>13</span>
 <span class='line-number'>14</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>make_it_quack(m)
-</span><span class='line'># Moo!
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">make_it_quack</span><span class="p">(</span><span class="n">m</span><span class="p">)</span>
+</span><span class='line'><span class="c1"># Moo!</span>
 </span><span class='line'>
-</span><span class='line'>class Man
-</span><span class='line'>  def quack
-</span><span class='line'>    "Quack!"
-</span><span class='line'>  end
-</span><span class='line'>end
+</span><span class='line'><span class="k">class</span> <span class="nc">Man</span>
+</span><span class='line'>  <span class="k">def</span> <span class="nf">quack</span>
+</span><span class='line'>    <span class="s2">&quot;Quack!&quot;</span>
+</span><span class='line'>  <span class="k">end</span>
+</span><span class='line'><span class="k">end</span>
 </span><span class='line'>
-</span><span class='line'>make_it_quack(m)
-</span><span class='line'># Quack!
+</span><span class='line'><span class="n">make_it_quack</span><span class="p">(</span><span class="n">m</span><span class="p">)</span>
+</span><span class='line'><span class="c1"># Quack!</span>
 </span><span class='line'>
-</span><span class='line'>m.scream
-</span><span class='line'># AHHHHHH</span></code></pre></td></tr></table></div></figure>
+</span><span class='line'><span class="n">m</span><span class="o">.</span><span class="n">scream</span>
+</span><span class='line'><span class="c1"># AHHHHHH</span>
+</span></code></pre></td></tr></table></div></figure>
 
 
 <p>Just to be clear, we can also do the same to the Woman class.</p>
 
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
@@ -351,17 +357,18 @@
 <span class='line-number'>9</span>
 <span class='line-number'>10</span>
 <span class='line-number'>11</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>make_it_quack(w)
-</span><span class='line'>NoMethodError: undefined method `quack' for #&lt;Woman:0x007fbe7b99e800>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">make_it_quack</span><span class="p">(</span><span class="n">w</span><span class="p">)</span>
+</span><span class='line'><span class="ss">NoMethodError</span><span class="p">:</span> <span class="n">undefined</span> <span class="nb">method</span> <span class="sb">`quack&#39; for #&lt;Woman:0x007fbe7b99e800&gt;</span>
 </span><span class='line'>
-</span><span class='line'>class Woman
-</span><span class='line'>  def quack
-</span><span class='line'>    "Quack!"
-</span><span class='line'>  end
-</span><span class='line'>end
+</span><span class='line'><span class="sb">class Woman</span>
+</span><span class='line'><span class="sb">  def quack</span>
+</span><span class='line'><span class="sb">    &quot;Quack!&quot;</span>
+</span><span class='line'><span class="sb">  end</span>
+</span><span class='line'><span class="sb">end</span>
 </span><span class='line'>
-</span><span class='line'>make_it_quack(w)
-</span><span class='line'># Quack!</span></code></pre></td></tr></table></div></figure>
+</span><span class='line'><span class="sb">make_it_quack(w)</span>
+</span><span class='line'><span class="sb"># Quack!</span>
+</span></code></pre></td></tr></table></div></figure>
 
 </div>
 

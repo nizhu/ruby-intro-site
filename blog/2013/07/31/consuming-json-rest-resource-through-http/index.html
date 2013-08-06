@@ -95,7 +95,7 @@
 
 <p>If you&rsquo;ve been writing Javascript, you love JSON. If you haven&rsquo;t, you soon will. Note that spaces, tabs and line breaks are all optional. I&rsquo;ve just added those to make it easier to read.</p>
 
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
@@ -110,21 +110,22 @@
 <span class='line-number'>13</span>
 <span class='line-number'>14</span>
 <span class='line-number'>15</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>{
-</span><span class='line'>  "id": 32,
-</span><span class='line'>  "name": "Mother Duck",
-</span><span class='line'>  "children":[
-</span><span class='line'>    {
-</span><span class='line'>      "id": 12345,
-</span><span class='line'>      "name": "Claire"
-</span><span class='line'>    },
-</span><span class='line'>    {
-</span><span class='line'>      "id": 12372,
-</span><span class='line'>      "name": "Daniel"
-</span><span class='line'>    }
-</span><span class='line'>  ],
-</span><span class='line'>  "isAlive": true
-</span><span class='line'>}</span></code></pre></td></tr></table></div></figure>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="p">{</span>
+</span><span class='line'>  <span class="s2">&quot;id&quot;</span><span class="o">:</span> <span class="mi">32</span><span class="p">,</span>
+</span><span class='line'>  <span class="s2">&quot;name&quot;</span><span class="o">:</span> <span class="s2">&quot;Mother Duck&quot;</span><span class="p">,</span>
+</span><span class='line'>  <span class="s2">&quot;children&quot;</span><span class="o">:</span><span class="p">[</span>
+</span><span class='line'>    <span class="p">{</span>
+</span><span class='line'>      <span class="s2">&quot;id&quot;</span><span class="o">:</span> <span class="mi">12345</span><span class="p">,</span>
+</span><span class='line'>      <span class="s2">&quot;name&quot;</span><span class="o">:</span> <span class="s2">&quot;Claire&quot;</span>
+</span><span class='line'>    <span class="p">},</span>
+</span><span class='line'>    <span class="p">{</span>
+</span><span class='line'>      <span class="s2">&quot;id&quot;</span><span class="o">:</span> <span class="mi">12372</span><span class="p">,</span>
+</span><span class='line'>      <span class="s2">&quot;name&quot;</span><span class="o">:</span> <span class="s2">&quot;Daniel&quot;</span>
+</span><span class='line'>    <span class="p">}</span>
+</span><span class='line'>  <span class="p">],</span>
+</span><span class='line'>  <span class="s2">&quot;isAlive&quot;</span><span class="o">:</span> <span class="kc">true</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
 
 
 <p>That&rsquo;s all there is to JSON, very simple, very clear. <code>{}</code> encapsulates object/map/hash, while <code>[]</code> encapsulates an array, both of which can be nested infinitely. Otherwise only strings, numbers, booleans and null are supported values.</p>
@@ -139,7 +140,7 @@
 
 <p><a href="http://ruby-doc.org/stdlib-2.0/libdoc/net/http/rdoc/Net/HTTP.html">Net/HTTP</a> is a standard Ruby library, and it&rsquo;ll be your interface to the internet. JSON is a simple parser, but is not standard. As before, install the gem with <code>gem install json</code></p>
 
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
@@ -155,22 +156,23 @@
 <span class='line-number'>14</span>
 <span class='line-number'>15</span>
 <span class='line-number'>16</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>require 'net/http'
-</span><span class='line'>require 'json'
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="nb">require</span> <span class="s1">&#39;net/http&#39;</span>
+</span><span class='line'><span class="nb">require</span> <span class="s1">&#39;json&#39;</span>
 </span><span class='line'>
-</span><span class='line'>uri = URI('https://api.github.com/users/octocat')
-</span><span class='line'>response = Net::HTTP.get uri
-</span><span class='line'>octocat = JSON.parse response
+</span><span class='line'><span class="n">uri</span> <span class="o">=</span> <span class="no">URI</span><span class="p">(</span><span class="s1">&#39;https://api.github.com/users/octocat&#39;</span><span class="p">)</span>
+</span><span class='line'><span class="n">response</span> <span class="o">=</span> <span class="ss">Net</span><span class="p">:</span><span class="ss">:HTTP</span><span class="o">.</span><span class="n">get</span> <span class="n">uri</span>
+</span><span class='line'><span class="n">octocat</span> <span class="o">=</span> <span class="no">JSON</span><span class="o">.</span><span class="n">parse</span> <span class="n">response</span>
 </span><span class='line'>
-</span><span class='line'>octocat.keys
-</span><span class='line'># ["login", "id", "avatar_url", "gravatar_id", "url", "html_url", "followers_url", "following_url", "gists_url", "starred_url", "subscriptions_url", "organizations_url", "repos_url", "events_url", "received_events_url", "type", "name", "company", "blog", "location", "email", "hireable", "bio", "public_repos", "followers", "following", "created_at", "updated_at", "public_gists"]
+</span><span class='line'><span class="n">octocat</span><span class="o">.</span><span class="n">keys</span>
+</span><span class='line'><span class="c1"># [&quot;login&quot;, &quot;id&quot;, &quot;avatar_url&quot;, &quot;gravatar_id&quot;, &quot;url&quot;, &quot;html_url&quot;, &quot;followers_url&quot;, &quot;following_url&quot;, &quot;gists_url&quot;, &quot;starred_url&quot;, &quot;subscriptions_url&quot;, &quot;organizations_url&quot;, &quot;repos_url&quot;, &quot;events_url&quot;, &quot;received_events_url&quot;, &quot;type&quot;, &quot;name&quot;, &quot;company&quot;, &quot;blog&quot;, &quot;location&quot;, &quot;email&quot;, &quot;hireable&quot;, &quot;bio&quot;, &quot;public_repos&quot;, &quot;followers&quot;, &quot;following&quot;, &quot;created_at&quot;, &quot;updated_at&quot;, &quot;public_gists&quot;]</span>
 </span><span class='line'>
-</span><span class='line'>octocat["followers"]
-</span><span class='line'># 398
-</span><span class='line'>octocat["public_repos"]
-</span><span class='line'># 3
-</span><span class='line'>octocat["hireable"]
-</span><span class='line'># false</span></code></pre></td></tr></table></div></figure>
+</span><span class='line'><span class="n">octocat</span><span class="o">[</span><span class="s2">&quot;followers&quot;</span><span class="o">]</span>
+</span><span class='line'><span class="c1"># 398</span>
+</span><span class='line'><span class="n">octocat</span><span class="o">[</span><span class="s2">&quot;public_repos&quot;</span><span class="o">]</span>
+</span><span class='line'><span class="c1"># 3</span>
+</span><span class='line'><span class="n">octocat</span><span class="o">[</span><span class="s2">&quot;hireable&quot;</span><span class="o">]</span>
+</span><span class='line'><span class="c1"># false</span>
+</span></code></pre></td></tr></table></div></figure>
 
 
 <p>I had some issues here with openssl on the Mac, but the update instructions with Homebrew found <a href="http://railsapps.github.io/openssl-certificate-verify-failed.html">here</a> worked perfectly.</p>

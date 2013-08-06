@@ -95,7 +95,7 @@
 
 <p>Like Fixnum from the previous post, these 3 keywords are immediate values.</p>
 
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
@@ -109,27 +109,28 @@
 <span class='line-number'>12</span>
 <span class='line-number'>13</span>
 <span class='line-number'>14</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>true.object_id
-</span><span class='line'># 20
-</span><span class='line'>true.object_id
-</span><span class='line'># 20
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="kp">true</span><span class="o">.</span><span class="n">object_id</span>
+</span><span class='line'><span class="c1"># 20</span>
+</span><span class='line'><span class="kp">true</span><span class="o">.</span><span class="n">object_id</span>
+</span><span class='line'><span class="c1"># 20</span>
 </span><span class='line'>
-</span><span class='line'>false.object_id
-</span><span class='line'># 0
-</span><span class='line'>false.object_id
-</span><span class='line'># 0
+</span><span class='line'><span class="kp">false</span><span class="o">.</span><span class="n">object_id</span>
+</span><span class='line'><span class="c1"># 0</span>
+</span><span class='line'><span class="kp">false</span><span class="o">.</span><span class="n">object_id</span>
+</span><span class='line'><span class="c1"># 0</span>
 </span><span class='line'>
-</span><span class='line'>nil.object_id
-</span><span class='line'># 8
-</span><span class='line'>nil.object_id
-</span><span class='line'># 8</span></code></pre></td></tr></table></div></figure>
+</span><span class='line'><span class="kp">nil</span><span class="o">.</span><span class="n">object_id</span>
+</span><span class='line'><span class="c1"># 8</span>
+</span><span class='line'><span class="kp">nil</span><span class="o">.</span><span class="n">object_id</span>
+</span><span class='line'><span class="c1"># 8</span>
+</span></code></pre></td></tr></table></div></figure>
 
 
 <h2>Equality Testing</h2>
 
 <p>There are 4 ways of testing for equality in Ruby. You&rsquo;ll be using one of them a majority of the time&hellip; <code>==</code>. Generally <code>==</code> represents equality of the values within the object while <code>.equal?</code> ensures that the 2 objects are one and the same (reference pointer comparison). However, as always, make sure you test your code thoroughly since these are just methods that are easy to override (more on this later). The other two are more obscure and depends much more on the implementation.</p>
 
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
@@ -147,24 +148,25 @@
 <span class='line-number'>16</span>
 <span class='line-number'>17</span>
 <span class='line-number'>18</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>"abc" == "abc"
-</span><span class='line'># true
-</span><span class='line'>"abc".equal? "abc"
-</span><span class='line'># false
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="s2">&quot;abc&quot;</span> <span class="o">==</span> <span class="s2">&quot;abc&quot;</span>
+</span><span class='line'><span class="c1"># true</span>
+</span><span class='line'><span class="s2">&quot;abc&quot;</span><span class="o">.</span><span class="n">equal?</span> <span class="s2">&quot;abc&quot;</span>
+</span><span class='line'><span class="c1"># false</span>
 </span><span class='line'>
-</span><span class='line'>1 == 1
-</span><span class='line'># true
-</span><span class='line'>1.equal? 1
-</span><span class='line'># true
-</span><span class='line'>1.eql? 1
-</span><span class='line'># true
+</span><span class='line'><span class="mi">1</span> <span class="o">==</span> <span class="mi">1</span>
+</span><span class='line'><span class="c1"># true</span>
+</span><span class='line'><span class="mi">1</span><span class="o">.</span><span class="n">equal?</span> <span class="mi">1</span>
+</span><span class='line'><span class="c1"># true</span>
+</span><span class='line'><span class="mi">1</span><span class="o">.</span><span class="n">eql?</span> <span class="mi">1</span>
+</span><span class='line'><span class="c1"># true</span>
 </span><span class='line'>
-</span><span class='line'>1.0 == 1
-</span><span class='line'># true
-</span><span class='line'>1.0.equal? 1
-</span><span class='line'># false
-</span><span class='line'>1.0.eql? 1
-</span><span class='line'># false</span></code></pre></td></tr></table></div></figure>
+</span><span class='line'><span class="mi">1</span><span class="o">.</span><span class="mi">0</span> <span class="o">==</span> <span class="mi">1</span>
+</span><span class='line'><span class="c1"># true</span>
+</span><span class='line'><span class="mi">1</span><span class="o">.</span><span class="mi">0</span><span class="o">.</span><span class="n">equal?</span> <span class="mi">1</span>
+</span><span class='line'><span class="c1"># false</span>
+</span><span class='line'><span class="mi">1</span><span class="o">.</span><span class="mi">0</span><span class="o">.</span><span class="n">eql?</span> <span class="mi">1</span>
+</span><span class='line'><span class="c1"># false</span>
+</span></code></pre></td></tr></table></div></figure>
 
 
 <h1>Control Flow</h1>
@@ -173,7 +175,7 @@
 
 <p>Firstly, we have the very standard if-then-else statements.</p>
 
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
@@ -194,32 +196,33 @@
 <span class='line-number'>19</span>
 <span class='line-number'>20</span>
 <span class='line-number'>21</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>t = true
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">t</span> <span class="o">=</span> <span class="kp">true</span>
 </span><span class='line'>
-</span><span class='line'>if t
-</span><span class='line'>  puts "t is true"
-</span><span class='line'>else
-</span><span class='line'>  puts "t is false"
-</span><span class='line'>end
+</span><span class='line'><span class="k">if</span> <span class="n">t</span>
+</span><span class='line'>  <span class="nb">puts</span> <span class="s2">&quot;t is true&quot;</span>
+</span><span class='line'><span class="k">else</span>
+</span><span class='line'>  <span class="nb">puts</span> <span class="s2">&quot;t is false&quot;</span>
+</span><span class='line'><span class="k">end</span>
 </span><span class='line'>
-</span><span class='line'># t is true
+</span><span class='line'><span class="c1"># t is true</span>
 </span><span class='line'>
-</span><span class='line'>num = 0
+</span><span class='line'><span class="n">num</span> <span class="o">=</span> <span class="mi">0</span>
 </span><span class='line'>
-</span><span class='line'>if num &lt; 0
-</span><span class='line'>  puts "num is negative"
-</span><span class='line'>elsif num == 0
-</span><span class='line'>  puts "num is zero"
-</span><span class='line'>else
-</span><span class='line'>  puts "num is positive"
-</span><span class='line'>end
+</span><span class='line'><span class="k">if</span> <span class="n">num</span> <span class="o">&lt;</span> <span class="mi">0</span>
+</span><span class='line'>  <span class="nb">puts</span> <span class="s2">&quot;num is negative&quot;</span>
+</span><span class='line'><span class="k">elsif</span> <span class="n">num</span> <span class="o">==</span> <span class="mi">0</span>
+</span><span class='line'>  <span class="nb">puts</span> <span class="s2">&quot;num is zero&quot;</span>
+</span><span class='line'><span class="k">else</span>
+</span><span class='line'>  <span class="nb">puts</span> <span class="s2">&quot;num is positive&quot;</span>
+</span><span class='line'><span class="k">end</span>
 </span><span class='line'>
-</span><span class='line'># num is zero</span></code></pre></td></tr></table></div></figure>
+</span><span class='line'><span class="c1"># num is zero</span>
+</span></code></pre></td></tr></table></div></figure>
 
 
 <p>Then we have unless, which literally means if not. However, please avoid this if you need to use else (there is no secondary guard like elsif or elsunless) &ndash; it&rsquo;s only useful in causing confusion.</p>
 
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
@@ -228,50 +231,53 @@
 <span class='line-number'>7</span>
 <span class='line-number'>8</span>
 <span class='line-number'>9</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>t = true
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">t</span> <span class="o">=</span> <span class="kp">true</span>
 </span><span class='line'>
-</span><span class='line'>unless t
-</span><span class='line'>  puts "t is false"
-</span><span class='line'>else
-</span><span class='line'>  puts "t is true"
-</span><span class='line'>end
+</span><span class='line'><span class="k">unless</span> <span class="n">t</span>
+</span><span class='line'>  <span class="nb">puts</span> <span class="s2">&quot;t is false&quot;</span>
+</span><span class='line'><span class="k">else</span>
+</span><span class='line'>  <span class="nb">puts</span> <span class="s2">&quot;t is true&quot;</span>
+</span><span class='line'><span class="k">end</span>
 </span><span class='line'>
-</span><span class='line'># t is true</span></code></pre></td></tr></table></div></figure>
+</span><span class='line'><span class="c1"># t is true</span>
+</span></code></pre></td></tr></table></div></figure>
 
 
 <p>A popular way of writing terse simple control flow without sacrificing on readability is to suffix the control to the line itself</p>
 
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
 <span class='line-number'>5</span>
 <span class='line-number'>6</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>puts "true" if true
-</span><span class='line'># true
-</span><span class='line'># => nil
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="nb">puts</span> <span class="s2">&quot;true&quot;</span> <span class="k">if</span> <span class="kp">true</span>
+</span><span class='line'><span class="c1"># true</span>
+</span><span class='line'><span class="c1"># =&gt; nil</span>
 </span><span class='line'>
-</span><span class='line'>puts "false" unless true
-</span><span class='line'># => nil</span></code></pre></td></tr></table></div></figure>
+</span><span class='line'><span class="nb">puts</span> <span class="s2">&quot;false&quot;</span> <span class="k">unless</span> <span class="kp">true</span>
+</span><span class='line'><span class="c1"># =&gt; nil</span>
+</span></code></pre></td></tr></table></div></figure>
 
 
 <p>Finally, we have the C-style single line statements</p>
 
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
 <span class='line-number'>5</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>true ? true : false
-</span><span class='line'># true
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="kp">true</span> <span class="p">?</span> <span class="kp">true</span> <span class="p">:</span> <span class="kp">false</span>
+</span><span class='line'><span class="c1"># true</span>
 </span><span class='line'>
-</span><span class='line'>false ? true : false
-</span><span class='line'># false</span></code></pre></td></tr></table></div></figure>
+</span><span class='line'><span class="kp">false</span> <span class="p">?</span> <span class="kp">true</span> <span class="p">:</span> <span class="kp">false</span>
+</span><span class='line'><span class="c1"># false</span>
+</span></code></pre></td></tr></table></div></figure>
 
 
 <p>And many more complex variations of them. They&rsquo;re just another way of formatting the first option since they Ruby treats <code>;</code> as a new line. Please never write code like this :)</p>
 
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
@@ -289,24 +295,25 @@
 <span class='line-number'>16</span>
 <span class='line-number'>17</span>
 <span class='line-number'>18</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>if true then true else false end
-</span><span class='line'># true
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="k">if</span> <span class="kp">true</span> <span class="k">then</span> <span class="kp">true</span> <span class="k">else</span> <span class="kp">false</span> <span class="k">end</span>
+</span><span class='line'><span class="c1"># true</span>
 </span><span class='line'>
-</span><span class='line'>if true; true else false end
-</span><span class='line'># true
+</span><span class='line'><span class="k">if</span> <span class="kp">true</span><span class="p">;</span> <span class="kp">true</span> <span class="k">else</span> <span class="kp">false</span> <span class="k">end</span>
+</span><span class='line'><span class="c1"># true</span>
 </span><span class='line'>
-</span><span class='line'>num = 0
-</span><span class='line'>if num &lt; 0; puts "negative"; puts "lalala" elsif num > 0; puts "positive" else puts "zero" end
-</span><span class='line'># zero
+</span><span class='line'><span class="n">num</span> <span class="o">=</span> <span class="mi">0</span>
+</span><span class='line'><span class="k">if</span> <span class="n">num</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">;</span> <span class="nb">puts</span> <span class="s2">&quot;negative&quot;</span><span class="p">;</span> <span class="nb">puts</span> <span class="s2">&quot;lalala&quot;</span> <span class="k">elsif</span> <span class="n">num</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">;</span> <span class="nb">puts</span> <span class="s2">&quot;positive&quot;</span> <span class="k">else</span> <span class="nb">puts</span> <span class="s2">&quot;zero&quot;</span> <span class="k">end</span>
+</span><span class='line'><span class="c1"># zero</span>
 </span><span class='line'>
-</span><span class='line'>num = -1
-</span><span class='line'>if num &lt; 0; puts "negative"; puts "lalala" elsif num > 0; puts "positive" else puts "zero" end
-</span><span class='line'># negative
-</span><span class='line'># lalala
+</span><span class='line'><span class="n">num</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span>
+</span><span class='line'><span class="k">if</span> <span class="n">num</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">;</span> <span class="nb">puts</span> <span class="s2">&quot;negative&quot;</span><span class="p">;</span> <span class="nb">puts</span> <span class="s2">&quot;lalala&quot;</span> <span class="k">elsif</span> <span class="n">num</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">;</span> <span class="nb">puts</span> <span class="s2">&quot;positive&quot;</span> <span class="k">else</span> <span class="nb">puts</span> <span class="s2">&quot;zero&quot;</span> <span class="k">end</span>
+</span><span class='line'><span class="c1"># negative</span>
+</span><span class='line'><span class="c1"># lalala</span>
 </span><span class='line'>
-</span><span class='line'>num = 1
-</span><span class='line'>if num &lt; 0; puts "negative"; puts "lalala" elsif num > 0; puts "positive" else puts "zero" end
-</span><span class='line'># positive</span></code></pre></td></tr></table></div></figure>
+</span><span class='line'><span class="n">num</span> <span class="o">=</span> <span class="mi">1</span>
+</span><span class='line'><span class="k">if</span> <span class="n">num</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">;</span> <span class="nb">puts</span> <span class="s2">&quot;negative&quot;</span><span class="p">;</span> <span class="nb">puts</span> <span class="s2">&quot;lalala&quot;</span> <span class="k">elsif</span> <span class="n">num</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">;</span> <span class="nb">puts</span> <span class="s2">&quot;positive&quot;</span> <span class="k">else</span> <span class="nb">puts</span> <span class="s2">&quot;zero&quot;</span> <span class="k">end</span>
+</span><span class='line'><span class="c1"># positive</span>
+</span></code></pre></td></tr></table></div></figure>
 
 
 <ol>

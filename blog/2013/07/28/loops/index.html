@@ -95,7 +95,7 @@
 
 <p>There is the while loop you&rsquo;re used to</p>
 
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
@@ -103,19 +103,20 @@
 <span class='line-number'>6</span>
 <span class='line-number'>7</span>
 <span class='line-number'>8</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>i = 0
-</span><span class='line'>while i &lt; 3 do
-</span><span class='line'>  puts i
-</span><span class='line'>  i += 1
-</span><span class='line'>end
-</span><span class='line'># 0
-</span><span class='line'># 1
-</span><span class='line'># 2</span></code></pre></td></tr></table></div></figure>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">i</span> <span class="o">=</span> <span class="mi">0</span>
+</span><span class='line'><span class="k">while</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="mi">3</span> <span class="k">do</span>
+</span><span class='line'>  <span class="nb">puts</span> <span class="n">i</span>
+</span><span class='line'>  <span class="n">i</span> <span class="o">+=</span> <span class="mi">1</span>
+</span><span class='line'><span class="k">end</span>
+</span><span class='line'><span class="c1"># 0</span>
+</span><span class='line'><span class="c1"># 1</span>
+</span><span class='line'><span class="c1"># 2</span>
+</span></code></pre></td></tr></table></div></figure>
 
 
 <p>While loops with the test at the end</p>
 
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
@@ -130,26 +131,27 @@
 <span class='line-number'>13</span>
 <span class='line-number'>14</span>
 <span class='line-number'>15</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>i = 0
-</span><span class='line'>begin
-</span><span class='line'>  puts i
-</span><span class='line'>  i += 1
-</span><span class='line'>end while i &lt; 3
-</span><span class='line'># 0
-</span><span class='line'># 1
-</span><span class='line'># 2
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">i</span> <span class="o">=</span> <span class="mi">0</span>
+</span><span class='line'><span class="k">begin</span>
+</span><span class='line'>  <span class="nb">puts</span> <span class="n">i</span>
+</span><span class='line'>  <span class="n">i</span> <span class="o">+=</span> <span class="mi">1</span>
+</span><span class='line'><span class="k">end</span> <span class="k">while</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="mi">3</span>
+</span><span class='line'><span class="c1"># 0</span>
+</span><span class='line'><span class="c1"># 1</span>
+</span><span class='line'><span class="c1"># 2</span>
 </span><span class='line'>
-</span><span class='line'>i = 0
-</span><span class='line'>begin
-</span><span class='line'>  puts i
-</span><span class='line'>  i += 1
-</span><span class='line'>end while i &lt; 0
-</span><span class='line'># 0</span></code></pre></td></tr></table></div></figure>
+</span><span class='line'><span class="n">i</span> <span class="o">=</span> <span class="mi">0</span>
+</span><span class='line'><span class="k">begin</span>
+</span><span class='line'>  <span class="nb">puts</span> <span class="n">i</span>
+</span><span class='line'>  <span class="n">i</span> <span class="o">+=</span> <span class="mi">1</span>
+</span><span class='line'><span class="k">end</span> <span class="k">while</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="mi">0</span>
+</span><span class='line'><span class="c1"># 0</span>
+</span></code></pre></td></tr></table></div></figure>
 
 
 <p>There&rsquo;s the until loops which run while the condition is false</p>
 
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
@@ -163,43 +165,45 @@
 <span class='line-number'>12</span>
 <span class='line-number'>13</span>
 <span class='line-number'>14</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>i = 0
-</span><span class='line'>until i > 2
-</span><span class='line'>  puts i
-</span><span class='line'>  i += 1
-</span><span class='line'>end
-</span><span class='line'># 0
-</span><span class='line'># 1
-</span><span class='line'># 2
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">i</span> <span class="o">=</span> <span class="mi">0</span>
+</span><span class='line'><span class="k">until</span> <span class="n">i</span> <span class="o">&gt;</span> <span class="mi">2</span>
+</span><span class='line'>  <span class="nb">puts</span> <span class="n">i</span>
+</span><span class='line'>  <span class="n">i</span> <span class="o">+=</span> <span class="mi">1</span>
+</span><span class='line'><span class="k">end</span>
+</span><span class='line'><span class="c1"># 0</span>
+</span><span class='line'><span class="c1"># 1</span>
+</span><span class='line'><span class="c1"># 2</span>
 </span><span class='line'>
-</span><span class='line'>i = 0
-</span><span class='line'>begin
-</span><span class='line'>  puts i
-</span><span class='line'>  i += 1
-</span><span class='line'>end until i >= 0</span></code></pre></td></tr></table></div></figure>
+</span><span class='line'><span class="n">i</span> <span class="o">=</span> <span class="mi">0</span>
+</span><span class='line'><span class="k">begin</span>
+</span><span class='line'>  <span class="nb">puts</span> <span class="n">i</span>
+</span><span class='line'>  <span class="n">i</span> <span class="o">+=</span> <span class="mi">1</span>
+</span><span class='line'><span class="k">end</span> <span class="k">until</span> <span class="n">i</span> <span class="o">&gt;=</span> <span class="mi">0</span>
+</span></code></pre></td></tr></table></div></figure>
 
 
 <p>And finally, my favourite &ndash; the for loops. If you already have a list to iterate through, great.</p>
 
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
 <span class='line-number'>5</span>
 <span class='line-number'>6</span>
 <span class='line-number'>7</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>a = [0, 1, 2]
-</span><span class='line'>for i in a
-</span><span class='line'>  puts i
-</span><span class='line'>end
-</span><span class='line'># 0
-</span><span class='line'># 1
-</span><span class='line'># 2</span></code></pre></td></tr></table></div></figure>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">a</span> <span class="o">=</span> <span class="o">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="o">]</span>
+</span><span class='line'><span class="k">for</span> <span class="n">i</span> <span class="k">in</span> <span class="n">a</span>
+</span><span class='line'>  <span class="nb">puts</span> <span class="n">i</span>
+</span><span class='line'><span class="k">end</span>
+</span><span class='line'><span class="c1"># 0</span>
+</span><span class='line'><span class="c1"># 1</span>
+</span><span class='line'><span class="c1"># 2</span>
+</span></code></pre></td></tr></table></div></figure>
 
 
 <p>If not, it&rsquo;s great too</p>
 
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
@@ -212,24 +216,25 @@
 <span class='line-number'>11</span>
 <span class='line-number'>12</span>
 <span class='line-number'>13</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>for i in 0..2
-</span><span class='line'>  puts i
-</span><span class='line'>end
-</span><span class='line'># 0
-</span><span class='line'># 1
-</span><span class='line'># 2
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="k">for</span> <span class="n">i</span> <span class="k">in</span> <span class="mi">0</span><span class="o">.</span><span class="n">.</span><span class="mi">2</span>
+</span><span class='line'>  <span class="nb">puts</span> <span class="n">i</span>
+</span><span class='line'><span class="k">end</span>
+</span><span class='line'><span class="c1"># 0</span>
+</span><span class='line'><span class="c1"># 1</span>
+</span><span class='line'><span class="c1"># 2</span>
 </span><span class='line'>
-</span><span class='line'>(0..2).each do |i|
-</span><span class='line'>  puts i
-</span><span class='line'>end
-</span><span class='line'># 0
-</span><span class='line'># 1
-</span><span class='line'># 2</span></code></pre></td></tr></table></div></figure>
+</span><span class='line'><span class="p">(</span><span class="mi">0</span><span class="o">.</span><span class="n">.</span><span class="mi">2</span><span class="p">)</span><span class="o">.</span><span class="n">each</span> <span class="k">do</span> <span class="o">|</span><span class="n">i</span><span class="o">|</span>
+</span><span class='line'>  <span class="nb">puts</span> <span class="n">i</span>
+</span><span class='line'><span class="k">end</span>
+</span><span class='line'><span class="c1"># 0</span>
+</span><span class='line'><span class="c1"># 1</span>
+</span><span class='line'><span class="c1"># 2</span>
+</span></code></pre></td></tr></table></div></figure>
 
 
 <p>There&rsquo;s also 4 keywords to help you manage the control of flow <code>break</code>, <code>next</code>, <code>redo</code> and finally <code>retry</code> which I&rsquo;ll bring up in the Error Handling section. <code>break</code> exits the inner most loop</p>
 
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
@@ -237,19 +242,20 @@
 <span class='line-number'>6</span>
 <span class='line-number'>7</span>
 <span class='line-number'>8</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>for i in 0..2
-</span><span class='line'>  puts i
-</span><span class='line'>  if i == 1
-</span><span class='line'>    break
-</span><span class='line'>  end
-</span><span class='line'>end
-</span><span class='line'># 0
-</span><span class='line'># 1</span></code></pre></td></tr></table></div></figure>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="k">for</span> <span class="n">i</span> <span class="k">in</span> <span class="mi">0</span><span class="o">.</span><span class="n">.</span><span class="mi">2</span>
+</span><span class='line'>  <span class="nb">puts</span> <span class="n">i</span>
+</span><span class='line'>  <span class="k">if</span> <span class="n">i</span> <span class="o">==</span> <span class="mi">1</span>
+</span><span class='line'>    <span class="k">break</span>
+</span><span class='line'>  <span class="k">end</span>
+</span><span class='line'><span class="k">end</span>
+</span><span class='line'><span class="c1"># 0</span>
+</span><span class='line'><span class="c1"># 1</span>
+</span></code></pre></td></tr></table></div></figure>
 
 
 <p>While <code>next</code> jumps to the next iteration of the loop</p>
 
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
@@ -266,28 +272,29 @@
 <span class='line-number'>15</span>
 <span class='line-number'>16</span>
 <span class='line-number'>17</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>for i in 0..2
-</span><span class='line'>  if i == 1
-</span><span class='line'>    next
-</span><span class='line'>  end
-</span><span class='line'>  puts i
-</span><span class='line'>end
-</span><span class='line'># 0
-</span><span class='line'># 2
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="k">for</span> <span class="n">i</span> <span class="k">in</span> <span class="mi">0</span><span class="o">.</span><span class="n">.</span><span class="mi">2</span>
+</span><span class='line'>  <span class="k">if</span> <span class="n">i</span> <span class="o">==</span> <span class="mi">1</span>
+</span><span class='line'>    <span class="k">next</span>
+</span><span class='line'>  <span class="k">end</span>
+</span><span class='line'>  <span class="nb">puts</span> <span class="n">i</span>
+</span><span class='line'><span class="k">end</span>
+</span><span class='line'><span class="c1"># 0</span>
+</span><span class='line'><span class="c1"># 2</span>
 </span><span class='line'>
-</span><span class='line'>for i in 0..2
-</span><span class='line'>  if i == 2
-</span><span class='line'>    next
-</span><span class='line'>  end
-</span><span class='line'>  puts i
-</span><span class='line'>end
-</span><span class='line'># 0
-</span><span class='line'># 1</span></code></pre></td></tr></table></div></figure>
+</span><span class='line'><span class="k">for</span> <span class="n">i</span> <span class="k">in</span> <span class="mi">0</span><span class="o">.</span><span class="n">.</span><span class="mi">2</span>
+</span><span class='line'>  <span class="k">if</span> <span class="n">i</span> <span class="o">==</span> <span class="mi">2</span>
+</span><span class='line'>    <span class="k">next</span>
+</span><span class='line'>  <span class="k">end</span>
+</span><span class='line'>  <span class="nb">puts</span> <span class="n">i</span>
+</span><span class='line'><span class="k">end</span>
+</span><span class='line'><span class="c1"># 0</span>
+</span><span class='line'><span class="c1"># 1</span>
+</span></code></pre></td></tr></table></div></figure>
 
 
 <p>And <code>redo</code> jumps back to the beginning of the current iteration in this loop</p>
 
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
@@ -305,24 +312,25 @@
 <span class='line-number'>16</span>
 <span class='line-number'>17</span>
 <span class='line-number'>18</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>j = 0
-</span><span class='line'>for i in 0..2
-</span><span class='line'>  puts "i is #{i}"
-</span><span class='line'>  puts "j is #{j}"
-</span><span class='line'>  j += 1
-</span><span class='line'>  if j > 2
-</span><span class='line'>    break
-</span><span class='line'>  end
-</span><span class='line'>  if i == 1
-</span><span class='line'>    redo
-</span><span class='line'>  end
-</span><span class='line'>end
-</span><span class='line'># i is 0
-</span><span class='line'># j is 0
-</span><span class='line'># i is 1
-</span><span class='line'># j is 1
-</span><span class='line'># i is 1
-</span><span class='line'># j is 2</span></code></pre></td></tr></table></div></figure>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">j</span> <span class="o">=</span> <span class="mi">0</span>
+</span><span class='line'><span class="k">for</span> <span class="n">i</span> <span class="k">in</span> <span class="mi">0</span><span class="o">.</span><span class="n">.</span><span class="mi">2</span>
+</span><span class='line'>  <span class="nb">puts</span> <span class="s2">&quot;i is </span><span class="si">#{</span><span class="n">i</span><span class="si">}</span><span class="s2">&quot;</span>
+</span><span class='line'>  <span class="nb">puts</span> <span class="s2">&quot;j is </span><span class="si">#{</span><span class="n">j</span><span class="si">}</span><span class="s2">&quot;</span>
+</span><span class='line'>  <span class="n">j</span> <span class="o">+=</span> <span class="mi">1</span>
+</span><span class='line'>  <span class="k">if</span> <span class="n">j</span> <span class="o">&gt;</span> <span class="mi">2</span>
+</span><span class='line'>    <span class="k">break</span>
+</span><span class='line'>  <span class="k">end</span>
+</span><span class='line'>  <span class="k">if</span> <span class="n">i</span> <span class="o">==</span> <span class="mi">1</span>
+</span><span class='line'>    <span class="k">redo</span>
+</span><span class='line'>  <span class="k">end</span>
+</span><span class='line'><span class="k">end</span>
+</span><span class='line'><span class="c1"># i is 0</span>
+</span><span class='line'><span class="c1"># j is 0</span>
+</span><span class='line'><span class="c1"># i is 1</span>
+</span><span class='line'><span class="c1"># j is 1</span>
+</span><span class='line'><span class="c1"># i is 1</span>
+</span><span class='line'><span class="c1"># j is 2</span>
+</span></code></pre></td></tr></table></div></figure>
 
 
 

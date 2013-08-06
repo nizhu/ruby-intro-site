@@ -96,20 +96,22 @@ git clone git@github. &hellip;">
 
 <div class="entry-content"><p>It&rsquo;s finally time to start coding. Start by cloning the git repository I&rsquo;ve prepared for this demonstration.</p>
 
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>git clone git@github.com:nizhu/ruby-intro.git ~/ruby-intro
-</span><span class='line'>cd ~/ruby-intro
-</span><span class='line'>ls</span></code></pre></td></tr></table></div></figure>
+</pre></td><td class='code'><pre><code class='sh'><span class='line'>git clone git@github.com:nizhu/ruby-intro.git ~/ruby-intro
+</span><span class='line'><span class="nb">cd</span> ~/ruby-intro
+</span><span class='line'>ls
+</span></code></pre></td></tr></table></div></figure>
 
 
 <p>You&rsquo;ll notice that there are lots of files here, most of which you don&rsquo;t need yet so let&rsquo;s get rid of them for now</p>
 
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>git checkout hello-world
-</span><span class='line'>ls</span></code></pre></td></tr></table></div></figure>
+</pre></td><td class='code'><pre><code class='sh'><span class='line'>git checkout hello-world
+</span><span class='line'>ls
+</span></code></pre></td></tr></table></div></figure>
 
 
 <p>Now there&rsquo;s only a license file, telling you that you have permission to use all of the code in this repository for whatever purpose, but I will not take any responsibility for any side effects caused by it&hellip;. in lawyer-speak, and a README file that doesn&rsquo;t tell you very much.</p>
@@ -124,10 +126,11 @@ git clone git@github. &hellip;">
 
 <p>That&rsquo;s it! Save it as hello_world.rb, exit, and now we can run the file. Note that # is the comment delimiter in Ruby and Shell so I will be using that to give you an idea of the expected result of the line preceding it.</p>
 
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>ruby hello_world.rb
-</span><span class='line'># Hello World</span></code></pre></td></tr></table></div></figure>
+</pre></td><td class='code'><pre><code class='sh'><span class='line'>ruby hello_world.rb
+</span><span class='line'><span class="c"># Hello World</span>
+</span></code></pre></td></tr></table></div></figure>
 
 
 <p>Like shell scripts, you can also run them as executables. Create another file:</p>
@@ -142,10 +145,11 @@ git clone git@github. &hellip;">
 
 <p>And give it executable permission, and run it.</p>
 
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>chmod +x hello_world_exe.rb
-</span><span class='line'>./hello_world_exe.rb</span></code></pre></td></tr></table></div></figure>
+</pre></td><td class='code'><pre><code class='sh'><span class='line'>chmod +x hello_world_exe.rb
+</span><span class='line'>./hello_world_exe.rb
+</span></code></pre></td></tr></table></div></figure>
 
 
 <p>Hashbangs will be explained at the end of this post for those curious</p>
@@ -158,7 +162,7 @@ git clone git@github. &hellip;">
 
 <p>If you want to import files that you&rsquo;ve written, there are two ways to do so. A file that is imported in irb is executed just as it would if it had been imported through normal code, and it is the same as if it had been copy and pasted into irb. The following demonstrates the two major difference between the two options so try this out in irb:</p>
 
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
@@ -169,17 +173,18 @@ git clone git@github. &hellip;">
 <span class='line-number'>9</span>
 <span class='line-number'>10</span>
 <span class='line-number'>11</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>load 'hello_world.rb'
-</span><span class='line'># Hello World
-</span><span class='line'># => true
-</span><span class='line'>load 'hello_world.rb'
-</span><span class='line'># Hello World
-</span><span class='line'># => true
-</span><span class='line'>require 'hello_world'
-</span><span class='line'># Hello World
-</span><span class='line'># => true
-</span><span class='line'>require 'hello_world'
-</span><span class='line'># => false</span></code></pre></td></tr></table></div></figure>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="nb">load</span> <span class="s1">&#39;hello_world.rb&#39;</span>
+</span><span class='line'><span class="c1"># Hello World</span>
+</span><span class='line'><span class="c1"># =&gt; true</span>
+</span><span class='line'><span class="nb">load</span> <span class="s1">&#39;hello_world.rb&#39;</span>
+</span><span class='line'><span class="c1"># Hello World</span>
+</span><span class='line'><span class="c1"># =&gt; true</span>
+</span><span class='line'><span class="nb">require</span> <span class="s1">&#39;hello_world&#39;</span>
+</span><span class='line'><span class="c1"># Hello World</span>
+</span><span class='line'><span class="c1"># =&gt; true</span>
+</span><span class='line'><span class="nb">require</span> <span class="s1">&#39;hello_world&#39;</span>
+</span><span class='line'><span class="c1"># =&gt; false</span>
+</span></code></pre></td></tr></table></div></figure>
 
 
 <p>The differences are:
@@ -192,12 +197,13 @@ git clone git@github. &hellip;">
 
 <p>You might have come across this in COMP2041. This is the line at the top of scripts that tells your shell what to execute it with &ndash; your shell will simply interpret it as a shell script without it.</p>
 
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>chmod +x hello_world.rb
+</pre></td><td class='code'><pre><code class='sh'><span class='line'>chmod +x hello_world.rb
 </span><span class='line'>./hello_world.rb
-</span><span class='line'># ./hello_world.rb: line 1: puts: command not found</span></code></pre></td></tr></table></div></figure>
+</span><span class='line'><span class="c"># ./hello_world.rb: line 1: puts: command not found</span>
+</span></code></pre></td></tr></table></div></figure>
 
 
 <h3>/usr/bin/env</h3>
@@ -226,7 +232,7 @@ git clone git@github. &hellip;">
 
 
 
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
@@ -236,16 +242,17 @@ git clone git@github. &hellip;">
 <span class='line-number'>8</span>
 <span class='line-number'>9</span>
 <span class='line-number'>10</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>ruby -v
-</span><span class='line'># ruby 2.0.0p247 (2013-06-27 revision 41674) [x86_64-darwin12.4.0]
+</pre></td><td class='code'><pre><code class='sh'><span class='line'>ruby -v
+</span><span class='line'><span class="c"># ruby 2.0.0p247 (2013-06-27 revision 41674) [x86_64-darwin12.4.0]</span>
 </span><span class='line'>/usr/bin/ruby -v
-</span><span class='line'># ruby 1.8.7 (2012-02-08 patchlevel 358) [universal-darwin12.0]
+</span><span class='line'><span class="c"># ruby 1.8.7 (2012-02-08 patchlevel 358) [universal-darwin12.0]</span>
 </span><span class='line'>chmod +x version_env.rb
 </span><span class='line'>./version_env.rb
-</span><span class='line'># 2.0.0
+</span><span class='line'><span class="c"># 2.0.0</span>
 </span><span class='line'>chmod +x version_system.rb
 </span><span class='line'>./version_system.rb
-</span><span class='line'># 1.8.7</span></code></pre></td></tr></table></div></figure>
+</span><span class='line'><span class="c"># 1.8.7</span>
+</span></code></pre></td></tr></table></div></figure>
 
 
 <ol>

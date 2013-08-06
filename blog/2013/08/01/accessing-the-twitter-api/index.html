@@ -97,41 +97,44 @@
 
 <h2>Twitter Gem</h2>
 
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>git checkout twitter
-</span><span class='line'>gem install twitter</span></code></pre></td></tr></table></div></figure>
+</pre></td><td class='code'><pre><code class='sh'><span class='line'>git checkout twitter
+</span><span class='line'>gem install twitter
+</span></code></pre></td></tr></table></div></figure>
 
 
 <p>I&rsquo;ve made a file out of the gem&rsquo;s authentication configuration code taken from its documentation. Just replace the strings with the your Twitter developer keys in twitter_config.rb. There are some usage examples <a href="https://github.com/sferik/twitter#usage-examples">here</a>, but there&rsquo;s plenty more functionality so do refer to the <a href="http://rdoc.info/gems/twitter">documentation</a>.</p>
 
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>require 'twitter'
-</span><span class='line'>load 'twitter_config.rb'</span></code></pre></td></tr></table></div></figure>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="nb">require</span> <span class="s1">&#39;twitter&#39;</span>
+</span><span class='line'><span class="nb">load</span> <span class="s1">&#39;twitter_config.rb&#39;</span>
+</span></code></pre></td></tr></table></div></figure>
 
 
 <p>Lets find the last person to have proposed to Justin Bieber</p>
 
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
 <span class='line-number'>5</span>
 <span class='line-number'>6</span>
 <span class='line-number'>7</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>result = Twitter.search("to:justinbieber marry me", :count => 1, :result_type => "recent")
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">result</span> <span class="o">=</span> <span class="no">Twitter</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="s2">&quot;to:justinbieber marry me&quot;</span><span class="p">,</span> <span class="ss">:count</span> <span class="o">=&gt;</span> <span class="mi">1</span><span class="p">,</span> <span class="ss">:result_type</span> <span class="o">=&gt;</span> <span class="s2">&quot;recent&quot;</span><span class="p">)</span>
 </span><span class='line'>
-</span><span class='line'>result.class
-</span><span class='line'># Twitter::SearchResults
+</span><span class='line'><span class="n">result</span><span class="o">.</span><span class="n">class</span>
+</span><span class='line'><span class="c1"># Twitter::SearchResults</span>
 </span><span class='line'>
-</span><span class='line'>result.statuses[0].user.screen_name
-</span><span class='line'># 4ever_beliebing</span></code></pre></td></tr></table></div></figure>
+</span><span class='line'><span class="n">result</span><span class="o">.</span><span class="n">statuses</span><span class="o">[</span><span class="mi">0</span><span class="o">].</span><span class="n">user</span><span class="o">.</span><span class="n">screen_name</span>
+</span><span class='line'><span class="c1"># 4ever_beliebing</span>
+</span></code></pre></td></tr></table></div></figure>
 
 
 <p>Just to give another example, I&rsquo;m going to get the last tweet from each of users I&rsquo;m stalking.</p>
 
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
@@ -157,32 +160,33 @@
 <span class='line-number'>24</span>
 <span class='line-number'>25</span>
 <span class='line-number'>26</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>f = Twitter.friends
-</span><span class='line'>f.class
-</span><span class='line'># Twitter::Cursor
-</span><span class='line'># -- http://rdoc.info/gems/twitter/Twitter/Cursor
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">f</span> <span class="o">=</span> <span class="no">Twitter</span><span class="o">.</span><span class="n">friends</span>
+</span><span class='line'><span class="n">f</span><span class="o">.</span><span class="n">class</span>
+</span><span class='line'><span class="c1"># Twitter::Cursor</span>
+</span><span class='line'><span class="c1"># -- http://rdoc.info/gems/twitter/Twitter/Cursor</span>
 </span><span class='line'>
-</span><span class='line'>f.collection.class
-</span><span class='line'># Array
+</span><span class='line'><span class="n">f</span><span class="o">.</span><span class="n">collection</span><span class="o">.</span><span class="n">class</span>
+</span><span class='line'><span class="c1"># Array</span>
 </span><span class='line'>
-</span><span class='line'>f.collection[0].class
-</span><span class='line'># Twitter::User
-</span><span class='line'># -- http://rdoc.info/gems/twitter/Twitter/User
+</span><span class='line'><span class="n">f</span><span class="o">.</span><span class="n">collection</span><span class="o">[</span><span class="mi">0</span><span class="o">].</span><span class="n">class</span>
+</span><span class='line'><span class="c1"># Twitter::User</span>
+</span><span class='line'><span class="c1"># -- http://rdoc.info/gems/twitter/Twitter/User</span>
 </span><span class='line'>
-</span><span class='line'>f.collection[0].name
-</span><span class='line'># "John Oliver"
+</span><span class='line'><span class="n">f</span><span class="o">.</span><span class="n">collection</span><span class="o">[</span><span class="mi">0</span><span class="o">].</span><span class="n">name</span>
+</span><span class='line'><span class="c1"># &quot;John Oliver&quot;</span>
 </span><span class='line'>
-</span><span class='line'>f.collection[0].status
-</span><span class='line'>f.collection[0].status.class
-</span><span class='line'># Twitter::Tweet
-</span><span class='line'># -- http://rdoc.info/gems/twitter/Twitter/Tweet
+</span><span class='line'><span class="n">f</span><span class="o">.</span><span class="n">collection</span><span class="o">[</span><span class="mi">0</span><span class="o">].</span><span class="n">status</span>
+</span><span class='line'><span class="n">f</span><span class="o">.</span><span class="n">collection</span><span class="o">[</span><span class="mi">0</span><span class="o">].</span><span class="n">status</span><span class="o">.</span><span class="n">class</span>
+</span><span class='line'><span class="c1"># Twitter::Tweet</span>
+</span><span class='line'><span class="c1"># -- http://rdoc.info/gems/twitter/Twitter/Tweet</span>
 </span><span class='line'>
-</span><span class='line'>f.collection[0].status.text
-</span><span class='line'># "Mugabe is the Harlem Globetrotters of democracy. His winning record is undeniably impressive, but he doesn't really play by the rules."
+</span><span class='line'><span class="n">f</span><span class="o">.</span><span class="n">collection</span><span class="o">[</span><span class="mi">0</span><span class="o">].</span><span class="n">status</span><span class="o">.</span><span class="n">text</span>
+</span><span class='line'><span class="c1"># &quot;Mugabe is the Harlem Globetrotters of democracy. His winning record is undeniably impressive, but he doesn&#39;t really play by the rules.&quot;</span>
 </span><span class='line'>
-</span><span class='line'>for user in f.collection.each
-</span><span class='line'>  puts "#{user.name} said '#{user.status.text}'"
-</span><span class='line'>end</span></code></pre></td></tr></table></div></figure>
+</span><span class='line'><span class="k">for</span> <span class="n">user</span> <span class="k">in</span> <span class="n">f</span><span class="o">.</span><span class="n">collection</span><span class="o">.</span><span class="n">each</span>
+</span><span class='line'>  <span class="nb">puts</span> <span class="s2">&quot;</span><span class="si">#{</span><span class="n">user</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="s2"> said &#39;</span><span class="si">#{</span><span class="n">user</span><span class="o">.</span><span class="n">status</span><span class="o">.</span><span class="n">text</span><span class="si">}</span><span class="s2">&#39;&quot;</span>
+</span><span class='line'><span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure>
 
 
 <p>Because we don&rsquo;t care about the return value, let&rsquo;s not do this in <code>irb</code></p>

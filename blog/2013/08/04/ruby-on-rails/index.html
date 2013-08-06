@@ -101,14 +101,15 @@
 
 <p>One of the big features of rails is scaffolding &ndash; automatically generating common parts of an application. This is the first step of development. Here, we&rsquo;re asking rails to scaffold the project without support for a database.</p>
 
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>cd ~
+</pre></td><td class='code'><pre><code class='sh'><span class='line'><span class="nb">cd</span> ~
 </span><span class='line'>rails new twitter_app -O
-</span><span class='line'>cd twitter_app
-</span><span class='line'>rails generate controller twitter</span></code></pre></td></tr></table></div></figure>
+</span><span class='line'><span class="nb">cd </span>twitter_app
+</span><span class='line'>rails generate controller twitter
+</span></code></pre></td></tr></table></div></figure>
 
 
 <p>The rails generator has created a lot of new files &ndash; about 80 in fact &ndash; but there aren&rsquo;t that many we need to worry about.</p>
@@ -273,7 +274,7 @@
 
 <p>WEBrick is a very simple Rails web server, perfect for dev testing. Just go to the root directory of the application and type in <code>rails server</code>. WEBrick listens to port 3000 by default, but look carefully at its output if you come across any problems. The JB Proposals page will be available in @ <code>http://0.0.0.0:3000</code> and <code>http://0.0.0.0:3000/proposals</code> while the #ausvotes page will be available at <code>http://0.0.0.0:3000/ausvotes</code>.</p>
 
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
@@ -281,14 +282,15 @@
 <span class='line-number'>6</span>
 <span class='line-number'>7</span>
 <span class='line-number'>8</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>$ rails server
-</span><span class='line'>=> Booting WEBrick
-</span><span class='line'>=> Rails 4.0.0 application starting in development on http://0.0.0.0:3000
-</span><span class='line'>=> Run `rails server -h` for more startup options
-</span><span class='line'>=> Ctrl-C to shutdown server
-</span><span class='line'>[2013-08-05 22:13:15] INFO  WEBrick 1.3.1
-</span><span class='line'>[2013-08-05 22:13:15] INFO  ruby 2.0.0 (2013-06-27) [x86_64-darwin12.4.0]
-</span><span class='line'>[2013-08-05 22:13:15] INFO  WEBrick::HTTPServer#start: pid=25428 port=3000</span></code></pre></td></tr></table></div></figure>
+</pre></td><td class='code'><pre><code class='sh'><span class='line'><span class="nv">$ </span>rails <span class="nv">server</span>
+</span><span class='line'><span class="o">=</span>&gt; Booting <span class="nv">WEBrick</span>
+</span><span class='line'><span class="o">=</span>&gt; Rails 4.0.0 application starting in development on http://0.0.0.0:3000
+</span><span class='line'><span class="o">=</span>&gt; Run <span class="sb">`</span>rails server -h<span class="sb">`</span> <span class="k">for </span>more startup <span class="nv">options</span>
+</span><span class='line'><span class="o">=</span>&gt; Ctrl-C to shutdown server
+</span><span class='line'><span class="o">[</span>2013-08-05 22:13:15<span class="o">]</span> INFO  WEBrick 1.3.1
+</span><span class='line'><span class="o">[</span>2013-08-05 22:13:15<span class="o">]</span> INFO  ruby 2.0.0 <span class="o">(</span>2013-06-27<span class="o">)</span> <span class="o">[</span>x86_64-darwin12.4.0<span class="o">]</span>
+</span><span class='line'><span class="o">[</span>2013-08-05 22:13:15<span class="o">]</span> INFO  WEBrick::HTTPServer#start: <span class="nv">pid</span><span class="o">=</span>25428 <span class="nv">port</span><span class="o">=</span>3000
+</span></code></pre></td></tr></table></div></figure>
 
 
 <h2>Adding links between the 2 pages</h2>

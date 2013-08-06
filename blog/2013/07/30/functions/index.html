@@ -101,7 +101,7 @@ def print_stuff(str1, str2, reverse = &hellip;">
 
 <div class="entry-content"><p>Firstly the syntax. Let&rsquo;s first define a very basic function we can use for this post.</p>
 
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
@@ -109,51 +109,54 @@ def print_stuff(str1, str2, reverse = &hellip;">
 <span class='line-number'>6</span>
 <span class='line-number'>7</span>
 <span class='line-number'>8</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>def print_stuff(str1, str2, reverse = false)
-</span><span class='line'>  if reverse
-</span><span class='line'>    puts "#{str2} and #{str1} received!"
-</span><span class='line'>  else
-</span><span class='line'>    puts "#{str1} and #{str2} received!"
-</span><span class='line'>  end
-</span><span class='line'>  str = str1 + str2
-</span><span class='line'>end</span></code></pre></td></tr></table></div></figure>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="k">def</span> <span class="nf">print_stuff</span><span class="p">(</span><span class="n">str1</span><span class="p">,</span> <span class="n">str2</span><span class="p">,</span> <span class="n">reverse</span> <span class="o">=</span> <span class="kp">false</span><span class="p">)</span>
+</span><span class='line'>  <span class="k">if</span> <span class="n">reverse</span>
+</span><span class='line'>    <span class="nb">puts</span> <span class="s2">&quot;</span><span class="si">#{</span><span class="n">str2</span><span class="si">}</span><span class="s2"> and </span><span class="si">#{</span><span class="n">str1</span><span class="si">}</span><span class="s2"> received!&quot;</span>
+</span><span class='line'>  <span class="k">else</span>
+</span><span class='line'>    <span class="nb">puts</span> <span class="s2">&quot;</span><span class="si">#{</span><span class="n">str1</span><span class="si">}</span><span class="s2"> and </span><span class="si">#{</span><span class="n">str2</span><span class="si">}</span><span class="s2"> received!&quot;</span>
+</span><span class='line'>  <span class="k">end</span>
+</span><span class='line'>  <span class="n">str</span> <span class="o">=</span> <span class="n">str1</span> <span class="o">+</span> <span class="n">str2</span>
+</span><span class='line'><span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure>
 
 
 <h3>Calling functions</h3>
 
 <p>Brackets around function parameters is optional in Ruby. However, sometimes it&rsquo;s useful to include them regardless for clarity&rsquo;s sake.</p>
 
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
 <span class='line-number'>5</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>print_stuff("First argument", "Second argument")
-</span><span class='line'># First argument and Second argument received!
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">print_stuff</span><span class="p">(</span><span class="s2">&quot;First argument&quot;</span><span class="p">,</span> <span class="s2">&quot;Second argument&quot;</span><span class="p">)</span>
+</span><span class='line'><span class="c1"># First argument and Second argument received!</span>
 </span><span class='line'>
-</span><span class='line'>print_stuff "First argument", "Second argument"
-</span><span class='line'># First argument and Second argument received!</span></code></pre></td></tr></table></div></figure>
+</span><span class='line'><span class="n">print_stuff</span> <span class="s2">&quot;First argument&quot;</span><span class="p">,</span> <span class="s2">&quot;Second argument&quot;</span>
+</span><span class='line'><span class="c1"># First argument and Second argument received!</span>
+</span></code></pre></td></tr></table></div></figure>
 
 
 <p>Arguments can be made optional by giving them a default value.</p>
 
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
 <span class='line-number'>5</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>print_stuff("First argument", "Second argument", false)
-</span><span class='line'># First argument and Second argument received!
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">print_stuff</span><span class="p">(</span><span class="s2">&quot;First argument&quot;</span><span class="p">,</span> <span class="s2">&quot;Second argument&quot;</span><span class="p">,</span> <span class="kp">false</span><span class="p">)</span>
+</span><span class='line'><span class="c1"># First argument and Second argument received!</span>
 </span><span class='line'>
-</span><span class='line'>print_stuff("First argument", "Second argument", true)
-</span><span class='line'># Second argument and First argument received!</span></code></pre></td></tr></table></div></figure>
+</span><span class='line'><span class="n">print_stuff</span><span class="p">(</span><span class="s2">&quot;First argument&quot;</span><span class="p">,</span> <span class="s2">&quot;Second argument&quot;</span><span class="p">,</span> <span class="kp">true</span><span class="p">)</span>
+</span><span class='line'><span class="c1"># Second argument and First argument received!</span>
+</span></code></pre></td></tr></table></div></figure>
 
 
 <h3>Return value</h3>
 
 <p>As you may have already noticed, <code>print_stuff</code> does use <code>return</code> even though it does exist in Ruby and it does exactly what you&rsquo;d expect. If the return value is not specified, Ruby will return the value returned in the last executed line of the block</p>
 
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
@@ -174,34 +177,35 @@ def print_stuff(str1, str2, reverse = &hellip;">
 <span class='line-number'>19</span>
 <span class='line-number'>20</span>
 <span class='line-number'>21</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>def add(a, b)
-</span><span class='line'>  a + b
-</span><span class='line'>end
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="k">def</span> <span class="nf">add</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span>
+</span><span class='line'>  <span class="n">a</span> <span class="o">+</span> <span class="n">b</span>
+</span><span class='line'><span class="k">end</span>
 </span><span class='line'>
-</span><span class='line'>puts add(1, 2)
-</span><span class='line'># 3
+</span><span class='line'><span class="nb">puts</span> <span class="n">add</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+</span><span class='line'><span class="c1"># 3</span>
 </span><span class='line'>
-</span><span class='line'>def add_return(a, b)
-</span><span class='line'>  return a + b
-</span><span class='line'>end
+</span><span class='line'><span class="k">def</span> <span class="nf">add_return</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span>
+</span><span class='line'>  <span class="k">return</span> <span class="n">a</span> <span class="o">+</span> <span class="n">b</span>
+</span><span class='line'><span class="k">end</span>
 </span><span class='line'>
-</span><span class='line'>puts add_return(1,2)
-</span><span class='line'># 3
+</span><span class='line'><span class="nb">puts</span> <span class="n">add_return</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span>
+</span><span class='line'><span class="c1"># 3</span>
 </span><span class='line'>
-</span><span class='line'>def add_print(a, b)
-</span><span class='line'>  a + b
-</span><span class='line'>  print "add successful"
-</span><span class='line'>end
+</span><span class='line'><span class="k">def</span> <span class="nf">add_print</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span>
+</span><span class='line'>  <span class="n">a</span> <span class="o">+</span> <span class="n">b</span>
+</span><span class='line'>  <span class="nb">print</span> <span class="s2">&quot;add successful&quot;</span>
+</span><span class='line'><span class="k">end</span>
 </span><span class='line'>
-</span><span class='line'>puts add_print(1,2)
-</span><span class='line'># add successful</span></code></pre></td></tr></table></div></figure>
+</span><span class='line'><span class="nb">puts</span> <span class="n">add_print</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span>
+</span><span class='line'><span class="c1"># add successful</span>
+</span></code></pre></td></tr></table></div></figure>
 
 
 <p>Because <code>print "add successful"</code> returns <code>nil</code>, <code>add_print</code> returns nil.</p>
 
 <h1>Error Handling</h1>
 
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
@@ -215,25 +219,26 @@ def print_stuff(str1, str2, reverse = &hellip;">
 <span class='line-number'>12</span>
 <span class='line-number'>13</span>
 <span class='line-number'>14</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>def do_something
-</span><span class='line'>  raise "Failed to do something"
-</span><span class='line'>end
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="k">def</span> <span class="nf">do_something</span>
+</span><span class='line'>  <span class="k">raise</span> <span class="s2">&quot;Failed to do something&quot;</span>
+</span><span class='line'><span class="k">end</span>
 </span><span class='line'>
-</span><span class='line'>raise_exception
-</span><span class='line'># RuntimeError: Failed to do something
+</span><span class='line'><span class="n">raise_exception</span>
+</span><span class='line'><span class="c1"># RuntimeError: Failed to do something</span>
 </span><span class='line'>
-</span><span class='line'>begin
-</span><span class='line'>  do_something
-</span><span class='line'>  puts "Done something"
-</span><span class='line'>rescue
-</span><span class='line'>  puts "Rescuing from exception"
-</span><span class='line'>end
-</span><span class='line'># Rescuing from exception</span></code></pre></td></tr></table></div></figure>
+</span><span class='line'><span class="k">begin</span>
+</span><span class='line'>  <span class="n">do_something</span>
+</span><span class='line'>  <span class="nb">puts</span> <span class="s2">&quot;Done something&quot;</span>
+</span><span class='line'><span class="k">rescue</span>
+</span><span class='line'>  <span class="nb">puts</span> <span class="s2">&quot;Rescuing from exception&quot;</span>
+</span><span class='line'><span class="k">end</span>
+</span><span class='line'><span class="c1"># Rescuing from exception</span>
+</span></code></pre></td></tr></table></div></figure>
 
 
 <p><code>retry</code> will return the cursor to start of the begin block it belongs to</p>
 
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
@@ -247,20 +252,21 @@ def print_stuff(str1, str2, reverse = &hellip;">
 <span class='line-number'>12</span>
 <span class='line-number'>13</span>
 <span class='line-number'>14</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>i = 0
-</span><span class='line'>begin
-</span><span class='line'>  puts "#{i}"
-</span><span class='line'>  i += 1
-</span><span class='line'>  if i &lt; 2
-</span><span class='line'>    do_something
-</span><span class='line'>  end
-</span><span class='line'>  puts "All done!"
-</span><span class='line'>rescue
-</span><span class='line'>  retry
-</span><span class='line'>end
-</span><span class='line'># 0
-</span><span class='line'># 1
-</span><span class='line'># All done!</span></code></pre></td></tr></table></div></figure>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">i</span> <span class="o">=</span> <span class="mi">0</span>
+</span><span class='line'><span class="k">begin</span>
+</span><span class='line'>  <span class="nb">puts</span> <span class="s2">&quot;</span><span class="si">#{</span><span class="n">i</span><span class="si">}</span><span class="s2">&quot;</span>
+</span><span class='line'>  <span class="n">i</span> <span class="o">+=</span> <span class="mi">1</span>
+</span><span class='line'>  <span class="k">if</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="mi">2</span>
+</span><span class='line'>    <span class="n">do_something</span>
+</span><span class='line'>  <span class="k">end</span>
+</span><span class='line'>  <span class="nb">puts</span> <span class="s2">&quot;All done!&quot;</span>
+</span><span class='line'><span class="k">rescue</span>
+</span><span class='line'>  <span class="k">retry</span>
+</span><span class='line'><span class="k">end</span>
+</span><span class='line'><span class="c1"># 0</span>
+</span><span class='line'><span class="c1"># 1</span>
+</span><span class='line'><span class="c1"># All done!</span>
+</span></code></pre></td></tr></table></div></figure>
 
 
 <p>Also relevant later on, <a href="http://innig.net/software/ruby/closures-in-ruby">Closures</a> and <a href="https://rubymonk.com/learning/books/2-metaprogramming-ruby/chapters/32-introduction-to-metaprogramming/lessons/75-being-meta">Metaprogramming</a></p>

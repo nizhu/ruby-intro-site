@@ -4,7 +4,7 @@
   <title><![CDATA[Ruby Intro]]></title>
   <link href="http://nizhu.github.io/ruby-intro-site/atom.xml" rel="self"/>
   <link href="http://nizhu.github.io/ruby-intro-site/"/>
-  <updated>2013-08-06T20:45:39+10:00</updated>
+  <updated>2013-08-06T20:55:59+10:00</updated>
   <id>http://nizhu.github.io/ruby-intro-site/</id>
   <author>
     <name><![CDATA[Nick Zhu]]></name>
@@ -214,14 +214,15 @@
 
 <p>One of the big features of rails is scaffolding &ndash; automatically generating common parts of an application. This is the first step of development. Here, we&rsquo;re asking rails to scaffold the project without support for a database.</p>
 
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>cd ~
+</pre></td><td class='code'><pre><code class='sh'><span class='line'><span class="nb">cd</span> ~
 </span><span class='line'>rails new twitter_app -O
-</span><span class='line'>cd twitter_app
-</span><span class='line'>rails generate controller twitter</span></code></pre></td></tr></table></div></figure>
+</span><span class='line'><span class="nb">cd </span>twitter_app
+</span><span class='line'>rails generate controller twitter
+</span></code></pre></td></tr></table></div></figure>
 
 
 <p>The rails generator has created a lot of new files &ndash; about 80 in fact &ndash; but there aren&rsquo;t that many we need to worry about.</p>
@@ -386,7 +387,7 @@
 
 <p>WEBrick is a very simple Rails web server, perfect for dev testing. Just go to the root directory of the application and type in <code>rails server</code>. WEBrick listens to port 3000 by default, but look carefully at its output if you come across any problems. The JB Proposals page will be available in @ <code>http://0.0.0.0:3000</code> and <code>http://0.0.0.0:3000/proposals</code> while the #ausvotes page will be available at <code>http://0.0.0.0:3000/ausvotes</code>.</p>
 
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
@@ -394,14 +395,15 @@
 <span class='line-number'>6</span>
 <span class='line-number'>7</span>
 <span class='line-number'>8</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>$ rails server
-</span><span class='line'>=> Booting WEBrick
-</span><span class='line'>=> Rails 4.0.0 application starting in development on http://0.0.0.0:3000
-</span><span class='line'>=> Run `rails server -h` for more startup options
-</span><span class='line'>=> Ctrl-C to shutdown server
-</span><span class='line'>[2013-08-05 22:13:15] INFO  WEBrick 1.3.1
-</span><span class='line'>[2013-08-05 22:13:15] INFO  ruby 2.0.0 (2013-06-27) [x86_64-darwin12.4.0]
-</span><span class='line'>[2013-08-05 22:13:15] INFO  WEBrick::HTTPServer#start: pid=25428 port=3000</span></code></pre></td></tr></table></div></figure>
+</pre></td><td class='code'><pre><code class='sh'><span class='line'><span class="nv">$ </span>rails <span class="nv">server</span>
+</span><span class='line'><span class="o">=</span>&gt; Booting <span class="nv">WEBrick</span>
+</span><span class='line'><span class="o">=</span>&gt; Rails 4.0.0 application starting in development on http://0.0.0.0:3000
+</span><span class='line'><span class="o">=</span>&gt; Run <span class="sb">`</span>rails server -h<span class="sb">`</span> <span class="k">for </span>more startup <span class="nv">options</span>
+</span><span class='line'><span class="o">=</span>&gt; Ctrl-C to shutdown server
+</span><span class='line'><span class="o">[</span>2013-08-05 22:13:15<span class="o">]</span> INFO  WEBrick 1.3.1
+</span><span class='line'><span class="o">[</span>2013-08-05 22:13:15<span class="o">]</span> INFO  ruby 2.0.0 <span class="o">(</span>2013-06-27<span class="o">)</span> <span class="o">[</span>x86_64-darwin12.4.0<span class="o">]</span>
+</span><span class='line'><span class="o">[</span>2013-08-05 22:13:15<span class="o">]</span> INFO  WEBrick::HTTPServer#start: <span class="nv">pid</span><span class="o">=</span>25428 <span class="nv">port</span><span class="o">=</span>3000
+</span></code></pre></td></tr></table></div></figure>
 
 
 <h2>Adding links between the 2 pages</h2>
@@ -463,41 +465,44 @@
 
 <h2>Twitter Gem</h2>
 
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>git checkout twitter
-</span><span class='line'>gem install twitter</span></code></pre></td></tr></table></div></figure>
+</pre></td><td class='code'><pre><code class='sh'><span class='line'>git checkout twitter
+</span><span class='line'>gem install twitter
+</span></code></pre></td></tr></table></div></figure>
 
 
 <p>I&rsquo;ve made a file out of the gem&rsquo;s authentication configuration code taken from its documentation. Just replace the strings with the your Twitter developer keys in twitter_config.rb. There are some usage examples <a href="https://github.com/sferik/twitter#usage-examples">here</a>, but there&rsquo;s plenty more functionality so do refer to the <a href="http://rdoc.info/gems/twitter">documentation</a>.</p>
 
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>require 'twitter'
-</span><span class='line'>load 'twitter_config.rb'</span></code></pre></td></tr></table></div></figure>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="nb">require</span> <span class="s1">&#39;twitter&#39;</span>
+</span><span class='line'><span class="nb">load</span> <span class="s1">&#39;twitter_config.rb&#39;</span>
+</span></code></pre></td></tr></table></div></figure>
 
 
 <p>Lets find the last person to have proposed to Justin Bieber</p>
 
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
 <span class='line-number'>5</span>
 <span class='line-number'>6</span>
 <span class='line-number'>7</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>result = Twitter.search("to:justinbieber marry me", :count => 1, :result_type => "recent")
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">result</span> <span class="o">=</span> <span class="no">Twitter</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="s2">&quot;to:justinbieber marry me&quot;</span><span class="p">,</span> <span class="ss">:count</span> <span class="o">=&gt;</span> <span class="mi">1</span><span class="p">,</span> <span class="ss">:result_type</span> <span class="o">=&gt;</span> <span class="s2">&quot;recent&quot;</span><span class="p">)</span>
 </span><span class='line'>
-</span><span class='line'>result.class
-</span><span class='line'># Twitter::SearchResults
+</span><span class='line'><span class="n">result</span><span class="o">.</span><span class="n">class</span>
+</span><span class='line'><span class="c1"># Twitter::SearchResults</span>
 </span><span class='line'>
-</span><span class='line'>result.statuses[0].user.screen_name
-</span><span class='line'># 4ever_beliebing</span></code></pre></td></tr></table></div></figure>
+</span><span class='line'><span class="n">result</span><span class="o">.</span><span class="n">statuses</span><span class="o">[</span><span class="mi">0</span><span class="o">].</span><span class="n">user</span><span class="o">.</span><span class="n">screen_name</span>
+</span><span class='line'><span class="c1"># 4ever_beliebing</span>
+</span></code></pre></td></tr></table></div></figure>
 
 
 <p>Just to give another example, I&rsquo;m going to get the last tweet from each of users I&rsquo;m stalking.</p>
 
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
@@ -523,32 +528,33 @@
 <span class='line-number'>24</span>
 <span class='line-number'>25</span>
 <span class='line-number'>26</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>f = Twitter.friends
-</span><span class='line'>f.class
-</span><span class='line'># Twitter::Cursor
-</span><span class='line'># -- http://rdoc.info/gems/twitter/Twitter/Cursor
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">f</span> <span class="o">=</span> <span class="no">Twitter</span><span class="o">.</span><span class="n">friends</span>
+</span><span class='line'><span class="n">f</span><span class="o">.</span><span class="n">class</span>
+</span><span class='line'><span class="c1"># Twitter::Cursor</span>
+</span><span class='line'><span class="c1"># -- http://rdoc.info/gems/twitter/Twitter/Cursor</span>
 </span><span class='line'>
-</span><span class='line'>f.collection.class
-</span><span class='line'># Array
+</span><span class='line'><span class="n">f</span><span class="o">.</span><span class="n">collection</span><span class="o">.</span><span class="n">class</span>
+</span><span class='line'><span class="c1"># Array</span>
 </span><span class='line'>
-</span><span class='line'>f.collection[0].class
-</span><span class='line'># Twitter::User
-</span><span class='line'># -- http://rdoc.info/gems/twitter/Twitter/User
+</span><span class='line'><span class="n">f</span><span class="o">.</span><span class="n">collection</span><span class="o">[</span><span class="mi">0</span><span class="o">].</span><span class="n">class</span>
+</span><span class='line'><span class="c1"># Twitter::User</span>
+</span><span class='line'><span class="c1"># -- http://rdoc.info/gems/twitter/Twitter/User</span>
 </span><span class='line'>
-</span><span class='line'>f.collection[0].name
-</span><span class='line'># "John Oliver"
+</span><span class='line'><span class="n">f</span><span class="o">.</span><span class="n">collection</span><span class="o">[</span><span class="mi">0</span><span class="o">].</span><span class="n">name</span>
+</span><span class='line'><span class="c1"># &quot;John Oliver&quot;</span>
 </span><span class='line'>
-</span><span class='line'>f.collection[0].status
-</span><span class='line'>f.collection[0].status.class
-</span><span class='line'># Twitter::Tweet
-</span><span class='line'># -- http://rdoc.info/gems/twitter/Twitter/Tweet
+</span><span class='line'><span class="n">f</span><span class="o">.</span><span class="n">collection</span><span class="o">[</span><span class="mi">0</span><span class="o">].</span><span class="n">status</span>
+</span><span class='line'><span class="n">f</span><span class="o">.</span><span class="n">collection</span><span class="o">[</span><span class="mi">0</span><span class="o">].</span><span class="n">status</span><span class="o">.</span><span class="n">class</span>
+</span><span class='line'><span class="c1"># Twitter::Tweet</span>
+</span><span class='line'><span class="c1"># -- http://rdoc.info/gems/twitter/Twitter/Tweet</span>
 </span><span class='line'>
-</span><span class='line'>f.collection[0].status.text
-</span><span class='line'># "Mugabe is the Harlem Globetrotters of democracy. His winning record is undeniably impressive, but he doesn't really play by the rules."
+</span><span class='line'><span class="n">f</span><span class="o">.</span><span class="n">collection</span><span class="o">[</span><span class="mi">0</span><span class="o">].</span><span class="n">status</span><span class="o">.</span><span class="n">text</span>
+</span><span class='line'><span class="c1"># &quot;Mugabe is the Harlem Globetrotters of democracy. His winning record is undeniably impressive, but he doesn&#39;t really play by the rules.&quot;</span>
 </span><span class='line'>
-</span><span class='line'>for user in f.collection.each
-</span><span class='line'>  puts "#{user.name} said '#{user.status.text}'"
-</span><span class='line'>end</span></code></pre></td></tr></table></div></figure>
+</span><span class='line'><span class="k">for</span> <span class="n">user</span> <span class="k">in</span> <span class="n">f</span><span class="o">.</span><span class="n">collection</span><span class="o">.</span><span class="n">each</span>
+</span><span class='line'>  <span class="nb">puts</span> <span class="s2">&quot;</span><span class="si">#{</span><span class="n">user</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="s2"> said &#39;</span><span class="si">#{</span><span class="n">user</span><span class="o">.</span><span class="n">status</span><span class="o">.</span><span class="n">text</span><span class="si">}</span><span class="s2">&#39;&quot;</span>
+</span><span class='line'><span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure>
 
 
 <p>Because we don&rsquo;t care about the return value, let&rsquo;s not do this in <code>irb</code></p>
@@ -658,7 +664,7 @@
 
 <p>If you&rsquo;ve been writing Javascript, you love JSON. If you haven&rsquo;t, you soon will. Note that spaces, tabs and line breaks are all optional. I&rsquo;ve just added those to make it easier to read.</p>
 
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
@@ -673,21 +679,22 @@
 <span class='line-number'>13</span>
 <span class='line-number'>14</span>
 <span class='line-number'>15</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>{
-</span><span class='line'>  "id": 32,
-</span><span class='line'>  "name": "Mother Duck",
-</span><span class='line'>  "children":[
-</span><span class='line'>    {
-</span><span class='line'>      "id": 12345,
-</span><span class='line'>      "name": "Claire"
-</span><span class='line'>    },
-</span><span class='line'>    {
-</span><span class='line'>      "id": 12372,
-</span><span class='line'>      "name": "Daniel"
-</span><span class='line'>    }
-</span><span class='line'>  ],
-</span><span class='line'>  "isAlive": true
-</span><span class='line'>}</span></code></pre></td></tr></table></div></figure>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="p">{</span>
+</span><span class='line'>  <span class="s2">&quot;id&quot;</span><span class="o">:</span> <span class="mi">32</span><span class="p">,</span>
+</span><span class='line'>  <span class="s2">&quot;name&quot;</span><span class="o">:</span> <span class="s2">&quot;Mother Duck&quot;</span><span class="p">,</span>
+</span><span class='line'>  <span class="s2">&quot;children&quot;</span><span class="o">:</span><span class="p">[</span>
+</span><span class='line'>    <span class="p">{</span>
+</span><span class='line'>      <span class="s2">&quot;id&quot;</span><span class="o">:</span> <span class="mi">12345</span><span class="p">,</span>
+</span><span class='line'>      <span class="s2">&quot;name&quot;</span><span class="o">:</span> <span class="s2">&quot;Claire&quot;</span>
+</span><span class='line'>    <span class="p">},</span>
+</span><span class='line'>    <span class="p">{</span>
+</span><span class='line'>      <span class="s2">&quot;id&quot;</span><span class="o">:</span> <span class="mi">12372</span><span class="p">,</span>
+</span><span class='line'>      <span class="s2">&quot;name&quot;</span><span class="o">:</span> <span class="s2">&quot;Daniel&quot;</span>
+</span><span class='line'>    <span class="p">}</span>
+</span><span class='line'>  <span class="p">],</span>
+</span><span class='line'>  <span class="s2">&quot;isAlive&quot;</span><span class="o">:</span> <span class="kc">true</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
 
 
 <p>That&rsquo;s all there is to JSON, very simple, very clear. <code>{}</code> encapsulates object/map/hash, while <code>[]</code> encapsulates an array, both of which can be nested infinitely. Otherwise only strings, numbers, booleans and null are supported values.</p>
@@ -702,7 +709,7 @@
 
 <p><a href="http://ruby-doc.org/stdlib-2.0/libdoc/net/http/rdoc/Net/HTTP.html">Net/HTTP</a> is a standard Ruby library, and it&rsquo;ll be your interface to the internet. JSON is a simple parser, but is not standard. As before, install the gem with <code>gem install json</code></p>
 
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
@@ -718,22 +725,23 @@
 <span class='line-number'>14</span>
 <span class='line-number'>15</span>
 <span class='line-number'>16</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>require 'net/http'
-</span><span class='line'>require 'json'
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="nb">require</span> <span class="s1">&#39;net/http&#39;</span>
+</span><span class='line'><span class="nb">require</span> <span class="s1">&#39;json&#39;</span>
 </span><span class='line'>
-</span><span class='line'>uri = URI('https://api.github.com/users/octocat')
-</span><span class='line'>response = Net::HTTP.get uri
-</span><span class='line'>octocat = JSON.parse response
+</span><span class='line'><span class="n">uri</span> <span class="o">=</span> <span class="no">URI</span><span class="p">(</span><span class="s1">&#39;https://api.github.com/users/octocat&#39;</span><span class="p">)</span>
+</span><span class='line'><span class="n">response</span> <span class="o">=</span> <span class="ss">Net</span><span class="p">:</span><span class="ss">:HTTP</span><span class="o">.</span><span class="n">get</span> <span class="n">uri</span>
+</span><span class='line'><span class="n">octocat</span> <span class="o">=</span> <span class="no">JSON</span><span class="o">.</span><span class="n">parse</span> <span class="n">response</span>
 </span><span class='line'>
-</span><span class='line'>octocat.keys
-</span><span class='line'># ["login", "id", "avatar_url", "gravatar_id", "url", "html_url", "followers_url", "following_url", "gists_url", "starred_url", "subscriptions_url", "organizations_url", "repos_url", "events_url", "received_events_url", "type", "name", "company", "blog", "location", "email", "hireable", "bio", "public_repos", "followers", "following", "created_at", "updated_at", "public_gists"]
+</span><span class='line'><span class="n">octocat</span><span class="o">.</span><span class="n">keys</span>
+</span><span class='line'><span class="c1"># [&quot;login&quot;, &quot;id&quot;, &quot;avatar_url&quot;, &quot;gravatar_id&quot;, &quot;url&quot;, &quot;html_url&quot;, &quot;followers_url&quot;, &quot;following_url&quot;, &quot;gists_url&quot;, &quot;starred_url&quot;, &quot;subscriptions_url&quot;, &quot;organizations_url&quot;, &quot;repos_url&quot;, &quot;events_url&quot;, &quot;received_events_url&quot;, &quot;type&quot;, &quot;name&quot;, &quot;company&quot;, &quot;blog&quot;, &quot;location&quot;, &quot;email&quot;, &quot;hireable&quot;, &quot;bio&quot;, &quot;public_repos&quot;, &quot;followers&quot;, &quot;following&quot;, &quot;created_at&quot;, &quot;updated_at&quot;, &quot;public_gists&quot;]</span>
 </span><span class='line'>
-</span><span class='line'>octocat["followers"]
-</span><span class='line'># 398
-</span><span class='line'>octocat["public_repos"]
-</span><span class='line'># 3
-</span><span class='line'>octocat["hireable"]
-</span><span class='line'># false</span></code></pre></td></tr></table></div></figure>
+</span><span class='line'><span class="n">octocat</span><span class="o">[</span><span class="s2">&quot;followers&quot;</span><span class="o">]</span>
+</span><span class='line'><span class="c1"># 398</span>
+</span><span class='line'><span class="n">octocat</span><span class="o">[</span><span class="s2">&quot;public_repos&quot;</span><span class="o">]</span>
+</span><span class='line'><span class="c1"># 3</span>
+</span><span class='line'><span class="n">octocat</span><span class="o">[</span><span class="s2">&quot;hireable&quot;</span><span class="o">]</span>
+</span><span class='line'><span class="c1"># false</span>
+</span></code></pre></td></tr></table></div></figure>
 
 
 <p>I had some issues here with openssl on the Mac, but the update instructions with Homebrew found <a href="http://railsapps.github.io/openssl-certificate-verify-failed.html">here</a> worked perfectly.</p>
@@ -756,27 +764,24 @@
 
 <h1>Third Party libraries</h1>
 
-<p>Third party libraries in Ruby are referred to as gems. Gem is an executable that comes with Ruby. Tell it to install, along with the name of the gem and it will download and install the gem that you want as well as all its dependencies.</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>gem install xml-simple</span></code></pre></td></tr></table></div></figure>
-
+<p>Third party libraries in Ruby are referred to as gems. Gem is an executable that comes with Ruby. Tell it to install, along with the name of the gem and it will download and install the gem that you want as well as all its dependencies&hellip;<code>gem install xml-simple</code></p>
 
 <h1>Let&rsquo;s Parse!</h1>
 
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>require 'xmlsimple'
-</span><span class='line'>xml = File.read 'data/xml/aec-mediafeed-results-detailed-light-15508.xml'
-</span><span class='line'>data = XmlSimple.xml_in xml</span></code></pre></td></tr></table></div></figure>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="nb">require</span> <span class="s1">&#39;xmlsimple&#39;</span>
+</span><span class='line'><span class="n">xml</span> <span class="o">=</span> <span class="no">File</span><span class="o">.</span><span class="n">read</span> <span class="s1">&#39;data/xml/aec-mediafeed-results-detailed-light-15508.xml&#39;</span>
+</span><span class='line'><span class="n">data</span> <span class="o">=</span> <span class="no">XmlSimple</span><span class="o">.</span><span class="n">xml_in</span> <span class="n">xml</span>
+</span></code></pre></td></tr></table></div></figure>
 
 
 <p>Parsing XML takes a little while, and XmlSimple isn&rsquo;t the most efficient of parsers. If speed is a concern at all, you should definitely look into <a href="http://nokogiri.org/">Nokogiri</a>.</p>
 
 <p>Once it&rsquo;s done we can see what&rsquo;s in there one step at a time.</p>
 
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
@@ -796,26 +801,27 @@
 <span class='line-number'>18</span>
 <span class='line-number'>19</span>
 <span class='line-number'>20</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>data.keys
-</span><span class='line'># ["Id", "Created", "SchemaVersion", "EmlVersion", "xmlns", "xmlns:eml", "xmlns:ds", "xmlns:xal", "xmlns:xnl", "xmlns:ts", "xmlns:xs", "xs:schemaLocation", "ManagingAuthority", "MessageLanguage", "MessageGenerator", "Cycle", "Results"]
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">data</span><span class="o">.</span><span class="n">keys</span>
+</span><span class='line'><span class="c1"># [&quot;Id&quot;, &quot;Created&quot;, &quot;SchemaVersion&quot;, &quot;EmlVersion&quot;, &quot;xmlns&quot;, &quot;xmlns:eml&quot;, &quot;xmlns:ds&quot;, &quot;xmlns:xal&quot;, &quot;xmlns:xnl&quot;, &quot;xmlns:ts&quot;, &quot;xmlns:xs&quot;, &quot;xs:schemaLocation&quot;, &quot;ManagingAuthority&quot;, &quot;MessageLanguage&quot;, &quot;MessageGenerator&quot;, &quot;Cycle&quot;, &quot;Results&quot;]</span>
 </span><span class='line'>
-</span><span class='line'>data.["Results"].keys
-</span><span class='line'># NoMethodError
+</span><span class='line'><span class="n">data</span><span class="o">.</span><span class="n">[</span><span class="s2">&quot;Results&quot;</span><span class="o">].</span><span class="n">keys</span>
+</span><span class='line'><span class="c1"># NoMethodError</span>
 </span><span class='line'>
-</span><span class='line'>data.["Results"].class
-</span><span class='line'># Array
+</span><span class='line'><span class="n">data</span><span class="o">.</span><span class="n">[</span><span class="s2">&quot;Results&quot;</span><span class="o">].</span><span class="n">class</span>
+</span><span class='line'><span class="c1"># Array</span>
 </span><span class='line'>
-</span><span class='line'>data.["Results"][0].class
-</span><span class='line'># Hash
+</span><span class='line'><span class="n">data</span><span class="o">.</span><span class="n">[</span><span class="s2">&quot;Results&quot;</span><span class="o">][</span><span class="mi">0</span><span class="o">].</span><span class="n">class</span>
+</span><span class='line'><span class="c1"># Hash</span>
 </span><span class='line'>
-</span><span class='line'>data["Results"][0]["Election"][0]["House"][0]["Contests"][0]["Contest"][0].keys
-</span><span class='line'># ["Projected", "ContestIdentifier", "Enrolment", "FirstPreferences", "TwoCandidatePreferred", "TwoPartyPreferred", "PollingPlaces"]
+</span><span class='line'><span class="n">data</span><span class="o">[</span><span class="s2">&quot;Results&quot;</span><span class="o">][</span><span class="mi">0</span><span class="o">][</span><span class="s2">&quot;Election&quot;</span><span class="o">][</span><span class="mi">0</span><span class="o">][</span><span class="s2">&quot;House&quot;</span><span class="o">][</span><span class="mi">0</span><span class="o">][</span><span class="s2">&quot;Contests&quot;</span><span class="o">][</span><span class="mi">0</span><span class="o">][</span><span class="s2">&quot;Contest&quot;</span><span class="o">][</span><span class="mi">0</span><span class="o">].</span><span class="n">keys</span>
+</span><span class='line'><span class="c1"># [&quot;Projected&quot;, &quot;ContestIdentifier&quot;, &quot;Enrolment&quot;, &quot;FirstPreferences&quot;, &quot;TwoCandidatePreferred&quot;, &quot;TwoPartyPreferred&quot;, &quot;PollingPlaces&quot;]</span>
 </span><span class='line'>
-</span><span class='line'>data["Results"][0]["Election"][0]["House"][0]["Contests"][0]["Contest"][0]["TwoPartyPreferred"][0]["Coalition"][0]["Votes"]
-</span><span class='line'># 0
+</span><span class='line'><span class="n">data</span><span class="o">[</span><span class="s2">&quot;Results&quot;</span><span class="o">][</span><span class="mi">0</span><span class="o">][</span><span class="s2">&quot;Election&quot;</span><span class="o">][</span><span class="mi">0</span><span class="o">][</span><span class="s2">&quot;House&quot;</span><span class="o">][</span><span class="mi">0</span><span class="o">][</span><span class="s2">&quot;Contests&quot;</span><span class="o">][</span><span class="mi">0</span><span class="o">][</span><span class="s2">&quot;Contest&quot;</span><span class="o">][</span><span class="mi">0</span><span class="o">][</span><span class="s2">&quot;TwoPartyPreferred&quot;</span><span class="o">][</span><span class="mi">0</span><span class="o">][</span><span class="s2">&quot;Coalition&quot;</span><span class="o">][</span><span class="mi">0</span><span class="o">][</span><span class="s2">&quot;Votes&quot;</span><span class="o">]</span>
+</span><span class='line'><span class="c1"># 0</span>
 </span><span class='line'>
-</span><span class='line'>data["Results"][0]["Election"][0]["House"][0]["Contests"][0]["Contest"][0]["Enrolment"]
-</span><span class='line'># 124215</span></code></pre></td></tr></table></div></figure>
+</span><span class='line'><span class="n">data</span><span class="o">[</span><span class="s2">&quot;Results&quot;</span><span class="o">][</span><span class="mi">0</span><span class="o">][</span><span class="s2">&quot;Election&quot;</span><span class="o">][</span><span class="mi">0</span><span class="o">][</span><span class="s2">&quot;House&quot;</span><span class="o">][</span><span class="mi">0</span><span class="o">][</span><span class="s2">&quot;Contests&quot;</span><span class="o">][</span><span class="mi">0</span><span class="o">][</span><span class="s2">&quot;Contest&quot;</span><span class="o">][</span><span class="mi">0</span><span class="o">][</span><span class="s2">&quot;Enrolment&quot;</span><span class="o">]</span>
+</span><span class='line'><span class="c1"># 124215</span>
+</span></code></pre></td></tr></table></div></figure>
 
 
 
@@ -829,7 +835,7 @@
     <id>http://nizhu.github.io/ruby-intro-site/blog/2013/07/31/classes</id>
     <content type="html"><![CDATA[<p>Ruby is a Object Oriented language so it&rsquo;s no less than intuitive to have classes. The following code block shows the basic syntax of a Ruby class.</p>
 
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
@@ -849,26 +855,27 @@
 <span class='line-number'>18</span>
 <span class='line-number'>19</span>
 <span class='line-number'>20</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>class Counter
-</span><span class='line'>  @@classCount = 0
-</span><span class='line'>  @instanceCount
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="k">class</span> <span class="nc">Counter</span>
+</span><span class='line'>  <span class="vc">@@classCount</span> <span class="o">=</span> <span class="mi">0</span>
+</span><span class='line'>  <span class="vi">@instanceCount</span>
 </span><span class='line'>
-</span><span class='line'>  def initialize(startInstanceCount)
-</span><span class='line'>    @instanceCount = startInstanceCount
-</span><span class='line'>  end
+</span><span class='line'>  <span class="k">def</span> <span class="nf">initialize</span><span class="p">(</span><span class="n">startInstanceCount</span><span class="p">)</span>
+</span><span class='line'>    <span class="vi">@instanceCount</span> <span class="o">=</span> <span class="n">startInstanceCount</span>
+</span><span class='line'>  <span class="k">end</span>
 </span><span class='line'>
-</span><span class='line'>  def icIncrement
-</span><span class='line'>    @instanceCount += 1
-</span><span class='line'>  end
+</span><span class='line'>  <span class="k">def</span> <span class="nf">icIncrement</span>
+</span><span class='line'>    <span class="vi">@instanceCount</span> <span class="o">+=</span> <span class="mi">1</span>
+</span><span class='line'>  <span class="k">end</span>
 </span><span class='line'>
-</span><span class='line'>  def self.ccIncrement
-</span><span class='line'>    @@classCount += 1
-</span><span class='line'>  end
+</span><span class='line'>  <span class="k">def</span> <span class="nc">self</span><span class="o">.</span><span class="nf">ccIncrement</span>
+</span><span class='line'>    <span class="vc">@@classCount</span> <span class="o">+=</span> <span class="mi">1</span>
+</span><span class='line'>  <span class="k">end</span>
 </span><span class='line'>
-</span><span class='line'>  def to_s
-</span><span class='line'>    "classCount = #{@@classCount} and instanceCount = #{@instanceCount}"
-</span><span class='line'>  end
-</span><span class='line'>end</span></code></pre></td></tr></table></div></figure>
+</span><span class='line'>  <span class="k">def</span> <span class="nf">to_s</span>
+</span><span class='line'>    <span class="s2">&quot;classCount = </span><span class="si">#{</span><span class="vc">@@classCount</span><span class="si">}</span><span class="s2"> and instanceCount = </span><span class="si">#{</span><span class="vi">@instanceCount</span><span class="si">}</span><span class="s2">&quot;</span>
+</span><span class='line'>  <span class="k">end</span>
+</span><span class='line'><span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure>
 
 
 <p>We have a Class variable, <code>@@classCount</code>. This is equivalent to the keyword <code>static</code> in Java. There&rsquo;s an Instance variable <code>@instanceCount</code>.</p>
@@ -877,7 +884,7 @@
 
 <p>Finally <code>to_s</code> is the conversion of the class to a String, just like <code>toString()</code>.</p>
 
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
@@ -889,18 +896,19 @@
 <span class='line-number'>10</span>
 <span class='line-number'>11</span>
 <span class='line-number'>12</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>a = Counter.new 0
-</span><span class='line'>b = Counter.new 0
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">a</span> <span class="o">=</span> <span class="no">Counter</span><span class="o">.</span><span class="n">new</span> <span class="mi">0</span>
+</span><span class='line'><span class="n">b</span> <span class="o">=</span> <span class="no">Counter</span><span class="o">.</span><span class="n">new</span> <span class="mi">0</span>
 </span><span class='line'>
-</span><span class='line'>a.ccIncrement
-</span><span class='line'>a.icIncrement
+</span><span class='line'><span class="n">a</span><span class="o">.</span><span class="n">ccIncrement</span>
+</span><span class='line'><span class="n">a</span><span class="o">.</span><span class="n">icIncrement</span>
 </span><span class='line'>
-</span><span class='line'>puts b
-</span><span class='line'># classCount = 1 and instanceCount = 0
+</span><span class='line'><span class="nb">puts</span> <span class="n">b</span>
+</span><span class='line'><span class="c1"># classCount = 1 and instanceCount = 0</span>
 </span><span class='line'>
-</span><span class='line'>b = Counter.new 5
-</span><span class='line'>puts b
-</span><span class='line'># classCount = 1 and instanceCount = 5</span></code></pre></td></tr></table></div></figure>
+</span><span class='line'><span class="n">b</span> <span class="o">=</span> <span class="no">Counter</span><span class="o">.</span><span class="n">new</span> <span class="mi">5</span>
+</span><span class='line'><span class="nb">puts</span> <span class="n">b</span>
+</span><span class='line'><span class="c1"># classCount = 1 and instanceCount = 5</span>
+</span></code></pre></td></tr></table></div></figure>
 
 
 <h2>Variable Scope</h2>
@@ -918,16 +926,17 @@
 
 <p>Note that Constants can still be changed. The interpreter will simply issue a warning that that is the case, but the value assigning will proceed.</p>
 
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
 <span class='line-number'>5</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>Aconstant = 1
-</span><span class='line'>Aconstant = 2
-</span><span class='line'># warning: already initialized constant Aconstant
-</span><span class='line'># warning: previous definition of Aconstant was here
-</span><span class='line'># 2</span></code></pre></td></tr></table></div></figure>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="no">Aconstant</span> <span class="o">=</span> <span class="mi">1</span>
+</span><span class='line'><span class="no">Aconstant</span> <span class="o">=</span> <span class="mi">2</span>
+</span><span class='line'><span class="c1"># warning: already initialized constant Aconstant</span>
+</span><span class='line'><span class="c1"># warning: previous definition of Aconstant was here</span>
+</span><span class='line'><span class="c1"># 2</span>
+</span></code></pre></td></tr></table></div></figure>
 
 
 <h2>Dynamic Typing</h2>
@@ -1000,7 +1009,7 @@
 
 <p>Let&rsquo;s play with again. This time, load irb with <code>irb -I .</code>. This will add the current directory to the path that the require command uses so it can find the 3 files above.</p>
 
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
@@ -1010,41 +1019,43 @@
 <span class='line-number'>8</span>
 <span class='line-number'>9</span>
 <span class='line-number'>10</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>d = Duck.new
-</span><span class='line'>m = Man.new
-</span><span class='line'>w = Woman.new
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">d</span> <span class="o">=</span> <span class="no">Duck</span><span class="o">.</span><span class="n">new</span>
+</span><span class='line'><span class="n">m</span> <span class="o">=</span> <span class="no">Man</span><span class="o">.</span><span class="n">new</span>
+</span><span class='line'><span class="n">w</span> <span class="o">=</span> <span class="no">Woman</span><span class="o">.</span><span class="n">new</span>
 </span><span class='line'>
-</span><span class='line'>make_it_quack(d)
-</span><span class='line'># Quack!
-</span><span class='line'>make_it_quack(m)
-</span><span class='line'># Moo!
-</span><span class='line'>make_it_quack(w)
-</span><span class='line'># NoMethodError: undefined method `quack' for #&lt;Woman:0x007fb2d91ab3d0></span></code></pre></td></tr></table></div></figure>
+</span><span class='line'><span class="n">make_it_quack</span><span class="p">(</span><span class="n">d</span><span class="p">)</span>
+</span><span class='line'><span class="c1"># Quack!</span>
+</span><span class='line'><span class="n">make_it_quack</span><span class="p">(</span><span class="n">m</span><span class="p">)</span>
+</span><span class='line'><span class="c1"># Moo!</span>
+</span><span class='line'><span class="n">make_it_quack</span><span class="p">(</span><span class="n">w</span><span class="p">)</span>
+</span><span class='line'><span class="c1"># NoMethodError: undefined method `quack&#39; for #&lt;Woman:0x007fb2d91ab3d0&gt;</span>
+</span></code></pre></td></tr></table></div></figure>
 
 
 <p>Unfortunately it seems like function parameters can no longer be given a type so the example isn&rsquo;t the most clear. This is what it looks like in the book.</p>
 
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
 <span class='line-number'>5</span>
 <span class='line-number'>6</span>
 <span class='line-number'>7</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>def make_it_quack(Duck duck)
-</span><span class='line'>  puts duck.quack
-</span><span class='line'>end
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="k">def</span> <span class="nf">make_it_quack</span><span class="p">(</span><span class="no">Duck</span> <span class="n">duck</span><span class="p">)</span>
+</span><span class='line'>  <span class="nb">puts</span> <span class="n">duck</span><span class="o">.</span><span class="n">quack</span>
+</span><span class='line'><span class="k">end</span>
 </span><span class='line'>
-</span><span class='line'>w = Woman.new
-</span><span class='line'>make_it_quack(w)
-</span><span class='line'># TypeException: object not of type Duck</span></code></pre></td></tr></table></div></figure>
+</span><span class='line'><span class="n">w</span> <span class="o">=</span> <span class="no">Woman</span><span class="o">.</span><span class="n">new</span>
+</span><span class='line'><span class="n">make_it_quack</span><span class="p">(</span><span class="n">w</span><span class="p">)</span>
+</span><span class='line'><span class="c1"># TypeException: object not of type Duck</span>
+</span></code></pre></td></tr></table></div></figure>
 
 
 <h2>Duck Punching</h2>
 
 <p>So what if our ducks (Man) don&rsquo;t quack? Then we punch them until it does.</p>
 
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
@@ -1058,25 +1069,26 @@
 <span class='line-number'>12</span>
 <span class='line-number'>13</span>
 <span class='line-number'>14</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>make_it_quack(m)
-</span><span class='line'># Moo!
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">make_it_quack</span><span class="p">(</span><span class="n">m</span><span class="p">)</span>
+</span><span class='line'><span class="c1"># Moo!</span>
 </span><span class='line'>
-</span><span class='line'>class Man
-</span><span class='line'>  def quack
-</span><span class='line'>    "Quack!"
-</span><span class='line'>  end
-</span><span class='line'>end
+</span><span class='line'><span class="k">class</span> <span class="nc">Man</span>
+</span><span class='line'>  <span class="k">def</span> <span class="nf">quack</span>
+</span><span class='line'>    <span class="s2">&quot;Quack!&quot;</span>
+</span><span class='line'>  <span class="k">end</span>
+</span><span class='line'><span class="k">end</span>
 </span><span class='line'>
-</span><span class='line'>make_it_quack(m)
-</span><span class='line'># Quack!
+</span><span class='line'><span class="n">make_it_quack</span><span class="p">(</span><span class="n">m</span><span class="p">)</span>
+</span><span class='line'><span class="c1"># Quack!</span>
 </span><span class='line'>
-</span><span class='line'>m.scream
-</span><span class='line'># AHHHHHH</span></code></pre></td></tr></table></div></figure>
+</span><span class='line'><span class="n">m</span><span class="o">.</span><span class="n">scream</span>
+</span><span class='line'><span class="c1"># AHHHHHH</span>
+</span></code></pre></td></tr></table></div></figure>
 
 
 <p>Just to be clear, we can also do the same to the Woman class.</p>
 
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
@@ -1087,17 +1099,18 @@
 <span class='line-number'>9</span>
 <span class='line-number'>10</span>
 <span class='line-number'>11</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>make_it_quack(w)
-</span><span class='line'>NoMethodError: undefined method `quack' for #&lt;Woman:0x007fbe7b99e800>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">make_it_quack</span><span class="p">(</span><span class="n">w</span><span class="p">)</span>
+</span><span class='line'><span class="ss">NoMethodError</span><span class="p">:</span> <span class="n">undefined</span> <span class="nb">method</span> <span class="sb">`quack&#39; for #&lt;Woman:0x007fbe7b99e800&gt;</span>
 </span><span class='line'>
-</span><span class='line'>class Woman
-</span><span class='line'>  def quack
-</span><span class='line'>    "Quack!"
-</span><span class='line'>  end
-</span><span class='line'>end
+</span><span class='line'><span class="sb">class Woman</span>
+</span><span class='line'><span class="sb">  def quack</span>
+</span><span class='line'><span class="sb">    &quot;Quack!&quot;</span>
+</span><span class='line'><span class="sb">  end</span>
+</span><span class='line'><span class="sb">end</span>
 </span><span class='line'>
-</span><span class='line'>make_it_quack(w)
-</span><span class='line'># Quack!</span></code></pre></td></tr></table></div></figure>
+</span><span class='line'><span class="sb">make_it_quack(w)</span>
+</span><span class='line'><span class="sb"># Quack!</span>
+</span></code></pre></td></tr></table></div></figure>
 
 ]]></content>
   </entry>
@@ -1109,7 +1122,7 @@
     <id>http://nizhu.github.io/ruby-intro-site/blog/2013/07/30/functions</id>
     <content type="html"><![CDATA[<p>Firstly the syntax. Let&rsquo;s first define a very basic function we can use for this post.</p>
 
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
@@ -1117,51 +1130,54 @@
 <span class='line-number'>6</span>
 <span class='line-number'>7</span>
 <span class='line-number'>8</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>def print_stuff(str1, str2, reverse = false)
-</span><span class='line'>  if reverse
-</span><span class='line'>    puts "#{str2} and #{str1} received!"
-</span><span class='line'>  else
-</span><span class='line'>    puts "#{str1} and #{str2} received!"
-</span><span class='line'>  end
-</span><span class='line'>  str = str1 + str2
-</span><span class='line'>end</span></code></pre></td></tr></table></div></figure>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="k">def</span> <span class="nf">print_stuff</span><span class="p">(</span><span class="n">str1</span><span class="p">,</span> <span class="n">str2</span><span class="p">,</span> <span class="n">reverse</span> <span class="o">=</span> <span class="kp">false</span><span class="p">)</span>
+</span><span class='line'>  <span class="k">if</span> <span class="n">reverse</span>
+</span><span class='line'>    <span class="nb">puts</span> <span class="s2">&quot;</span><span class="si">#{</span><span class="n">str2</span><span class="si">}</span><span class="s2"> and </span><span class="si">#{</span><span class="n">str1</span><span class="si">}</span><span class="s2"> received!&quot;</span>
+</span><span class='line'>  <span class="k">else</span>
+</span><span class='line'>    <span class="nb">puts</span> <span class="s2">&quot;</span><span class="si">#{</span><span class="n">str1</span><span class="si">}</span><span class="s2"> and </span><span class="si">#{</span><span class="n">str2</span><span class="si">}</span><span class="s2"> received!&quot;</span>
+</span><span class='line'>  <span class="k">end</span>
+</span><span class='line'>  <span class="n">str</span> <span class="o">=</span> <span class="n">str1</span> <span class="o">+</span> <span class="n">str2</span>
+</span><span class='line'><span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure>
 
 
 <h3>Calling functions</h3>
 
 <p>Brackets around function parameters is optional in Ruby. However, sometimes it&rsquo;s useful to include them regardless for clarity&rsquo;s sake.</p>
 
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
 <span class='line-number'>5</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>print_stuff("First argument", "Second argument")
-</span><span class='line'># First argument and Second argument received!
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">print_stuff</span><span class="p">(</span><span class="s2">&quot;First argument&quot;</span><span class="p">,</span> <span class="s2">&quot;Second argument&quot;</span><span class="p">)</span>
+</span><span class='line'><span class="c1"># First argument and Second argument received!</span>
 </span><span class='line'>
-</span><span class='line'>print_stuff "First argument", "Second argument"
-</span><span class='line'># First argument and Second argument received!</span></code></pre></td></tr></table></div></figure>
+</span><span class='line'><span class="n">print_stuff</span> <span class="s2">&quot;First argument&quot;</span><span class="p">,</span> <span class="s2">&quot;Second argument&quot;</span>
+</span><span class='line'><span class="c1"># First argument and Second argument received!</span>
+</span></code></pre></td></tr></table></div></figure>
 
 
 <p>Arguments can be made optional by giving them a default value.</p>
 
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
 <span class='line-number'>5</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>print_stuff("First argument", "Second argument", false)
-</span><span class='line'># First argument and Second argument received!
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">print_stuff</span><span class="p">(</span><span class="s2">&quot;First argument&quot;</span><span class="p">,</span> <span class="s2">&quot;Second argument&quot;</span><span class="p">,</span> <span class="kp">false</span><span class="p">)</span>
+</span><span class='line'><span class="c1"># First argument and Second argument received!</span>
 </span><span class='line'>
-</span><span class='line'>print_stuff("First argument", "Second argument", true)
-</span><span class='line'># Second argument and First argument received!</span></code></pre></td></tr></table></div></figure>
+</span><span class='line'><span class="n">print_stuff</span><span class="p">(</span><span class="s2">&quot;First argument&quot;</span><span class="p">,</span> <span class="s2">&quot;Second argument&quot;</span><span class="p">,</span> <span class="kp">true</span><span class="p">)</span>
+</span><span class='line'><span class="c1"># Second argument and First argument received!</span>
+</span></code></pre></td></tr></table></div></figure>
 
 
 <h3>Return value</h3>
 
 <p>As you may have already noticed, <code>print_stuff</code> does use <code>return</code> even though it does exist in Ruby and it does exactly what you&rsquo;d expect. If the return value is not specified, Ruby will return the value returned in the last executed line of the block</p>
 
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
@@ -1182,34 +1198,35 @@
 <span class='line-number'>19</span>
 <span class='line-number'>20</span>
 <span class='line-number'>21</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>def add(a, b)
-</span><span class='line'>  a + b
-</span><span class='line'>end
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="k">def</span> <span class="nf">add</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span>
+</span><span class='line'>  <span class="n">a</span> <span class="o">+</span> <span class="n">b</span>
+</span><span class='line'><span class="k">end</span>
 </span><span class='line'>
-</span><span class='line'>puts add(1, 2)
-</span><span class='line'># 3
+</span><span class='line'><span class="nb">puts</span> <span class="n">add</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+</span><span class='line'><span class="c1"># 3</span>
 </span><span class='line'>
-</span><span class='line'>def add_return(a, b)
-</span><span class='line'>  return a + b
-</span><span class='line'>end
+</span><span class='line'><span class="k">def</span> <span class="nf">add_return</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span>
+</span><span class='line'>  <span class="k">return</span> <span class="n">a</span> <span class="o">+</span> <span class="n">b</span>
+</span><span class='line'><span class="k">end</span>
 </span><span class='line'>
-</span><span class='line'>puts add_return(1,2)
-</span><span class='line'># 3
+</span><span class='line'><span class="nb">puts</span> <span class="n">add_return</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span>
+</span><span class='line'><span class="c1"># 3</span>
 </span><span class='line'>
-</span><span class='line'>def add_print(a, b)
-</span><span class='line'>  a + b
-</span><span class='line'>  print "add successful"
-</span><span class='line'>end
+</span><span class='line'><span class="k">def</span> <span class="nf">add_print</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span>
+</span><span class='line'>  <span class="n">a</span> <span class="o">+</span> <span class="n">b</span>
+</span><span class='line'>  <span class="nb">print</span> <span class="s2">&quot;add successful&quot;</span>
+</span><span class='line'><span class="k">end</span>
 </span><span class='line'>
-</span><span class='line'>puts add_print(1,2)
-</span><span class='line'># add successful</span></code></pre></td></tr></table></div></figure>
+</span><span class='line'><span class="nb">puts</span> <span class="n">add_print</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span>
+</span><span class='line'><span class="c1"># add successful</span>
+</span></code></pre></td></tr></table></div></figure>
 
 
 <p>Because <code>print "add successful"</code> returns <code>nil</code>, <code>add_print</code> returns nil.</p>
 
 <h1>Error Handling</h1>
 
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
@@ -1223,25 +1240,26 @@
 <span class='line-number'>12</span>
 <span class='line-number'>13</span>
 <span class='line-number'>14</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>def do_something
-</span><span class='line'>  raise "Failed to do something"
-</span><span class='line'>end
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="k">def</span> <span class="nf">do_something</span>
+</span><span class='line'>  <span class="k">raise</span> <span class="s2">&quot;Failed to do something&quot;</span>
+</span><span class='line'><span class="k">end</span>
 </span><span class='line'>
-</span><span class='line'>raise_exception
-</span><span class='line'># RuntimeError: Failed to do something
+</span><span class='line'><span class="n">raise_exception</span>
+</span><span class='line'><span class="c1"># RuntimeError: Failed to do something</span>
 </span><span class='line'>
-</span><span class='line'>begin
-</span><span class='line'>  do_something
-</span><span class='line'>  puts "Done something"
-</span><span class='line'>rescue
-</span><span class='line'>  puts "Rescuing from exception"
-</span><span class='line'>end
-</span><span class='line'># Rescuing from exception</span></code></pre></td></tr></table></div></figure>
+</span><span class='line'><span class="k">begin</span>
+</span><span class='line'>  <span class="n">do_something</span>
+</span><span class='line'>  <span class="nb">puts</span> <span class="s2">&quot;Done something&quot;</span>
+</span><span class='line'><span class="k">rescue</span>
+</span><span class='line'>  <span class="nb">puts</span> <span class="s2">&quot;Rescuing from exception&quot;</span>
+</span><span class='line'><span class="k">end</span>
+</span><span class='line'><span class="c1"># Rescuing from exception</span>
+</span></code></pre></td></tr></table></div></figure>
 
 
 <p><code>retry</code> will return the cursor to start of the begin block it belongs to</p>
 
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
@@ -1255,20 +1273,21 @@
 <span class='line-number'>12</span>
 <span class='line-number'>13</span>
 <span class='line-number'>14</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>i = 0
-</span><span class='line'>begin
-</span><span class='line'>  puts "#{i}"
-</span><span class='line'>  i += 1
-</span><span class='line'>  if i &lt; 2
-</span><span class='line'>    do_something
-</span><span class='line'>  end
-</span><span class='line'>  puts "All done!"
-</span><span class='line'>rescue
-</span><span class='line'>  retry
-</span><span class='line'>end
-</span><span class='line'># 0
-</span><span class='line'># 1
-</span><span class='line'># All done!</span></code></pre></td></tr></table></div></figure>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">i</span> <span class="o">=</span> <span class="mi">0</span>
+</span><span class='line'><span class="k">begin</span>
+</span><span class='line'>  <span class="nb">puts</span> <span class="s2">&quot;</span><span class="si">#{</span><span class="n">i</span><span class="si">}</span><span class="s2">&quot;</span>
+</span><span class='line'>  <span class="n">i</span> <span class="o">+=</span> <span class="mi">1</span>
+</span><span class='line'>  <span class="k">if</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="mi">2</span>
+</span><span class='line'>    <span class="n">do_something</span>
+</span><span class='line'>  <span class="k">end</span>
+</span><span class='line'>  <span class="nb">puts</span> <span class="s2">&quot;All done!&quot;</span>
+</span><span class='line'><span class="k">rescue</span>
+</span><span class='line'>  <span class="k">retry</span>
+</span><span class='line'><span class="k">end</span>
+</span><span class='line'><span class="c1"># 0</span>
+</span><span class='line'><span class="c1"># 1</span>
+</span><span class='line'><span class="c1"># All done!</span>
+</span></code></pre></td></tr></table></div></figure>
 
 
 <p>Also relevant later on, <a href="http://innig.net/software/ruby/closures-in-ruby">Closures</a> and <a href="https://rubymonk.com/learning/books/2-metaprogramming-ruby/chapters/32-introduction-to-metaprogramming/lessons/75-being-meta">Metaprogramming</a></p>
@@ -1284,7 +1303,7 @@
 
 <h3>Construction</h3>
 
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
@@ -1293,20 +1312,21 @@
 <span class='line-number'>7</span>
 <span class='line-number'>8</span>
 <span class='line-number'>9</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>a = { "a" => "b", 3 => "d" }
-</span><span class='line'># {"a"=>"b", 3=>"d"}
-</span><span class='line'>b = Hash("a" => "b", 3 => "d")
-</span><span class='line'># {"a"=>"b", 3=>"d"}
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">a</span> <span class="o">=</span> <span class="p">{</span> <span class="s2">&quot;a&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;b&quot;</span><span class="p">,</span> <span class="mi">3</span> <span class="o">=&gt;</span> <span class="s2">&quot;d&quot;</span> <span class="p">}</span>
+</span><span class='line'><span class="c1"># {&quot;a&quot;=&gt;&quot;b&quot;, 3=&gt;&quot;d&quot;}</span>
+</span><span class='line'><span class="n">b</span> <span class="o">=</span> <span class="no">Hash</span><span class="p">(</span><span class="s2">&quot;a&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;b&quot;</span><span class="p">,</span> <span class="mi">3</span> <span class="o">=&gt;</span> <span class="s2">&quot;d&quot;</span><span class="p">)</span>
+</span><span class='line'><span class="c1"># {&quot;a&quot;=&gt;&quot;b&quot;, 3=&gt;&quot;d&quot;}</span>
 </span><span class='line'>
-</span><span class='line'>c = {}
-</span><span class='line'>d = Hash.new
+</span><span class='line'><span class="n">c</span> <span class="o">=</span> <span class="p">{}</span>
+</span><span class='line'><span class="n">d</span> <span class="o">=</span> <span class="no">Hash</span><span class="o">.</span><span class="n">new</span>
 </span><span class='line'>
-</span><span class='line'>e = Hash.new(0)</span></code></pre></td></tr></table></div></figure>
+</span><span class='line'><span class="n">e</span> <span class="o">=</span> <span class="no">Hash</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+</span></code></pre></td></tr></table></div></figure>
 
 
 <h3>Testing for Equality</h3>
 
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
@@ -1315,20 +1335,21 @@
 <span class='line-number'>7</span>
 <span class='line-number'>8</span>
 <span class='line-number'>9</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>a==b
-</span><span class='line'># true
-</span><span class='line'>a.equal? b
-</span><span class='line'># false
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">a</span><span class="o">==</span><span class="n">b</span>
+</span><span class='line'><span class="c1"># true</span>
+</span><span class='line'><span class="n">a</span><span class="o">.</span><span class="n">equal?</span> <span class="n">b</span>
+</span><span class='line'><span class="c1"># false</span>
 </span><span class='line'>
-</span><span class='line'>c==d
-</span><span class='line'># true
-</span><span class='line'>c.equal? d
-</span><span class='line'># false</span></code></pre></td></tr></table></div></figure>
+</span><span class='line'><span class="n">c</span><span class="o">==</span><span class="n">d</span>
+</span><span class='line'><span class="c1"># true</span>
+</span><span class='line'><span class="n">c</span><span class="o">.</span><span class="n">equal?</span> <span class="n">d</span>
+</span><span class='line'><span class="c1"># false</span>
+</span></code></pre></td></tr></table></div></figure>
 
 
 <h3>Retrieving from Hash</h3>
 
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
@@ -1337,30 +1358,32 @@
 <span class='line-number'>7</span>
 <span class='line-number'>8</span>
 <span class='line-number'>9</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>a["a"]
-</span><span class='line'># "b"
-</span><span class='line'>a[3]
-</span><span class='line'># "d"
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">a</span><span class="o">[</span><span class="s2">&quot;a&quot;</span><span class="o">]</span>
+</span><span class='line'><span class="c1"># &quot;b&quot;</span>
+</span><span class='line'><span class="n">a</span><span class="o">[</span><span class="mi">3</span><span class="o">]</span>
+</span><span class='line'><span class="c1"># &quot;d&quot;</span>
 </span><span class='line'>
-</span><span class='line'>a[4]
-</span><span class='line'># nil
-</span><span class='line'>e[4]
-</span><span class='line'># 0</span></code></pre></td></tr></table></div></figure>
+</span><span class='line'><span class="n">a</span><span class="o">[</span><span class="mi">4</span><span class="o">]</span>
+</span><span class='line'><span class="c1"># nil</span>
+</span><span class='line'><span class="n">e</span><span class="o">[</span><span class="mi">4</span><span class="o">]</span>
+</span><span class='line'><span class="c1"># 0</span>
+</span></code></pre></td></tr></table></div></figure>
 
 
 <h3>Adding values to the Hash</h3>
 
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>a[5] = 6
-</span><span class='line'>puts a
-</span><span class='line'># {"a"=>"b", 3=>"d", 5=>6}</span></code></pre></td></tr></table></div></figure>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">a</span><span class="o">[</span><span class="mi">5</span><span class="o">]</span> <span class="o">=</span> <span class="mi">6</span>
+</span><span class='line'><span class="nb">puts</span> <span class="n">a</span>
+</span><span class='line'><span class="c1"># {&quot;a&quot;=&gt;&quot;b&quot;, 3=&gt;&quot;d&quot;, 5=&gt;6}</span>
+</span></code></pre></td></tr></table></div></figure>
 
 
 <h3>Other useful functions</h3>
 
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
@@ -1376,27 +1399,28 @@
 <span class='line-number'>14</span>
 <span class='line-number'>15</span>
 <span class='line-number'>16</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>b.clear
-</span><span class='line'>puts b
-</span><span class='line'># {}
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">b</span><span class="o">.</span><span class="n">clear</span>
+</span><span class='line'><span class="nb">puts</span> <span class="n">b</span>
+</span><span class='line'><span class="c1"># {}</span>
 </span><span class='line'>
-</span><span class='line'>a.empty?
-</span><span class='line'># false
-</span><span class='line'>b.empty?
-</span><span class='line'># true
+</span><span class='line'><span class="n">a</span><span class="o">.</span><span class="n">empty?</span>
+</span><span class='line'><span class="c1"># false</span>
+</span><span class='line'><span class="n">b</span><span class="o">.</span><span class="n">empty?</span>
+</span><span class='line'><span class="c1"># true</span>
 </span><span class='line'>
-</span><span class='line'>a.length
-</span><span class='line'># 3
+</span><span class='line'><span class="n">a</span><span class="o">.</span><span class="n">length</span>
+</span><span class='line'><span class="c1"># 3</span>
 </span><span class='line'>
-</span><span class='line'>a.keys
-</span><span class='line'># ["a", 3, 5]
-</span><span class='line'>a.values
-</span><span class='line'># ["b", "d", 6]</span></code></pre></td></tr></table></div></figure>
+</span><span class='line'><span class="n">a</span><span class="o">.</span><span class="n">keys</span>
+</span><span class='line'><span class="c1"># [&quot;a&quot;, 3, 5]</span>
+</span><span class='line'><span class="n">a</span><span class="o">.</span><span class="n">values</span>
+</span><span class='line'><span class="c1"># [&quot;b&quot;, &quot;d&quot;, 6]</span>
+</span></code></pre></td></tr></table></div></figure>
 
 
 <h3>Iterating through the hash</h3>
 
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
@@ -1417,34 +1441,35 @@
 <span class='line-number'>19</span>
 <span class='line-number'>20</span>
 <span class='line-number'>21</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>a.each { |k,v| puts "The value for #{k} is #{v}" }
-</span><span class='line'># The value for a is b
-</span><span class='line'># The value for 3 is d
-</span><span class='line'># The value for 5 is 
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">a</span><span class="o">.</span><span class="n">each</span> <span class="p">{</span> <span class="o">|</span><span class="n">k</span><span class="p">,</span><span class="n">v</span><span class="o">|</span> <span class="nb">puts</span> <span class="s2">&quot;The value for </span><span class="si">#{</span><span class="n">k</span><span class="si">}</span><span class="s2"> is </span><span class="si">#{</span><span class="n">v</span><span class="si">}</span><span class="s2">&quot;</span> <span class="p">}</span>
+</span><span class='line'><span class="c1"># The value for a is b</span>
+</span><span class='line'><span class="c1"># The value for 3 is d</span>
+</span><span class='line'><span class="c1"># The value for 5 is </span>
 </span><span class='line'>
-</span><span class='line'>a.each_key { |k| puts "The value for #{k} is #{a[k]}" }
-</span><span class='line'># The value for a is b
-</span><span class='line'># The value for 3 is d
-</span><span class='line'># The value for 5 is 6
+</span><span class='line'><span class="n">a</span><span class="o">.</span><span class="n">each_key</span> <span class="p">{</span> <span class="o">|</span><span class="n">k</span><span class="o">|</span> <span class="nb">puts</span> <span class="s2">&quot;The value for </span><span class="si">#{</span><span class="n">k</span><span class="si">}</span><span class="s2"> is </span><span class="si">#{</span><span class="n">a</span><span class="o">[</span><span class="n">k</span><span class="o">]</span><span class="si">}</span><span class="s2">&quot;</span> <span class="p">}</span>
+</span><span class='line'><span class="c1"># The value for a is b</span>
+</span><span class='line'><span class="c1"># The value for 3 is d</span>
+</span><span class='line'><span class="c1"># The value for 5 is 6</span>
 </span><span class='line'>
-</span><span class='line'>a.each_value { |v| puts v }
-</span><span class='line'># b
-</span><span class='line'># d
-</span><span class='line'># 6
+</span><span class='line'><span class="n">a</span><span class="o">.</span><span class="n">each_value</span> <span class="p">{</span> <span class="o">|</span><span class="n">v</span><span class="o">|</span> <span class="nb">puts</span> <span class="n">v</span> <span class="p">}</span>
+</span><span class='line'><span class="c1"># b</span>
+</span><span class='line'><span class="c1"># d</span>
+</span><span class='line'><span class="c1"># 6</span>
 </span><span class='line'>
-</span><span class='line'>a.each do |k,v|
-</span><span class='line'>  puts "The value for #{k} is #{v}"
-</span><span class='line'>end
-</span><span class='line'># The value for a is b
-</span><span class='line'># The value for 3 is d
-</span><span class='line'># The value for 5 is 6</span></code></pre></td></tr></table></div></figure>
+</span><span class='line'><span class="n">a</span><span class="o">.</span><span class="n">each</span> <span class="k">do</span> <span class="o">|</span><span class="n">k</span><span class="p">,</span><span class="n">v</span><span class="o">|</span>
+</span><span class='line'>  <span class="nb">puts</span> <span class="s2">&quot;The value for </span><span class="si">#{</span><span class="n">k</span><span class="si">}</span><span class="s2"> is </span><span class="si">#{</span><span class="n">v</span><span class="si">}</span><span class="s2">&quot;</span>
+</span><span class='line'><span class="k">end</span>
+</span><span class='line'><span class="c1"># The value for a is b</span>
+</span><span class='line'><span class="c1"># The value for 3 is d</span>
+</span><span class='line'><span class="c1"># The value for 5 is 6</span>
+</span></code></pre></td></tr></table></div></figure>
 
 
 <h1>Symbols</h1>
 
 <p>Fixnum always have the same object_id, and we can tell Ruby to do that to Strings too &ndash; it&rsquo;s what we call a Symbol. While a new string will be created every time the same String literal is used, the same symbol will always point to the same object in memory. This also means that Ruby&rsquo;s automatic garbage collection will not recycle symbols.</p>
 
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
@@ -1453,15 +1478,16 @@
 <span class='line-number'>7</span>
 <span class='line-number'>8</span>
 <span class='line-number'>9</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>"abc".object_id
-</span><span class='line'># 70139181776180
-</span><span class='line'>"abc".object_id
-</span><span class='line'># 70139181819060
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="s2">&quot;abc&quot;</span><span class="o">.</span><span class="n">object_id</span>
+</span><span class='line'><span class="c1"># 70139181776180</span>
+</span><span class='line'><span class="s2">&quot;abc&quot;</span><span class="o">.</span><span class="n">object_id</span>
+</span><span class='line'><span class="c1"># 70139181819060</span>
 </span><span class='line'>
-</span><span class='line'>:abc.object_id
-</span><span class='line'># 1024808
-</span><span class='line'>:abc.object_id
-</span><span class='line'># 1024808</span></code></pre></td></tr></table></div></figure>
+</span><span class='line'><span class="ss">:abc</span><span class="o">.</span><span class="n">object_id</span>
+</span><span class='line'><span class="c1"># 1024808</span>
+</span><span class='line'><span class="ss">:abc</span><span class="o">.</span><span class="n">object_id</span>
+</span><span class='line'><span class="c1"># 1024808</span>
+</span></code></pre></td></tr></table></div></figure>
 
 
 <p>Because of this, Symbols are the preferred way to set and get Hash elements.</p>
@@ -1473,24 +1499,26 @@ If the identity of the object is important, use a symbol.</p></blockquote>
 
 <p>Do this..</p>
 
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>h = Hash.new
-</span><span class='line'>h[:abc] = "xyz"
-</span><span class='line'>puts h[:abc]</span></code></pre></td></tr></table></div></figure>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">h</span> <span class="o">=</span> <span class="no">Hash</span><span class="o">.</span><span class="n">new</span>
+</span><span class='line'><span class="n">h</span><span class="o">[</span><span class="ss">:abc</span><span class="o">]</span> <span class="o">=</span> <span class="s2">&quot;xyz&quot;</span>
+</span><span class='line'><span class="nb">puts</span> <span class="n">h</span><span class="o">[</span><span class="ss">:abc</span><span class="o">]</span>
+</span></code></pre></td></tr></table></div></figure>
 
 
 <p>but don&rsquo;t do this..</p>
 
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>h = Hash.new
-</span><span class='line'>h["abc"] = :xyz
-</span><span class='line'>puts ["abc"]
-</span><span class='line'># xyz</span></code></pre></td></tr></table></div></figure>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">h</span> <span class="o">=</span> <span class="no">Hash</span><span class="o">.</span><span class="n">new</span>
+</span><span class='line'><span class="n">h</span><span class="o">[</span><span class="s2">&quot;abc&quot;</span><span class="o">]</span> <span class="o">=</span> <span class="ss">:xyz</span>
+</span><span class='line'><span class="nb">puts</span> <span class="o">[</span><span class="s2">&quot;abc&quot;</span><span class="o">]</span>
+</span><span class='line'><span class="c1"># xyz</span>
+</span></code></pre></td></tr></table></div></figure>
 
 
 
@@ -1506,7 +1534,7 @@ If the identity of the object is important, use a symbol.</p></blockquote>
 
 <p>There is the while loop you&rsquo;re used to</p>
 
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
@@ -1514,19 +1542,20 @@ If the identity of the object is important, use a symbol.</p></blockquote>
 <span class='line-number'>6</span>
 <span class='line-number'>7</span>
 <span class='line-number'>8</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>i = 0
-</span><span class='line'>while i &lt; 3 do
-</span><span class='line'>  puts i
-</span><span class='line'>  i += 1
-</span><span class='line'>end
-</span><span class='line'># 0
-</span><span class='line'># 1
-</span><span class='line'># 2</span></code></pre></td></tr></table></div></figure>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">i</span> <span class="o">=</span> <span class="mi">0</span>
+</span><span class='line'><span class="k">while</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="mi">3</span> <span class="k">do</span>
+</span><span class='line'>  <span class="nb">puts</span> <span class="n">i</span>
+</span><span class='line'>  <span class="n">i</span> <span class="o">+=</span> <span class="mi">1</span>
+</span><span class='line'><span class="k">end</span>
+</span><span class='line'><span class="c1"># 0</span>
+</span><span class='line'><span class="c1"># 1</span>
+</span><span class='line'><span class="c1"># 2</span>
+</span></code></pre></td></tr></table></div></figure>
 
 
 <p>While loops with the test at the end</p>
 
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
@@ -1541,26 +1570,27 @@ If the identity of the object is important, use a symbol.</p></blockquote>
 <span class='line-number'>13</span>
 <span class='line-number'>14</span>
 <span class='line-number'>15</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>i = 0
-</span><span class='line'>begin
-</span><span class='line'>  puts i
-</span><span class='line'>  i += 1
-</span><span class='line'>end while i &lt; 3
-</span><span class='line'># 0
-</span><span class='line'># 1
-</span><span class='line'># 2
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">i</span> <span class="o">=</span> <span class="mi">0</span>
+</span><span class='line'><span class="k">begin</span>
+</span><span class='line'>  <span class="nb">puts</span> <span class="n">i</span>
+</span><span class='line'>  <span class="n">i</span> <span class="o">+=</span> <span class="mi">1</span>
+</span><span class='line'><span class="k">end</span> <span class="k">while</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="mi">3</span>
+</span><span class='line'><span class="c1"># 0</span>
+</span><span class='line'><span class="c1"># 1</span>
+</span><span class='line'><span class="c1"># 2</span>
 </span><span class='line'>
-</span><span class='line'>i = 0
-</span><span class='line'>begin
-</span><span class='line'>  puts i
-</span><span class='line'>  i += 1
-</span><span class='line'>end while i &lt; 0
-</span><span class='line'># 0</span></code></pre></td></tr></table></div></figure>
+</span><span class='line'><span class="n">i</span> <span class="o">=</span> <span class="mi">0</span>
+</span><span class='line'><span class="k">begin</span>
+</span><span class='line'>  <span class="nb">puts</span> <span class="n">i</span>
+</span><span class='line'>  <span class="n">i</span> <span class="o">+=</span> <span class="mi">1</span>
+</span><span class='line'><span class="k">end</span> <span class="k">while</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="mi">0</span>
+</span><span class='line'><span class="c1"># 0</span>
+</span></code></pre></td></tr></table></div></figure>
 
 
 <p>There&rsquo;s the until loops which run while the condition is false</p>
 
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
@@ -1574,43 +1604,45 @@ If the identity of the object is important, use a symbol.</p></blockquote>
 <span class='line-number'>12</span>
 <span class='line-number'>13</span>
 <span class='line-number'>14</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>i = 0
-</span><span class='line'>until i > 2
-</span><span class='line'>  puts i
-</span><span class='line'>  i += 1
-</span><span class='line'>end
-</span><span class='line'># 0
-</span><span class='line'># 1
-</span><span class='line'># 2
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">i</span> <span class="o">=</span> <span class="mi">0</span>
+</span><span class='line'><span class="k">until</span> <span class="n">i</span> <span class="o">&gt;</span> <span class="mi">2</span>
+</span><span class='line'>  <span class="nb">puts</span> <span class="n">i</span>
+</span><span class='line'>  <span class="n">i</span> <span class="o">+=</span> <span class="mi">1</span>
+</span><span class='line'><span class="k">end</span>
+</span><span class='line'><span class="c1"># 0</span>
+</span><span class='line'><span class="c1"># 1</span>
+</span><span class='line'><span class="c1"># 2</span>
 </span><span class='line'>
-</span><span class='line'>i = 0
-</span><span class='line'>begin
-</span><span class='line'>  puts i
-</span><span class='line'>  i += 1
-</span><span class='line'>end until i >= 0</span></code></pre></td></tr></table></div></figure>
+</span><span class='line'><span class="n">i</span> <span class="o">=</span> <span class="mi">0</span>
+</span><span class='line'><span class="k">begin</span>
+</span><span class='line'>  <span class="nb">puts</span> <span class="n">i</span>
+</span><span class='line'>  <span class="n">i</span> <span class="o">+=</span> <span class="mi">1</span>
+</span><span class='line'><span class="k">end</span> <span class="k">until</span> <span class="n">i</span> <span class="o">&gt;=</span> <span class="mi">0</span>
+</span></code></pre></td></tr></table></div></figure>
 
 
 <p>And finally, my favourite &ndash; the for loops. If you already have a list to iterate through, great.</p>
 
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
 <span class='line-number'>5</span>
 <span class='line-number'>6</span>
 <span class='line-number'>7</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>a = [0, 1, 2]
-</span><span class='line'>for i in a
-</span><span class='line'>  puts i
-</span><span class='line'>end
-</span><span class='line'># 0
-</span><span class='line'># 1
-</span><span class='line'># 2</span></code></pre></td></tr></table></div></figure>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">a</span> <span class="o">=</span> <span class="o">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="o">]</span>
+</span><span class='line'><span class="k">for</span> <span class="n">i</span> <span class="k">in</span> <span class="n">a</span>
+</span><span class='line'>  <span class="nb">puts</span> <span class="n">i</span>
+</span><span class='line'><span class="k">end</span>
+</span><span class='line'><span class="c1"># 0</span>
+</span><span class='line'><span class="c1"># 1</span>
+</span><span class='line'><span class="c1"># 2</span>
+</span></code></pre></td></tr></table></div></figure>
 
 
 <p>If not, it&rsquo;s great too</p>
 
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
@@ -1623,24 +1655,25 @@ If the identity of the object is important, use a symbol.</p></blockquote>
 <span class='line-number'>11</span>
 <span class='line-number'>12</span>
 <span class='line-number'>13</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>for i in 0..2
-</span><span class='line'>  puts i
-</span><span class='line'>end
-</span><span class='line'># 0
-</span><span class='line'># 1
-</span><span class='line'># 2
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="k">for</span> <span class="n">i</span> <span class="k">in</span> <span class="mi">0</span><span class="o">.</span><span class="n">.</span><span class="mi">2</span>
+</span><span class='line'>  <span class="nb">puts</span> <span class="n">i</span>
+</span><span class='line'><span class="k">end</span>
+</span><span class='line'><span class="c1"># 0</span>
+</span><span class='line'><span class="c1"># 1</span>
+</span><span class='line'><span class="c1"># 2</span>
 </span><span class='line'>
-</span><span class='line'>(0..2).each do |i|
-</span><span class='line'>  puts i
-</span><span class='line'>end
-</span><span class='line'># 0
-</span><span class='line'># 1
-</span><span class='line'># 2</span></code></pre></td></tr></table></div></figure>
+</span><span class='line'><span class="p">(</span><span class="mi">0</span><span class="o">.</span><span class="n">.</span><span class="mi">2</span><span class="p">)</span><span class="o">.</span><span class="n">each</span> <span class="k">do</span> <span class="o">|</span><span class="n">i</span><span class="o">|</span>
+</span><span class='line'>  <span class="nb">puts</span> <span class="n">i</span>
+</span><span class='line'><span class="k">end</span>
+</span><span class='line'><span class="c1"># 0</span>
+</span><span class='line'><span class="c1"># 1</span>
+</span><span class='line'><span class="c1"># 2</span>
+</span></code></pre></td></tr></table></div></figure>
 
 
 <p>There&rsquo;s also 4 keywords to help you manage the control of flow <code>break</code>, <code>next</code>, <code>redo</code> and finally <code>retry</code> which I&rsquo;ll bring up in the Error Handling section. <code>break</code> exits the inner most loop</p>
 
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
@@ -1648,19 +1681,20 @@ If the identity of the object is important, use a symbol.</p></blockquote>
 <span class='line-number'>6</span>
 <span class='line-number'>7</span>
 <span class='line-number'>8</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>for i in 0..2
-</span><span class='line'>  puts i
-</span><span class='line'>  if i == 1
-</span><span class='line'>    break
-</span><span class='line'>  end
-</span><span class='line'>end
-</span><span class='line'># 0
-</span><span class='line'># 1</span></code></pre></td></tr></table></div></figure>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="k">for</span> <span class="n">i</span> <span class="k">in</span> <span class="mi">0</span><span class="o">.</span><span class="n">.</span><span class="mi">2</span>
+</span><span class='line'>  <span class="nb">puts</span> <span class="n">i</span>
+</span><span class='line'>  <span class="k">if</span> <span class="n">i</span> <span class="o">==</span> <span class="mi">1</span>
+</span><span class='line'>    <span class="k">break</span>
+</span><span class='line'>  <span class="k">end</span>
+</span><span class='line'><span class="k">end</span>
+</span><span class='line'><span class="c1"># 0</span>
+</span><span class='line'><span class="c1"># 1</span>
+</span></code></pre></td></tr></table></div></figure>
 
 
 <p>While <code>next</code> jumps to the next iteration of the loop</p>
 
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
@@ -1677,28 +1711,29 @@ If the identity of the object is important, use a symbol.</p></blockquote>
 <span class='line-number'>15</span>
 <span class='line-number'>16</span>
 <span class='line-number'>17</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>for i in 0..2
-</span><span class='line'>  if i == 1
-</span><span class='line'>    next
-</span><span class='line'>  end
-</span><span class='line'>  puts i
-</span><span class='line'>end
-</span><span class='line'># 0
-</span><span class='line'># 2
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="k">for</span> <span class="n">i</span> <span class="k">in</span> <span class="mi">0</span><span class="o">.</span><span class="n">.</span><span class="mi">2</span>
+</span><span class='line'>  <span class="k">if</span> <span class="n">i</span> <span class="o">==</span> <span class="mi">1</span>
+</span><span class='line'>    <span class="k">next</span>
+</span><span class='line'>  <span class="k">end</span>
+</span><span class='line'>  <span class="nb">puts</span> <span class="n">i</span>
+</span><span class='line'><span class="k">end</span>
+</span><span class='line'><span class="c1"># 0</span>
+</span><span class='line'><span class="c1"># 2</span>
 </span><span class='line'>
-</span><span class='line'>for i in 0..2
-</span><span class='line'>  if i == 2
-</span><span class='line'>    next
-</span><span class='line'>  end
-</span><span class='line'>  puts i
-</span><span class='line'>end
-</span><span class='line'># 0
-</span><span class='line'># 1</span></code></pre></td></tr></table></div></figure>
+</span><span class='line'><span class="k">for</span> <span class="n">i</span> <span class="k">in</span> <span class="mi">0</span><span class="o">.</span><span class="n">.</span><span class="mi">2</span>
+</span><span class='line'>  <span class="k">if</span> <span class="n">i</span> <span class="o">==</span> <span class="mi">2</span>
+</span><span class='line'>    <span class="k">next</span>
+</span><span class='line'>  <span class="k">end</span>
+</span><span class='line'>  <span class="nb">puts</span> <span class="n">i</span>
+</span><span class='line'><span class="k">end</span>
+</span><span class='line'><span class="c1"># 0</span>
+</span><span class='line'><span class="c1"># 1</span>
+</span></code></pre></td></tr></table></div></figure>
 
 
 <p>And <code>redo</code> jumps back to the beginning of the current iteration in this loop</p>
 
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
@@ -1716,24 +1751,25 @@ If the identity of the object is important, use a symbol.</p></blockquote>
 <span class='line-number'>16</span>
 <span class='line-number'>17</span>
 <span class='line-number'>18</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>j = 0
-</span><span class='line'>for i in 0..2
-</span><span class='line'>  puts "i is #{i}"
-</span><span class='line'>  puts "j is #{j}"
-</span><span class='line'>  j += 1
-</span><span class='line'>  if j > 2
-</span><span class='line'>    break
-</span><span class='line'>  end
-</span><span class='line'>  if i == 1
-</span><span class='line'>    redo
-</span><span class='line'>  end
-</span><span class='line'>end
-</span><span class='line'># i is 0
-</span><span class='line'># j is 0
-</span><span class='line'># i is 1
-</span><span class='line'># j is 1
-</span><span class='line'># i is 1
-</span><span class='line'># j is 2</span></code></pre></td></tr></table></div></figure>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">j</span> <span class="o">=</span> <span class="mi">0</span>
+</span><span class='line'><span class="k">for</span> <span class="n">i</span> <span class="k">in</span> <span class="mi">0</span><span class="o">.</span><span class="n">.</span><span class="mi">2</span>
+</span><span class='line'>  <span class="nb">puts</span> <span class="s2">&quot;i is </span><span class="si">#{</span><span class="n">i</span><span class="si">}</span><span class="s2">&quot;</span>
+</span><span class='line'>  <span class="nb">puts</span> <span class="s2">&quot;j is </span><span class="si">#{</span><span class="n">j</span><span class="si">}</span><span class="s2">&quot;</span>
+</span><span class='line'>  <span class="n">j</span> <span class="o">+=</span> <span class="mi">1</span>
+</span><span class='line'>  <span class="k">if</span> <span class="n">j</span> <span class="o">&gt;</span> <span class="mi">2</span>
+</span><span class='line'>    <span class="k">break</span>
+</span><span class='line'>  <span class="k">end</span>
+</span><span class='line'>  <span class="k">if</span> <span class="n">i</span> <span class="o">==</span> <span class="mi">1</span>
+</span><span class='line'>    <span class="k">redo</span>
+</span><span class='line'>  <span class="k">end</span>
+</span><span class='line'><span class="k">end</span>
+</span><span class='line'><span class="c1"># i is 0</span>
+</span><span class='line'><span class="c1"># j is 0</span>
+</span><span class='line'><span class="c1"># i is 1</span>
+</span><span class='line'><span class="c1"># j is 1</span>
+</span><span class='line'><span class="c1"># i is 1</span>
+</span><span class='line'><span class="c1"># j is 2</span>
+</span></code></pre></td></tr></table></div></figure>
 
 
 
@@ -1749,7 +1785,7 @@ If the identity of the object is important, use a symbol.</p></blockquote>
 
 <h3>Construction</h3>
 
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
@@ -1761,23 +1797,24 @@ If the identity of the object is important, use a symbol.</p></blockquote>
 <span class='line-number'>10</span>
 <span class='line-number'>11</span>
 <span class='line-number'>12</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>[1, "foo", nil, "bar"]
-</span><span class='line'># [1, "foo", nil, "bar"]
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="o">[</span><span class="mi">1</span><span class="p">,</span> <span class="s2">&quot;foo&quot;</span><span class="p">,</span> <span class="kp">nil</span><span class="p">,</span> <span class="s2">&quot;bar&quot;</span><span class="o">]</span>
+</span><span class='line'><span class="c1"># [1, &quot;foo&quot;, nil, &quot;bar&quot;]</span>
 </span><span class='line'>
-</span><span class='line'>Array.new
-</span><span class='line'># []
-</span><span class='line'>Array.new(3, true)
-</span><span class='line'># [true, true, true]
+</span><span class='line'><span class="nb">Array</span><span class="o">.</span><span class="n">new</span>
+</span><span class='line'><span class="c1"># []</span>
+</span><span class='line'><span class="nb">Array</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="kp">true</span><span class="p">)</span>
+</span><span class='line'><span class="c1"># [true, true, true]</span>
 </span><span class='line'>
-</span><span class='line'>(1..10).to_a
-</span><span class='line'># [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
-</span><span class='line'>("a7".."b5").to_a
-</span><span class='line'># ["a7", "a8", "a9", "b0", "b1", "b2", "b3", "b4", "b5"]</span></code></pre></td></tr></table></div></figure>
+</span><span class='line'><span class="p">(</span><span class="mi">1</span><span class="o">.</span><span class="n">.</span><span class="mi">10</span><span class="p">)</span><span class="o">.</span><span class="n">to_a</span>
+</span><span class='line'><span class="c1"># [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]</span>
+</span><span class='line'><span class="p">(</span><span class="s2">&quot;a7&quot;</span><span class="o">.</span><span class="n">.</span><span class="s2">&quot;b5&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">to_a</span>
+</span><span class='line'><span class="c1"># [&quot;a7&quot;, &quot;a8&quot;, &quot;a9&quot;, &quot;b0&quot;, &quot;b1&quot;, &quot;b2&quot;, &quot;b3&quot;, &quot;b4&quot;, &quot;b5&quot;]</span>
+</span></code></pre></td></tr></table></div></figure>
 
 
 <h3>Accessing elements and array info</h3>
 
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
@@ -1797,31 +1834,32 @@ If the identity of the object is important, use a symbol.</p></blockquote>
 <span class='line-number'>18</span>
 <span class='line-number'>19</span>
 <span class='line-number'>20</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>arr = [1, 2, 3, 4, 5, 6]
-</span><span class='line'>arr[2]
-</span><span class='line'># 3
-</span><span class='line'>arr[100]
-</span><span class='line'># nil
-</span><span class='line'>arr[-3]
-</span><span class='line'># 4
-</span><span class='line'>arr[2, 3]
-</span><span class='line'># [3, 4, 5]
-</span><span class='line'>arr[1..4]
-</span><span class='line'># [2, 3, 4, 5]
-</span><span class='line'>arr.at(0)
-</span><span class='line'># 1
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">arr</span> <span class="o">=</span> <span class="o">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="o">]</span>
+</span><span class='line'><span class="n">arr</span><span class="o">[</span><span class="mi">2</span><span class="o">]</span>
+</span><span class='line'><span class="c1"># 3</span>
+</span><span class='line'><span class="n">arr</span><span class="o">[</span><span class="mi">100</span><span class="o">]</span>
+</span><span class='line'><span class="c1"># nil</span>
+</span><span class='line'><span class="n">arr</span><span class="o">[-</span><span class="mi">3</span><span class="o">]</span>
+</span><span class='line'><span class="c1"># 4</span>
+</span><span class='line'><span class="n">arr</span><span class="o">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="o">]</span>
+</span><span class='line'><span class="c1"># [3, 4, 5]</span>
+</span><span class='line'><span class="n">arr</span><span class="o">[</span><span class="mi">1</span><span class="o">.</span><span class="n">.</span><span class="mi">4</span><span class="o">]</span>
+</span><span class='line'><span class="c1"># [2, 3, 4, 5]</span>
+</span><span class='line'><span class="n">arr</span><span class="o">.</span><span class="n">at</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+</span><span class='line'><span class="c1"># 1</span>
 </span><span class='line'>
-</span><span class='line'>arr.length
-</span><span class='line'># 6
-</span><span class='line'>arr.empty?
-</span><span class='line'># false
-</span><span class='line'>arr.include?(7)
-</span><span class='line'># false</span></code></pre></td></tr></table></div></figure>
+</span><span class='line'><span class="n">arr</span><span class="o">.</span><span class="n">length</span>
+</span><span class='line'><span class="c1"># 6</span>
+</span><span class='line'><span class="n">arr</span><span class="o">.</span><span class="n">empty?</span>
+</span><span class='line'><span class="c1"># false</span>
+</span><span class='line'><span class="n">arr</span><span class="o">.</span><span class="n">include?</span><span class="p">(</span><span class="mi">7</span><span class="p">)</span>
+</span><span class='line'><span class="c1"># false</span>
+</span></code></pre></td></tr></table></div></figure>
 
 
 <h3>Adding to the array</h3>
 
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
@@ -1831,21 +1869,22 @@ If the identity of the object is important, use a symbol.</p></blockquote>
 <span class='line-number'>8</span>
 <span class='line-number'>9</span>
 <span class='line-number'>10</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>arr.push(7)
-</span><span class='line'># [1, 2, 3, 4, 5, 6, 7]
-</span><span class='line'>arr &lt;&lt; 8
-</span><span class='line'># [1, 2, 3, 4, 5, 6, 7, 8]
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">arr</span><span class="o">.</span><span class="n">push</span><span class="p">(</span><span class="mi">7</span><span class="p">)</span>
+</span><span class='line'><span class="c1"># [1, 2, 3, 4, 5, 6, 7]</span>
+</span><span class='line'><span class="n">arr</span> <span class="o">&lt;&lt;</span> <span class="mi">8</span>
+</span><span class='line'><span class="c1"># [1, 2, 3, 4, 5, 6, 7, 8]</span>
 </span><span class='line'>
-</span><span class='line'>arr.unshift(0)
-</span><span class='line'># [0, 1, 2, 3, 4, 5, 6, 7]
+</span><span class='line'><span class="n">arr</span><span class="o">.</span><span class="n">unshift</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+</span><span class='line'><span class="c1"># [0, 1, 2, 3, 4, 5, 6, 7]</span>
 </span><span class='line'>
-</span><span class='line'>arr.insert(3, 2.5)
-</span><span class='line'># [0, 1, 2, 2.5, 3, 4, 5, 6, 7]</span></code></pre></td></tr></table></div></figure>
+</span><span class='line'><span class="n">arr</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="o">.</span><span class="mi">5</span><span class="p">)</span>
+</span><span class='line'><span class="c1"># [0, 1, 2, 2.5, 3, 4, 5, 6, 7]</span>
+</span></code></pre></td></tr></table></div></figure>
 
 
 <h3>Removing from Array</h3>
 
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
@@ -1859,40 +1898,42 @@ If the identity of the object is important, use a symbol.</p></blockquote>
 <span class='line-number'>12</span>
 <span class='line-number'>13</span>
 <span class='line-number'>14</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>arr
-</span><span class='line'># [0, 1, 2, 2.5, 3, 4, 5, 6, 7]
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">arr</span>
+</span><span class='line'><span class="c1"># [0, 1, 2, 2.5, 3, 4, 5, 6, 7]</span>
 </span><span class='line'>
-</span><span class='line'>arr.pop
-</span><span class='line'># 7
-</span><span class='line'># arr = [0, 1, 2, 2.5, 3, 4, 5, 6]
+</span><span class='line'><span class="n">arr</span><span class="o">.</span><span class="n">pop</span>
+</span><span class='line'><span class="c1"># 7</span>
+</span><span class='line'><span class="c1"># arr = [0, 1, 2, 2.5, 3, 4, 5, 6]</span>
 </span><span class='line'>
-</span><span class='line'>arr.shift
-</span><span class='line'># 0
-</span><span class='line'># arr = [1, 2, 2.5, 3, 4, 5, 6]
+</span><span class='line'><span class="n">arr</span><span class="o">.</span><span class="n">shift</span>
+</span><span class='line'><span class="c1"># 0</span>
+</span><span class='line'><span class="c1"># arr = [1, 2, 2.5, 3, 4, 5, 6]</span>
 </span><span class='line'>
-</span><span class='line'>arr.delete(3)
-</span><span class='line'># 2.5
-</span><span class='line'># arr = [1, 2. 3, 4, 5, 6]</span></code></pre></td></tr></table></div></figure>
+</span><span class='line'><span class="n">arr</span><span class="o">.</span><span class="n">delete</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+</span><span class='line'><span class="c1"># 2.5</span>
+</span><span class='line'><span class="c1"># arr = [1, 2. 3, 4, 5, 6]</span>
+</span></code></pre></td></tr></table></div></figure>
 
 
 <h2>Print vs Puts</h2>
 
 <p>Both these functions can be used to output text. To put it simply, puts adds a newline character to the end of each argument and outputs nil as an invisible character rather than a String. Refer to the link at the bottom for more discussion.</p>
 
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
 <span class='line-number'>5</span>
 <span class='line-number'>6</span>
 <span class='line-number'>7</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>print [nil, 1, 2]
-</span><span class='line'># [nil, 1, 2]=> nil
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="nb">print</span> <span class="o">[</span><span class="kp">nil</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="o">]</span>
+</span><span class='line'><span class="c1"># [nil, 1, 2]=&gt; nil</span>
 </span><span class='line'>
-</span><span class='line'>puts [nil, 1, 2]
-</span><span class='line'># 
-</span><span class='line'># 1
-</span><span class='line'># 2</span></code></pre></td></tr></table></div></figure>
+</span><span class='line'><span class="nb">puts</span> <span class="o">[</span><span class="kp">nil</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="o">]</span>
+</span><span class='line'><span class="c1"># </span>
+</span><span class='line'><span class="c1"># 1</span>
+</span><span class='line'><span class="c1"># 2</span>
+</span></code></pre></td></tr></table></div></figure>
 
 
 <ol>
@@ -1912,7 +1953,7 @@ If the identity of the object is important, use a symbol.</p></blockquote>
 
 <p>Like Fixnum from the previous post, these 3 keywords are immediate values.</p>
 
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
@@ -1926,27 +1967,28 @@ If the identity of the object is important, use a symbol.</p></blockquote>
 <span class='line-number'>12</span>
 <span class='line-number'>13</span>
 <span class='line-number'>14</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>true.object_id
-</span><span class='line'># 20
-</span><span class='line'>true.object_id
-</span><span class='line'># 20
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="kp">true</span><span class="o">.</span><span class="n">object_id</span>
+</span><span class='line'><span class="c1"># 20</span>
+</span><span class='line'><span class="kp">true</span><span class="o">.</span><span class="n">object_id</span>
+</span><span class='line'><span class="c1"># 20</span>
 </span><span class='line'>
-</span><span class='line'>false.object_id
-</span><span class='line'># 0
-</span><span class='line'>false.object_id
-</span><span class='line'># 0
+</span><span class='line'><span class="kp">false</span><span class="o">.</span><span class="n">object_id</span>
+</span><span class='line'><span class="c1"># 0</span>
+</span><span class='line'><span class="kp">false</span><span class="o">.</span><span class="n">object_id</span>
+</span><span class='line'><span class="c1"># 0</span>
 </span><span class='line'>
-</span><span class='line'>nil.object_id
-</span><span class='line'># 8
-</span><span class='line'>nil.object_id
-</span><span class='line'># 8</span></code></pre></td></tr></table></div></figure>
+</span><span class='line'><span class="kp">nil</span><span class="o">.</span><span class="n">object_id</span>
+</span><span class='line'><span class="c1"># 8</span>
+</span><span class='line'><span class="kp">nil</span><span class="o">.</span><span class="n">object_id</span>
+</span><span class='line'><span class="c1"># 8</span>
+</span></code></pre></td></tr></table></div></figure>
 
 
 <h2>Equality Testing</h2>
 
 <p>There are 4 ways of testing for equality in Ruby. You&rsquo;ll be using one of them a majority of the time&hellip; <code>==</code>. Generally <code>==</code> represents equality of the values within the object while <code>.equal?</code> ensures that the 2 objects are one and the same (reference pointer comparison). However, as always, make sure you test your code thoroughly since these are just methods that are easy to override (more on this later). The other two are more obscure and depends much more on the implementation.</p>
 
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
@@ -1964,24 +2006,25 @@ If the identity of the object is important, use a symbol.</p></blockquote>
 <span class='line-number'>16</span>
 <span class='line-number'>17</span>
 <span class='line-number'>18</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>"abc" == "abc"
-</span><span class='line'># true
-</span><span class='line'>"abc".equal? "abc"
-</span><span class='line'># false
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="s2">&quot;abc&quot;</span> <span class="o">==</span> <span class="s2">&quot;abc&quot;</span>
+</span><span class='line'><span class="c1"># true</span>
+</span><span class='line'><span class="s2">&quot;abc&quot;</span><span class="o">.</span><span class="n">equal?</span> <span class="s2">&quot;abc&quot;</span>
+</span><span class='line'><span class="c1"># false</span>
 </span><span class='line'>
-</span><span class='line'>1 == 1
-</span><span class='line'># true
-</span><span class='line'>1.equal? 1
-</span><span class='line'># true
-</span><span class='line'>1.eql? 1
-</span><span class='line'># true
+</span><span class='line'><span class="mi">1</span> <span class="o">==</span> <span class="mi">1</span>
+</span><span class='line'><span class="c1"># true</span>
+</span><span class='line'><span class="mi">1</span><span class="o">.</span><span class="n">equal?</span> <span class="mi">1</span>
+</span><span class='line'><span class="c1"># true</span>
+</span><span class='line'><span class="mi">1</span><span class="o">.</span><span class="n">eql?</span> <span class="mi">1</span>
+</span><span class='line'><span class="c1"># true</span>
 </span><span class='line'>
-</span><span class='line'>1.0 == 1
-</span><span class='line'># true
-</span><span class='line'>1.0.equal? 1
-</span><span class='line'># false
-</span><span class='line'>1.0.eql? 1
-</span><span class='line'># false</span></code></pre></td></tr></table></div></figure>
+</span><span class='line'><span class="mi">1</span><span class="o">.</span><span class="mi">0</span> <span class="o">==</span> <span class="mi">1</span>
+</span><span class='line'><span class="c1"># true</span>
+</span><span class='line'><span class="mi">1</span><span class="o">.</span><span class="mi">0</span><span class="o">.</span><span class="n">equal?</span> <span class="mi">1</span>
+</span><span class='line'><span class="c1"># false</span>
+</span><span class='line'><span class="mi">1</span><span class="o">.</span><span class="mi">0</span><span class="o">.</span><span class="n">eql?</span> <span class="mi">1</span>
+</span><span class='line'><span class="c1"># false</span>
+</span></code></pre></td></tr></table></div></figure>
 
 
 <h1>Control Flow</h1>
@@ -1990,7 +2033,7 @@ If the identity of the object is important, use a symbol.</p></blockquote>
 
 <p>Firstly, we have the very standard if-then-else statements.</p>
 
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
@@ -2011,32 +2054,33 @@ If the identity of the object is important, use a symbol.</p></blockquote>
 <span class='line-number'>19</span>
 <span class='line-number'>20</span>
 <span class='line-number'>21</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>t = true
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">t</span> <span class="o">=</span> <span class="kp">true</span>
 </span><span class='line'>
-</span><span class='line'>if t
-</span><span class='line'>  puts "t is true"
-</span><span class='line'>else
-</span><span class='line'>  puts "t is false"
-</span><span class='line'>end
+</span><span class='line'><span class="k">if</span> <span class="n">t</span>
+</span><span class='line'>  <span class="nb">puts</span> <span class="s2">&quot;t is true&quot;</span>
+</span><span class='line'><span class="k">else</span>
+</span><span class='line'>  <span class="nb">puts</span> <span class="s2">&quot;t is false&quot;</span>
+</span><span class='line'><span class="k">end</span>
 </span><span class='line'>
-</span><span class='line'># t is true
+</span><span class='line'><span class="c1"># t is true</span>
 </span><span class='line'>
-</span><span class='line'>num = 0
+</span><span class='line'><span class="n">num</span> <span class="o">=</span> <span class="mi">0</span>
 </span><span class='line'>
-</span><span class='line'>if num &lt; 0
-</span><span class='line'>  puts "num is negative"
-</span><span class='line'>elsif num == 0
-</span><span class='line'>  puts "num is zero"
-</span><span class='line'>else
-</span><span class='line'>  puts "num is positive"
-</span><span class='line'>end
+</span><span class='line'><span class="k">if</span> <span class="n">num</span> <span class="o">&lt;</span> <span class="mi">0</span>
+</span><span class='line'>  <span class="nb">puts</span> <span class="s2">&quot;num is negative&quot;</span>
+</span><span class='line'><span class="k">elsif</span> <span class="n">num</span> <span class="o">==</span> <span class="mi">0</span>
+</span><span class='line'>  <span class="nb">puts</span> <span class="s2">&quot;num is zero&quot;</span>
+</span><span class='line'><span class="k">else</span>
+</span><span class='line'>  <span class="nb">puts</span> <span class="s2">&quot;num is positive&quot;</span>
+</span><span class='line'><span class="k">end</span>
 </span><span class='line'>
-</span><span class='line'># num is zero</span></code></pre></td></tr></table></div></figure>
+</span><span class='line'><span class="c1"># num is zero</span>
+</span></code></pre></td></tr></table></div></figure>
 
 
 <p>Then we have unless, which literally means if not. However, please avoid this if you need to use else (there is no secondary guard like elsif or elsunless) &ndash; it&rsquo;s only useful in causing confusion.</p>
 
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
@@ -2045,50 +2089,53 @@ If the identity of the object is important, use a symbol.</p></blockquote>
 <span class='line-number'>7</span>
 <span class='line-number'>8</span>
 <span class='line-number'>9</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>t = true
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">t</span> <span class="o">=</span> <span class="kp">true</span>
 </span><span class='line'>
-</span><span class='line'>unless t
-</span><span class='line'>  puts "t is false"
-</span><span class='line'>else
-</span><span class='line'>  puts "t is true"
-</span><span class='line'>end
+</span><span class='line'><span class="k">unless</span> <span class="n">t</span>
+</span><span class='line'>  <span class="nb">puts</span> <span class="s2">&quot;t is false&quot;</span>
+</span><span class='line'><span class="k">else</span>
+</span><span class='line'>  <span class="nb">puts</span> <span class="s2">&quot;t is true&quot;</span>
+</span><span class='line'><span class="k">end</span>
 </span><span class='line'>
-</span><span class='line'># t is true</span></code></pre></td></tr></table></div></figure>
+</span><span class='line'><span class="c1"># t is true</span>
+</span></code></pre></td></tr></table></div></figure>
 
 
 <p>A popular way of writing terse simple control flow without sacrificing on readability is to suffix the control to the line itself</p>
 
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
 <span class='line-number'>5</span>
 <span class='line-number'>6</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>puts "true" if true
-</span><span class='line'># true
-</span><span class='line'># => nil
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="nb">puts</span> <span class="s2">&quot;true&quot;</span> <span class="k">if</span> <span class="kp">true</span>
+</span><span class='line'><span class="c1"># true</span>
+</span><span class='line'><span class="c1"># =&gt; nil</span>
 </span><span class='line'>
-</span><span class='line'>puts "false" unless true
-</span><span class='line'># => nil</span></code></pre></td></tr></table></div></figure>
+</span><span class='line'><span class="nb">puts</span> <span class="s2">&quot;false&quot;</span> <span class="k">unless</span> <span class="kp">true</span>
+</span><span class='line'><span class="c1"># =&gt; nil</span>
+</span></code></pre></td></tr></table></div></figure>
 
 
 <p>Finally, we have the C-style single line statements</p>
 
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
 <span class='line-number'>5</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>true ? true : false
-</span><span class='line'># true
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="kp">true</span> <span class="p">?</span> <span class="kp">true</span> <span class="p">:</span> <span class="kp">false</span>
+</span><span class='line'><span class="c1"># true</span>
 </span><span class='line'>
-</span><span class='line'>false ? true : false
-</span><span class='line'># false</span></code></pre></td></tr></table></div></figure>
+</span><span class='line'><span class="kp">false</span> <span class="p">?</span> <span class="kp">true</span> <span class="p">:</span> <span class="kp">false</span>
+</span><span class='line'><span class="c1"># false</span>
+</span></code></pre></td></tr></table></div></figure>
 
 
 <p>And many more complex variations of them. They&rsquo;re just another way of formatting the first option since they Ruby treats <code>;</code> as a new line. Please never write code like this :)</p>
 
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
@@ -2106,24 +2153,25 @@ If the identity of the object is important, use a symbol.</p></blockquote>
 <span class='line-number'>16</span>
 <span class='line-number'>17</span>
 <span class='line-number'>18</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>if true then true else false end
-</span><span class='line'># true
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="k">if</span> <span class="kp">true</span> <span class="k">then</span> <span class="kp">true</span> <span class="k">else</span> <span class="kp">false</span> <span class="k">end</span>
+</span><span class='line'><span class="c1"># true</span>
 </span><span class='line'>
-</span><span class='line'>if true; true else false end
-</span><span class='line'># true
+</span><span class='line'><span class="k">if</span> <span class="kp">true</span><span class="p">;</span> <span class="kp">true</span> <span class="k">else</span> <span class="kp">false</span> <span class="k">end</span>
+</span><span class='line'><span class="c1"># true</span>
 </span><span class='line'>
-</span><span class='line'>num = 0
-</span><span class='line'>if num &lt; 0; puts "negative"; puts "lalala" elsif num > 0; puts "positive" else puts "zero" end
-</span><span class='line'># zero
+</span><span class='line'><span class="n">num</span> <span class="o">=</span> <span class="mi">0</span>
+</span><span class='line'><span class="k">if</span> <span class="n">num</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">;</span> <span class="nb">puts</span> <span class="s2">&quot;negative&quot;</span><span class="p">;</span> <span class="nb">puts</span> <span class="s2">&quot;lalala&quot;</span> <span class="k">elsif</span> <span class="n">num</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">;</span> <span class="nb">puts</span> <span class="s2">&quot;positive&quot;</span> <span class="k">else</span> <span class="nb">puts</span> <span class="s2">&quot;zero&quot;</span> <span class="k">end</span>
+</span><span class='line'><span class="c1"># zero</span>
 </span><span class='line'>
-</span><span class='line'>num = -1
-</span><span class='line'>if num &lt; 0; puts "negative"; puts "lalala" elsif num > 0; puts "positive" else puts "zero" end
-</span><span class='line'># negative
-</span><span class='line'># lalala
+</span><span class='line'><span class="n">num</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span>
+</span><span class='line'><span class="k">if</span> <span class="n">num</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">;</span> <span class="nb">puts</span> <span class="s2">&quot;negative&quot;</span><span class="p">;</span> <span class="nb">puts</span> <span class="s2">&quot;lalala&quot;</span> <span class="k">elsif</span> <span class="n">num</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">;</span> <span class="nb">puts</span> <span class="s2">&quot;positive&quot;</span> <span class="k">else</span> <span class="nb">puts</span> <span class="s2">&quot;zero&quot;</span> <span class="k">end</span>
+</span><span class='line'><span class="c1"># negative</span>
+</span><span class='line'><span class="c1"># lalala</span>
 </span><span class='line'>
-</span><span class='line'>num = 1
-</span><span class='line'>if num &lt; 0; puts "negative"; puts "lalala" elsif num > 0; puts "positive" else puts "zero" end
-</span><span class='line'># positive</span></code></pre></td></tr></table></div></figure>
+</span><span class='line'><span class="n">num</span> <span class="o">=</span> <span class="mi">1</span>
+</span><span class='line'><span class="k">if</span> <span class="n">num</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">;</span> <span class="nb">puts</span> <span class="s2">&quot;negative&quot;</span><span class="p">;</span> <span class="nb">puts</span> <span class="s2">&quot;lalala&quot;</span> <span class="k">elsif</span> <span class="n">num</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">;</span> <span class="nb">puts</span> <span class="s2">&quot;positive&quot;</span> <span class="k">else</span> <span class="nb">puts</span> <span class="s2">&quot;zero&quot;</span> <span class="k">end</span>
+</span><span class='line'><span class="c1"># positive</span>
+</span></code></pre></td></tr></table></div></figure>
 
 
 <ol>
@@ -2144,7 +2192,7 @@ If the identity of the object is important, use a symbol.</p></blockquote>
 
 <p>In terms of functionality, there&rsquo;s little interesting with Integers. There&rsquo;s obviously adding, subtracting, multiplication, division, modulo and exponentials.</p>
 
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
@@ -2156,23 +2204,24 @@ If the identity of the object is important, use a symbol.</p></blockquote>
 <span class='line-number'>10</span>
 <span class='line-number'>11</span>
 <span class='line-number'>12</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>1 + 2
-</span><span class='line'># 3
-</span><span class='line'>1 - 2
-</span><span class='line'># -1 
-</span><span class='line'>1 * 2
-</span><span class='line'># 2
-</span><span class='line'>2 / 1
-</span><span class='line'># 2
-</span><span class='line'>5 % 2
-</span><span class='line'># 1
-</span><span class='line'>2 ** 2
-</span><span class='line'># 4</span></code></pre></td></tr></table></div></figure>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="mi">1</span> <span class="o">+</span> <span class="mi">2</span>
+</span><span class='line'><span class="c1"># 3</span>
+</span><span class='line'><span class="mi">1</span> <span class="o">-</span> <span class="mi">2</span>
+</span><span class='line'><span class="c1"># -1 </span>
+</span><span class='line'><span class="mi">1</span> <span class="o">*</span> <span class="mi">2</span>
+</span><span class='line'><span class="c1"># 2</span>
+</span><span class='line'><span class="mi">2</span> <span class="o">/</span> <span class="mi">1</span>
+</span><span class='line'><span class="c1"># 2</span>
+</span><span class='line'><span class="mi">5</span> <span class="o">%</span> <span class="mi">2</span>
+</span><span class='line'><span class="c1"># 1</span>
+</span><span class='line'><span class="mi">2</span> <span class="o">**</span> <span class="mi">2</span>
+</span><span class='line'><span class="c1"># 4</span>
+</span></code></pre></td></tr></table></div></figure>
 
 
 <p>There are also several methods for common operations</p>
 
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
@@ -2180,14 +2229,15 @@ If the identity of the object is important, use a symbol.</p></blockquote>
 <span class='line-number'>6</span>
 <span class='line-number'>7</span>
 <span class='line-number'>8</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>1.next
-</span><span class='line'># 2
-</span><span class='line'>1.even?
-</span><span class='line'># false
-</span><span class='line'>10.gcd(2)
-</span><span class='line'># 2
-</span><span class='line'>"10".to_i
-</span><span class='line'># 10</span></code></pre></td></tr></table></div></figure>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="mi">1</span><span class="o">.</span><span class="n">next</span>
+</span><span class='line'><span class="c1"># 2</span>
+</span><span class='line'><span class="mi">1</span><span class="o">.</span><span class="n">even?</span>
+</span><span class='line'><span class="c1"># false</span>
+</span><span class='line'><span class="mi">10</span><span class="o">.</span><span class="n">gcd</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+</span><span class='line'><span class="c1"># 2</span>
+</span><span class='line'><span class="s2">&quot;10&quot;</span><span class="o">.</span><span class="n">to_i</span>
+</span><span class='line'><span class="c1"># 10</span>
+</span></code></pre></td></tr></table></div></figure>
 
 
 <h2>Fixnum vs Bignum</h2>
@@ -2198,7 +2248,7 @@ If the identity of the object is important, use a symbol.</p></blockquote>
 
 <p>On this 64bit Mac, a word is 8 bytes. The class uses 1 bit mark the number as positive or negative, and another to mark the integer as value as opposed to a pointer (this is why object_id for Fixnum are always odd). As such, the maximum value for a Fixnum is 4611686018427387903 (2<sup>62</sup>-1) and the minimum is -4611686018427387904 (-2<sup>62</sup>). If an Fixnum leaves this range, Ruby automatically converts it to a Bignum and vice versa.</p>
 
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
@@ -2209,42 +2259,44 @@ If the identity of the object is important, use a symbol.</p></blockquote>
 <span class='line-number'>9</span>
 <span class='line-number'>10</span>
 <span class='line-number'>11</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>FIXNUM_MAX = (2**(0.size * 8 -2) -1)
-</span><span class='line'># 4611686018427387903
-</span><span class='line'>FIXNUM_MIN = -(2**(0.size * 8 -2))
-</span><span class='line'># -4611686018427387904
-</span><span class='line'>FIXNUM_MAX.class
-</span><span class='line'># Fixnum
-</span><span class='line'>bignum = FIXNUM_MAX + 1
-</span><span class='line'>bignum.class
-</span><span class='line'># Bignum
-</span><span class='line'>(bignum-1).class
-</span><span class='line'># Fixnum</span></code></pre></td></tr></table></div></figure>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="no">FIXNUM_MAX</span> <span class="o">=</span> <span class="p">(</span><span class="mi">2</span><span class="o">**</span><span class="p">(</span><span class="mi">0</span><span class="o">.</span><span class="n">size</span> <span class="o">*</span> <span class="mi">8</span> <span class="o">-</span><span class="mi">2</span><span class="p">)</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+</span><span class='line'><span class="c1"># 4611686018427387903</span>
+</span><span class='line'><span class="no">FIXNUM_MIN</span> <span class="o">=</span> <span class="o">-</span><span class="p">(</span><span class="mi">2</span><span class="o">**</span><span class="p">(</span><span class="mi">0</span><span class="o">.</span><span class="n">size</span> <span class="o">*</span> <span class="mi">8</span> <span class="o">-</span><span class="mi">2</span><span class="p">))</span>
+</span><span class='line'><span class="c1"># -4611686018427387904</span>
+</span><span class='line'><span class="no">FIXNUM_MAX</span><span class="o">.</span><span class="n">class</span>
+</span><span class='line'><span class="c1"># Fixnum</span>
+</span><span class='line'><span class="n">bignum</span> <span class="o">=</span> <span class="no">FIXNUM_MAX</span> <span class="o">+</span> <span class="mi">1</span>
+</span><span class='line'><span class="n">bignum</span><span class="o">.</span><span class="n">class</span>
+</span><span class='line'><span class="c1"># Bignum</span>
+</span><span class='line'><span class="p">(</span><span class="n">bignum</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">class</span>
+</span><span class='line'><span class="c1"># Fixnum</span>
+</span></code></pre></td></tr></table></div></figure>
 
 
 <p>The biggest difference between these classes is that, like Java ints, Fixnum objects are immediate value. They are not references to another object. Remember in the last post when repeating <code>"xyzxyz".object_id</code> would return a different number everytime? This won&rsquo;t be the case for Fixnum. In fact, object_id of Fixnum are predictable. For positive numbers, the id is simply 2 * value + 1. Similarly, 2 * value &ndash; 1 for negative numbers.</p>
 
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
 <span class='line-number'>5</span>
 <span class='line-number'>6</span>
 <span class='line-number'>7</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>4611686018427387903.object_id
-</span><span class='line'># 9223372036854775807
-</span><span class='line'>4611686018427387903.object_id
-</span><span class='line'># 9223372036854775807
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="mi">4611686018427387903</span><span class="o">.</span><span class="n">object_id</span>
+</span><span class='line'><span class="c1"># 9223372036854775807</span>
+</span><span class='line'><span class="mi">4611686018427387903</span><span class="o">.</span><span class="n">object_id</span>
+</span><span class='line'><span class="c1"># 9223372036854775807</span>
 </span><span class='line'>
-</span><span class='line'>-4611686018427387904.object_id
-</span><span class='line'># -9223372036854775807</span></code></pre></td></tr></table></div></figure>
+</span><span class='line'><span class="o">-</span><span class="mi">4611686018427387904</span><span class="o">.</span><span class="n">object_id</span>
+</span><span class='line'><span class="c1"># -9223372036854775807</span>
+</span></code></pre></td></tr></table></div></figure>
 
 
 <h1>Rationals</h1>
 
 <p>Rationals are useful for calculations because they come with the accuracy that&rsquo;s missing from floats. There are 3 ways to create them</p>
 
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
@@ -2255,24 +2307,25 @@ If the identity of the object is important, use a symbol.</p></blockquote>
 <span class='line-number'>9</span>
 <span class='line-number'>10</span>
 <span class='line-number'>11</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>Rational(1, 2)
-</span><span class='line'># (1/2)
-</span><span class='line'>"1/2".to_r
-</span><span class='line'># (1/2)
-</span><span class='line'>0.5.rationalize
-</span><span class='line'># (1/2)
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="no">Rational</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+</span><span class='line'><span class="c1"># (1/2)</span>
+</span><span class='line'><span class="s2">&quot;1/2&quot;</span><span class="o">.</span><span class="n">to_r</span>
+</span><span class='line'><span class="c1"># (1/2)</span>
+</span><span class='line'><span class="mi">0</span><span class="o">.</span><span class="mi">5</span><span class="o">.</span><span class="n">rationalize</span>
+</span><span class='line'><span class="c1"># (1/2)</span>
 </span><span class='line'>
-</span><span class='line'>Rational(1,2) + Rational(2,3)
-</span><span class='line'># (7/6)
-</span><span class='line'>Rational(7,6).to_f
-</span><span class='line'># 1.1666666666666667</span></code></pre></td></tr></table></div></figure>
+</span><span class='line'><span class="no">Rational</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span> <span class="o">+</span> <span class="no">Rational</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">)</span>
+</span><span class='line'><span class="c1"># (7/6)</span>
+</span><span class='line'><span class="no">Rational</span><span class="p">(</span><span class="mi">7</span><span class="p">,</span><span class="mi">6</span><span class="p">)</span><span class="o">.</span><span class="n">to_f</span>
+</span><span class='line'><span class="c1"># 1.1666666666666667</span>
+</span></code></pre></td></tr></table></div></figure>
 
 
 <h1>Float</h1>
 
 <p>Like integers, Float&rsquo;s methods are quite standard.</p>
 
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
@@ -2286,32 +2339,34 @@ If the identity of the object is important, use a symbol.</p></blockquote>
 <span class='line-number'>12</span>
 <span class='line-number'>13</span>
 <span class='line-number'>14</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>1.2345.to_i
-</span><span class='line'># 1
-</span><span class='line'>1.2345.floor
-</span><span class='line'># 1
-</span><span class='line'>9.87654321.round(3)
-</span><span class='line'># 9.877
-</span><span class='line'>(0.0).infinite?
-</span><span class='line'># nil
-</span><span class='line'>(-1.0/0.0).infinite?
-</span><span class='line'># -1
-</span><span class='line'>(+1.0/0.0).infinite?
-</span><span class='line'># 1
-</span><span class='line'>0.3.rationalize
-</span><span class='line'># (3/10)</span></code></pre></td></tr></table></div></figure>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="mi">1</span><span class="o">.</span><span class="mi">2345</span><span class="o">.</span><span class="n">to_i</span>
+</span><span class='line'><span class="c1"># 1</span>
+</span><span class='line'><span class="mi">1</span><span class="o">.</span><span class="mi">2345</span><span class="o">.</span><span class="n">floor</span>
+</span><span class='line'><span class="c1"># 1</span>
+</span><span class='line'><span class="mi">9</span><span class="o">.</span><span class="mi">87654321</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+</span><span class='line'><span class="c1"># 9.877</span>
+</span><span class='line'><span class="p">(</span><span class="mi">0</span><span class="o">.</span><span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">infinite?</span>
+</span><span class='line'><span class="c1"># nil</span>
+</span><span class='line'><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="o">.</span><span class="mi">0</span><span class="o">/</span><span class="mi">0</span><span class="o">.</span><span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">infinite?</span>
+</span><span class='line'><span class="c1"># -1</span>
+</span><span class='line'><span class="p">(</span><span class="o">+</span><span class="mi">1</span><span class="o">.</span><span class="mi">0</span><span class="o">/</span><span class="mi">0</span><span class="o">.</span><span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">infinite?</span>
+</span><span class='line'><span class="c1"># 1</span>
+</span><span class='line'><span class="mi">0</span><span class="o">.</span><span class="mi">3</span><span class="o">.</span><span class="n">rationalize</span>
+</span><span class='line'><span class="c1"># (3/10)</span>
+</span></code></pre></td></tr></table></div></figure>
 
 
 <p>However, it&rsquo;s important to note that floating point calculations are inaccurate, like almost every programming langauge (can&rsquo;t name any with).</p>
 
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>0.3.to_r
-</span><span class='line'># (5404319552844595/18014398509481984)
-</span><span class='line'>printf("%.55f\n", 1.9)
-</span><span class='line'>1.8999999999999999111821580299874767661094665527343750000</span></code></pre></td></tr></table></div></figure>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="mi">0</span><span class="o">.</span><span class="mi">3</span><span class="o">.</span><span class="n">to_r</span>
+</span><span class='line'><span class="c1"># (5404319552844595/18014398509481984)</span>
+</span><span class='line'><span class="nb">printf</span><span class="p">(</span><span class="s2">&quot;%.55f</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="mi">1</span><span class="o">.</span><span class="mi">9</span><span class="p">)</span>
+</span><span class='line'><span class="mi">1</span><span class="o">.</span><span class="mi">8999999999999999111821580299874767661094665527343750000</span>
+</span></code></pre></td></tr></table></div></figure>
 
 
 <ol>
@@ -2338,7 +2393,7 @@ If the identity of the object is important, use a symbol.</p></blockquote>
 
 <p>Strings can be created either using literals, or the new function.</p>
 
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
@@ -2347,22 +2402,23 @@ If the identity of the object is important, use a symbol.</p></blockquote>
 <span class='line-number'>7</span>
 <span class='line-number'>8</span>
 <span class='line-number'>9</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>a = "abcde"
-</span><span class='line'>puts a
-</span><span class='line'># abcde
-</span><span class='line'># => nil
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">a</span> <span class="o">=</span> <span class="s2">&quot;abcde&quot;</span>
+</span><span class='line'><span class="nb">puts</span> <span class="n">a</span>
+</span><span class='line'><span class="c1"># abcde</span>
+</span><span class='line'><span class="c1"># =&gt; nil</span>
 </span><span class='line'>
-</span><span class='line'>b = String.new "fghij"
-</span><span class='line'>puts b
-</span><span class='line'># fghij
-</span><span class='line'># => nil</span></code></pre></td></tr></table></div></figure>
+</span><span class='line'><span class="n">b</span> <span class="o">=</span> <span class="nb">String</span><span class="o">.</span><span class="n">new</span> <span class="s2">&quot;fghij&quot;</span>
+</span><span class='line'><span class="nb">puts</span> <span class="n">b</span>
+</span><span class='line'><span class="c1"># fghij</span>
+</span><span class='line'><span class="c1"># =&gt; nil</span>
+</span></code></pre></td></tr></table></div></figure>
 
 
 <h2>Instance Functions</h2>
 
 <p>Like <code>java.lang.String</code>, there are loads of predefined methods for the class. Remeber to refer to the Class documentation; there are code samples in there too. I&rsquo;m just going to give you a taste of what&rsquo;s available.</p>
 
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
@@ -2372,21 +2428,22 @@ If the identity of the object is important, use a symbol.</p></blockquote>
 <span class='line-number'>8</span>
 <span class='line-number'>9</span>
 <span class='line-number'>10</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>a.length
-</span><span class='line'># 1
-</span><span class='line'>a.next
-</span><span class='line'># abcdf
-</span><span class='line'>a.reverse
-</span><span class='line'># edcba
-</span><span class='line'>a.upcase
-</span><span class='line'># ABCDE
-</span><span class='line'>a.slice(3, 5)
-</span><span class='line'># de</span></code></pre></td></tr></table></div></figure>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">a</span><span class="o">.</span><span class="n">length</span>
+</span><span class='line'><span class="c1"># 1</span>
+</span><span class='line'><span class="n">a</span><span class="o">.</span><span class="n">next</span>
+</span><span class='line'><span class="c1"># abcdf</span>
+</span><span class='line'><span class="n">a</span><span class="o">.</span><span class="n">reverse</span>
+</span><span class='line'><span class="c1"># edcba</span>
+</span><span class='line'><span class="n">a</span><span class="o">.</span><span class="n">upcase</span>
+</span><span class='line'><span class="c1"># ABCDE</span>
+</span><span class='line'><span class="n">a</span><span class="o">.</span><span class="n">slice</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
+</span><span class='line'><span class="c1"># de</span>
+</span></code></pre></td></tr></table></div></figure>
 
 
 <p>You&rsquo;ll notice that the methods above only returns the result of the function. Some methods makes changes to the string in place.</p>
 
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
@@ -2394,19 +2451,20 @@ If the identity of the object is important, use a symbol.</p></blockquote>
 <span class='line-number'>6</span>
 <span class='line-number'>7</span>
 <span class='line-number'>8</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>c = "ababab"
-</span><span class='line'>c.reverse!
-</span><span class='line'>puts c
-</span><span class='line'># bababa
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">c</span> <span class="o">=</span> <span class="s2">&quot;ababab&quot;</span>
+</span><span class='line'><span class="n">c</span><span class="o">.</span><span class="n">reverse!</span>
+</span><span class='line'><span class="nb">puts</span> <span class="n">c</span>
+</span><span class='line'><span class="c1"># bababa</span>
 </span><span class='line'>
-</span><span class='line'>c.upcase!
-</span><span class='line'>puts c
-</span><span class='line'># BABABA</span></code></pre></td></tr></table></div></figure>
+</span><span class='line'><span class="n">c</span><span class="o">.</span><span class="n">upcase!</span>
+</span><span class='line'><span class="nb">puts</span> <span class="n">c</span>
+</span><span class='line'><span class="c1"># BABABA</span>
+</span></code></pre></td></tr></table></div></figure>
 
 
 <p>Like Perl, Strings in Ruby are mutable. The object_id method I&rsquo;m using below returns the id of the object, similar to the &amp; operator in C. Strings inherit this from the Object class. Note that String objects are created every time a String literal is used.</p>
 
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
@@ -2418,25 +2476,26 @@ If the identity of the object is important, use a symbol.</p></blockquote>
 <span class='line-number'>10</span>
 <span class='line-number'>11</span>
 <span class='line-number'>12</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>"xyzxyz".object_id
-</span><span class='line'># 70243133245180
-</span><span class='line'>"xyzxyz".object_id
-</span><span class='line'># 70243133228560
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="s2">&quot;xyzxyz&quot;</span><span class="o">.</span><span class="n">object_id</span>
+</span><span class='line'><span class="c1"># 70243133245180</span>
+</span><span class='line'><span class="s2">&quot;xyzxyz&quot;</span><span class="o">.</span><span class="n">object_id</span>
+</span><span class='line'><span class="c1"># 70243133228560</span>
 </span><span class='line'>
-</span><span class='line'>d = "xyzxyz"
-</span><span class='line'>d.object_id
-</span><span class='line'># 70243133212180
-</span><span class='line'>d.reverse!
-</span><span class='line'># "zyxzyx"
-</span><span class='line'>d.object_id
-</span><span class='line'># 70243133212180</span></code></pre></td></tr></table></div></figure>
+</span><span class='line'><span class="n">d</span> <span class="o">=</span> <span class="s2">&quot;xyzxyz&quot;</span>
+</span><span class='line'><span class="n">d</span><span class="o">.</span><span class="n">object_id</span>
+</span><span class='line'><span class="c1"># 70243133212180</span>
+</span><span class='line'><span class="n">d</span><span class="o">.</span><span class="n">reverse!</span>
+</span><span class='line'><span class="c1"># &quot;zyxzyx&quot;</span>
+</span><span class='line'><span class="n">d</span><span class="o">.</span><span class="n">object_id</span>
+</span><span class='line'><span class="c1"># 70243133212180</span>
+</span></code></pre></td></tr></table></div></figure>
 
 
 <h2>Building a String</h2>
 
 <p>Strings can be built from variables in 4 different ways. The first two is probably the most commonly used</p>
 
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
@@ -2444,19 +2503,20 @@ If the identity of the object is important, use a symbol.</p></blockquote>
 <span class='line-number'>6</span>
 <span class='line-number'>7</span>
 <span class='line-number'>8</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>e = "abc"
-</span><span class='line'>f = "def"
-</span><span class='line'>g = 10
-</span><span class='line'>h = e + " + " + f + " is not equal to " + g.to_s
-</span><span class='line'>i = "#{e} + #{f} is not equal to #{g}"
-</span><span class='line'>puts h
-</span><span class='line'>puts i
-</span><span class='line'># abc + def is not equal to 10</span></code></pre></td></tr></table></div></figure>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">e</span> <span class="o">=</span> <span class="s2">&quot;abc&quot;</span>
+</span><span class='line'><span class="n">f</span> <span class="o">=</span> <span class="s2">&quot;def&quot;</span>
+</span><span class='line'><span class="n">g</span> <span class="o">=</span> <span class="mi">10</span>
+</span><span class='line'><span class="n">h</span> <span class="o">=</span> <span class="n">e</span> <span class="o">+</span> <span class="s2">&quot; + &quot;</span> <span class="o">+</span> <span class="n">f</span> <span class="o">+</span> <span class="s2">&quot; is not equal to &quot;</span> <span class="o">+</span> <span class="n">g</span><span class="o">.</span><span class="n">to_s</span>
+</span><span class='line'><span class="n">i</span> <span class="o">=</span> <span class="s2">&quot;</span><span class="si">#{</span><span class="n">e</span><span class="si">}</span><span class="s2"> + </span><span class="si">#{</span><span class="n">f</span><span class="si">}</span><span class="s2"> is not equal to </span><span class="si">#{</span><span class="n">g</span><span class="si">}</span><span class="s2">&quot;</span>
+</span><span class='line'><span class="nb">puts</span> <span class="n">h</span>
+</span><span class='line'><span class="nb">puts</span> <span class="n">i</span>
+</span><span class='line'><span class="c1"># abc + def is not equal to 10</span>
+</span></code></pre></td></tr></table></div></figure>
 
 
 <p>The third way is appending to strings. It&rsquo;s more efficient in that it simply adds to a string instead of creating a new one, but it does change the string that is being appended to.</p>
 
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
@@ -2470,20 +2530,21 @@ If the identity of the object is important, use a symbol.</p></blockquote>
 <span class='line-number'>12</span>
 <span class='line-number'>13</span>
 <span class='line-number'>14</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>j = e &lt;&lt; " + " &lt;&lt; f &lt;&lt; " is not equal to " &lt;&lt; g.to_s
-</span><span class='line'># abc + def is not equal to 10
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">j</span> <span class="o">=</span> <span class="n">e</span> <span class="o">&lt;&lt;</span> <span class="s2">&quot; + &quot;</span> <span class="o">&lt;&lt;</span> <span class="n">f</span> <span class="o">&lt;&lt;</span> <span class="s2">&quot; is not equal to &quot;</span> <span class="o">&lt;&lt;</span> <span class="n">g</span><span class="o">.</span><span class="n">to_s</span>
+</span><span class='line'><span class="c1"># abc + def is not equal to 10</span>
 </span><span class='line'>
-</span><span class='line'>j.object_id
-</span><span class='line'># 70243124981460
-</span><span class='line'>e.object_id
-</span><span class='line'># 70243124981460
-</span><span class='line'>f.object_id
-</span><span class='line'># 70243124965700
+</span><span class='line'><span class="n">j</span><span class="o">.</span><span class="n">object_id</span>
+</span><span class='line'><span class="c1"># 70243124981460</span>
+</span><span class='line'><span class="n">e</span><span class="o">.</span><span class="n">object_id</span>
+</span><span class='line'><span class="c1"># 70243124981460</span>
+</span><span class='line'><span class="n">f</span><span class="o">.</span><span class="n">object_id</span>
+</span><span class='line'><span class="c1"># 70243124965700</span>
 </span><span class='line'>
-</span><span class='line'>puts e
-</span><span class='line'># abc + def is not equal to 10
-</span><span class='line'>puts f
-</span><span class='line'># def</span></code></pre></td></tr></table></div></figure>
+</span><span class='line'><span class="nb">puts</span> <span class="n">e</span>
+</span><span class='line'><span class="c1"># abc + def is not equal to 10</span>
+</span><span class='line'><span class="nb">puts</span> <span class="n">f</span>
+</span><span class='line'><span class="c1"># def</span>
+</span></code></pre></td></tr></table></div></figure>
 
 
 <p>The first line basically means, append &ldquo; + &rdquo; to e, then append f to e, then append &ldquo; is not equal to &rdquo; to e, and finally append g.to_s to e. I will demonstrate the final way when we get to the Arrays section.</p>
@@ -2492,28 +2553,30 @@ If the identity of the object is important, use a symbol.</p></blockquote>
 
 <p>If the String you&rsquo;re after is literally <code>#{e} + #{f} is not equal to #{g}</code>, ie. you don&rsquo;t want Ruby to evaluate e, f, and g, you can escape the <code>#{}</code> blocks by prepending the # with a backslash <code>\</code>. Alternatively, you can use single quotes instead of double quotes, and Ruby will escape those characters for you.</p>
 
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
 <span class='line-number'>5</span>
 <span class='line-number'>6</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>puts "\#{e} + \#{f} is not equal to \#{g}""
-</span><span class='line'># #{e} + #{f} is not equal to #{g}
-</span><span class='line'>puts '#{e} + #{f} is not equal to #{g}'
-</span><span class='line'># #{e} + #{f} is not equal to #{g}
-</span><span class='line'>a = '#{e} + #{f} is not equal to #{g}'
-</span><span class='line'># "\#{e} + \#{f} is not equal to \#{g}"</span></code></pre></td></tr></table></div></figure>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="nb">puts</span> <span class="s2">&quot;</span><span class="se">\#</span><span class="s2">{e} + </span><span class="se">\#</span><span class="s2">{f} is not equal to </span><span class="se">\#</span><span class="s2">{g}&quot;&quot;</span>
+</span><span class='line'><span class="s2"># </span><span class="si">#{</span><span class="n">e</span><span class="si">}</span><span class="s2"> + </span><span class="si">#{</span><span class="n">f</span><span class="si">}</span><span class="s2"> is not equal to </span><span class="si">#{</span><span class="n">g</span><span class="si">}</span><span class="s2"></span>
+</span><span class='line'><span class="s2">puts &#39;</span><span class="si">#{</span><span class="n">e</span><span class="si">}</span><span class="s2"> + </span><span class="si">#{</span><span class="n">f</span><span class="si">}</span><span class="s2"> is not equal to </span><span class="si">#{</span><span class="n">g</span><span class="si">}</span><span class="s2">&#39;</span>
+</span><span class='line'><span class="s2"># </span><span class="si">#{</span><span class="n">e</span><span class="si">}</span><span class="s2"> + </span><span class="si">#{</span><span class="n">f</span><span class="si">}</span><span class="s2"> is not equal to </span><span class="si">#{</span><span class="n">g</span><span class="si">}</span><span class="s2"></span>
+</span><span class='line'><span class="s2">a = &#39;</span><span class="si">#{</span><span class="n">e</span><span class="si">}</span><span class="s2"> + </span><span class="si">#{</span><span class="n">f</span><span class="si">}</span><span class="s2"> is not equal to </span><span class="si">#{</span><span class="n">g</span><span class="si">}</span><span class="s2">&#39;</span>
+</span><span class='line'><span class="s2"># &quot;</span><span class="p">\</span><span class="c1">#{e} + \#{f} is not equal to \#{g}&quot;</span>
+</span></code></pre></td></tr></table></div></figure>
 
 
 <h2>Ruby Documentation</h2>
 
 <p>There&rsquo;s two way to access the API documentation, online through <a href="http://ruby-doc.org/">http://ruby-doc.org/</a>, or offline in your command line with ri.</p>
 
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>ri String
-</span><span class='line'>ri String#object_id</span></code></pre></td></tr></table></div></figure>
+</pre></td><td class='code'><pre><code class='sh'><span class='line'>ri String
+</span><span class='line'>ri String#object_id
+</span></code></pre></td></tr></table></div></figure>
 
 
 <p>Unofficially, (if you don&rsquo;t already) you&rsquo;ll learn to love Google and Stack Overflow too :)</p>
@@ -2532,20 +2595,22 @@ If the identity of the object is important, use a symbol.</p></blockquote>
     <id>http://nizhu.github.io/ruby-intro-site/blog/2013/07/27/hello-world</id>
     <content type="html"><![CDATA[<p>It&rsquo;s finally time to start coding. Start by cloning the git repository I&rsquo;ve prepared for this demonstration.</p>
 
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>git clone git@github.com:nizhu/ruby-intro.git ~/ruby-intro
-</span><span class='line'>cd ~/ruby-intro
-</span><span class='line'>ls</span></code></pre></td></tr></table></div></figure>
+</pre></td><td class='code'><pre><code class='sh'><span class='line'>git clone git@github.com:nizhu/ruby-intro.git ~/ruby-intro
+</span><span class='line'><span class="nb">cd</span> ~/ruby-intro
+</span><span class='line'>ls
+</span></code></pre></td></tr></table></div></figure>
 
 
 <p>You&rsquo;ll notice that there are lots of files here, most of which you don&rsquo;t need yet so let&rsquo;s get rid of them for now</p>
 
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>git checkout hello-world
-</span><span class='line'>ls</span></code></pre></td></tr></table></div></figure>
+</pre></td><td class='code'><pre><code class='sh'><span class='line'>git checkout hello-world
+</span><span class='line'>ls
+</span></code></pre></td></tr></table></div></figure>
 
 
 <p>Now there&rsquo;s only a license file, telling you that you have permission to use all of the code in this repository for whatever purpose, but I will not take any responsibility for any side effects caused by it&hellip;. in lawyer-speak, and a README file that doesn&rsquo;t tell you very much.</p>
@@ -2560,10 +2625,11 @@ If the identity of the object is important, use a symbol.</p></blockquote>
 
 <p>That&rsquo;s it! Save it as hello_world.rb, exit, and now we can run the file. Note that # is the comment delimiter in Ruby and Shell so I will be using that to give you an idea of the expected result of the line preceding it.</p>
 
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>ruby hello_world.rb
-</span><span class='line'># Hello World</span></code></pre></td></tr></table></div></figure>
+</pre></td><td class='code'><pre><code class='sh'><span class='line'>ruby hello_world.rb
+</span><span class='line'><span class="c"># Hello World</span>
+</span></code></pre></td></tr></table></div></figure>
 
 
 <p>Like shell scripts, you can also run them as executables. Create another file:</p>
@@ -2578,10 +2644,11 @@ If the identity of the object is important, use a symbol.</p></blockquote>
 
 <p>And give it executable permission, and run it.</p>
 
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>chmod +x hello_world_exe.rb
-</span><span class='line'>./hello_world_exe.rb</span></code></pre></td></tr></table></div></figure>
+</pre></td><td class='code'><pre><code class='sh'><span class='line'>chmod +x hello_world_exe.rb
+</span><span class='line'>./hello_world_exe.rb
+</span></code></pre></td></tr></table></div></figure>
 
 
 <p>Hashbangs will be explained at the end of this post for those curious</p>
@@ -2594,7 +2661,7 @@ If the identity of the object is important, use a symbol.</p></blockquote>
 
 <p>If you want to import files that you&rsquo;ve written, there are two ways to do so. A file that is imported in irb is executed just as it would if it had been imported through normal code, and it is the same as if it had been copy and pasted into irb. The following demonstrates the two major difference between the two options so try this out in irb:</p>
 
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
@@ -2605,17 +2672,18 @@ If the identity of the object is important, use a symbol.</p></blockquote>
 <span class='line-number'>9</span>
 <span class='line-number'>10</span>
 <span class='line-number'>11</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>load 'hello_world.rb'
-</span><span class='line'># Hello World
-</span><span class='line'># => true
-</span><span class='line'>load 'hello_world.rb'
-</span><span class='line'># Hello World
-</span><span class='line'># => true
-</span><span class='line'>require 'hello_world'
-</span><span class='line'># Hello World
-</span><span class='line'># => true
-</span><span class='line'>require 'hello_world'
-</span><span class='line'># => false</span></code></pre></td></tr></table></div></figure>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="nb">load</span> <span class="s1">&#39;hello_world.rb&#39;</span>
+</span><span class='line'><span class="c1"># Hello World</span>
+</span><span class='line'><span class="c1"># =&gt; true</span>
+</span><span class='line'><span class="nb">load</span> <span class="s1">&#39;hello_world.rb&#39;</span>
+</span><span class='line'><span class="c1"># Hello World</span>
+</span><span class='line'><span class="c1"># =&gt; true</span>
+</span><span class='line'><span class="nb">require</span> <span class="s1">&#39;hello_world&#39;</span>
+</span><span class='line'><span class="c1"># Hello World</span>
+</span><span class='line'><span class="c1"># =&gt; true</span>
+</span><span class='line'><span class="nb">require</span> <span class="s1">&#39;hello_world&#39;</span>
+</span><span class='line'><span class="c1"># =&gt; false</span>
+</span></code></pre></td></tr></table></div></figure>
 
 
 <p>The differences are:
@@ -2628,12 +2696,13 @@ If the identity of the object is important, use a symbol.</p></blockquote>
 
 <p>You might have come across this in COMP2041. This is the line at the top of scripts that tells your shell what to execute it with &ndash; your shell will simply interpret it as a shell script without it.</p>
 
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>chmod +x hello_world.rb
+</pre></td><td class='code'><pre><code class='sh'><span class='line'>chmod +x hello_world.rb
 </span><span class='line'>./hello_world.rb
-</span><span class='line'># ./hello_world.rb: line 1: puts: command not found</span></code></pre></td></tr></table></div></figure>
+</span><span class='line'><span class="c"># ./hello_world.rb: line 1: puts: command not found</span>
+</span></code></pre></td></tr></table></div></figure>
 
 
 <h3>/usr/bin/env</h3>
@@ -2662,7 +2731,7 @@ If the identity of the object is important, use a symbol.</p></blockquote>
 
 
 
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
@@ -2672,16 +2741,17 @@ If the identity of the object is important, use a symbol.</p></blockquote>
 <span class='line-number'>8</span>
 <span class='line-number'>9</span>
 <span class='line-number'>10</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>ruby -v
-</span><span class='line'># ruby 2.0.0p247 (2013-06-27 revision 41674) [x86_64-darwin12.4.0]
+</pre></td><td class='code'><pre><code class='sh'><span class='line'>ruby -v
+</span><span class='line'><span class="c"># ruby 2.0.0p247 (2013-06-27 revision 41674) [x86_64-darwin12.4.0]</span>
 </span><span class='line'>/usr/bin/ruby -v
-</span><span class='line'># ruby 1.8.7 (2012-02-08 patchlevel 358) [universal-darwin12.0]
+</span><span class='line'><span class="c"># ruby 1.8.7 (2012-02-08 patchlevel 358) [universal-darwin12.0]</span>
 </span><span class='line'>chmod +x version_env.rb
 </span><span class='line'>./version_env.rb
-</span><span class='line'># 2.0.0
+</span><span class='line'><span class="c"># 2.0.0</span>
 </span><span class='line'>chmod +x version_system.rb
 </span><span class='line'>./version_system.rb
-</span><span class='line'># 1.8.7</span></code></pre></td></tr></table></div></figure>
+</span><span class='line'><span class="c"># 1.8.7</span>
+</span></code></pre></td></tr></table></div></figure>
 
 
 <ol>
@@ -2710,63 +2780,70 @@ If the identity of the object is important, use a symbol.</p></blockquote>
 
 <p>If you have a Mac, you&rsquo;re in luck &ndash; you have Homebrew. If you don&rsquo;t, just install it with <code>ruby -e "$(curl -fsSL https://raw.github.com/mxcl/homebrew/go)"</code></p>
 
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>brew update
-</span><span class='line'>brew install rbenv</span></code></pre></td></tr></table></div></figure>
+</pre></td><td class='code'><pre><code class='sh'><span class='line'>brew update
+</span><span class='line'>brew install rbenv
+</span></code></pre></td></tr></table></div></figure>
 
 
 <p>Unfortunately, a plugin is required to install Ruby with rbenv</p>
 
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>brew install ruby-build</span></code></pre></td></tr></table></div></figure>
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='sh'><span class='line'>brew install ruby-build
+</span></code></pre></td></tr></table></div></figure>
 
 
 <p>&lsquo;Turn on&rsquo; rbenv</p>
 
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi</span></code></pre></td></tr></table></div></figure>
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='sh'><span class='line'><span class="k">if </span>which rbenv &gt; /dev/null; <span class="k">then </span><span class="nb">eval</span> <span class="s2">&quot;$(rbenv init -)&quot;</span>; <span class="k">fi</span>
+</span></code></pre></td></tr></table></div></figure>
 
 
 <p>Set up bash to always enable rbenv if available</p>
 
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>echo 'if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi' >> ~/.profile</span></code></pre></td></tr></table></div></figure>
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='sh'><span class='line'><span class="nb">echo</span> <span class="s1">&#39;if which rbenv &gt; /dev/null; then eval &quot;$(rbenv init -)&quot;; fi&#39;</span> &gt;&gt; ~/.profile
+</span></code></pre></td></tr></table></div></figure>
 
 
 <p>Add rbenv&rsquo;s executables to your PATH</p>
 
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'># My rbenv is installed in /usr/loca/opt/rbenv, but yours may be in ~/.rbenv
-</span><span class='line'># Change the line below appropriately
-</span><span class='line'>echo 'export PATH=/usr/local/opt/rbenv/shims:$PATH'</span></code></pre></td></tr></table></div></figure>
+</pre></td><td class='code'><pre><code class='sh'><span class='line'><span class="c"># My rbenv is installed in /usr/loca/opt/rbenv, but yours may be in ~/.rbenv</span>
+</span><span class='line'><span class="c"># Change the line below appropriately</span>
+</span><span class='line'><span class="nb">echo</span> <span class="s1">&#39;export PATH=/usr/local/opt/rbenv/shims:$PATH&#39;</span>
+</span></code></pre></td></tr></table></div></figure>
 
 
 <p>Finally install Ruby 2.0.0-p247</p>
 
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>rbenv install 2.0.0-p247
-</span><span class='line'># Command below refreshes rbenv's executables.
-</span><span class='line'># Make sure you run this every time you (un)install a ruby or a gem - more on this later
-</span><span class='line'>rbenv rehash</span></code></pre></td></tr></table></div></figure>
+</pre></td><td class='code'><pre><code class='sh'><span class='line'>rbenv install 2.0.0-p247
+</span><span class='line'><span class="c"># Command below refreshes rbenv&#39;s executables.</span>
+</span><span class='line'><span class="c"># Make sure you run this every time you (un)install a ruby or a gem - more on this later</span>
+</span><span class='line'>rbenv rehash
+</span></code></pre></td></tr></table></div></figure>
 
 
 <h2>Debian/Ubuntu/Linux Mint</h2>
 
 <p>For fun times, install these dependencies</p>
 
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>apt-get install build-essential openssl libreadline6 libreadline6-dev curl git-core zlib1g zlib1g-dev libssl-dev libyaml-dev libsqlite3-dev sqlite3 libxml2-dev libxslt-dev autoconf libc6-dev ncurses-dev automake libtool bison subversion pkg-config</span></code></pre></td></tr></table></div></figure>
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='sh'><span class='line'>apt-get install build-essential openssl libreadline6 libreadline6-dev curl git-core zlib1g zlib1g-dev libssl-dev libyaml-dev libsqlite3-dev sqlite3 libxml2-dev libxslt-dev autoconf libc6-dev ncurses-dev automake libtool bison subversion pkg-config
+</span></code></pre></td></tr></table></div></figure>
 
 
 <p>Install rbenv + ruby-build</p>
 
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
@@ -2774,42 +2851,45 @@ If the identity of the object is important, use a symbol.</p></blockquote>
 <span class='line-number'>6</span>
 <span class='line-number'>7</span>
 <span class='line-number'>8</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>git clone https://github.com/sstephenson/rbenv.git ~/.rbenv
-</span><span class='line'>echo 'export PATH="$HOME/.rbenv/bin:$PATH"' >> ~/.bashrc
-</span><span class='line'>echo 'eval "$(rbenv init -)"' >> ~/.bashrc
-</span><span class='line'>exec $SHELL -l
+</pre></td><td class='code'><pre><code class='sh'><span class='line'>git clone https://github.com/sstephenson/rbenv.git ~/.rbenv
+</span><span class='line'><span class="nb">echo</span> <span class="s1">&#39;export PATH=&quot;$HOME/.rbenv/bin:$PATH&quot;&#39;</span> &gt;&gt; ~/.bashrc
+</span><span class='line'><span class="nb">echo</span> <span class="s1">&#39;eval &quot;$(rbenv init -)&quot;&#39;</span> &gt;&gt; ~/.bashrc
+</span><span class='line'><span class="nb">exec</span> <span class="nv">$SHELL</span> -l
 </span><span class='line'>mkdir -p ~/.rbenv/plugins
 </span><span class='line'>git clone https://github.com/sstephenson/ruby-build.git ~/.rbenv/plugins/ruby-build
 </span><span class='line'>rbenv install 2.0.0-p247
-</span><span class='line'>rbenv rehash</span></code></pre></td></tr></table></div></figure>
+</span><span class='line'>rbenv rehash
+</span></code></pre></td></tr></table></div></figure>
 
 
 <h2>Keeping legacy code consistent</h2>
 
 <p>You may have Ruby scripts before installing rbenv that ran with system Ruby, so it&rsquo;s best to keep it that way. To ensure that this happens, we can make system ruby the default for rbenv.</p>
 
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>rbenv global system
+</pre></td><td class='code'><pre><code class='sh'><span class='line'>rbenv global system
 </span><span class='line'>rbenv version
-</span><span class='line'># system (set by /usr/local/opt/rbenv/version)</span></code></pre></td></tr></table></div></figure>
+</span><span class='line'><span class="c"># system (set by /usr/local/opt/rbenv/version)</span>
+</span></code></pre></td></tr></table></div></figure>
 
 
 <h2>Make rbenv use a specific version</h2>
 
 <p>Whenever you interact with rbenv, it will look in your current directory for a file named .rbenv-version before falling back to the global default. Try the following:</p>
 
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
 <span class='line-number'>5</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>cd /tmp
+</pre></td><td class='code'><pre><code class='sh'><span class='line'><span class="nb">cd</span> /tmp
 </span><span class='line'>rbenv version
-</span><span class='line'># system (set by /usr/local/opt/rbenv/version)
-</span><span class='line'>echo '2.0.0-p247' > .rbenv-version
-</span><span class='line'># 2.0.0-p247 (set by /tmp/.rbenv-version)</span></code></pre></td></tr></table></div></figure>
+</span><span class='line'><span class="c"># system (set by /usr/local/opt/rbenv/version)</span>
+</span><span class='line'><span class="nb">echo</span> <span class="s1">&#39;2.0.0-p247&#39;</span> &gt; .rbenv-version
+</span><span class='line'><span class="c"># 2.0.0-p247 (set by /tmp/.rbenv-version)</span>
+</span></code></pre></td></tr></table></div></figure>
 
 
 <p>The best thing about forcing versions is that you can commit this file to your code repository, and it will ensure that developer on every machine using rbenv will be using the version of Ruby that is intended.</p>

@@ -344,14 +344,15 @@
 
 <p>One of the big features of rails is scaffolding &ndash; automatically generating common parts of an application. This is the first step of development. Here, we&rsquo;re asking rails to scaffold the project without support for a database.</p>
 
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>cd ~
+</pre></td><td class='code'><pre><code class='sh'><span class='line'><span class="nb">cd</span> ~
 </span><span class='line'>rails new twitter_app -O
-</span><span class='line'>cd twitter_app
-</span><span class='line'>rails generate controller twitter</span></code></pre></td></tr></table></div></figure>
+</span><span class='line'><span class="nb">cd </span>twitter_app
+</span><span class='line'>rails generate controller twitter
+</span></code></pre></td></tr></table></div></figure>
 
 
 <p>The rails generator has created a lot of new files &ndash; about 80 in fact &ndash; but there aren&rsquo;t that many we need to worry about.</p>
@@ -516,7 +517,7 @@
 
 <p>WEBrick is a very simple Rails web server, perfect for dev testing. Just go to the root directory of the application and type in <code>rails server</code>. WEBrick listens to port 3000 by default, but look carefully at its output if you come across any problems. The JB Proposals page will be available in @ <code>http://0.0.0.0:3000</code> and <code>http://0.0.0.0:3000/proposals</code> while the #ausvotes page will be available at <code>http://0.0.0.0:3000/ausvotes</code>.</p>
 
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
@@ -524,14 +525,15 @@
 <span class='line-number'>6</span>
 <span class='line-number'>7</span>
 <span class='line-number'>8</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>$ rails server
-</span><span class='line'>=> Booting WEBrick
-</span><span class='line'>=> Rails 4.0.0 application starting in development on http://0.0.0.0:3000
-</span><span class='line'>=> Run `rails server -h` for more startup options
-</span><span class='line'>=> Ctrl-C to shutdown server
-</span><span class='line'>[2013-08-05 22:13:15] INFO  WEBrick 1.3.1
-</span><span class='line'>[2013-08-05 22:13:15] INFO  ruby 2.0.0 (2013-06-27) [x86_64-darwin12.4.0]
-</span><span class='line'>[2013-08-05 22:13:15] INFO  WEBrick::HTTPServer#start: pid=25428 port=3000</span></code></pre></td></tr></table></div></figure>
+</pre></td><td class='code'><pre><code class='sh'><span class='line'><span class="nv">$ </span>rails <span class="nv">server</span>
+</span><span class='line'><span class="o">=</span>&gt; Booting <span class="nv">WEBrick</span>
+</span><span class='line'><span class="o">=</span>&gt; Rails 4.0.0 application starting in development on http://0.0.0.0:3000
+</span><span class='line'><span class="o">=</span>&gt; Run <span class="sb">`</span>rails server -h<span class="sb">`</span> <span class="k">for </span>more startup <span class="nv">options</span>
+</span><span class='line'><span class="o">=</span>&gt; Ctrl-C to shutdown server
+</span><span class='line'><span class="o">[</span>2013-08-05 22:13:15<span class="o">]</span> INFO  WEBrick 1.3.1
+</span><span class='line'><span class="o">[</span>2013-08-05 22:13:15<span class="o">]</span> INFO  ruby 2.0.0 <span class="o">(</span>2013-06-27<span class="o">)</span> <span class="o">[</span>x86_64-darwin12.4.0<span class="o">]</span>
+</span><span class='line'><span class="o">[</span>2013-08-05 22:13:15<span class="o">]</span> INFO  WEBrick::HTTPServer#start: <span class="nv">pid</span><span class="o">=</span>25428 <span class="nv">port</span><span class="o">=</span>3000
+</span></code></pre></td></tr></table></div></figure>
 
 
 <h2>Adding links between the 2 pages</h2>
@@ -620,41 +622,44 @@
 
 <h2>Twitter Gem</h2>
 
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>git checkout twitter
-</span><span class='line'>gem install twitter</span></code></pre></td></tr></table></div></figure>
+</pre></td><td class='code'><pre><code class='sh'><span class='line'>git checkout twitter
+</span><span class='line'>gem install twitter
+</span></code></pre></td></tr></table></div></figure>
 
 
 <p>I&rsquo;ve made a file out of the gem&rsquo;s authentication configuration code taken from its documentation. Just replace the strings with the your Twitter developer keys in twitter_config.rb. There are some usage examples <a href="https://github.com/sferik/twitter#usage-examples">here</a>, but there&rsquo;s plenty more functionality so do refer to the <a href="http://rdoc.info/gems/twitter">documentation</a>.</p>
 
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>require 'twitter'
-</span><span class='line'>load 'twitter_config.rb'</span></code></pre></td></tr></table></div></figure>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="nb">require</span> <span class="s1">&#39;twitter&#39;</span>
+</span><span class='line'><span class="nb">load</span> <span class="s1">&#39;twitter_config.rb&#39;</span>
+</span></code></pre></td></tr></table></div></figure>
 
 
 <p>Lets find the last person to have proposed to Justin Bieber</p>
 
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
 <span class='line-number'>5</span>
 <span class='line-number'>6</span>
 <span class='line-number'>7</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>result = Twitter.search("to:justinbieber marry me", :count => 1, :result_type => "recent")
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">result</span> <span class="o">=</span> <span class="no">Twitter</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="s2">&quot;to:justinbieber marry me&quot;</span><span class="p">,</span> <span class="ss">:count</span> <span class="o">=&gt;</span> <span class="mi">1</span><span class="p">,</span> <span class="ss">:result_type</span> <span class="o">=&gt;</span> <span class="s2">&quot;recent&quot;</span><span class="p">)</span>
 </span><span class='line'>
-</span><span class='line'>result.class
-</span><span class='line'># Twitter::SearchResults
+</span><span class='line'><span class="n">result</span><span class="o">.</span><span class="n">class</span>
+</span><span class='line'><span class="c1"># Twitter::SearchResults</span>
 </span><span class='line'>
-</span><span class='line'>result.statuses[0].user.screen_name
-</span><span class='line'># 4ever_beliebing</span></code></pre></td></tr></table></div></figure>
+</span><span class='line'><span class="n">result</span><span class="o">.</span><span class="n">statuses</span><span class="o">[</span><span class="mi">0</span><span class="o">].</span><span class="n">user</span><span class="o">.</span><span class="n">screen_name</span>
+</span><span class='line'><span class="c1"># 4ever_beliebing</span>
+</span></code></pre></td></tr></table></div></figure>
 
 
 <p>Just to give another example, I&rsquo;m going to get the last tweet from each of users I&rsquo;m stalking.</p>
 
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
@@ -680,32 +685,33 @@
 <span class='line-number'>24</span>
 <span class='line-number'>25</span>
 <span class='line-number'>26</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>f = Twitter.friends
-</span><span class='line'>f.class
-</span><span class='line'># Twitter::Cursor
-</span><span class='line'># -- http://rdoc.info/gems/twitter/Twitter/Cursor
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">f</span> <span class="o">=</span> <span class="no">Twitter</span><span class="o">.</span><span class="n">friends</span>
+</span><span class='line'><span class="n">f</span><span class="o">.</span><span class="n">class</span>
+</span><span class='line'><span class="c1"># Twitter::Cursor</span>
+</span><span class='line'><span class="c1"># -- http://rdoc.info/gems/twitter/Twitter/Cursor</span>
 </span><span class='line'>
-</span><span class='line'>f.collection.class
-</span><span class='line'># Array
+</span><span class='line'><span class="n">f</span><span class="o">.</span><span class="n">collection</span><span class="o">.</span><span class="n">class</span>
+</span><span class='line'><span class="c1"># Array</span>
 </span><span class='line'>
-</span><span class='line'>f.collection[0].class
-</span><span class='line'># Twitter::User
-</span><span class='line'># -- http://rdoc.info/gems/twitter/Twitter/User
+</span><span class='line'><span class="n">f</span><span class="o">.</span><span class="n">collection</span><span class="o">[</span><span class="mi">0</span><span class="o">].</span><span class="n">class</span>
+</span><span class='line'><span class="c1"># Twitter::User</span>
+</span><span class='line'><span class="c1"># -- http://rdoc.info/gems/twitter/Twitter/User</span>
 </span><span class='line'>
-</span><span class='line'>f.collection[0].name
-</span><span class='line'># "John Oliver"
+</span><span class='line'><span class="n">f</span><span class="o">.</span><span class="n">collection</span><span class="o">[</span><span class="mi">0</span><span class="o">].</span><span class="n">name</span>
+</span><span class='line'><span class="c1"># &quot;John Oliver&quot;</span>
 </span><span class='line'>
-</span><span class='line'>f.collection[0].status
-</span><span class='line'>f.collection[0].status.class
-</span><span class='line'># Twitter::Tweet
-</span><span class='line'># -- http://rdoc.info/gems/twitter/Twitter/Tweet
+</span><span class='line'><span class="n">f</span><span class="o">.</span><span class="n">collection</span><span class="o">[</span><span class="mi">0</span><span class="o">].</span><span class="n">status</span>
+</span><span class='line'><span class="n">f</span><span class="o">.</span><span class="n">collection</span><span class="o">[</span><span class="mi">0</span><span class="o">].</span><span class="n">status</span><span class="o">.</span><span class="n">class</span>
+</span><span class='line'><span class="c1"># Twitter::Tweet</span>
+</span><span class='line'><span class="c1"># -- http://rdoc.info/gems/twitter/Twitter/Tweet</span>
 </span><span class='line'>
-</span><span class='line'>f.collection[0].status.text
-</span><span class='line'># "Mugabe is the Harlem Globetrotters of democracy. His winning record is undeniably impressive, but he doesn't really play by the rules."
+</span><span class='line'><span class="n">f</span><span class="o">.</span><span class="n">collection</span><span class="o">[</span><span class="mi">0</span><span class="o">].</span><span class="n">status</span><span class="o">.</span><span class="n">text</span>
+</span><span class='line'><span class="c1"># &quot;Mugabe is the Harlem Globetrotters of democracy. His winning record is undeniably impressive, but he doesn&#39;t really play by the rules.&quot;</span>
 </span><span class='line'>
-</span><span class='line'>for user in f.collection.each
-</span><span class='line'>  puts "#{user.name} said '#{user.status.text}'"
-</span><span class='line'>end</span></code></pre></td></tr></table></div></figure>
+</span><span class='line'><span class="k">for</span> <span class="n">user</span> <span class="k">in</span> <span class="n">f</span><span class="o">.</span><span class="n">collection</span><span class="o">.</span><span class="n">each</span>
+</span><span class='line'>  <span class="nb">puts</span> <span class="s2">&quot;</span><span class="si">#{</span><span class="n">user</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="s2"> said &#39;</span><span class="si">#{</span><span class="n">user</span><span class="o">.</span><span class="n">status</span><span class="o">.</span><span class="n">text</span><span class="si">}</span><span class="s2">&#39;&quot;</span>
+</span><span class='line'><span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure>
 
 
 <p>Because we don&rsquo;t care about the return value, let&rsquo;s not do this in <code>irb</code></p>
@@ -842,7 +848,7 @@
 
 <p>If you&rsquo;ve been writing Javascript, you love JSON. If you haven&rsquo;t, you soon will. Note that spaces, tabs and line breaks are all optional. I&rsquo;ve just added those to make it easier to read.</p>
 
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
@@ -857,21 +863,22 @@
 <span class='line-number'>13</span>
 <span class='line-number'>14</span>
 <span class='line-number'>15</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>{
-</span><span class='line'>  "id": 32,
-</span><span class='line'>  "name": "Mother Duck",
-</span><span class='line'>  "children":[
-</span><span class='line'>    {
-</span><span class='line'>      "id": 12345,
-</span><span class='line'>      "name": "Claire"
-</span><span class='line'>    },
-</span><span class='line'>    {
-</span><span class='line'>      "id": 12372,
-</span><span class='line'>      "name": "Daniel"
-</span><span class='line'>    }
-</span><span class='line'>  ],
-</span><span class='line'>  "isAlive": true
-</span><span class='line'>}</span></code></pre></td></tr></table></div></figure>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="p">{</span>
+</span><span class='line'>  <span class="s2">&quot;id&quot;</span><span class="o">:</span> <span class="mi">32</span><span class="p">,</span>
+</span><span class='line'>  <span class="s2">&quot;name&quot;</span><span class="o">:</span> <span class="s2">&quot;Mother Duck&quot;</span><span class="p">,</span>
+</span><span class='line'>  <span class="s2">&quot;children&quot;</span><span class="o">:</span><span class="p">[</span>
+</span><span class='line'>    <span class="p">{</span>
+</span><span class='line'>      <span class="s2">&quot;id&quot;</span><span class="o">:</span> <span class="mi">12345</span><span class="p">,</span>
+</span><span class='line'>      <span class="s2">&quot;name&quot;</span><span class="o">:</span> <span class="s2">&quot;Claire&quot;</span>
+</span><span class='line'>    <span class="p">},</span>
+</span><span class='line'>    <span class="p">{</span>
+</span><span class='line'>      <span class="s2">&quot;id&quot;</span><span class="o">:</span> <span class="mi">12372</span><span class="p">,</span>
+</span><span class='line'>      <span class="s2">&quot;name&quot;</span><span class="o">:</span> <span class="s2">&quot;Daniel&quot;</span>
+</span><span class='line'>    <span class="p">}</span>
+</span><span class='line'>  <span class="p">],</span>
+</span><span class='line'>  <span class="s2">&quot;isAlive&quot;</span><span class="o">:</span> <span class="kc">true</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
 
 
 <p>That&rsquo;s all there is to JSON, very simple, very clear. <code>{}</code> encapsulates object/map/hash, while <code>[]</code> encapsulates an array, both of which can be nested infinitely. Otherwise only strings, numbers, booleans and null are supported values.</p>
@@ -886,7 +893,7 @@
 
 <p><a href="http://ruby-doc.org/stdlib-2.0/libdoc/net/http/rdoc/Net/HTTP.html">Net/HTTP</a> is a standard Ruby library, and it&rsquo;ll be your interface to the internet. JSON is a simple parser, but is not standard. As before, install the gem with <code>gem install json</code></p>
 
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
@@ -902,22 +909,23 @@
 <span class='line-number'>14</span>
 <span class='line-number'>15</span>
 <span class='line-number'>16</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>require 'net/http'
-</span><span class='line'>require 'json'
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="nb">require</span> <span class="s1">&#39;net/http&#39;</span>
+</span><span class='line'><span class="nb">require</span> <span class="s1">&#39;json&#39;</span>
 </span><span class='line'>
-</span><span class='line'>uri = URI('https://api.github.com/users/octocat')
-</span><span class='line'>response = Net::HTTP.get uri
-</span><span class='line'>octocat = JSON.parse response
+</span><span class='line'><span class="n">uri</span> <span class="o">=</span> <span class="no">URI</span><span class="p">(</span><span class="s1">&#39;https://api.github.com/users/octocat&#39;</span><span class="p">)</span>
+</span><span class='line'><span class="n">response</span> <span class="o">=</span> <span class="ss">Net</span><span class="p">:</span><span class="ss">:HTTP</span><span class="o">.</span><span class="n">get</span> <span class="n">uri</span>
+</span><span class='line'><span class="n">octocat</span> <span class="o">=</span> <span class="no">JSON</span><span class="o">.</span><span class="n">parse</span> <span class="n">response</span>
 </span><span class='line'>
-</span><span class='line'>octocat.keys
-</span><span class='line'># ["login", "id", "avatar_url", "gravatar_id", "url", "html_url", "followers_url", "following_url", "gists_url", "starred_url", "subscriptions_url", "organizations_url", "repos_url", "events_url", "received_events_url", "type", "name", "company", "blog", "location", "email", "hireable", "bio", "public_repos", "followers", "following", "created_at", "updated_at", "public_gists"]
+</span><span class='line'><span class="n">octocat</span><span class="o">.</span><span class="n">keys</span>
+</span><span class='line'><span class="c1"># [&quot;login&quot;, &quot;id&quot;, &quot;avatar_url&quot;, &quot;gravatar_id&quot;, &quot;url&quot;, &quot;html_url&quot;, &quot;followers_url&quot;, &quot;following_url&quot;, &quot;gists_url&quot;, &quot;starred_url&quot;, &quot;subscriptions_url&quot;, &quot;organizations_url&quot;, &quot;repos_url&quot;, &quot;events_url&quot;, &quot;received_events_url&quot;, &quot;type&quot;, &quot;name&quot;, &quot;company&quot;, &quot;blog&quot;, &quot;location&quot;, &quot;email&quot;, &quot;hireable&quot;, &quot;bio&quot;, &quot;public_repos&quot;, &quot;followers&quot;, &quot;following&quot;, &quot;created_at&quot;, &quot;updated_at&quot;, &quot;public_gists&quot;]</span>
 </span><span class='line'>
-</span><span class='line'>octocat["followers"]
-</span><span class='line'># 398
-</span><span class='line'>octocat["public_repos"]
-</span><span class='line'># 3
-</span><span class='line'>octocat["hireable"]
-</span><span class='line'># false</span></code></pre></td></tr></table></div></figure>
+</span><span class='line'><span class="n">octocat</span><span class="o">[</span><span class="s2">&quot;followers&quot;</span><span class="o">]</span>
+</span><span class='line'><span class="c1"># 398</span>
+</span><span class='line'><span class="n">octocat</span><span class="o">[</span><span class="s2">&quot;public_repos&quot;</span><span class="o">]</span>
+</span><span class='line'><span class="c1"># 3</span>
+</span><span class='line'><span class="n">octocat</span><span class="o">[</span><span class="s2">&quot;hireable&quot;</span><span class="o">]</span>
+</span><span class='line'><span class="c1"># false</span>
+</span></code></pre></td></tr></table></div></figure>
 
 
 <p>I had some issues here with openssl on the Mac, but the update instructions with Homebrew found <a href="http://railsapps.github.io/openssl-certificate-verify-failed.html">here</a> worked perfectly.</p>
@@ -967,27 +975,24 @@
 
 <h1>Third Party libraries</h1>
 
-<p>Third party libraries in Ruby are referred to as gems. Gem is an executable that comes with Ruby. Tell it to install, along with the name of the gem and it will download and install the gem that you want as well as all its dependencies.</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>gem install xml-simple</span></code></pre></td></tr></table></div></figure>
-
+<p>Third party libraries in Ruby are referred to as gems. Gem is an executable that comes with Ruby. Tell it to install, along with the name of the gem and it will download and install the gem that you want as well as all its dependencies&hellip;<code>gem install xml-simple</code></p>
 
 <h1>Let&rsquo;s Parse!</h1>
 
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>require 'xmlsimple'
-</span><span class='line'>xml = File.read 'data/xml/aec-mediafeed-results-detailed-light-15508.xml'
-</span><span class='line'>data = XmlSimple.xml_in xml</span></code></pre></td></tr></table></div></figure>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="nb">require</span> <span class="s1">&#39;xmlsimple&#39;</span>
+</span><span class='line'><span class="n">xml</span> <span class="o">=</span> <span class="no">File</span><span class="o">.</span><span class="n">read</span> <span class="s1">&#39;data/xml/aec-mediafeed-results-detailed-light-15508.xml&#39;</span>
+</span><span class='line'><span class="n">data</span> <span class="o">=</span> <span class="no">XmlSimple</span><span class="o">.</span><span class="n">xml_in</span> <span class="n">xml</span>
+</span></code></pre></td></tr></table></div></figure>
 
 
 <p>Parsing XML takes a little while, and XmlSimple isn&rsquo;t the most efficient of parsers. If speed is a concern at all, you should definitely look into <a href="http://nokogiri.org/">Nokogiri</a>.</p>
 
 <p>Once it&rsquo;s done we can see what&rsquo;s in there one step at a time.</p>
 
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
@@ -1007,26 +1012,27 @@
 <span class='line-number'>18</span>
 <span class='line-number'>19</span>
 <span class='line-number'>20</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>data.keys
-</span><span class='line'># ["Id", "Created", "SchemaVersion", "EmlVersion", "xmlns", "xmlns:eml", "xmlns:ds", "xmlns:xal", "xmlns:xnl", "xmlns:ts", "xmlns:xs", "xs:schemaLocation", "ManagingAuthority", "MessageLanguage", "MessageGenerator", "Cycle", "Results"]
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">data</span><span class="o">.</span><span class="n">keys</span>
+</span><span class='line'><span class="c1"># [&quot;Id&quot;, &quot;Created&quot;, &quot;SchemaVersion&quot;, &quot;EmlVersion&quot;, &quot;xmlns&quot;, &quot;xmlns:eml&quot;, &quot;xmlns:ds&quot;, &quot;xmlns:xal&quot;, &quot;xmlns:xnl&quot;, &quot;xmlns:ts&quot;, &quot;xmlns:xs&quot;, &quot;xs:schemaLocation&quot;, &quot;ManagingAuthority&quot;, &quot;MessageLanguage&quot;, &quot;MessageGenerator&quot;, &quot;Cycle&quot;, &quot;Results&quot;]</span>
 </span><span class='line'>
-</span><span class='line'>data.["Results"].keys
-</span><span class='line'># NoMethodError
+</span><span class='line'><span class="n">data</span><span class="o">.</span><span class="n">[</span><span class="s2">&quot;Results&quot;</span><span class="o">].</span><span class="n">keys</span>
+</span><span class='line'><span class="c1"># NoMethodError</span>
 </span><span class='line'>
-</span><span class='line'>data.["Results"].class
-</span><span class='line'># Array
+</span><span class='line'><span class="n">data</span><span class="o">.</span><span class="n">[</span><span class="s2">&quot;Results&quot;</span><span class="o">].</span><span class="n">class</span>
+</span><span class='line'><span class="c1"># Array</span>
 </span><span class='line'>
-</span><span class='line'>data.["Results"][0].class
-</span><span class='line'># Hash
+</span><span class='line'><span class="n">data</span><span class="o">.</span><span class="n">[</span><span class="s2">&quot;Results&quot;</span><span class="o">][</span><span class="mi">0</span><span class="o">].</span><span class="n">class</span>
+</span><span class='line'><span class="c1"># Hash</span>
 </span><span class='line'>
-</span><span class='line'>data["Results"][0]["Election"][0]["House"][0]["Contests"][0]["Contest"][0].keys
-</span><span class='line'># ["Projected", "ContestIdentifier", "Enrolment", "FirstPreferences", "TwoCandidatePreferred", "TwoPartyPreferred", "PollingPlaces"]
+</span><span class='line'><span class="n">data</span><span class="o">[</span><span class="s2">&quot;Results&quot;</span><span class="o">][</span><span class="mi">0</span><span class="o">][</span><span class="s2">&quot;Election&quot;</span><span class="o">][</span><span class="mi">0</span><span class="o">][</span><span class="s2">&quot;House&quot;</span><span class="o">][</span><span class="mi">0</span><span class="o">][</span><span class="s2">&quot;Contests&quot;</span><span class="o">][</span><span class="mi">0</span><span class="o">][</span><span class="s2">&quot;Contest&quot;</span><span class="o">][</span><span class="mi">0</span><span class="o">].</span><span class="n">keys</span>
+</span><span class='line'><span class="c1"># [&quot;Projected&quot;, &quot;ContestIdentifier&quot;, &quot;Enrolment&quot;, &quot;FirstPreferences&quot;, &quot;TwoCandidatePreferred&quot;, &quot;TwoPartyPreferred&quot;, &quot;PollingPlaces&quot;]</span>
 </span><span class='line'>
-</span><span class='line'>data["Results"][0]["Election"][0]["House"][0]["Contests"][0]["Contest"][0]["TwoPartyPreferred"][0]["Coalition"][0]["Votes"]
-</span><span class='line'># 0
+</span><span class='line'><span class="n">data</span><span class="o">[</span><span class="s2">&quot;Results&quot;</span><span class="o">][</span><span class="mi">0</span><span class="o">][</span><span class="s2">&quot;Election&quot;</span><span class="o">][</span><span class="mi">0</span><span class="o">][</span><span class="s2">&quot;House&quot;</span><span class="o">][</span><span class="mi">0</span><span class="o">][</span><span class="s2">&quot;Contests&quot;</span><span class="o">][</span><span class="mi">0</span><span class="o">][</span><span class="s2">&quot;Contest&quot;</span><span class="o">][</span><span class="mi">0</span><span class="o">][</span><span class="s2">&quot;TwoPartyPreferred&quot;</span><span class="o">][</span><span class="mi">0</span><span class="o">][</span><span class="s2">&quot;Coalition&quot;</span><span class="o">][</span><span class="mi">0</span><span class="o">][</span><span class="s2">&quot;Votes&quot;</span><span class="o">]</span>
+</span><span class='line'><span class="c1"># 0</span>
 </span><span class='line'>
-</span><span class='line'>data["Results"][0]["Election"][0]["House"][0]["Contests"][0]["Contest"][0]["Enrolment"]
-</span><span class='line'># 124215</span></code></pre></td></tr></table></div></figure>
+</span><span class='line'><span class="n">data</span><span class="o">[</span><span class="s2">&quot;Results&quot;</span><span class="o">][</span><span class="mi">0</span><span class="o">][</span><span class="s2">&quot;Election&quot;</span><span class="o">][</span><span class="mi">0</span><span class="o">][</span><span class="s2">&quot;House&quot;</span><span class="o">][</span><span class="mi">0</span><span class="o">][</span><span class="s2">&quot;Contests&quot;</span><span class="o">][</span><span class="mi">0</span><span class="o">][</span><span class="s2">&quot;Contest&quot;</span><span class="o">][</span><span class="mi">0</span><span class="o">][</span><span class="s2">&quot;Enrolment&quot;</span><span class="o">]</span>
+</span><span class='line'><span class="c1"># 124215</span>
+</span></code></pre></td></tr></table></div></figure>
 
 
 
@@ -1067,7 +1073,7 @@
 
   <div class="entry-content"><p>Ruby is a Object Oriented language so it&rsquo;s no less than intuitive to have classes. The following code block shows the basic syntax of a Ruby class.</p>
 
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
@@ -1087,26 +1093,27 @@
 <span class='line-number'>18</span>
 <span class='line-number'>19</span>
 <span class='line-number'>20</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>class Counter
-</span><span class='line'>  @@classCount = 0
-</span><span class='line'>  @instanceCount
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="k">class</span> <span class="nc">Counter</span>
+</span><span class='line'>  <span class="vc">@@classCount</span> <span class="o">=</span> <span class="mi">0</span>
+</span><span class='line'>  <span class="vi">@instanceCount</span>
 </span><span class='line'>
-</span><span class='line'>  def initialize(startInstanceCount)
-</span><span class='line'>    @instanceCount = startInstanceCount
-</span><span class='line'>  end
+</span><span class='line'>  <span class="k">def</span> <span class="nf">initialize</span><span class="p">(</span><span class="n">startInstanceCount</span><span class="p">)</span>
+</span><span class='line'>    <span class="vi">@instanceCount</span> <span class="o">=</span> <span class="n">startInstanceCount</span>
+</span><span class='line'>  <span class="k">end</span>
 </span><span class='line'>
-</span><span class='line'>  def icIncrement
-</span><span class='line'>    @instanceCount += 1
-</span><span class='line'>  end
+</span><span class='line'>  <span class="k">def</span> <span class="nf">icIncrement</span>
+</span><span class='line'>    <span class="vi">@instanceCount</span> <span class="o">+=</span> <span class="mi">1</span>
+</span><span class='line'>  <span class="k">end</span>
 </span><span class='line'>
-</span><span class='line'>  def self.ccIncrement
-</span><span class='line'>    @@classCount += 1
-</span><span class='line'>  end
+</span><span class='line'>  <span class="k">def</span> <span class="nc">self</span><span class="o">.</span><span class="nf">ccIncrement</span>
+</span><span class='line'>    <span class="vc">@@classCount</span> <span class="o">+=</span> <span class="mi">1</span>
+</span><span class='line'>  <span class="k">end</span>
 </span><span class='line'>
-</span><span class='line'>  def to_s
-</span><span class='line'>    "classCount = #{@@classCount} and instanceCount = #{@instanceCount}"
-</span><span class='line'>  end
-</span><span class='line'>end</span></code></pre></td></tr></table></div></figure>
+</span><span class='line'>  <span class="k">def</span> <span class="nf">to_s</span>
+</span><span class='line'>    <span class="s2">&quot;classCount = </span><span class="si">#{</span><span class="vc">@@classCount</span><span class="si">}</span><span class="s2"> and instanceCount = </span><span class="si">#{</span><span class="vi">@instanceCount</span><span class="si">}</span><span class="s2">&quot;</span>
+</span><span class='line'>  <span class="k">end</span>
+</span><span class='line'><span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure>
 
 
 <p>We have a Class variable, <code>@@classCount</code>. This is equivalent to the keyword <code>static</code> in Java. There&rsquo;s an Instance variable <code>@instanceCount</code>.</p>
@@ -1115,7 +1122,7 @@
 
 <p>Finally <code>to_s</code> is the conversion of the class to a String, just like <code>toString()</code>.</p>
 
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
@@ -1127,18 +1134,19 @@
 <span class='line-number'>10</span>
 <span class='line-number'>11</span>
 <span class='line-number'>12</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>a = Counter.new 0
-</span><span class='line'>b = Counter.new 0
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">a</span> <span class="o">=</span> <span class="no">Counter</span><span class="o">.</span><span class="n">new</span> <span class="mi">0</span>
+</span><span class='line'><span class="n">b</span> <span class="o">=</span> <span class="no">Counter</span><span class="o">.</span><span class="n">new</span> <span class="mi">0</span>
 </span><span class='line'>
-</span><span class='line'>a.ccIncrement
-</span><span class='line'>a.icIncrement
+</span><span class='line'><span class="n">a</span><span class="o">.</span><span class="n">ccIncrement</span>
+</span><span class='line'><span class="n">a</span><span class="o">.</span><span class="n">icIncrement</span>
 </span><span class='line'>
-</span><span class='line'>puts b
-</span><span class='line'># classCount = 1 and instanceCount = 0
+</span><span class='line'><span class="nb">puts</span> <span class="n">b</span>
+</span><span class='line'><span class="c1"># classCount = 1 and instanceCount = 0</span>
 </span><span class='line'>
-</span><span class='line'>b = Counter.new 5
-</span><span class='line'>puts b
-</span><span class='line'># classCount = 1 and instanceCount = 5</span></code></pre></td></tr></table></div></figure>
+</span><span class='line'><span class="n">b</span> <span class="o">=</span> <span class="no">Counter</span><span class="o">.</span><span class="n">new</span> <span class="mi">5</span>
+</span><span class='line'><span class="nb">puts</span> <span class="n">b</span>
+</span><span class='line'><span class="c1"># classCount = 1 and instanceCount = 5</span>
+</span></code></pre></td></tr></table></div></figure>
 
 
 <h2>Variable Scope</h2>
@@ -1156,16 +1164,17 @@
 
 <p>Note that Constants can still be changed. The interpreter will simply issue a warning that that is the case, but the value assigning will proceed.</p>
 
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
 <span class='line-number'>5</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>Aconstant = 1
-</span><span class='line'>Aconstant = 2
-</span><span class='line'># warning: already initialized constant Aconstant
-</span><span class='line'># warning: previous definition of Aconstant was here
-</span><span class='line'># 2</span></code></pre></td></tr></table></div></figure>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="no">Aconstant</span> <span class="o">=</span> <span class="mi">1</span>
+</span><span class='line'><span class="no">Aconstant</span> <span class="o">=</span> <span class="mi">2</span>
+</span><span class='line'><span class="c1"># warning: already initialized constant Aconstant</span>
+</span><span class='line'><span class="c1"># warning: previous definition of Aconstant was here</span>
+</span><span class='line'><span class="c1"># 2</span>
+</span></code></pre></td></tr></table></div></figure>
 
 
 <h2>Dynamic Typing</h2>
@@ -1238,7 +1247,7 @@
 
 <p>Let&rsquo;s play with again. This time, load irb with <code>irb -I .</code>. This will add the current directory to the path that the require command uses so it can find the 3 files above.</p>
 
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
@@ -1248,41 +1257,43 @@
 <span class='line-number'>8</span>
 <span class='line-number'>9</span>
 <span class='line-number'>10</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>d = Duck.new
-</span><span class='line'>m = Man.new
-</span><span class='line'>w = Woman.new
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">d</span> <span class="o">=</span> <span class="no">Duck</span><span class="o">.</span><span class="n">new</span>
+</span><span class='line'><span class="n">m</span> <span class="o">=</span> <span class="no">Man</span><span class="o">.</span><span class="n">new</span>
+</span><span class='line'><span class="n">w</span> <span class="o">=</span> <span class="no">Woman</span><span class="o">.</span><span class="n">new</span>
 </span><span class='line'>
-</span><span class='line'>make_it_quack(d)
-</span><span class='line'># Quack!
-</span><span class='line'>make_it_quack(m)
-</span><span class='line'># Moo!
-</span><span class='line'>make_it_quack(w)
-</span><span class='line'># NoMethodError: undefined method `quack' for #&lt;Woman:0x007fb2d91ab3d0></span></code></pre></td></tr></table></div></figure>
+</span><span class='line'><span class="n">make_it_quack</span><span class="p">(</span><span class="n">d</span><span class="p">)</span>
+</span><span class='line'><span class="c1"># Quack!</span>
+</span><span class='line'><span class="n">make_it_quack</span><span class="p">(</span><span class="n">m</span><span class="p">)</span>
+</span><span class='line'><span class="c1"># Moo!</span>
+</span><span class='line'><span class="n">make_it_quack</span><span class="p">(</span><span class="n">w</span><span class="p">)</span>
+</span><span class='line'><span class="c1"># NoMethodError: undefined method `quack&#39; for #&lt;Woman:0x007fb2d91ab3d0&gt;</span>
+</span></code></pre></td></tr></table></div></figure>
 
 
 <p>Unfortunately it seems like function parameters can no longer be given a type so the example isn&rsquo;t the most clear. This is what it looks like in the book.</p>
 
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
 <span class='line-number'>5</span>
 <span class='line-number'>6</span>
 <span class='line-number'>7</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>def make_it_quack(Duck duck)
-</span><span class='line'>  puts duck.quack
-</span><span class='line'>end
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="k">def</span> <span class="nf">make_it_quack</span><span class="p">(</span><span class="no">Duck</span> <span class="n">duck</span><span class="p">)</span>
+</span><span class='line'>  <span class="nb">puts</span> <span class="n">duck</span><span class="o">.</span><span class="n">quack</span>
+</span><span class='line'><span class="k">end</span>
 </span><span class='line'>
-</span><span class='line'>w = Woman.new
-</span><span class='line'>make_it_quack(w)
-</span><span class='line'># TypeException: object not of type Duck</span></code></pre></td></tr></table></div></figure>
+</span><span class='line'><span class="n">w</span> <span class="o">=</span> <span class="no">Woman</span><span class="o">.</span><span class="n">new</span>
+</span><span class='line'><span class="n">make_it_quack</span><span class="p">(</span><span class="n">w</span><span class="p">)</span>
+</span><span class='line'><span class="c1"># TypeException: object not of type Duck</span>
+</span></code></pre></td></tr></table></div></figure>
 
 
 <h2>Duck Punching</h2>
 
 <p>So what if our ducks (Man) don&rsquo;t quack? Then we punch them until it does.</p>
 
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
@@ -1296,25 +1307,26 @@
 <span class='line-number'>12</span>
 <span class='line-number'>13</span>
 <span class='line-number'>14</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>make_it_quack(m)
-</span><span class='line'># Moo!
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">make_it_quack</span><span class="p">(</span><span class="n">m</span><span class="p">)</span>
+</span><span class='line'><span class="c1"># Moo!</span>
 </span><span class='line'>
-</span><span class='line'>class Man
-</span><span class='line'>  def quack
-</span><span class='line'>    "Quack!"
-</span><span class='line'>  end
-</span><span class='line'>end
+</span><span class='line'><span class="k">class</span> <span class="nc">Man</span>
+</span><span class='line'>  <span class="k">def</span> <span class="nf">quack</span>
+</span><span class='line'>    <span class="s2">&quot;Quack!&quot;</span>
+</span><span class='line'>  <span class="k">end</span>
+</span><span class='line'><span class="k">end</span>
 </span><span class='line'>
-</span><span class='line'>make_it_quack(m)
-</span><span class='line'># Quack!
+</span><span class='line'><span class="n">make_it_quack</span><span class="p">(</span><span class="n">m</span><span class="p">)</span>
+</span><span class='line'><span class="c1"># Quack!</span>
 </span><span class='line'>
-</span><span class='line'>m.scream
-</span><span class='line'># AHHHHHH</span></code></pre></td></tr></table></div></figure>
+</span><span class='line'><span class="n">m</span><span class="o">.</span><span class="n">scream</span>
+</span><span class='line'><span class="c1"># AHHHHHH</span>
+</span></code></pre></td></tr></table></div></figure>
 
 
 <p>Just to be clear, we can also do the same to the Woman class.</p>
 
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
@@ -1325,17 +1337,18 @@
 <span class='line-number'>9</span>
 <span class='line-number'>10</span>
 <span class='line-number'>11</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>make_it_quack(w)
-</span><span class='line'>NoMethodError: undefined method `quack' for #&lt;Woman:0x007fbe7b99e800>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">make_it_quack</span><span class="p">(</span><span class="n">w</span><span class="p">)</span>
+</span><span class='line'><span class="ss">NoMethodError</span><span class="p">:</span> <span class="n">undefined</span> <span class="nb">method</span> <span class="sb">`quack&#39; for #&lt;Woman:0x007fbe7b99e800&gt;</span>
 </span><span class='line'>
-</span><span class='line'>class Woman
-</span><span class='line'>  def quack
-</span><span class='line'>    "Quack!"
-</span><span class='line'>  end
-</span><span class='line'>end
+</span><span class='line'><span class="sb">class Woman</span>
+</span><span class='line'><span class="sb">  def quack</span>
+</span><span class='line'><span class="sb">    &quot;Quack!&quot;</span>
+</span><span class='line'><span class="sb">  end</span>
+</span><span class='line'><span class="sb">end</span>
 </span><span class='line'>
-</span><span class='line'>make_it_quack(w)
-</span><span class='line'># Quack!</span></code></pre></td></tr></table></div></figure>
+</span><span class='line'><span class="sb">make_it_quack(w)</span>
+</span><span class='line'><span class="sb"># Quack!</span>
+</span></code></pre></td></tr></table></div></figure>
 
 </div>
   
@@ -1374,7 +1387,7 @@
 
   <div class="entry-content"><p>Firstly the syntax. Let&rsquo;s first define a very basic function we can use for this post.</p>
 
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
@@ -1382,51 +1395,54 @@
 <span class='line-number'>6</span>
 <span class='line-number'>7</span>
 <span class='line-number'>8</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>def print_stuff(str1, str2, reverse = false)
-</span><span class='line'>  if reverse
-</span><span class='line'>    puts "#{str2} and #{str1} received!"
-</span><span class='line'>  else
-</span><span class='line'>    puts "#{str1} and #{str2} received!"
-</span><span class='line'>  end
-</span><span class='line'>  str = str1 + str2
-</span><span class='line'>end</span></code></pre></td></tr></table></div></figure>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="k">def</span> <span class="nf">print_stuff</span><span class="p">(</span><span class="n">str1</span><span class="p">,</span> <span class="n">str2</span><span class="p">,</span> <span class="n">reverse</span> <span class="o">=</span> <span class="kp">false</span><span class="p">)</span>
+</span><span class='line'>  <span class="k">if</span> <span class="n">reverse</span>
+</span><span class='line'>    <span class="nb">puts</span> <span class="s2">&quot;</span><span class="si">#{</span><span class="n">str2</span><span class="si">}</span><span class="s2"> and </span><span class="si">#{</span><span class="n">str1</span><span class="si">}</span><span class="s2"> received!&quot;</span>
+</span><span class='line'>  <span class="k">else</span>
+</span><span class='line'>    <span class="nb">puts</span> <span class="s2">&quot;</span><span class="si">#{</span><span class="n">str1</span><span class="si">}</span><span class="s2"> and </span><span class="si">#{</span><span class="n">str2</span><span class="si">}</span><span class="s2"> received!&quot;</span>
+</span><span class='line'>  <span class="k">end</span>
+</span><span class='line'>  <span class="n">str</span> <span class="o">=</span> <span class="n">str1</span> <span class="o">+</span> <span class="n">str2</span>
+</span><span class='line'><span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure>
 
 
 <h3>Calling functions</h3>
 
 <p>Brackets around function parameters is optional in Ruby. However, sometimes it&rsquo;s useful to include them regardless for clarity&rsquo;s sake.</p>
 
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
 <span class='line-number'>5</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>print_stuff("First argument", "Second argument")
-</span><span class='line'># First argument and Second argument received!
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">print_stuff</span><span class="p">(</span><span class="s2">&quot;First argument&quot;</span><span class="p">,</span> <span class="s2">&quot;Second argument&quot;</span><span class="p">)</span>
+</span><span class='line'><span class="c1"># First argument and Second argument received!</span>
 </span><span class='line'>
-</span><span class='line'>print_stuff "First argument", "Second argument"
-</span><span class='line'># First argument and Second argument received!</span></code></pre></td></tr></table></div></figure>
+</span><span class='line'><span class="n">print_stuff</span> <span class="s2">&quot;First argument&quot;</span><span class="p">,</span> <span class="s2">&quot;Second argument&quot;</span>
+</span><span class='line'><span class="c1"># First argument and Second argument received!</span>
+</span></code></pre></td></tr></table></div></figure>
 
 
 <p>Arguments can be made optional by giving them a default value.</p>
 
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
 <span class='line-number'>5</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>print_stuff("First argument", "Second argument", false)
-</span><span class='line'># First argument and Second argument received!
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">print_stuff</span><span class="p">(</span><span class="s2">&quot;First argument&quot;</span><span class="p">,</span> <span class="s2">&quot;Second argument&quot;</span><span class="p">,</span> <span class="kp">false</span><span class="p">)</span>
+</span><span class='line'><span class="c1"># First argument and Second argument received!</span>
 </span><span class='line'>
-</span><span class='line'>print_stuff("First argument", "Second argument", true)
-</span><span class='line'># Second argument and First argument received!</span></code></pre></td></tr></table></div></figure>
+</span><span class='line'><span class="n">print_stuff</span><span class="p">(</span><span class="s2">&quot;First argument&quot;</span><span class="p">,</span> <span class="s2">&quot;Second argument&quot;</span><span class="p">,</span> <span class="kp">true</span><span class="p">)</span>
+</span><span class='line'><span class="c1"># Second argument and First argument received!</span>
+</span></code></pre></td></tr></table></div></figure>
 
 
 <h3>Return value</h3>
 
 <p>As you may have already noticed, <code>print_stuff</code> does use <code>return</code> even though it does exist in Ruby and it does exactly what you&rsquo;d expect. If the return value is not specified, Ruby will return the value returned in the last executed line of the block</p>
 
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
@@ -1447,34 +1463,35 @@
 <span class='line-number'>19</span>
 <span class='line-number'>20</span>
 <span class='line-number'>21</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>def add(a, b)
-</span><span class='line'>  a + b
-</span><span class='line'>end
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="k">def</span> <span class="nf">add</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span>
+</span><span class='line'>  <span class="n">a</span> <span class="o">+</span> <span class="n">b</span>
+</span><span class='line'><span class="k">end</span>
 </span><span class='line'>
-</span><span class='line'>puts add(1, 2)
-</span><span class='line'># 3
+</span><span class='line'><span class="nb">puts</span> <span class="n">add</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+</span><span class='line'><span class="c1"># 3</span>
 </span><span class='line'>
-</span><span class='line'>def add_return(a, b)
-</span><span class='line'>  return a + b
-</span><span class='line'>end
+</span><span class='line'><span class="k">def</span> <span class="nf">add_return</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span>
+</span><span class='line'>  <span class="k">return</span> <span class="n">a</span> <span class="o">+</span> <span class="n">b</span>
+</span><span class='line'><span class="k">end</span>
 </span><span class='line'>
-</span><span class='line'>puts add_return(1,2)
-</span><span class='line'># 3
+</span><span class='line'><span class="nb">puts</span> <span class="n">add_return</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span>
+</span><span class='line'><span class="c1"># 3</span>
 </span><span class='line'>
-</span><span class='line'>def add_print(a, b)
-</span><span class='line'>  a + b
-</span><span class='line'>  print "add successful"
-</span><span class='line'>end
+</span><span class='line'><span class="k">def</span> <span class="nf">add_print</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span>
+</span><span class='line'>  <span class="n">a</span> <span class="o">+</span> <span class="n">b</span>
+</span><span class='line'>  <span class="nb">print</span> <span class="s2">&quot;add successful&quot;</span>
+</span><span class='line'><span class="k">end</span>
 </span><span class='line'>
-</span><span class='line'>puts add_print(1,2)
-</span><span class='line'># add successful</span></code></pre></td></tr></table></div></figure>
+</span><span class='line'><span class="nb">puts</span> <span class="n">add_print</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span>
+</span><span class='line'><span class="c1"># add successful</span>
+</span></code></pre></td></tr></table></div></figure>
 
 
 <p>Because <code>print "add successful"</code> returns <code>nil</code>, <code>add_print</code> returns nil.</p>
 
 <h1>Error Handling</h1>
 
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
@@ -1488,25 +1505,26 @@
 <span class='line-number'>12</span>
 <span class='line-number'>13</span>
 <span class='line-number'>14</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>def do_something
-</span><span class='line'>  raise "Failed to do something"
-</span><span class='line'>end
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="k">def</span> <span class="nf">do_something</span>
+</span><span class='line'>  <span class="k">raise</span> <span class="s2">&quot;Failed to do something&quot;</span>
+</span><span class='line'><span class="k">end</span>
 </span><span class='line'>
-</span><span class='line'>raise_exception
-</span><span class='line'># RuntimeError: Failed to do something
+</span><span class='line'><span class="n">raise_exception</span>
+</span><span class='line'><span class="c1"># RuntimeError: Failed to do something</span>
 </span><span class='line'>
-</span><span class='line'>begin
-</span><span class='line'>  do_something
-</span><span class='line'>  puts "Done something"
-</span><span class='line'>rescue
-</span><span class='line'>  puts "Rescuing from exception"
-</span><span class='line'>end
-</span><span class='line'># Rescuing from exception</span></code></pre></td></tr></table></div></figure>
+</span><span class='line'><span class="k">begin</span>
+</span><span class='line'>  <span class="n">do_something</span>
+</span><span class='line'>  <span class="nb">puts</span> <span class="s2">&quot;Done something&quot;</span>
+</span><span class='line'><span class="k">rescue</span>
+</span><span class='line'>  <span class="nb">puts</span> <span class="s2">&quot;Rescuing from exception&quot;</span>
+</span><span class='line'><span class="k">end</span>
+</span><span class='line'><span class="c1"># Rescuing from exception</span>
+</span></code></pre></td></tr></table></div></figure>
 
 
 <p><code>retry</code> will return the cursor to start of the begin block it belongs to</p>
 
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
@@ -1520,20 +1538,21 @@
 <span class='line-number'>12</span>
 <span class='line-number'>13</span>
 <span class='line-number'>14</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>i = 0
-</span><span class='line'>begin
-</span><span class='line'>  puts "#{i}"
-</span><span class='line'>  i += 1
-</span><span class='line'>  if i &lt; 2
-</span><span class='line'>    do_something
-</span><span class='line'>  end
-</span><span class='line'>  puts "All done!"
-</span><span class='line'>rescue
-</span><span class='line'>  retry
-</span><span class='line'>end
-</span><span class='line'># 0
-</span><span class='line'># 1
-</span><span class='line'># All done!</span></code></pre></td></tr></table></div></figure>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">i</span> <span class="o">=</span> <span class="mi">0</span>
+</span><span class='line'><span class="k">begin</span>
+</span><span class='line'>  <span class="nb">puts</span> <span class="s2">&quot;</span><span class="si">#{</span><span class="n">i</span><span class="si">}</span><span class="s2">&quot;</span>
+</span><span class='line'>  <span class="n">i</span> <span class="o">+=</span> <span class="mi">1</span>
+</span><span class='line'>  <span class="k">if</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="mi">2</span>
+</span><span class='line'>    <span class="n">do_something</span>
+</span><span class='line'>  <span class="k">end</span>
+</span><span class='line'>  <span class="nb">puts</span> <span class="s2">&quot;All done!&quot;</span>
+</span><span class='line'><span class="k">rescue</span>
+</span><span class='line'>  <span class="k">retry</span>
+</span><span class='line'><span class="k">end</span>
+</span><span class='line'><span class="c1"># 0</span>
+</span><span class='line'><span class="c1"># 1</span>
+</span><span class='line'><span class="c1"># All done!</span>
+</span></code></pre></td></tr></table></div></figure>
 
 
 <p>Also relevant later on, <a href="http://innig.net/software/ruby/closures-in-ruby">Closures</a> and <a href="https://rubymonk.com/learning/books/2-metaprogramming-ruby/chapters/32-introduction-to-metaprogramming/lessons/75-being-meta">Metaprogramming</a></p>
@@ -1576,7 +1595,7 @@
 
 <h3>Construction</h3>
 
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
@@ -1585,20 +1604,21 @@
 <span class='line-number'>7</span>
 <span class='line-number'>8</span>
 <span class='line-number'>9</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>a = { "a" => "b", 3 => "d" }
-</span><span class='line'># {"a"=>"b", 3=>"d"}
-</span><span class='line'>b = Hash("a" => "b", 3 => "d")
-</span><span class='line'># {"a"=>"b", 3=>"d"}
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">a</span> <span class="o">=</span> <span class="p">{</span> <span class="s2">&quot;a&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;b&quot;</span><span class="p">,</span> <span class="mi">3</span> <span class="o">=&gt;</span> <span class="s2">&quot;d&quot;</span> <span class="p">}</span>
+</span><span class='line'><span class="c1"># {&quot;a&quot;=&gt;&quot;b&quot;, 3=&gt;&quot;d&quot;}</span>
+</span><span class='line'><span class="n">b</span> <span class="o">=</span> <span class="no">Hash</span><span class="p">(</span><span class="s2">&quot;a&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;b&quot;</span><span class="p">,</span> <span class="mi">3</span> <span class="o">=&gt;</span> <span class="s2">&quot;d&quot;</span><span class="p">)</span>
+</span><span class='line'><span class="c1"># {&quot;a&quot;=&gt;&quot;b&quot;, 3=&gt;&quot;d&quot;}</span>
 </span><span class='line'>
-</span><span class='line'>c = {}
-</span><span class='line'>d = Hash.new
+</span><span class='line'><span class="n">c</span> <span class="o">=</span> <span class="p">{}</span>
+</span><span class='line'><span class="n">d</span> <span class="o">=</span> <span class="no">Hash</span><span class="o">.</span><span class="n">new</span>
 </span><span class='line'>
-</span><span class='line'>e = Hash.new(0)</span></code></pre></td></tr></table></div></figure>
+</span><span class='line'><span class="n">e</span> <span class="o">=</span> <span class="no">Hash</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+</span></code></pre></td></tr></table></div></figure>
 
 
 <h3>Testing for Equality</h3>
 
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
@@ -1607,20 +1627,21 @@
 <span class='line-number'>7</span>
 <span class='line-number'>8</span>
 <span class='line-number'>9</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>a==b
-</span><span class='line'># true
-</span><span class='line'>a.equal? b
-</span><span class='line'># false
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">a</span><span class="o">==</span><span class="n">b</span>
+</span><span class='line'><span class="c1"># true</span>
+</span><span class='line'><span class="n">a</span><span class="o">.</span><span class="n">equal?</span> <span class="n">b</span>
+</span><span class='line'><span class="c1"># false</span>
 </span><span class='line'>
-</span><span class='line'>c==d
-</span><span class='line'># true
-</span><span class='line'>c.equal? d
-</span><span class='line'># false</span></code></pre></td></tr></table></div></figure>
+</span><span class='line'><span class="n">c</span><span class="o">==</span><span class="n">d</span>
+</span><span class='line'><span class="c1"># true</span>
+</span><span class='line'><span class="n">c</span><span class="o">.</span><span class="n">equal?</span> <span class="n">d</span>
+</span><span class='line'><span class="c1"># false</span>
+</span></code></pre></td></tr></table></div></figure>
 
 
 <h3>Retrieving from Hash</h3>
 
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
@@ -1629,30 +1650,32 @@
 <span class='line-number'>7</span>
 <span class='line-number'>8</span>
 <span class='line-number'>9</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>a["a"]
-</span><span class='line'># "b"
-</span><span class='line'>a[3]
-</span><span class='line'># "d"
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">a</span><span class="o">[</span><span class="s2">&quot;a&quot;</span><span class="o">]</span>
+</span><span class='line'><span class="c1"># &quot;b&quot;</span>
+</span><span class='line'><span class="n">a</span><span class="o">[</span><span class="mi">3</span><span class="o">]</span>
+</span><span class='line'><span class="c1"># &quot;d&quot;</span>
 </span><span class='line'>
-</span><span class='line'>a[4]
-</span><span class='line'># nil
-</span><span class='line'>e[4]
-</span><span class='line'># 0</span></code></pre></td></tr></table></div></figure>
+</span><span class='line'><span class="n">a</span><span class="o">[</span><span class="mi">4</span><span class="o">]</span>
+</span><span class='line'><span class="c1"># nil</span>
+</span><span class='line'><span class="n">e</span><span class="o">[</span><span class="mi">4</span><span class="o">]</span>
+</span><span class='line'><span class="c1"># 0</span>
+</span></code></pre></td></tr></table></div></figure>
 
 
 <h3>Adding values to the Hash</h3>
 
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>a[5] = 6
-</span><span class='line'>puts a
-</span><span class='line'># {"a"=>"b", 3=>"d", 5=>6}</span></code></pre></td></tr></table></div></figure>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">a</span><span class="o">[</span><span class="mi">5</span><span class="o">]</span> <span class="o">=</span> <span class="mi">6</span>
+</span><span class='line'><span class="nb">puts</span> <span class="n">a</span>
+</span><span class='line'><span class="c1"># {&quot;a&quot;=&gt;&quot;b&quot;, 3=&gt;&quot;d&quot;, 5=&gt;6}</span>
+</span></code></pre></td></tr></table></div></figure>
 
 
 <h3>Other useful functions</h3>
 
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
@@ -1668,27 +1691,28 @@
 <span class='line-number'>14</span>
 <span class='line-number'>15</span>
 <span class='line-number'>16</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>b.clear
-</span><span class='line'>puts b
-</span><span class='line'># {}
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">b</span><span class="o">.</span><span class="n">clear</span>
+</span><span class='line'><span class="nb">puts</span> <span class="n">b</span>
+</span><span class='line'><span class="c1"># {}</span>
 </span><span class='line'>
-</span><span class='line'>a.empty?
-</span><span class='line'># false
-</span><span class='line'>b.empty?
-</span><span class='line'># true
+</span><span class='line'><span class="n">a</span><span class="o">.</span><span class="n">empty?</span>
+</span><span class='line'><span class="c1"># false</span>
+</span><span class='line'><span class="n">b</span><span class="o">.</span><span class="n">empty?</span>
+</span><span class='line'><span class="c1"># true</span>
 </span><span class='line'>
-</span><span class='line'>a.length
-</span><span class='line'># 3
+</span><span class='line'><span class="n">a</span><span class="o">.</span><span class="n">length</span>
+</span><span class='line'><span class="c1"># 3</span>
 </span><span class='line'>
-</span><span class='line'>a.keys
-</span><span class='line'># ["a", 3, 5]
-</span><span class='line'>a.values
-</span><span class='line'># ["b", "d", 6]</span></code></pre></td></tr></table></div></figure>
+</span><span class='line'><span class="n">a</span><span class="o">.</span><span class="n">keys</span>
+</span><span class='line'><span class="c1"># [&quot;a&quot;, 3, 5]</span>
+</span><span class='line'><span class="n">a</span><span class="o">.</span><span class="n">values</span>
+</span><span class='line'><span class="c1"># [&quot;b&quot;, &quot;d&quot;, 6]</span>
+</span></code></pre></td></tr></table></div></figure>
 
 
 <h3>Iterating through the hash</h3>
 
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
@@ -1709,34 +1733,35 @@
 <span class='line-number'>19</span>
 <span class='line-number'>20</span>
 <span class='line-number'>21</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>a.each { |k,v| puts "The value for #{k} is #{v}" }
-</span><span class='line'># The value for a is b
-</span><span class='line'># The value for 3 is d
-</span><span class='line'># The value for 5 is 
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">a</span><span class="o">.</span><span class="n">each</span> <span class="p">{</span> <span class="o">|</span><span class="n">k</span><span class="p">,</span><span class="n">v</span><span class="o">|</span> <span class="nb">puts</span> <span class="s2">&quot;The value for </span><span class="si">#{</span><span class="n">k</span><span class="si">}</span><span class="s2"> is </span><span class="si">#{</span><span class="n">v</span><span class="si">}</span><span class="s2">&quot;</span> <span class="p">}</span>
+</span><span class='line'><span class="c1"># The value for a is b</span>
+</span><span class='line'><span class="c1"># The value for 3 is d</span>
+</span><span class='line'><span class="c1"># The value for 5 is </span>
 </span><span class='line'>
-</span><span class='line'>a.each_key { |k| puts "The value for #{k} is #{a[k]}" }
-</span><span class='line'># The value for a is b
-</span><span class='line'># The value for 3 is d
-</span><span class='line'># The value for 5 is 6
+</span><span class='line'><span class="n">a</span><span class="o">.</span><span class="n">each_key</span> <span class="p">{</span> <span class="o">|</span><span class="n">k</span><span class="o">|</span> <span class="nb">puts</span> <span class="s2">&quot;The value for </span><span class="si">#{</span><span class="n">k</span><span class="si">}</span><span class="s2"> is </span><span class="si">#{</span><span class="n">a</span><span class="o">[</span><span class="n">k</span><span class="o">]</span><span class="si">}</span><span class="s2">&quot;</span> <span class="p">}</span>
+</span><span class='line'><span class="c1"># The value for a is b</span>
+</span><span class='line'><span class="c1"># The value for 3 is d</span>
+</span><span class='line'><span class="c1"># The value for 5 is 6</span>
 </span><span class='line'>
-</span><span class='line'>a.each_value { |v| puts v }
-</span><span class='line'># b
-</span><span class='line'># d
-</span><span class='line'># 6
+</span><span class='line'><span class="n">a</span><span class="o">.</span><span class="n">each_value</span> <span class="p">{</span> <span class="o">|</span><span class="n">v</span><span class="o">|</span> <span class="nb">puts</span> <span class="n">v</span> <span class="p">}</span>
+</span><span class='line'><span class="c1"># b</span>
+</span><span class='line'><span class="c1"># d</span>
+</span><span class='line'><span class="c1"># 6</span>
 </span><span class='line'>
-</span><span class='line'>a.each do |k,v|
-</span><span class='line'>  puts "The value for #{k} is #{v}"
-</span><span class='line'>end
-</span><span class='line'># The value for a is b
-</span><span class='line'># The value for 3 is d
-</span><span class='line'># The value for 5 is 6</span></code></pre></td></tr></table></div></figure>
+</span><span class='line'><span class="n">a</span><span class="o">.</span><span class="n">each</span> <span class="k">do</span> <span class="o">|</span><span class="n">k</span><span class="p">,</span><span class="n">v</span><span class="o">|</span>
+</span><span class='line'>  <span class="nb">puts</span> <span class="s2">&quot;The value for </span><span class="si">#{</span><span class="n">k</span><span class="si">}</span><span class="s2"> is </span><span class="si">#{</span><span class="n">v</span><span class="si">}</span><span class="s2">&quot;</span>
+</span><span class='line'><span class="k">end</span>
+</span><span class='line'><span class="c1"># The value for a is b</span>
+</span><span class='line'><span class="c1"># The value for 3 is d</span>
+</span><span class='line'><span class="c1"># The value for 5 is 6</span>
+</span></code></pre></td></tr></table></div></figure>
 
 
 <h1>Symbols</h1>
 
 <p>Fixnum always have the same object_id, and we can tell Ruby to do that to Strings too &ndash; it&rsquo;s what we call a Symbol. While a new string will be created every time the same String literal is used, the same symbol will always point to the same object in memory. This also means that Ruby&rsquo;s automatic garbage collection will not recycle symbols.</p>
 
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
@@ -1745,15 +1770,16 @@
 <span class='line-number'>7</span>
 <span class='line-number'>8</span>
 <span class='line-number'>9</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>"abc".object_id
-</span><span class='line'># 70139181776180
-</span><span class='line'>"abc".object_id
-</span><span class='line'># 70139181819060
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="s2">&quot;abc&quot;</span><span class="o">.</span><span class="n">object_id</span>
+</span><span class='line'><span class="c1"># 70139181776180</span>
+</span><span class='line'><span class="s2">&quot;abc&quot;</span><span class="o">.</span><span class="n">object_id</span>
+</span><span class='line'><span class="c1"># 70139181819060</span>
 </span><span class='line'>
-</span><span class='line'>:abc.object_id
-</span><span class='line'># 1024808
-</span><span class='line'>:abc.object_id
-</span><span class='line'># 1024808</span></code></pre></td></tr></table></div></figure>
+</span><span class='line'><span class="ss">:abc</span><span class="o">.</span><span class="n">object_id</span>
+</span><span class='line'><span class="c1"># 1024808</span>
+</span><span class='line'><span class="ss">:abc</span><span class="o">.</span><span class="n">object_id</span>
+</span><span class='line'><span class="c1"># 1024808</span>
+</span></code></pre></td></tr></table></div></figure>
 
 
 <p>Because of this, Symbols are the preferred way to set and get Hash elements.</p>
@@ -1765,24 +1791,26 @@ If the identity of the object is important, use a symbol.</p></blockquote>
 
 <p>Do this..</p>
 
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>h = Hash.new
-</span><span class='line'>h[:abc] = "xyz"
-</span><span class='line'>puts h[:abc]</span></code></pre></td></tr></table></div></figure>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">h</span> <span class="o">=</span> <span class="no">Hash</span><span class="o">.</span><span class="n">new</span>
+</span><span class='line'><span class="n">h</span><span class="o">[</span><span class="ss">:abc</span><span class="o">]</span> <span class="o">=</span> <span class="s2">&quot;xyz&quot;</span>
+</span><span class='line'><span class="nb">puts</span> <span class="n">h</span><span class="o">[</span><span class="ss">:abc</span><span class="o">]</span>
+</span></code></pre></td></tr></table></div></figure>
 
 
 <p>but don&rsquo;t do this..</p>
 
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>h = Hash.new
-</span><span class='line'>h["abc"] = :xyz
-</span><span class='line'>puts ["abc"]
-</span><span class='line'># xyz</span></code></pre></td></tr></table></div></figure>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">h</span> <span class="o">=</span> <span class="no">Hash</span><span class="o">.</span><span class="n">new</span>
+</span><span class='line'><span class="n">h</span><span class="o">[</span><span class="s2">&quot;abc&quot;</span><span class="o">]</span> <span class="o">=</span> <span class="ss">:xyz</span>
+</span><span class='line'><span class="nb">puts</span> <span class="o">[</span><span class="s2">&quot;abc&quot;</span><span class="o">]</span>
+</span><span class='line'><span class="c1"># xyz</span>
+</span></code></pre></td></tr></table></div></figure>
 
 
 
@@ -1825,7 +1853,7 @@ If the identity of the object is important, use a symbol.</p></blockquote>
 
 <p>There is the while loop you&rsquo;re used to</p>
 
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
@@ -1833,19 +1861,20 @@ If the identity of the object is important, use a symbol.</p></blockquote>
 <span class='line-number'>6</span>
 <span class='line-number'>7</span>
 <span class='line-number'>8</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>i = 0
-</span><span class='line'>while i &lt; 3 do
-</span><span class='line'>  puts i
-</span><span class='line'>  i += 1
-</span><span class='line'>end
-</span><span class='line'># 0
-</span><span class='line'># 1
-</span><span class='line'># 2</span></code></pre></td></tr></table></div></figure>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">i</span> <span class="o">=</span> <span class="mi">0</span>
+</span><span class='line'><span class="k">while</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="mi">3</span> <span class="k">do</span>
+</span><span class='line'>  <span class="nb">puts</span> <span class="n">i</span>
+</span><span class='line'>  <span class="n">i</span> <span class="o">+=</span> <span class="mi">1</span>
+</span><span class='line'><span class="k">end</span>
+</span><span class='line'><span class="c1"># 0</span>
+</span><span class='line'><span class="c1"># 1</span>
+</span><span class='line'><span class="c1"># 2</span>
+</span></code></pre></td></tr></table></div></figure>
 
 
 <p>While loops with the test at the end</p>
 
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
@@ -1860,26 +1889,27 @@ If the identity of the object is important, use a symbol.</p></blockquote>
 <span class='line-number'>13</span>
 <span class='line-number'>14</span>
 <span class='line-number'>15</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>i = 0
-</span><span class='line'>begin
-</span><span class='line'>  puts i
-</span><span class='line'>  i += 1
-</span><span class='line'>end while i &lt; 3
-</span><span class='line'># 0
-</span><span class='line'># 1
-</span><span class='line'># 2
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">i</span> <span class="o">=</span> <span class="mi">0</span>
+</span><span class='line'><span class="k">begin</span>
+</span><span class='line'>  <span class="nb">puts</span> <span class="n">i</span>
+</span><span class='line'>  <span class="n">i</span> <span class="o">+=</span> <span class="mi">1</span>
+</span><span class='line'><span class="k">end</span> <span class="k">while</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="mi">3</span>
+</span><span class='line'><span class="c1"># 0</span>
+</span><span class='line'><span class="c1"># 1</span>
+</span><span class='line'><span class="c1"># 2</span>
 </span><span class='line'>
-</span><span class='line'>i = 0
-</span><span class='line'>begin
-</span><span class='line'>  puts i
-</span><span class='line'>  i += 1
-</span><span class='line'>end while i &lt; 0
-</span><span class='line'># 0</span></code></pre></td></tr></table></div></figure>
+</span><span class='line'><span class="n">i</span> <span class="o">=</span> <span class="mi">0</span>
+</span><span class='line'><span class="k">begin</span>
+</span><span class='line'>  <span class="nb">puts</span> <span class="n">i</span>
+</span><span class='line'>  <span class="n">i</span> <span class="o">+=</span> <span class="mi">1</span>
+</span><span class='line'><span class="k">end</span> <span class="k">while</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="mi">0</span>
+</span><span class='line'><span class="c1"># 0</span>
+</span></code></pre></td></tr></table></div></figure>
 
 
 <p>There&rsquo;s the until loops which run while the condition is false</p>
 
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
@@ -1893,43 +1923,45 @@ If the identity of the object is important, use a symbol.</p></blockquote>
 <span class='line-number'>12</span>
 <span class='line-number'>13</span>
 <span class='line-number'>14</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>i = 0
-</span><span class='line'>until i > 2
-</span><span class='line'>  puts i
-</span><span class='line'>  i += 1
-</span><span class='line'>end
-</span><span class='line'># 0
-</span><span class='line'># 1
-</span><span class='line'># 2
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">i</span> <span class="o">=</span> <span class="mi">0</span>
+</span><span class='line'><span class="k">until</span> <span class="n">i</span> <span class="o">&gt;</span> <span class="mi">2</span>
+</span><span class='line'>  <span class="nb">puts</span> <span class="n">i</span>
+</span><span class='line'>  <span class="n">i</span> <span class="o">+=</span> <span class="mi">1</span>
+</span><span class='line'><span class="k">end</span>
+</span><span class='line'><span class="c1"># 0</span>
+</span><span class='line'><span class="c1"># 1</span>
+</span><span class='line'><span class="c1"># 2</span>
 </span><span class='line'>
-</span><span class='line'>i = 0
-</span><span class='line'>begin
-</span><span class='line'>  puts i
-</span><span class='line'>  i += 1
-</span><span class='line'>end until i >= 0</span></code></pre></td></tr></table></div></figure>
+</span><span class='line'><span class="n">i</span> <span class="o">=</span> <span class="mi">0</span>
+</span><span class='line'><span class="k">begin</span>
+</span><span class='line'>  <span class="nb">puts</span> <span class="n">i</span>
+</span><span class='line'>  <span class="n">i</span> <span class="o">+=</span> <span class="mi">1</span>
+</span><span class='line'><span class="k">end</span> <span class="k">until</span> <span class="n">i</span> <span class="o">&gt;=</span> <span class="mi">0</span>
+</span></code></pre></td></tr></table></div></figure>
 
 
 <p>And finally, my favourite &ndash; the for loops. If you already have a list to iterate through, great.</p>
 
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
 <span class='line-number'>5</span>
 <span class='line-number'>6</span>
 <span class='line-number'>7</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>a = [0, 1, 2]
-</span><span class='line'>for i in a
-</span><span class='line'>  puts i
-</span><span class='line'>end
-</span><span class='line'># 0
-</span><span class='line'># 1
-</span><span class='line'># 2</span></code></pre></td></tr></table></div></figure>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">a</span> <span class="o">=</span> <span class="o">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="o">]</span>
+</span><span class='line'><span class="k">for</span> <span class="n">i</span> <span class="k">in</span> <span class="n">a</span>
+</span><span class='line'>  <span class="nb">puts</span> <span class="n">i</span>
+</span><span class='line'><span class="k">end</span>
+</span><span class='line'><span class="c1"># 0</span>
+</span><span class='line'><span class="c1"># 1</span>
+</span><span class='line'><span class="c1"># 2</span>
+</span></code></pre></td></tr></table></div></figure>
 
 
 <p>If not, it&rsquo;s great too</p>
 
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
@@ -1942,24 +1974,25 @@ If the identity of the object is important, use a symbol.</p></blockquote>
 <span class='line-number'>11</span>
 <span class='line-number'>12</span>
 <span class='line-number'>13</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>for i in 0..2
-</span><span class='line'>  puts i
-</span><span class='line'>end
-</span><span class='line'># 0
-</span><span class='line'># 1
-</span><span class='line'># 2
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="k">for</span> <span class="n">i</span> <span class="k">in</span> <span class="mi">0</span><span class="o">.</span><span class="n">.</span><span class="mi">2</span>
+</span><span class='line'>  <span class="nb">puts</span> <span class="n">i</span>
+</span><span class='line'><span class="k">end</span>
+</span><span class='line'><span class="c1"># 0</span>
+</span><span class='line'><span class="c1"># 1</span>
+</span><span class='line'><span class="c1"># 2</span>
 </span><span class='line'>
-</span><span class='line'>(0..2).each do |i|
-</span><span class='line'>  puts i
-</span><span class='line'>end
-</span><span class='line'># 0
-</span><span class='line'># 1
-</span><span class='line'># 2</span></code></pre></td></tr></table></div></figure>
+</span><span class='line'><span class="p">(</span><span class="mi">0</span><span class="o">.</span><span class="n">.</span><span class="mi">2</span><span class="p">)</span><span class="o">.</span><span class="n">each</span> <span class="k">do</span> <span class="o">|</span><span class="n">i</span><span class="o">|</span>
+</span><span class='line'>  <span class="nb">puts</span> <span class="n">i</span>
+</span><span class='line'><span class="k">end</span>
+</span><span class='line'><span class="c1"># 0</span>
+</span><span class='line'><span class="c1"># 1</span>
+</span><span class='line'><span class="c1"># 2</span>
+</span></code></pre></td></tr></table></div></figure>
 
 
 <p>There&rsquo;s also 4 keywords to help you manage the control of flow <code>break</code>, <code>next</code>, <code>redo</code> and finally <code>retry</code> which I&rsquo;ll bring up in the Error Handling section. <code>break</code> exits the inner most loop</p>
 
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
@@ -1967,19 +2000,20 @@ If the identity of the object is important, use a symbol.</p></blockquote>
 <span class='line-number'>6</span>
 <span class='line-number'>7</span>
 <span class='line-number'>8</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>for i in 0..2
-</span><span class='line'>  puts i
-</span><span class='line'>  if i == 1
-</span><span class='line'>    break
-</span><span class='line'>  end
-</span><span class='line'>end
-</span><span class='line'># 0
-</span><span class='line'># 1</span></code></pre></td></tr></table></div></figure>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="k">for</span> <span class="n">i</span> <span class="k">in</span> <span class="mi">0</span><span class="o">.</span><span class="n">.</span><span class="mi">2</span>
+</span><span class='line'>  <span class="nb">puts</span> <span class="n">i</span>
+</span><span class='line'>  <span class="k">if</span> <span class="n">i</span> <span class="o">==</span> <span class="mi">1</span>
+</span><span class='line'>    <span class="k">break</span>
+</span><span class='line'>  <span class="k">end</span>
+</span><span class='line'><span class="k">end</span>
+</span><span class='line'><span class="c1"># 0</span>
+</span><span class='line'><span class="c1"># 1</span>
+</span></code></pre></td></tr></table></div></figure>
 
 
 <p>While <code>next</code> jumps to the next iteration of the loop</p>
 
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
@@ -1996,28 +2030,29 @@ If the identity of the object is important, use a symbol.</p></blockquote>
 <span class='line-number'>15</span>
 <span class='line-number'>16</span>
 <span class='line-number'>17</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>for i in 0..2
-</span><span class='line'>  if i == 1
-</span><span class='line'>    next
-</span><span class='line'>  end
-</span><span class='line'>  puts i
-</span><span class='line'>end
-</span><span class='line'># 0
-</span><span class='line'># 2
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="k">for</span> <span class="n">i</span> <span class="k">in</span> <span class="mi">0</span><span class="o">.</span><span class="n">.</span><span class="mi">2</span>
+</span><span class='line'>  <span class="k">if</span> <span class="n">i</span> <span class="o">==</span> <span class="mi">1</span>
+</span><span class='line'>    <span class="k">next</span>
+</span><span class='line'>  <span class="k">end</span>
+</span><span class='line'>  <span class="nb">puts</span> <span class="n">i</span>
+</span><span class='line'><span class="k">end</span>
+</span><span class='line'><span class="c1"># 0</span>
+</span><span class='line'><span class="c1"># 2</span>
 </span><span class='line'>
-</span><span class='line'>for i in 0..2
-</span><span class='line'>  if i == 2
-</span><span class='line'>    next
-</span><span class='line'>  end
-</span><span class='line'>  puts i
-</span><span class='line'>end
-</span><span class='line'># 0
-</span><span class='line'># 1</span></code></pre></td></tr></table></div></figure>
+</span><span class='line'><span class="k">for</span> <span class="n">i</span> <span class="k">in</span> <span class="mi">0</span><span class="o">.</span><span class="n">.</span><span class="mi">2</span>
+</span><span class='line'>  <span class="k">if</span> <span class="n">i</span> <span class="o">==</span> <span class="mi">2</span>
+</span><span class='line'>    <span class="k">next</span>
+</span><span class='line'>  <span class="k">end</span>
+</span><span class='line'>  <span class="nb">puts</span> <span class="n">i</span>
+</span><span class='line'><span class="k">end</span>
+</span><span class='line'><span class="c1"># 0</span>
+</span><span class='line'><span class="c1"># 1</span>
+</span></code></pre></td></tr></table></div></figure>
 
 
 <p>And <code>redo</code> jumps back to the beginning of the current iteration in this loop</p>
 
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
@@ -2035,24 +2070,25 @@ If the identity of the object is important, use a symbol.</p></blockquote>
 <span class='line-number'>16</span>
 <span class='line-number'>17</span>
 <span class='line-number'>18</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>j = 0
-</span><span class='line'>for i in 0..2
-</span><span class='line'>  puts "i is #{i}"
-</span><span class='line'>  puts "j is #{j}"
-</span><span class='line'>  j += 1
-</span><span class='line'>  if j > 2
-</span><span class='line'>    break
-</span><span class='line'>  end
-</span><span class='line'>  if i == 1
-</span><span class='line'>    redo
-</span><span class='line'>  end
-</span><span class='line'>end
-</span><span class='line'># i is 0
-</span><span class='line'># j is 0
-</span><span class='line'># i is 1
-</span><span class='line'># j is 1
-</span><span class='line'># i is 1
-</span><span class='line'># j is 2</span></code></pre></td></tr></table></div></figure>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">j</span> <span class="o">=</span> <span class="mi">0</span>
+</span><span class='line'><span class="k">for</span> <span class="n">i</span> <span class="k">in</span> <span class="mi">0</span><span class="o">.</span><span class="n">.</span><span class="mi">2</span>
+</span><span class='line'>  <span class="nb">puts</span> <span class="s2">&quot;i is </span><span class="si">#{</span><span class="n">i</span><span class="si">}</span><span class="s2">&quot;</span>
+</span><span class='line'>  <span class="nb">puts</span> <span class="s2">&quot;j is </span><span class="si">#{</span><span class="n">j</span><span class="si">}</span><span class="s2">&quot;</span>
+</span><span class='line'>  <span class="n">j</span> <span class="o">+=</span> <span class="mi">1</span>
+</span><span class='line'>  <span class="k">if</span> <span class="n">j</span> <span class="o">&gt;</span> <span class="mi">2</span>
+</span><span class='line'>    <span class="k">break</span>
+</span><span class='line'>  <span class="k">end</span>
+</span><span class='line'>  <span class="k">if</span> <span class="n">i</span> <span class="o">==</span> <span class="mi">1</span>
+</span><span class='line'>    <span class="k">redo</span>
+</span><span class='line'>  <span class="k">end</span>
+</span><span class='line'><span class="k">end</span>
+</span><span class='line'><span class="c1"># i is 0</span>
+</span><span class='line'><span class="c1"># j is 0</span>
+</span><span class='line'><span class="c1"># i is 1</span>
+</span><span class='line'><span class="c1"># j is 1</span>
+</span><span class='line'><span class="c1"># i is 1</span>
+</span><span class='line'><span class="c1"># j is 2</span>
+</span></code></pre></td></tr></table></div></figure>
 
 
 

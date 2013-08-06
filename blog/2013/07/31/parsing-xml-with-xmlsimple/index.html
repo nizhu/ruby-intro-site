@@ -95,27 +95,24 @@
 
 <h1>Third Party libraries</h1>
 
-<p>Third party libraries in Ruby are referred to as gems. Gem is an executable that comes with Ruby. Tell it to install, along with the name of the gem and it will download and install the gem that you want as well as all its dependencies.</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>gem install xml-simple</span></code></pre></td></tr></table></div></figure>
-
+<p>Third party libraries in Ruby are referred to as gems. Gem is an executable that comes with Ruby. Tell it to install, along with the name of the gem and it will download and install the gem that you want as well as all its dependencies&hellip;<code>gem install xml-simple</code></p>
 
 <h1>Let&rsquo;s Parse!</h1>
 
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>require 'xmlsimple'
-</span><span class='line'>xml = File.read 'data/xml/aec-mediafeed-results-detailed-light-15508.xml'
-</span><span class='line'>data = XmlSimple.xml_in xml</span></code></pre></td></tr></table></div></figure>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="nb">require</span> <span class="s1">&#39;xmlsimple&#39;</span>
+</span><span class='line'><span class="n">xml</span> <span class="o">=</span> <span class="no">File</span><span class="o">.</span><span class="n">read</span> <span class="s1">&#39;data/xml/aec-mediafeed-results-detailed-light-15508.xml&#39;</span>
+</span><span class='line'><span class="n">data</span> <span class="o">=</span> <span class="no">XmlSimple</span><span class="o">.</span><span class="n">xml_in</span> <span class="n">xml</span>
+</span></code></pre></td></tr></table></div></figure>
 
 
 <p>Parsing XML takes a little while, and XmlSimple isn&rsquo;t the most efficient of parsers. If speed is a concern at all, you should definitely look into <a href="http://nokogiri.org/">Nokogiri</a>.</p>
 
 <p>Once it&rsquo;s done we can see what&rsquo;s in there one step at a time.</p>
 
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
@@ -135,26 +132,27 @@
 <span class='line-number'>18</span>
 <span class='line-number'>19</span>
 <span class='line-number'>20</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>data.keys
-</span><span class='line'># ["Id", "Created", "SchemaVersion", "EmlVersion", "xmlns", "xmlns:eml", "xmlns:ds", "xmlns:xal", "xmlns:xnl", "xmlns:ts", "xmlns:xs", "xs:schemaLocation", "ManagingAuthority", "MessageLanguage", "MessageGenerator", "Cycle", "Results"]
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">data</span><span class="o">.</span><span class="n">keys</span>
+</span><span class='line'><span class="c1"># [&quot;Id&quot;, &quot;Created&quot;, &quot;SchemaVersion&quot;, &quot;EmlVersion&quot;, &quot;xmlns&quot;, &quot;xmlns:eml&quot;, &quot;xmlns:ds&quot;, &quot;xmlns:xal&quot;, &quot;xmlns:xnl&quot;, &quot;xmlns:ts&quot;, &quot;xmlns:xs&quot;, &quot;xs:schemaLocation&quot;, &quot;ManagingAuthority&quot;, &quot;MessageLanguage&quot;, &quot;MessageGenerator&quot;, &quot;Cycle&quot;, &quot;Results&quot;]</span>
 </span><span class='line'>
-</span><span class='line'>data.["Results"].keys
-</span><span class='line'># NoMethodError
+</span><span class='line'><span class="n">data</span><span class="o">.</span><span class="n">[</span><span class="s2">&quot;Results&quot;</span><span class="o">].</span><span class="n">keys</span>
+</span><span class='line'><span class="c1"># NoMethodError</span>
 </span><span class='line'>
-</span><span class='line'>data.["Results"].class
-</span><span class='line'># Array
+</span><span class='line'><span class="n">data</span><span class="o">.</span><span class="n">[</span><span class="s2">&quot;Results&quot;</span><span class="o">].</span><span class="n">class</span>
+</span><span class='line'><span class="c1"># Array</span>
 </span><span class='line'>
-</span><span class='line'>data.["Results"][0].class
-</span><span class='line'># Hash
+</span><span class='line'><span class="n">data</span><span class="o">.</span><span class="n">[</span><span class="s2">&quot;Results&quot;</span><span class="o">][</span><span class="mi">0</span><span class="o">].</span><span class="n">class</span>
+</span><span class='line'><span class="c1"># Hash</span>
 </span><span class='line'>
-</span><span class='line'>data["Results"][0]["Election"][0]["House"][0]["Contests"][0]["Contest"][0].keys
-</span><span class='line'># ["Projected", "ContestIdentifier", "Enrolment", "FirstPreferences", "TwoCandidatePreferred", "TwoPartyPreferred", "PollingPlaces"]
+</span><span class='line'><span class="n">data</span><span class="o">[</span><span class="s2">&quot;Results&quot;</span><span class="o">][</span><span class="mi">0</span><span class="o">][</span><span class="s2">&quot;Election&quot;</span><span class="o">][</span><span class="mi">0</span><span class="o">][</span><span class="s2">&quot;House&quot;</span><span class="o">][</span><span class="mi">0</span><span class="o">][</span><span class="s2">&quot;Contests&quot;</span><span class="o">][</span><span class="mi">0</span><span class="o">][</span><span class="s2">&quot;Contest&quot;</span><span class="o">][</span><span class="mi">0</span><span class="o">].</span><span class="n">keys</span>
+</span><span class='line'><span class="c1"># [&quot;Projected&quot;, &quot;ContestIdentifier&quot;, &quot;Enrolment&quot;, &quot;FirstPreferences&quot;, &quot;TwoCandidatePreferred&quot;, &quot;TwoPartyPreferred&quot;, &quot;PollingPlaces&quot;]</span>
 </span><span class='line'>
-</span><span class='line'>data["Results"][0]["Election"][0]["House"][0]["Contests"][0]["Contest"][0]["TwoPartyPreferred"][0]["Coalition"][0]["Votes"]
-</span><span class='line'># 0
+</span><span class='line'><span class="n">data</span><span class="o">[</span><span class="s2">&quot;Results&quot;</span><span class="o">][</span><span class="mi">0</span><span class="o">][</span><span class="s2">&quot;Election&quot;</span><span class="o">][</span><span class="mi">0</span><span class="o">][</span><span class="s2">&quot;House&quot;</span><span class="o">][</span><span class="mi">0</span><span class="o">][</span><span class="s2">&quot;Contests&quot;</span><span class="o">][</span><span class="mi">0</span><span class="o">][</span><span class="s2">&quot;Contest&quot;</span><span class="o">][</span><span class="mi">0</span><span class="o">][</span><span class="s2">&quot;TwoPartyPreferred&quot;</span><span class="o">][</span><span class="mi">0</span><span class="o">][</span><span class="s2">&quot;Coalition&quot;</span><span class="o">][</span><span class="mi">0</span><span class="o">][</span><span class="s2">&quot;Votes&quot;</span><span class="o">]</span>
+</span><span class='line'><span class="c1"># 0</span>
 </span><span class='line'>
-</span><span class='line'>data["Results"][0]["Election"][0]["House"][0]["Contests"][0]["Contest"][0]["Enrolment"]
-</span><span class='line'># 124215</span></code></pre></td></tr></table></div></figure>
+</span><span class='line'><span class="n">data</span><span class="o">[</span><span class="s2">&quot;Results&quot;</span><span class="o">][</span><span class="mi">0</span><span class="o">][</span><span class="s2">&quot;Election&quot;</span><span class="o">][</span><span class="mi">0</span><span class="o">][</span><span class="s2">&quot;House&quot;</span><span class="o">][</span><span class="mi">0</span><span class="o">][</span><span class="s2">&quot;Contests&quot;</span><span class="o">][</span><span class="mi">0</span><span class="o">][</span><span class="s2">&quot;Contest&quot;</span><span class="o">][</span><span class="mi">0</span><span class="o">][</span><span class="s2">&quot;Enrolment&quot;</span><span class="o">]</span>
+</span><span class='line'><span class="c1"># 124215</span>
+</span></code></pre></td></tr></table></div></figure>
 
 
 
