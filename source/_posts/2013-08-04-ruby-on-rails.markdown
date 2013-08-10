@@ -8,7 +8,7 @@ categories: [Ruby, SENG2021]
 
 As I mentioned in the very first post, Rails has been credited with Ruby's sudden, meteoric rise in popularity. It's not the only web application framework for Ruby, but it remains by far the most popular to this day. If you're interested in a career in web development and want to stay away from corporate enterprises, this is a great way to go about it.
 
-Rails emphasises the Model-View-Controller principle, and if you're not familiar with the concept, it's essentially the separation of the data, to the logic of processing the data, and the display of the processing results (links at the bottom for more details). The application I'll be demoing will ignore the Model part however. This is a very simple application will retrieve some data from Twitter, same as the previous post, and display it on a webpage.
+Rails emphasises the Model-View-Controller principle, and if you're not familiar with the concept, it's essentially the separation of the data, to the logic of processing the data, and the display of the processed results (links at the bottom for more details). The application I'll be demoing will ignore the Model part however. This is a very simple application will retrieve some data from Twitter, same as the previous post, and display it on a webpage.
 
 As always, start by installing it...```gem install rails```
 
@@ -20,16 +20,63 @@ One of the big features of rails is scaffolding - automatically generating commo
 cd ~
 rails new twitter_app -O
 cd twitter_app
-rails generate controller twitter
 {% endcodeblock %}
 
-The rails generator has created a lot of new files - about 80 in fact - but there aren't that many we need to worry about.
+The rails generator has created a lot of new files - about 20 in fact - but there aren't that many we need to worry about.
 
 Before you begin editing the files, copy the twitter configuration file from the previous pages to the ```config/initializers``` directory. Files in this directory are run when the server is started.
 
+## Gemfile
+
+This file basically tells the Ruby environment what gems are required to run the the application. Our app only needs the twitter gem so just add that.
+
+{% codeblock lang:ruby Gemfile %}
+source 'https://rubygems.org'
+gem 'twitter'
+gem 'rails', '4.0.0'
+{% endcodeblock %}
+
+Source specifies where it should look for the gems if they were to be installed. We can also specify the version of a gem we want in order to ensure that things work as we expect; don't want updates to break the application. Everything else in the file is optional.
+
+## The Twitter controller
+
+First thing to do is to generate the controller.. ```rails generate controller twitter```.
+
+The code here is almost identical to that from the previous Twitter post. Now, we're just keeping all the tweets in an array instead of just printing it. At the end of the processing, Rails will automatically look for the template ```views/<controller name>/<function name>.*``` unless you specify which HTML template to use with the ```render```. This is displayed within ```views/layouts/application.html.erb```.
+
+{% codeblock lang:ruby app/controllers/twitter_controller.rb %}
+require 'twitter'
+class TwitterController < ApplicationController
+  
+  def proposals
+    tweets = []
+    max_id = -1
+    for i in (0..1)
+      t = Twitter.search("to:justinbieber marry me", :count => 100, :result_type => "recent")
+      t.statuses.each do | tweet |
+        tweets.push tweet
+      end
+      max_id = t.next_results[:max_id]
+    end
+  end
+
+  def ausvotes
+    tweets = []
+    max_id = -1
+    for i in (0..1)
+      t = Twitter.search("#ausvotes -rt", :count => 100, :result_type => "recent", :max_id => max_id)
+      t.statuses.each do | tweet |
+        tweets.push tweet
+      end
+      max_id = t.next_results[:max_id]
+    end
+  end
+end
+{% endcodeblock %}
+
 ## The Rails Router
 
-It's advisable that you leave the commented out lines here until you get the hand of routing just for your reference.
+It's advisable that you leave the commented out lines here until you get the hang of routing, just for reference.
 
 {% codeblock lang:ruby config/routes.rb %}
 TwitterApp::Application.routes.draw do
@@ -40,40 +87,6 @@ end
 {% endcodeblock %}
 
 The first line in the block points the root path, ```/``` to the proposals function in the twitter controller. The second and third points ```/proposals`` and ```/ausvotes``` paths to their respective functions in the same controller.
-
-## The Twitter controller
-
-The code here is almost identical to that from the previous Twitter post. Now, we're just keeping all the tweets in an array instead of just printing it. At the end of the processing, Rails will first render ```views/layouts/application.html.erb```. Unless you specify which HTML template to use with the ```render``` function, rails will automatically look for the template ```views/<controller name>/<function name>.*```.
-
-{% codeblock lang:ruby app/controllers/twitter_controller.rb %}
-require 'twitter'
-class TwitterController < ApplicationController
-  
-  def proposals
-    @tweets = [];
-    max_id = -1
-    for i in (0..1)
-      t = Twitter.search("to:justinbieber marry me", :count => 100, :result_type => "recent")
-      t.statuses.each do | tweet |
-        @tweets.push tweet
-      end
-      max_id = t.next_results[:max_id]
-    end
-  end
-
-  def ausvotes
-    @tweets = [];
-    max_id = -1
-    for i in (0..1)
-      t = Twitter.search("#ausvotes -rt", :count => 100, :result_type => "recent", :max_id => max_id)
-      t.statuses.each do | tweet |
-        @tweets.push tweet
-      end
-      max_id = t.next_results[:max_id]
-    end
-  end
-end
-{% endcodeblock %}
 
 ## Justin Bieber Proposals page
 

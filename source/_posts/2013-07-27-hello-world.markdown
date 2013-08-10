@@ -6,23 +6,7 @@ comments: true
 categories: [Ruby, SENG2021]
 ---
 
-It's finally time to start coding. Start by cloning the git repository I've prepared for this demonstration.
-{% codeblock lang:sh %}
-git clone git@github.com:nizhu/ruby-intro.git ~/ruby-intro
-cd ~/ruby-intro
-ls
-{% endcodeblock %}
-
-You'll notice that there are lots of files here, most of which you don't need yet so let's get rid of them for now
-
-{% codeblock lang:sh %}
-git checkout hello-world
-ls
-{% endcodeblock %}
-
-Now there's only a license file, telling you that you have permission to use all of the code in this repository for whatever purpose, but I will not take any responsibility for any side effects caused by it.... in lawyer-speak, and a README file that doesn't tell you very much.
-
-I promise we're almost there, just open your favourite text editor
+It's finally time to start coding. 
 
 {% codeblock lang:ruby hello_world.rb %}
 puts "Hello World"
@@ -53,11 +37,40 @@ Hashbangs will be explained at the end of this post for those curious
 
 ## Interactive Ruby Shell
 
-irb is a tool that provides an interface to Ruby. It's a great feature, especially for developers new to Ruby because it allows one to interact with Ruby for instant feedback, and build up to a complex script line by line. Code behaves exactly the same way in irb as it would in the method described above. So open up irb and write Hello World again.
+```irb``` is a tool that provides an interface to Ruby. It's a great feature, especially for developers new to Ruby because it allows one to interact with Ruby for instant feedback, and build up to a complex script line by line. Code behaves exactly the same way in irb as it would in the method described above. So open up ```irb``` and write Hello World again....```puts "Hello World"
 
-You'll notice that after printing Hello World, it also says nil. This is the 'null' value in Ruby, but don't worry about why it's doing so for now. This will be explained in the Functions section.
+You'll notice that after printing Hello World, it also says => nil; this is the 'null' value in Ruby. It's the value that is returned by the function, and in this case, the value returned by ```puts```.
 
-If you want to import files that you've written, there are two ways to do so. A file that is imported in irb is executed just as it would if it had been imported through normal code, and it is the same as if it had been copy and pasted into irb. The following demonstrates the two major difference between the two options so try this out in irb:
+If you want to import files that you've written, there are two ways to do so. A file that is imported in irb is executed just as it would if it had been imported through normal code, and it is the same as if it had been copy and pasted into irb. The following demonstrates the two major difference between the two options so try this out in irb. There is a trick however... Since Ruby 1.9.2, your current directory is no longer included in the list of directories that Ruby searches for the file you're loading.
+
+{% codeblock lang:ruby %}
+puts $:
+# /root/.rbenv/versions/2.0.0-p247/lib/ruby/site_ruby/2.0.0
+# /root/.rbenv/versions/2.0.0-p247/lib/ruby/site_ruby/2.0.0/x86_64-linux
+# /root/.rbenv/versions/2.0.0-p247/lib/ruby/site_ruby
+# /root/.rbenv/versions/2.0.0-p247/lib/ruby/vendor_ruby/2.0.0
+# /root/.rbenv/versions/2.0.0-p247/lib/ruby/vendor_ruby/2.0.0/x86_64-linux
+# /root/.rbenv/versions/2.0.0-p247/lib/ruby/vendor_ruby
+# /root/.rbenv/versions/2.0.0-p247/lib/ruby/2.0.0
+# /root/.rbenv/versions/2.0.0-p247/lib/ruby/2.0.0/x86_64-linux
+{% endcodeblock %}
+
+To fix this, we start irb with ```irb -I .```
+
+{% codeblock lang:ruby %}
+puts $:
+# /root/ruby-intro
+# /root/.rbenv/versions/2.0.0-p247/lib/ruby/site_ruby/2.0.0
+# /root/.rbenv/versions/2.0.0-p247/lib/ruby/site_ruby/2.0.0/x86_64-linux
+# /root/.rbenv/versions/2.0.0-p247/lib/ruby/site_ruby
+# /root/.rbenv/versions/2.0.0-p247/lib/ruby/vendor_ruby/2.0.0
+# /root/.rbenv/versions/2.0.0-p247/lib/ruby/vendor_ruby/2.0.0/x86_64-linux
+# /root/.rbenv/versions/2.0.0-p247/lib/ruby/vendor_ruby
+# /root/.rbenv/versions/2.0.0-p247/lib/ruby/2.0.0
+# /root/.rbenv/versions/2.0.0-p247/lib/ruby/2.0.0/x86_64-linux
+{% endcodeblock %}
+
+Let's try again.
 
 {% codeblock lang:ruby %}
 load 'hello_world.rb'
@@ -74,8 +87,8 @@ require 'hello_world'
 {% endcodeblock %}
 
 The differences are:
-* require will not import a file more than once
-* file extension is not necessary when importing with require
+*   require will not import a file more than once
+*   file extension is not necessary when importing with require
 
 Generally it's more appropriate to use require unless you do need to execute some code more than once.
 

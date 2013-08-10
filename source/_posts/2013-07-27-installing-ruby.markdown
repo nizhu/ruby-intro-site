@@ -58,7 +58,7 @@ rbenv rehash
 
 For fun times, install these dependencies
 {% codeblock lang:sh %}
-apt-get install build-essential openssl libreadline6 libreadline6-dev curl git-core zlib1g zlib1g-dev libssl-dev libyaml-dev libsqlite3-dev sqlite3 libxml2-dev libxslt-dev autoconf libc6-dev ncurses-dev automake libtool bison subversion pkg-config
+apt-get install build-essential openssl libreadline6 libreadline6-dev curl git-core zlib1g zlib1g-dev libssl-dev libyaml-dev libsqlite3-dev sqlite3 libxml2-dev libxslt-dev autoconf libc6-dev ncurses-dev automake libtool bison subversion pkg-config nodejs
 {% endcodeblock %}
 
 Install rbenv + ruby-build
@@ -73,6 +73,10 @@ rbenv install 2.0.0-p247
 rbenv rehash
 {% endcodeblock %}
 
+## Windows
+
+http://rubyinstaller.org/
+
 ## Keeping legacy code consistent
 
 You may have Ruby scripts before installing rbenv that ran with system Ruby, so it's best to keep it that way. To ensure that this happens, we can make system ruby the default for rbenv.
@@ -83,6 +87,8 @@ rbenv version
 # system (set by /usr/local/opt/rbenv/version)
 {% endcodeblock %}
 
+You can obviously set the global default to 2.0.0-p247 if you wish too.
+
 ## Make rbenv use a specific version
 
 Whenever you interact with rbenv, it will look in your current directory for a file named .rbenv-version before falling back to the global default. Try the following:
@@ -92,10 +98,11 @@ cd /tmp
 rbenv version
 # system (set by /usr/local/opt/rbenv/version)
 echo '2.0.0-p247' > .rbenv-version
+rbenv version
 # 2.0.0-p247 (set by /tmp/.rbenv-version)
-{% endcodeblock %}
+{% endcodeblock %}s
 
-The best thing about forcing versions is that you can commit this file to your code repository, and it will ensure that developer on every machine using rbenv will be using the version of Ruby that is intended.
+The best thing about setting versions with the file is that you can commit this file to your code repository, and it will ensure that every developer on every computer using rbenv will be using the version of Ruby that is intended (unless they really don't want to).
 
 1. [rvm][1]
 2. [rbenv][2]

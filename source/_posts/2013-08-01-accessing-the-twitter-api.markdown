@@ -6,18 +6,24 @@ comments: true
 categories: [Ruby, SENG2021]
 ---
 
-Since mid June this year, the Twitter has forced users to use OAuth to authenticate and access its API. You can no longer access its data in a trivial way like the GitHub example before. You must get 4 keys from [Twitter's developer page][5]: ```Consumer key```, ```Consumer secret```, ```Access token``` and ```Access secret``` - don't need to know what they mean yet, but the 2 secret keys should not be shared. OAuth is a real pain. These 4 keys won't give you access. They'll let you get 3 more one use keys which you can then use to access the API.
+Since mid June this year, Twitter has forced users to use OAuth to authenticate and access its API. You can no longer access its data in a trivial way like the GitHub example before. You must get 4 keys from [Twitter's developer page][5]: ```Consumer key```, ```Consumer secret```, ```Access token``` and ```Access secret``` - don't need to know what they mean yet, but be sure that the 2 secret keys are be shared. OAuth is a real pain. These 4 keys won't give you access. They'll let you get 3 more one use keys which you can then use to access the API.
 
-Fortunately for you as a Ruby user, there are two libraries that will do all the menial work for you. [Twitter][1] is a conveniently named library to access the standard Twitter API (it is not developed by Twitter Inc) while the other is [TweetStream][2] is designed to use Twitter's streaming API. It's unlikely that you'll need to use the streaming API for this assignment so I won't be showing you TweetStream.
+Fortunately for you as a Ruby user, there are two libraries that will do all the menial work for you. [Twitter][1] is a conveniently named library to access the standard Twitter API (it is not developed by Twitter Inc) while the other, [TweetStream][2] is designed to use Twitter's streaming API (kind of like email pushing on your phone). It's unlikely that you'll need to use the streaming API for this assignment so I won't be showing you TweetStream.
 
 ## Twitter Gem
 
-{% codeblock lang:sh %}
-git checkout twitter
-gem install twitter
+Install the twitter gem with ```gem install twitter``` and make the following config file, replacing the upper case strings with the relevant keys.
+
+{% codeblock lang:ruby twitter_config.rb %}
+Twitter.configure do |config|
+  config.consumer_key = YOUR_CONSUMER_KEY
+  config.consumer_secret = YOUR_CONSUMER_SECRET
+  config.oauth_token = YOUR_OAUTH_TOKEN
+  config.oauth_token_secret = YOUR_OAUTH_TOKEN_SECRET
+end
 {% endcodeblock %}
 
-I've made a file out of the gem's authentication configuration code taken from its documentation. Just replace the strings with the your Twitter developer keys in twitter_config.rb. There are some usage examples [here][7], but there's plenty more functionality so do refer to the [documentation][6].
+There are some usage examples [here][7], but there's plenty more functionality so do refer to the [documentation][6].
 
 {% codeblock lang:ruby %}
 require 'twitter'
@@ -72,7 +78,7 @@ Because we don't care about the return value, let's not do this in ```irb```
 {% codeblock lang:ruby last_twitter_status.rb %}
 #!/usr/bin/env ruby
 require 'twitter'
-load 'mine_twitter_config.rb'
+load 'twitter_config.rb'
 
 f = Twitter.friends
 for user in f.collection.each
@@ -84,10 +90,10 @@ But there's still a problem, I'm following more users than this.
 
 This is because Twitter paginates the results to 20 by default.  So if there is more than 20 records, you'll have to iterate through each page to get all the results.
 
-{% codeblock lang:ruby lots_twitter_status.rb %}
+{% codeblock lang:ruby last_twitter_status_iterated.rb %}
 #!/usr/bin/env ruby
 require 'twitter'
-load 'mine_twitter_config.rb'
+load 'twitter_config.rb'
 
 cursor = -1 
 while cursor != 0 do
@@ -106,7 +112,7 @@ Note that the count parameter refers to the number you want per page, although t
 {% codeblock lang:ruby recent_ausvotes.rb %}
 #!/usr/bin/env ruby
 require 'twitter'
-load 'mine_twitter_config.rb'
+load 'twitter_config.rb'
 
 max_id = -1
 for i in (0..1)

@@ -6,7 +6,7 @@ comments: true
 categories: [Ruby, SENG2021]
 ---
 
-For the purpose of this exercise, I've downloaded and extracted a zip file from the AEC's site ```ftp://results.aec.gov.au/15508/Detailed/Light/aec-mediafeed-Detailed-Light-15508-20100817220150.zip``` Ruby has an XML parser called REXML in its standard library, but it's known to be very slow - [Some 50 times slower than Nokogiri][1]. I would love to demonstrate Nokogiri, but unfortunately it's more complex to use than XmlSimple. XmlSimple parses the data into a native Ruby hash whereas Nokogiri has its own set of classes.
+For the purpose of this exercise, I've downloaded and extracted a zip file from the AEC's site ```wget wreckbea.ch/aec-mediafeed-results-standard-light-15508.xml``` Ruby has an XML parser called REXML in its standard library, but it's known to be very slow - [Some 50 times slower than Nokogiri][1]. I would love to demonstrate Nokogiri, but unfortunately it's more complex to use than XmlSimple. XmlSimple parses the data into a native Ruby hash whereas Nokogiri has its own set of classes.
 
 # Third Party libraries
 
@@ -16,7 +16,7 @@ Third party libraries in Ruby are referred to as gems. Gem is an executable that
 
 {% codeblock lang:ruby %}
 require 'xmlsimple'
-xml = File.read 'data/xml/aec-mediafeed-results-detailed-light-15508.xml'
+xml = File.read 'aec-mediafeed-results-standard-light-15508.xml';0
 data = XmlSimple.xml_in xml
 {% endcodeblock %}
 
@@ -28,13 +28,13 @@ Once it's done we can see what's in there one step at a time.
 data.keys
 # ["Id", "Created", "SchemaVersion", "EmlVersion", "xmlns", "xmlns:eml", "xmlns:ds", "xmlns:xal", "xmlns:xnl", "xmlns:ts", "xmlns:xs", "xs:schemaLocation", "ManagingAuthority", "MessageLanguage", "MessageGenerator", "Cycle", "Results"]
 
-data.["Results"].keys
+data["Results"].keys
 # NoMethodError
 
-data.["Results"].class
+data["Results"].class
 # Array
 
-data.["Results"][0].class
+data["Results"][0].class
 # Hash
 
 data["Results"][0]["Election"][0]["House"][0]["Contests"][0]["Contest"][0].keys
