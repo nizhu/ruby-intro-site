@@ -93,7 +93,7 @@
 
 <div class="entry-content"><p>As I mentioned in the very first post, Rails has been credited with Ruby&rsquo;s sudden, meteoric rise in popularity. It&rsquo;s not the only web application framework for Ruby, but it remains by far the most popular to this day. If you&rsquo;re interested in a career in web development and want to stay away from corporate enterprises, this is a great way to go about it.</p>
 
-<p>Rails emphasises the Model-View-Controller principle, and if you&rsquo;re not familiar with the concept, it&rsquo;s essentially the separation of the data, to the logic of processing the data, and the display of the processing results (links at the bottom for more details). The application I&rsquo;ll be demoing will ignore the Model part however. This is a very simple application will retrieve some data from Twitter, same as the previous post, and display it on a webpage.</p>
+<p>Rails emphasises the Model-View-Controller principle, and if you&rsquo;re not familiar with the concept, it&rsquo;s essentially the separation of the data, to the logic of processing the data, and the display of the processed results (links at the bottom for more details). The application I&rsquo;ll be demoing will ignore the Model part however. This is a very simple application will retrieve some data from Twitter, same as the previous post, and display it on a webpage.</p>
 
 <p>As always, start by installing it&hellip;<code>gem install rails</code></p>
 
@@ -104,41 +104,37 @@
 <figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
-<span class='line-number'>4</span>
 </pre></td><td class='code'><pre><code class='sh'><span class='line'><span class="nb">cd</span> ~
 </span><span class='line'>rails new twitter_app -O
 </span><span class='line'><span class="nb">cd </span>twitter_app
-</span><span class='line'>rails generate controller twitter
 </span></code></pre></td></tr></table></div></figure>
 
 
-<p>The rails generator has created a lot of new files &ndash; about 80 in fact &ndash; but there aren&rsquo;t that many we need to worry about.</p>
+<p>The rails generator has created a lot of new files &ndash; about 20 in fact &ndash; but there aren&rsquo;t that many we need to worry about.</p>
 
 <p>Before you begin editing the files, copy the twitter configuration file from the previous pages to the <code>config/initializers</code> directory. Files in this directory are run when the server is started.</p>
 
-<h2>The Rails Router</h2>
+<h2>Gemfile</h2>
 
-<p>It&rsquo;s advisable that you leave the commented out lines here until you get the hand of routing just for your reference.</p>
+<p>This file basically tells the Ruby environment what gems are required to run the the application. Our app only needs the twitter gem so just add that.</p>
 
-<figure class='code'><figcaption><span>config/routes.rb </span></figcaption>
+<figure class='code'><figcaption><span>Gemfile </span></figcaption>
  <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="ss">TwitterApp</span><span class="p">:</span><span class="ss">:Application</span><span class="o">.</span><span class="n">routes</span><span class="o">.</span><span class="n">draw</span> <span class="k">do</span>
-</span><span class='line'>  <span class="n">root</span> <span class="s1">&#39;twitter#proposals&#39;</span>
-</span><span class='line'>  <span class="n">get</span> <span class="s1">&#39;proposals&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;twitter#proposals&#39;</span>
-</span><span class='line'>  <span class="n">get</span> <span class="s1">&#39;ausvotes&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;twitter#ausvotes&#39;</span>
-</span><span class='line'><span class="k">end</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">source</span> <span class="s1">&#39;https://rubygems.org&#39;</span>
+</span><span class='line'><span class="n">gem</span> <span class="s1">&#39;twitter&#39;</span>
+</span><span class='line'><span class="n">gem</span> <span class="s1">&#39;rails&#39;</span><span class="p">,</span> <span class="s1">&#39;4.0.0&#39;</span>
 </span></code></pre></td></tr></table></div></figure>
 
 
-<p>The first line in the block points the root path, <code>/</code> to the proposals function in the twitter controller. The second and third points <code>/proposals`` and</code>/ausvotes&#8220;` paths to their respective functions in the same controller.</p>
+<p>Source specifies where it should look for the gems if they were to be installed. We can also specify the version of a gem we want in order to ensure that things work as we expect; don&rsquo;t want updates to break the application. Everything else in the file is optional.</p>
 
 <h2>The Twitter controller</h2>
 
-<p>The code here is almost identical to that from the previous Twitter post. Now, we&rsquo;re just keeping all the tweets in an array instead of just printing it. At the end of the processing, Rails will first render <code>views/layouts/application.html.erb</code>. Unless you specify which HTML template to use with the <code>render</code> function, rails will automatically look for the template <code>views/&lt;controller name&gt;/&lt;function name&gt;.*</code>.</p>
+<p>First thing to do is to generate the controller.. <code>rails generate controller twitter</code>.</p>
+
+<p>The code here is almost identical to that from the previous Twitter post. Now, we&rsquo;re just keeping all the tweets in an array instead of just printing it. At the end of the processing, Rails will automatically look for the template <code>views/&lt;controller name&gt;/&lt;function name&gt;.*</code> unless you specify which HTML template to use with the <code>render</code>. This is displayed within <code>views/layouts/application.html.erb</code>.</p>
 
 <figure class='code'><figcaption><span>app/controllers/twitter_controller.rb </span></figcaption>
  <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
@@ -172,24 +168,24 @@
 </span><span class='line'><span class="k">class</span> <span class="nc">TwitterController</span> <span class="o">&lt;</span> <span class="no">ApplicationController</span>
 </span><span class='line'>
 </span><span class='line'>  <span class="k">def</span> <span class="nf">proposals</span>
-</span><span class='line'>    <span class="vi">@tweets</span> <span class="o">=</span> <span class="o">[]</span><span class="p">;</span>
+</span><span class='line'>    <span class="n">tweets</span> <span class="o">=</span> <span class="o">[]</span>
 </span><span class='line'>    <span class="n">max_id</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span>
 </span><span class='line'>    <span class="k">for</span> <span class="n">i</span> <span class="k">in</span> <span class="p">(</span><span class="mi">0</span><span class="o">.</span><span class="n">.</span><span class="mi">1</span><span class="p">)</span>
 </span><span class='line'>      <span class="n">t</span> <span class="o">=</span> <span class="no">Twitter</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="s2">&quot;to:justinbieber marry me&quot;</span><span class="p">,</span> <span class="ss">:count</span> <span class="o">=&gt;</span> <span class="mi">100</span><span class="p">,</span> <span class="ss">:result_type</span> <span class="o">=&gt;</span> <span class="s2">&quot;recent&quot;</span><span class="p">)</span>
 </span><span class='line'>      <span class="n">t</span><span class="o">.</span><span class="n">statuses</span><span class="o">.</span><span class="n">each</span> <span class="k">do</span> <span class="o">|</span> <span class="n">tweet</span> <span class="o">|</span>
-</span><span class='line'>        <span class="vi">@tweets</span><span class="o">.</span><span class="n">push</span> <span class="n">tweet</span>
+</span><span class='line'>        <span class="n">tweets</span><span class="o">.</span><span class="n">push</span> <span class="n">tweet</span>
 </span><span class='line'>      <span class="k">end</span>
 </span><span class='line'>      <span class="n">max_id</span> <span class="o">=</span> <span class="n">t</span><span class="o">.</span><span class="n">next_results</span><span class="o">[</span><span class="ss">:max_id</span><span class="o">]</span>
 </span><span class='line'>    <span class="k">end</span>
 </span><span class='line'>  <span class="k">end</span>
 </span><span class='line'>
 </span><span class='line'>  <span class="k">def</span> <span class="nf">ausvotes</span>
-</span><span class='line'>    <span class="vi">@tweets</span> <span class="o">=</span> <span class="o">[]</span><span class="p">;</span>
+</span><span class='line'>    <span class="n">tweets</span> <span class="o">=</span> <span class="o">[]</span>
 </span><span class='line'>    <span class="n">max_id</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span>
 </span><span class='line'>    <span class="k">for</span> <span class="n">i</span> <span class="k">in</span> <span class="p">(</span><span class="mi">0</span><span class="o">.</span><span class="n">.</span><span class="mi">1</span><span class="p">)</span>
 </span><span class='line'>      <span class="n">t</span> <span class="o">=</span> <span class="no">Twitter</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="s2">&quot;#ausvotes -rt&quot;</span><span class="p">,</span> <span class="ss">:count</span> <span class="o">=&gt;</span> <span class="mi">100</span><span class="p">,</span> <span class="ss">:result_type</span> <span class="o">=&gt;</span> <span class="s2">&quot;recent&quot;</span><span class="p">,</span> <span class="ss">:max_id</span> <span class="o">=&gt;</span> <span class="n">max_id</span><span class="p">)</span>
 </span><span class='line'>      <span class="n">t</span><span class="o">.</span><span class="n">statuses</span><span class="o">.</span><span class="n">each</span> <span class="k">do</span> <span class="o">|</span> <span class="n">tweet</span> <span class="o">|</span>
-</span><span class='line'>        <span class="vi">@tweets</span><span class="o">.</span><span class="n">push</span> <span class="n">tweet</span>
+</span><span class='line'>        <span class="n">tweets</span><span class="o">.</span><span class="n">push</span> <span class="n">tweet</span>
 </span><span class='line'>      <span class="k">end</span>
 </span><span class='line'>      <span class="n">max_id</span> <span class="o">=</span> <span class="n">t</span><span class="o">.</span><span class="n">next_results</span><span class="o">[</span><span class="ss">:max_id</span><span class="o">]</span>
 </span><span class='line'>    <span class="k">end</span>
@@ -197,6 +193,26 @@
 </span><span class='line'><span class="k">end</span>
 </span></code></pre></td></tr></table></div></figure>
 
+
+<h2>The Rails Router</h2>
+
+<p>It&rsquo;s advisable that you leave the commented out lines here until you get the hang of routing, just for reference.</p>
+
+<figure class='code'><figcaption><span>config/routes.rb </span></figcaption>
+ <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="ss">TwitterApp</span><span class="p">:</span><span class="ss">:Application</span><span class="o">.</span><span class="n">routes</span><span class="o">.</span><span class="n">draw</span> <span class="k">do</span>
+</span><span class='line'>  <span class="n">root</span> <span class="s1">&#39;twitter#proposals&#39;</span>
+</span><span class='line'>  <span class="n">get</span> <span class="s1">&#39;proposals&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;twitter#proposals&#39;</span>
+</span><span class='line'>  <span class="n">get</span> <span class="s1">&#39;ausvotes&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;twitter#ausvotes&#39;</span>
+</span><span class='line'><span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>The first line in the block points the root path, <code>/</code> to the proposals function in the twitter controller. The second and third points <code>/proposals`` and</code>/ausvotes&#8220;` paths to their respective functions in the same controller.</p>
 
 <h2>Justin Bieber Proposals page</h2>
 

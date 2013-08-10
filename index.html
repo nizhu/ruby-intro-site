@@ -378,7 +378,7 @@
 
   <div class="entry-content"><p>As I mentioned in the very first post, Rails has been credited with Ruby&rsquo;s sudden, meteoric rise in popularity. It&rsquo;s not the only web application framework for Ruby, but it remains by far the most popular to this day. If you&rsquo;re interested in a career in web development and want to stay away from corporate enterprises, this is a great way to go about it.</p>
 
-<p>Rails emphasises the Model-View-Controller principle, and if you&rsquo;re not familiar with the concept, it&rsquo;s essentially the separation of the data, to the logic of processing the data, and the display of the processing results (links at the bottom for more details). The application I&rsquo;ll be demoing will ignore the Model part however. This is a very simple application will retrieve some data from Twitter, same as the previous post, and display it on a webpage.</p>
+<p>Rails emphasises the Model-View-Controller principle, and if you&rsquo;re not familiar with the concept, it&rsquo;s essentially the separation of the data, to the logic of processing the data, and the display of the processed results (links at the bottom for more details). The application I&rsquo;ll be demoing will ignore the Model part however. This is a very simple application will retrieve some data from Twitter, same as the previous post, and display it on a webpage.</p>
 
 <p>As always, start by installing it&hellip;<code>gem install rails</code></p>
 
@@ -389,41 +389,37 @@
 <figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
-<span class='line-number'>4</span>
 </pre></td><td class='code'><pre><code class='sh'><span class='line'><span class="nb">cd</span> ~
 </span><span class='line'>rails new twitter_app -O
 </span><span class='line'><span class="nb">cd </span>twitter_app
-</span><span class='line'>rails generate controller twitter
 </span></code></pre></td></tr></table></div></figure>
 
 
-<p>The rails generator has created a lot of new files &ndash; about 80 in fact &ndash; but there aren&rsquo;t that many we need to worry about.</p>
+<p>The rails generator has created a lot of new files &ndash; about 20 in fact &ndash; but there aren&rsquo;t that many we need to worry about.</p>
 
 <p>Before you begin editing the files, copy the twitter configuration file from the previous pages to the <code>config/initializers</code> directory. Files in this directory are run when the server is started.</p>
 
-<h2>The Rails Router</h2>
+<h2>Gemfile</h2>
 
-<p>It&rsquo;s advisable that you leave the commented out lines here until you get the hand of routing just for your reference.</p>
+<p>This file basically tells the Ruby environment what gems are required to run the the application. Our app only needs the twitter gem so just add that.</p>
 
-<figure class='code'><figcaption><span>config/routes.rb </span></figcaption>
+<figure class='code'><figcaption><span>Gemfile </span></figcaption>
  <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="ss">TwitterApp</span><span class="p">:</span><span class="ss">:Application</span><span class="o">.</span><span class="n">routes</span><span class="o">.</span><span class="n">draw</span> <span class="k">do</span>
-</span><span class='line'>  <span class="n">root</span> <span class="s1">&#39;twitter#proposals&#39;</span>
-</span><span class='line'>  <span class="n">get</span> <span class="s1">&#39;proposals&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;twitter#proposals&#39;</span>
-</span><span class='line'>  <span class="n">get</span> <span class="s1">&#39;ausvotes&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;twitter#ausvotes&#39;</span>
-</span><span class='line'><span class="k">end</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">source</span> <span class="s1">&#39;https://rubygems.org&#39;</span>
+</span><span class='line'><span class="n">gem</span> <span class="s1">&#39;twitter&#39;</span>
+</span><span class='line'><span class="n">gem</span> <span class="s1">&#39;rails&#39;</span><span class="p">,</span> <span class="s1">&#39;4.0.0&#39;</span>
 </span></code></pre></td></tr></table></div></figure>
 
 
-<p>The first line in the block points the root path, <code>/</code> to the proposals function in the twitter controller. The second and third points <code>/proposals`` and</code>/ausvotes&#8220;` paths to their respective functions in the same controller.</p>
+<p>Source specifies where it should look for the gems if they were to be installed. We can also specify the version of a gem we want in order to ensure that things work as we expect; don&rsquo;t want updates to break the application. Everything else in the file is optional.</p>
 
 <h2>The Twitter controller</h2>
 
-<p>The code here is almost identical to that from the previous Twitter post. Now, we&rsquo;re just keeping all the tweets in an array instead of just printing it. At the end of the processing, Rails will first render <code>views/layouts/application.html.erb</code>. Unless you specify which HTML template to use with the <code>render</code> function, rails will automatically look for the template <code>views/&lt;controller name&gt;/&lt;function name&gt;.*</code>.</p>
+<p>First thing to do is to generate the controller.. <code>rails generate controller twitter</code>.</p>
+
+<p>The code here is almost identical to that from the previous Twitter post. Now, we&rsquo;re just keeping all the tweets in an array instead of just printing it. At the end of the processing, Rails will automatically look for the template <code>views/&lt;controller name&gt;/&lt;function name&gt;.*</code> unless you specify which HTML template to use with the <code>render</code>. This is displayed within <code>views/layouts/application.html.erb</code>.</p>
 
 <figure class='code'><figcaption><span>app/controllers/twitter_controller.rb </span></figcaption>
  <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
@@ -457,24 +453,24 @@
 </span><span class='line'><span class="k">class</span> <span class="nc">TwitterController</span> <span class="o">&lt;</span> <span class="no">ApplicationController</span>
 </span><span class='line'>
 </span><span class='line'>  <span class="k">def</span> <span class="nf">proposals</span>
-</span><span class='line'>    <span class="vi">@tweets</span> <span class="o">=</span> <span class="o">[]</span><span class="p">;</span>
+</span><span class='line'>    <span class="n">tweets</span> <span class="o">=</span> <span class="o">[]</span>
 </span><span class='line'>    <span class="n">max_id</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span>
 </span><span class='line'>    <span class="k">for</span> <span class="n">i</span> <span class="k">in</span> <span class="p">(</span><span class="mi">0</span><span class="o">.</span><span class="n">.</span><span class="mi">1</span><span class="p">)</span>
 </span><span class='line'>      <span class="n">t</span> <span class="o">=</span> <span class="no">Twitter</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="s2">&quot;to:justinbieber marry me&quot;</span><span class="p">,</span> <span class="ss">:count</span> <span class="o">=&gt;</span> <span class="mi">100</span><span class="p">,</span> <span class="ss">:result_type</span> <span class="o">=&gt;</span> <span class="s2">&quot;recent&quot;</span><span class="p">)</span>
 </span><span class='line'>      <span class="n">t</span><span class="o">.</span><span class="n">statuses</span><span class="o">.</span><span class="n">each</span> <span class="k">do</span> <span class="o">|</span> <span class="n">tweet</span> <span class="o">|</span>
-</span><span class='line'>        <span class="vi">@tweets</span><span class="o">.</span><span class="n">push</span> <span class="n">tweet</span>
+</span><span class='line'>        <span class="n">tweets</span><span class="o">.</span><span class="n">push</span> <span class="n">tweet</span>
 </span><span class='line'>      <span class="k">end</span>
 </span><span class='line'>      <span class="n">max_id</span> <span class="o">=</span> <span class="n">t</span><span class="o">.</span><span class="n">next_results</span><span class="o">[</span><span class="ss">:max_id</span><span class="o">]</span>
 </span><span class='line'>    <span class="k">end</span>
 </span><span class='line'>  <span class="k">end</span>
 </span><span class='line'>
 </span><span class='line'>  <span class="k">def</span> <span class="nf">ausvotes</span>
-</span><span class='line'>    <span class="vi">@tweets</span> <span class="o">=</span> <span class="o">[]</span><span class="p">;</span>
+</span><span class='line'>    <span class="n">tweets</span> <span class="o">=</span> <span class="o">[]</span>
 </span><span class='line'>    <span class="n">max_id</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span>
 </span><span class='line'>    <span class="k">for</span> <span class="n">i</span> <span class="k">in</span> <span class="p">(</span><span class="mi">0</span><span class="o">.</span><span class="n">.</span><span class="mi">1</span><span class="p">)</span>
 </span><span class='line'>      <span class="n">t</span> <span class="o">=</span> <span class="no">Twitter</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="s2">&quot;#ausvotes -rt&quot;</span><span class="p">,</span> <span class="ss">:count</span> <span class="o">=&gt;</span> <span class="mi">100</span><span class="p">,</span> <span class="ss">:result_type</span> <span class="o">=&gt;</span> <span class="s2">&quot;recent&quot;</span><span class="p">,</span> <span class="ss">:max_id</span> <span class="o">=&gt;</span> <span class="n">max_id</span><span class="p">)</span>
 </span><span class='line'>      <span class="n">t</span><span class="o">.</span><span class="n">statuses</span><span class="o">.</span><span class="n">each</span> <span class="k">do</span> <span class="o">|</span> <span class="n">tweet</span> <span class="o">|</span>
-</span><span class='line'>        <span class="vi">@tweets</span><span class="o">.</span><span class="n">push</span> <span class="n">tweet</span>
+</span><span class='line'>        <span class="n">tweets</span><span class="o">.</span><span class="n">push</span> <span class="n">tweet</span>
 </span><span class='line'>      <span class="k">end</span>
 </span><span class='line'>      <span class="n">max_id</span> <span class="o">=</span> <span class="n">t</span><span class="o">.</span><span class="n">next_results</span><span class="o">[</span><span class="ss">:max_id</span><span class="o">]</span>
 </span><span class='line'>    <span class="k">end</span>
@@ -482,6 +478,26 @@
 </span><span class='line'><span class="k">end</span>
 </span></code></pre></td></tr></table></div></figure>
 
+
+<h2>The Rails Router</h2>
+
+<p>It&rsquo;s advisable that you leave the commented out lines here until you get the hang of routing, just for reference.</p>
+
+<figure class='code'><figcaption><span>config/routes.rb </span></figcaption>
+ <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="ss">TwitterApp</span><span class="p">:</span><span class="ss">:Application</span><span class="o">.</span><span class="n">routes</span><span class="o">.</span><span class="n">draw</span> <span class="k">do</span>
+</span><span class='line'>  <span class="n">root</span> <span class="s1">&#39;twitter#proposals&#39;</span>
+</span><span class='line'>  <span class="n">get</span> <span class="s1">&#39;proposals&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;twitter#proposals&#39;</span>
+</span><span class='line'>  <span class="n">get</span> <span class="s1">&#39;ausvotes&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;twitter#ausvotes&#39;</span>
+</span><span class='line'><span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>The first line in the block points the root path, <code>/</code> to the proposals function in the twitter controller. The second and third points <code>/proposals`` and</code>/ausvotes&#8220;` paths to their respective functions in the same controller.</p>
 
 <h2>Justin Bieber Proposals page</h2>
 
@@ -658,20 +674,31 @@
   </header>
 
 
-  <div class="entry-content"><p>Since mid June this year, the Twitter has forced users to use OAuth to authenticate and access its API. You can no longer access its data in a trivial way like the GitHub example before. You must get 4 keys from <a href="https://dev.twitter.com/apps">Twitter&rsquo;s developer page</a>: <code>Consumer key</code>, <code>Consumer secret</code>, <code>Access token</code> and <code>Access secret</code> &ndash; don&rsquo;t need to know what they mean yet, but the 2 secret keys should not be shared. OAuth is a real pain. These 4 keys won&rsquo;t give you access. They&rsquo;ll let you get 3 more one use keys which you can then use to access the API.</p>
+  <div class="entry-content"><p>Since mid June this year, Twitter has forced users to use OAuth to authenticate and access its API. You can no longer access its data in a trivial way like the GitHub example before. You must get 4 keys from <a href="https://dev.twitter.com/apps">Twitter&rsquo;s developer page</a>: <code>Consumer key</code>, <code>Consumer secret</code>, <code>Access token</code> and <code>Access secret</code> &ndash; don&rsquo;t need to know what they mean yet, but be sure that the 2 secret keys are be shared. OAuth is a real pain. These 4 keys won&rsquo;t give you access. They&rsquo;ll let you get 3 more one use keys which you can then use to access the API.</p>
 
-<p>Fortunately for you as a Ruby user, there are two libraries that will do all the menial work for you. <a href="https://github.com/sferik/twitter">Twitter</a> is a conveniently named library to access the standard Twitter API (it is not developed by Twitter Inc) while the other is <a href="https://github.com/tweetstream/tweetstream">TweetStream</a> is designed to use Twitter&rsquo;s streaming API. It&rsquo;s unlikely that you&rsquo;ll need to use the streaming API for this assignment so I won&rsquo;t be showing you TweetStream.</p>
+<p>Fortunately for you as a Ruby user, there are two libraries that will do all the menial work for you. <a href="https://github.com/sferik/twitter">Twitter</a> is a conveniently named library to access the standard Twitter API (it is not developed by Twitter Inc) while the other, <a href="https://github.com/tweetstream/tweetstream">TweetStream</a> is designed to use Twitter&rsquo;s streaming API (kind of like email pushing on your phone). It&rsquo;s unlikely that you&rsquo;ll need to use the streaming API for this assignment so I won&rsquo;t be showing you TweetStream.</p>
 
 <h2>Twitter Gem</h2>
 
-<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<p>Install the twitter gem with <code>gem install twitter</code> and make the following config file, replacing the upper case strings with the relevant keys.</p>
+
+<figure class='code'><figcaption><span>twitter_config.rb </span></figcaption>
+ <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
-</pre></td><td class='code'><pre><code class='sh'><span class='line'>git checkout twitter
-</span><span class='line'>gem install twitter
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="no">Twitter</span><span class="o">.</span><span class="n">configure</span> <span class="k">do</span> <span class="o">|</span><span class="n">config</span><span class="o">|</span>
+</span><span class='line'>  <span class="n">config</span><span class="o">.</span><span class="n">consumer_key</span> <span class="o">=</span> <span class="no">YOUR_CONSUMER_KEY</span>
+</span><span class='line'>  <span class="n">config</span><span class="o">.</span><span class="n">consumer_secret</span> <span class="o">=</span> <span class="no">YOUR_CONSUMER_SECRET</span>
+</span><span class='line'>  <span class="n">config</span><span class="o">.</span><span class="n">oauth_token</span> <span class="o">=</span> <span class="no">YOUR_OAUTH_TOKEN</span>
+</span><span class='line'>  <span class="n">config</span><span class="o">.</span><span class="n">oauth_token_secret</span> <span class="o">=</span> <span class="no">YOUR_OAUTH_TOKEN_SECRET</span>
+</span><span class='line'><span class="k">end</span>
 </span></code></pre></td></tr></table></div></figure>
 
 
-<p>I&rsquo;ve made a file out of the gem&rsquo;s authentication configuration code taken from its documentation. Just replace the strings with the your Twitter developer keys in twitter_config.rb. There are some usage examples <a href="https://github.com/sferik/twitter#usage-examples">here</a>, but there&rsquo;s plenty more functionality so do refer to the <a href="http://rdoc.info/gems/twitter">documentation</a>.</p>
+<p>There are some usage examples <a href="https://github.com/sferik/twitter#usage-examples">here</a>, but there&rsquo;s plenty more functionality so do refer to the <a href="http://rdoc.info/gems/twitter">documentation</a>.</p>
 
 <figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
@@ -769,7 +796,7 @@
 <span class='line-number'>8</span>
 </pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="c1">#!/usr/bin/env ruby</span>
 </span><span class='line'><span class="nb">require</span> <span class="s1">&#39;twitter&#39;</span>
-</span><span class='line'><span class="nb">load</span> <span class="s1">&#39;mine_twitter_config.rb&#39;</span>
+</span><span class='line'><span class="nb">load</span> <span class="s1">&#39;twitter_config.rb&#39;</span>
 </span><span class='line'>
 </span><span class='line'><span class="n">f</span> <span class="o">=</span> <span class="no">Twitter</span><span class="o">.</span><span class="n">friends</span>
 </span><span class='line'><span class="k">for</span> <span class="n">user</span> <span class="k">in</span> <span class="n">f</span><span class="o">.</span><span class="n">collection</span><span class="o">.</span><span class="n">each</span>
@@ -782,7 +809,7 @@
 
 <p>This is because Twitter paginates the results to 20 by default.  So if there is more than 20 records, you&rsquo;ll have to iterate through each page to get all the results.</p>
 
-<figure class='code'><figcaption><span>lots_twitter_status.rb </span></figcaption>
+<figure class='code'><figcaption><span>last_twitter_status_iterated.rb </span></figcaption>
  <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
@@ -797,7 +824,7 @@
 <span class='line-number'>12</span>
 </pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="c1">#!/usr/bin/env ruby</span>
 </span><span class='line'><span class="nb">require</span> <span class="s1">&#39;twitter&#39;</span>
-</span><span class='line'><span class="nb">load</span> <span class="s1">&#39;mine_twitter_config.rb&#39;</span>
+</span><span class='line'><span class="nb">load</span> <span class="s1">&#39;twitter_config.rb&#39;</span>
 </span><span class='line'>
 </span><span class='line'><span class="n">cursor</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span>
 </span><span class='line'><span class="k">while</span> <span class="n">cursor</span> <span class="o">!=</span> <span class="mi">0</span> <span class="k">do</span>
@@ -829,7 +856,7 @@
 <span class='line-number'>12</span>
 </pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="c1">#!/usr/bin/env ruby</span>
 </span><span class='line'><span class="nb">require</span> <span class="s1">&#39;twitter&#39;</span>
-</span><span class='line'><span class="nb">load</span> <span class="s1">&#39;mine_twitter_config.rb&#39;</span>
+</span><span class='line'><span class="nb">load</span> <span class="s1">&#39;twitter_config.rb&#39;</span>
 </span><span class='line'>
 </span><span class='line'><span class="n">max_id</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span>
 </span><span class='line'><span class="k">for</span> <span class="n">i</span> <span class="k">in</span> <span class="p">(</span><span class="mi">0</span><span class="o">.</span><span class="n">.</span><span class="mi">1</span><span class="p">)</span>
@@ -1013,7 +1040,7 @@
   </header>
 
 
-  <div class="entry-content"><p>For the purpose of this exercise, I&rsquo;ve downloaded and extracted a zip file from the AEC&rsquo;s site <code>ftp://results.aec.gov.au/15508/Detailed/Light/aec-mediafeed-Detailed-Light-15508-20100817220150.zip</code> Ruby has an XML parser called REXML in its standard library, but it&rsquo;s known to be very slow &ndash; <a href="http://www.rubyinside.com/ruby-xml-performance-benchmarks-1641.html">Some 50 times slower than Nokogiri</a>. I would love to demonstrate Nokogiri, but unfortunately it&rsquo;s more complex to use than XmlSimple. XmlSimple parses the data into a native Ruby hash whereas Nokogiri has its own set of classes.</p>
+  <div class="entry-content"><p>For the purpose of this exercise, I&rsquo;ve downloaded and extracted a zip file from the AEC&rsquo;s site <code>wget wreckbea.ch/aec-mediafeed-results-standard-light-15508.xml</code> Ruby has an XML parser called REXML in its standard library, but it&rsquo;s known to be very slow &ndash; <a href="http://www.rubyinside.com/ruby-xml-performance-benchmarks-1641.html">Some 50 times slower than Nokogiri</a>. I would love to demonstrate Nokogiri, but unfortunately it&rsquo;s more complex to use than XmlSimple. XmlSimple parses the data into a native Ruby hash whereas Nokogiri has its own set of classes.</p>
 
 <h1>Third Party libraries</h1>
 
@@ -1025,7 +1052,7 @@
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 </pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="nb">require</span> <span class="s1">&#39;xmlsimple&#39;</span>
-</span><span class='line'><span class="n">xml</span> <span class="o">=</span> <span class="no">File</span><span class="o">.</span><span class="n">read</span> <span class="s1">&#39;data/xml/aec-mediafeed-results-detailed-light-15508.xml&#39;</span>
+</span><span class='line'><span class="n">xml</span> <span class="o">=</span> <span class="no">File</span><span class="o">.</span><span class="n">read</span> <span class="s1">&#39;aec-mediafeed-results-standard-light-15508.xml&#39;</span><span class="p">;</span><span class="mi">0</span>
 </span><span class='line'><span class="n">data</span> <span class="o">=</span> <span class="no">XmlSimple</span><span class="o">.</span><span class="n">xml_in</span> <span class="n">xml</span>
 </span></code></pre></td></tr></table></div></figure>
 
@@ -1057,13 +1084,13 @@
 </pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">data</span><span class="o">.</span><span class="n">keys</span>
 </span><span class='line'><span class="c1"># [&quot;Id&quot;, &quot;Created&quot;, &quot;SchemaVersion&quot;, &quot;EmlVersion&quot;, &quot;xmlns&quot;, &quot;xmlns:eml&quot;, &quot;xmlns:ds&quot;, &quot;xmlns:xal&quot;, &quot;xmlns:xnl&quot;, &quot;xmlns:ts&quot;, &quot;xmlns:xs&quot;, &quot;xs:schemaLocation&quot;, &quot;ManagingAuthority&quot;, &quot;MessageLanguage&quot;, &quot;MessageGenerator&quot;, &quot;Cycle&quot;, &quot;Results&quot;]</span>
 </span><span class='line'>
-</span><span class='line'><span class="n">data</span><span class="o">.</span><span class="n">[</span><span class="s2">&quot;Results&quot;</span><span class="o">].</span><span class="n">keys</span>
+</span><span class='line'><span class="n">data</span><span class="o">[</span><span class="s2">&quot;Results&quot;</span><span class="o">].</span><span class="n">keys</span>
 </span><span class='line'><span class="c1"># NoMethodError</span>
 </span><span class='line'>
-</span><span class='line'><span class="n">data</span><span class="o">.</span><span class="n">[</span><span class="s2">&quot;Results&quot;</span><span class="o">].</span><span class="n">class</span>
+</span><span class='line'><span class="n">data</span><span class="o">[</span><span class="s2">&quot;Results&quot;</span><span class="o">].</span><span class="n">class</span>
 </span><span class='line'><span class="c1"># Array</span>
 </span><span class='line'>
-</span><span class='line'><span class="n">data</span><span class="o">.</span><span class="n">[</span><span class="s2">&quot;Results&quot;</span><span class="o">][</span><span class="mi">0</span><span class="o">].</span><span class="n">class</span>
+</span><span class='line'><span class="n">data</span><span class="o">[</span><span class="s2">&quot;Results&quot;</span><span class="o">][</span><span class="mi">0</span><span class="o">].</span><span class="n">class</span>
 </span><span class='line'><span class="c1"># Hash</span>
 </span><span class='line'>
 </span><span class='line'><span class="n">data</span><span class="o">[</span><span class="s2">&quot;Results&quot;</span><span class="o">][</span><span class="mi">0</span><span class="o">][</span><span class="s2">&quot;Election&quot;</span><span class="o">][</span><span class="mi">0</span><span class="o">][</span><span class="s2">&quot;House&quot;</span><span class="o">][</span><span class="mi">0</span><span class="o">][</span><span class="s2">&quot;Contests&quot;</span><span class="o">][</span><span class="mi">0</span><span class="o">][</span><span class="s2">&quot;Contest&quot;</span><span class="o">][</span><span class="mi">0</span><span class="o">].</span><span class="n">keys</span>
