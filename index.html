@@ -1204,10 +1204,10 @@
 </pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">a</span> <span class="o">=</span> <span class="no">Counter</span><span class="o">.</span><span class="n">new</span> <span class="mi">0</span>
 </span><span class='line'><span class="n">b</span> <span class="o">=</span> <span class="no">Counter</span><span class="o">.</span><span class="n">new</span> <span class="mi">0</span>
 </span><span class='line'>
-</span><span class='line'><span class="n">a</span><span class="o">.</span><span class="n">ccIncrement</span>
+</span><span class='line'><span class="no">Counter</span><span class="o">.</span><span class="n">ccIncrement</span>
 </span><span class='line'><span class="n">a</span><span class="o">.</span><span class="n">icIncrement</span>
 </span><span class='line'>
-</span><span class='line'><span class="nb">puts</span> <span class="n">b</span>
+</span><span class='line'><span class="nb">puts</span> <span class="n">a</span>
 </span><span class='line'><span class="c1"># classCount = 1 and instanceCount = 0</span>
 </span><span class='line'>
 </span><span class='line'><span class="n">b</span> <span class="o">=</span> <span class="no">Counter</span><span class="o">.</span><span class="n">new</span> <span class="mi">5</span>
@@ -1576,7 +1576,7 @@
 </span><span class='line'>  <span class="k">raise</span> <span class="s2">&quot;Failed to do something&quot;</span>
 </span><span class='line'><span class="k">end</span>
 </span><span class='line'>
-</span><span class='line'><span class="n">raise_exception</span>
+</span><span class='line'><span class="n">do_something</span>
 </span><span class='line'><span class="c1"># RuntimeError: Failed to do something</span>
 </span><span class='line'>
 </span><span class='line'><span class="k">begin</span>
@@ -1861,9 +1861,11 @@ If the identity of the object is important, use a symbol.</p></blockquote>
 <figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
+<span class='line-number'>4</span>
 </pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">h</span> <span class="o">=</span> <span class="no">Hash</span><span class="o">.</span><span class="n">new</span>
 </span><span class='line'><span class="n">h</span><span class="o">[</span><span class="ss">:abc</span><span class="o">]</span> <span class="o">=</span> <span class="s2">&quot;xyz&quot;</span>
 </span><span class='line'><span class="nb">puts</span> <span class="n">h</span><span class="o">[</span><span class="ss">:abc</span><span class="o">]</span>
+</span><span class='line'><span class="c1"># xyz</span>
 </span></code></pre></td></tr></table></div></figure>
 
 
@@ -1875,7 +1877,7 @@ If the identity of the object is important, use a symbol.</p></blockquote>
 <span class='line-number'>4</span>
 </pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">h</span> <span class="o">=</span> <span class="no">Hash</span><span class="o">.</span><span class="n">new</span>
 </span><span class='line'><span class="n">h</span><span class="o">[</span><span class="s2">&quot;abc&quot;</span><span class="o">]</span> <span class="o">=</span> <span class="ss">:xyz</span>
-</span><span class='line'><span class="nb">puts</span> <span class="o">[</span><span class="s2">&quot;abc&quot;</span><span class="o">]</span>
+</span><span class='line'><span class="nb">puts</span> <span class="n">h</span><span class="o">[</span><span class="s2">&quot;abc&quot;</span><span class="o">]</span>
 </span><span class='line'><span class="c1"># xyz</span>
 </span></code></pre></td></tr></table></div></figure>
 
