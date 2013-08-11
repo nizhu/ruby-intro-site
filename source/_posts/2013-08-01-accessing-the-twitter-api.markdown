@@ -6,7 +6,7 @@ comments: true
 categories: [Ruby, SENG2021]
 ---
 
-Since mid June this year, Twitter has forced users to use OAuth to authenticate and access its API. You can no longer access its data in a trivial way like the GitHub example before. You must get 4 keys from [Twitter's developer page][5]: ```Consumer key```, ```Consumer secret```, ```Access token``` and ```Access secret``` - don't need to know what they mean yet, but be sure that the 2 secret keys are be shared. OAuth is a real pain. These 4 keys won't give you access. They'll let you get 3 more one use keys which you can then use to access the API.
+Since mid June this year, Twitter has forced users to use OAuth to authenticate and access its API. You can no longer access its data in a trivial way like the GitHub example before. You must get 4 keys from [Twitter's developer page][5]: ```Consumer key```, ```Consumer secret```, ```Access token``` and ```Access secret``` - don't need to know what they mean yet, but be sure that the 2 secret keys are not shared. OAuth is a real pain. These 4 keys won't give you access. They'll let you get 3 more one use keys which you can then use to access the API.
 
 Fortunately for you as a Ruby user, there are two libraries that will do all the menial work for you. [Twitter][1] is a conveniently named library to access the standard Twitter API (it is not developed by Twitter Inc) while the other, [TweetStream][2] is designed to use Twitter's streaming API (kind of like email pushing on your phone). It's unlikely that you'll need to use the streaming API for this assignment so I won't be showing you TweetStream.
 
@@ -42,7 +42,7 @@ result.statuses[0].user.screen_name
 # 4ever_beliebing
 {% endcodeblock %}
 
-Just to give another example, I'm going to get the last tweet from each of users I'm stalking.
+Just to give another example, I'm going to get the last tweet from each of the users I'm stalking.
 
 {% codeblock lang:ruby %}
 f = Twitter.friends

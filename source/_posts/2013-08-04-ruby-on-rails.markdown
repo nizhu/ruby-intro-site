@@ -40,7 +40,7 @@ Source specifies where it should look for the gems if they were to be installed.
 
 ## The Twitter controller
 
-First thing to do is to generate the controller.. ```rails generate controller twitter```.
+Finally on to the logic... ```rails generate controller twitter```.
 
 The code here is almost identical to that from the previous Twitter post. Now, we're just keeping all the tweets in an array instead of just printing it. At the end of the processing, Rails will automatically look for the template ```views/<controller name>/<function name>.*``` unless you specify which HTML template to use with the ```render```. This is displayed within ```views/layouts/application.html.erb```.
 
@@ -49,24 +49,24 @@ require 'twitter'
 class TwitterController < ApplicationController
   
   def proposals
-    tweets = []
+    @tweets = []
     max_id = -1
     for i in (0..1)
       t = Twitter.search("to:justinbieber marry me", :count => 100, :result_type => "recent")
       t.statuses.each do | tweet |
-        tweets.push tweet
+        @tweets.push tweet
       end
       max_id = t.next_results[:max_id]
     end
   end
 
   def ausvotes
-    tweets = []
+    @tweets = []
     max_id = -1
     for i in (0..1)
       t = Twitter.search("#ausvotes -rt", :count => 100, :result_type => "recent", :max_id => max_id)
       t.statuses.each do | tweet |
-        tweets.push tweet
+        @tweets.push tweet
       end
       max_id = t.next_results[:max_id]
     end
@@ -86,11 +86,11 @@ TwitterApp::Application.routes.draw do
 end
 {% endcodeblock %}
 
-The first line in the block points the root path, ```/``` to the proposals function in the twitter controller. The second and third points ```/proposals`` and ```/ausvotes``` paths to their respective functions in the same controller.
+The first line in the block points the root path, ```/``` to the proposals function in the twitter controller. The second and third points ```/proposals``` and ```/ausvotes``` paths to their respective functions in the same controller.
 
 ## Justin Bieber Proposals page
 
-If you're familiar with JSP or PHP, this is very much the same - HTML mixed in with some code. Here, we're making a simple table but we're creating a row for each tweet.
+If you're familiar with JSP, this is very much the same - HTML mixed in with some code. Here, we're making a simple table but we're creating a row for each tweet.
 
 {% codeblock lang:html app/views/twitter/proposals.html.erb %}
 <h1>Last 200 Justin Bieber Proposals</h1>
