@@ -132,7 +132,7 @@
 
 <h2>The Twitter controller</h2>
 
-<p>First thing to do is to generate the controller.. <code>rails generate controller twitter</code>.</p>
+<p>Finally on to the logic&hellip; <code>rails generate controller twitter</code>.</p>
 
 <p>The code here is almost identical to that from the previous Twitter post. Now, we&rsquo;re just keeping all the tweets in an array instead of just printing it. At the end of the processing, Rails will automatically look for the template <code>views/&lt;controller name&gt;/&lt;function name&gt;.*</code> unless you specify which HTML template to use with the <code>render</code>. This is displayed within <code>views/layouts/application.html.erb</code>.</p>
 
@@ -168,24 +168,24 @@
 </span><span class='line'><span class="k">class</span> <span class="nc">TwitterController</span> <span class="o">&lt;</span> <span class="no">ApplicationController</span>
 </span><span class='line'>
 </span><span class='line'>  <span class="k">def</span> <span class="nf">proposals</span>
-</span><span class='line'>    <span class="n">tweets</span> <span class="o">=</span> <span class="o">[]</span>
+</span><span class='line'>    <span class="vi">@tweets</span> <span class="o">=</span> <span class="o">[]</span>
 </span><span class='line'>    <span class="n">max_id</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span>
 </span><span class='line'>    <span class="k">for</span> <span class="n">i</span> <span class="k">in</span> <span class="p">(</span><span class="mi">0</span><span class="o">.</span><span class="n">.</span><span class="mi">1</span><span class="p">)</span>
 </span><span class='line'>      <span class="n">t</span> <span class="o">=</span> <span class="no">Twitter</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="s2">&quot;to:justinbieber marry me&quot;</span><span class="p">,</span> <span class="ss">:count</span> <span class="o">=&gt;</span> <span class="mi">100</span><span class="p">,</span> <span class="ss">:result_type</span> <span class="o">=&gt;</span> <span class="s2">&quot;recent&quot;</span><span class="p">)</span>
 </span><span class='line'>      <span class="n">t</span><span class="o">.</span><span class="n">statuses</span><span class="o">.</span><span class="n">each</span> <span class="k">do</span> <span class="o">|</span> <span class="n">tweet</span> <span class="o">|</span>
-</span><span class='line'>        <span class="n">tweets</span><span class="o">.</span><span class="n">push</span> <span class="n">tweet</span>
+</span><span class='line'>        <span class="vi">@tweets</span><span class="o">.</span><span class="n">push</span> <span class="n">tweet</span>
 </span><span class='line'>      <span class="k">end</span>
 </span><span class='line'>      <span class="n">max_id</span> <span class="o">=</span> <span class="n">t</span><span class="o">.</span><span class="n">next_results</span><span class="o">[</span><span class="ss">:max_id</span><span class="o">]</span>
 </span><span class='line'>    <span class="k">end</span>
 </span><span class='line'>  <span class="k">end</span>
 </span><span class='line'>
 </span><span class='line'>  <span class="k">def</span> <span class="nf">ausvotes</span>
-</span><span class='line'>    <span class="n">tweets</span> <span class="o">=</span> <span class="o">[]</span>
+</span><span class='line'>    <span class="vi">@tweets</span> <span class="o">=</span> <span class="o">[]</span>
 </span><span class='line'>    <span class="n">max_id</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span>
 </span><span class='line'>    <span class="k">for</span> <span class="n">i</span> <span class="k">in</span> <span class="p">(</span><span class="mi">0</span><span class="o">.</span><span class="n">.</span><span class="mi">1</span><span class="p">)</span>
 </span><span class='line'>      <span class="n">t</span> <span class="o">=</span> <span class="no">Twitter</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="s2">&quot;#ausvotes -rt&quot;</span><span class="p">,</span> <span class="ss">:count</span> <span class="o">=&gt;</span> <span class="mi">100</span><span class="p">,</span> <span class="ss">:result_type</span> <span class="o">=&gt;</span> <span class="s2">&quot;recent&quot;</span><span class="p">,</span> <span class="ss">:max_id</span> <span class="o">=&gt;</span> <span class="n">max_id</span><span class="p">)</span>
 </span><span class='line'>      <span class="n">t</span><span class="o">.</span><span class="n">statuses</span><span class="o">.</span><span class="n">each</span> <span class="k">do</span> <span class="o">|</span> <span class="n">tweet</span> <span class="o">|</span>
-</span><span class='line'>        <span class="n">tweets</span><span class="o">.</span><span class="n">push</span> <span class="n">tweet</span>
+</span><span class='line'>        <span class="vi">@tweets</span><span class="o">.</span><span class="n">push</span> <span class="n">tweet</span>
 </span><span class='line'>      <span class="k">end</span>
 </span><span class='line'>      <span class="n">max_id</span> <span class="o">=</span> <span class="n">t</span><span class="o">.</span><span class="n">next_results</span><span class="o">[</span><span class="ss">:max_id</span><span class="o">]</span>
 </span><span class='line'>    <span class="k">end</span>
@@ -212,11 +212,11 @@
 </span></code></pre></td></tr></table></div></figure>
 
 
-<p>The first line in the block points the root path, <code>/</code> to the proposals function in the twitter controller. The second and third points <code>/proposals`` and</code>/ausvotes&#8220;` paths to their respective functions in the same controller.</p>
+<p>The first line in the block points the root path, <code>/</code> to the proposals function in the twitter controller. The second and third points <code>/proposals</code> and <code>/ausvotes</code> paths to their respective functions in the same controller.</p>
 
 <h2>Justin Bieber Proposals page</h2>
 
-<p>If you&rsquo;re familiar with JSP or PHP, this is very much the same &ndash; HTML mixed in with some code. Here, we&rsquo;re making a simple table but we&rsquo;re creating a row for each tweet.</p>
+<p>If you&rsquo;re familiar with JSP, this is very much the same &ndash; HTML mixed in with some code. Here, we&rsquo;re making a simple table but we&rsquo;re creating a row for each tweet.</p>
 
 <figure class='code'><figcaption><span>app/views/twitter/proposals.html.erb </span></figcaption>
  <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
