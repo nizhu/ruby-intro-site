@@ -79,6 +79,9 @@ load 'hello_world.rb'
 load 'hello_world.rb'
 # Hello World
 # => true
+{% endcodeblock %}
+
+{% codeblock lang:ruby %}
 require 'hello_world'
 # Hello World
 # => true
