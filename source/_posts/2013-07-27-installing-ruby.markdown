@@ -75,11 +75,15 @@ rbenv rehash
 
 ## Windows
 
+Ruby does work on Windows, but I don't have any experience with it and I'm not familiar with the toolset for developing on Windows so these posts don't really work on Windows.
+
 I haven't tried any of this but apparently...
 
 Download and install the relevant 2.0.0-p247 installer from http://rubyinstaller.org/downloads/, but make note of where you install it. Press Windows+R, and type in ```cmd```. Then ```cd``` to the directory where you installed Ruby and everything else should be the same.
 
 [If you’re using Windows, open fxri from the Ruby section of your Start Menu.][8]
+
+Other than that, you're on your own :(
 
 ## Keeping legacy code consistent
 

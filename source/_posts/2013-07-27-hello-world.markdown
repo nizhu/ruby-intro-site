@@ -37,7 +37,7 @@ Hashbangs will be explained at the end of this post for those curious
 
 ## Interactive Ruby Shell
 
-```irb``` is a tool that provides an interface to Ruby. It's a great feature, especially for developers new to Ruby because it allows one to interact with Ruby for instant feedback, and build up to a complex script line by line. Code behaves exactly the same way in irb as it would in the method described above. So open up ```irb``` and write Hello World again....```puts "Hello World"
+```irb``` is a tool that provides an interface to Ruby. It's a great feature, especially for developers new to Ruby because it allows one to interact with Ruby for instant feedback, and build up to a complex script line by line. Code behaves exactly the same way in irb as it would in the method described above. So open up ```irb``` and write Hello World again....```puts "Hello World"```
 
 You'll notice that after printing Hello World, it also says => nil; this is the 'null' value in Ruby. It's the value that is returned by the function, and in this case, the value returned by ```puts```.
 
