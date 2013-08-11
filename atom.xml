@@ -4,7 +4,7 @@
   <title><![CDATA[Ruby Intro]]></title>
   <link href="http://nizhu.github.io/ruby-intro-site/atom.xml" rel="self"/>
   <link href="http://nizhu.github.io/ruby-intro-site/"/>
-  <updated>2013-08-11T21:39:22+10:00</updated>
+  <updated>2013-08-11T21:40:16+10:00</updated>
   <id>http://nizhu.github.io/ruby-intro-site/</id>
   <author>
     <name><![CDATA[Nick Zhu]]></name>
@@ -1980,7 +1980,7 @@ If the identity of the object is important, use a symbol.</p></blockquote>
 </span><span class='line'>
 </span><span class='line'><span class="n">arr</span><span class="o">.</span><span class="n">delete</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
 </span><span class='line'><span class="c1"># 2.5</span>
-</span><span class='line'><span class="c1"># arr = [1, 2. 3, 4, 5, 6, 7]</span>
+</span><span class='line'><span class="c1"># arr = [1, 2, 2.5, 4, 5, 6, 7]</span>
 </span></code></pre></td></tr></table></div></figure>
 
 
