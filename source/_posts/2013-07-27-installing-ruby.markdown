@@ -75,7 +75,11 @@ rbenv rehash
 
 ## Windows
 
-http://rubyinstaller.org/
+I haven't tried any of this but apparently...
+
+Download and install the relevant 2.0.0-p247 installer from http://rubyinstaller.org/downloads/, but make note of where you install it. Press Windows+R, and type in ```cmd```. Then ```cd``` to the directory where you installed Ruby and everything else should be the same.
+
+[If you’re using Windows, open fxri from the Ruby section of your Start Menu.][8]
 
 ## Keeping legacy code consistent
 
@@ -119,3 +123,4 @@ The best thing about setting versions with the file is that you can commit this 
   [5]: http://brew.sh/
   [6]: https://github.com/sstephenson/rbenv#installation
   [7]: https://github.com/sstephenson/ruby-build
+  [8]: http://www.ruby-lang.org/en/documentation/quickstart/
