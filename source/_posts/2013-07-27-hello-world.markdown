@@ -41,7 +41,9 @@ Hashbangs will be explained at the end of this post for those curious
 
 You'll notice that after printing Hello World, it also says => nil; this is the 'null' value in Ruby. It's the value that is returned by the function, and in this case, the value returned by ```puts```.
 
-If you want to import files that you've written, there are two ways to do so. A file that is imported in irb is executed just as it would if it had been imported through normal code, and it is the same as if it had been copy and pasted into irb. The following demonstrates the two major difference between the two options so try this out in irb. There is a trick however... Since Ruby 1.9.2, your current directory is no longer included in the list of directories that Ruby searches for the file you're loading.
+If you want to import files that you've written, there are two ways to do so. A file that is imported in irb is executed just as it would if it had been imported through normal code, and it is the same as if it had been copy and pasted into irb. The following demonstrates the two major difference between the two options so try this out in irb. Whereas ```require``` is your standard 'import this library', ```load``` is more like 'run this bit of code'.
+
+The first is subtle, but important. The argument to ```load``` is a path to the file. A file you ```load``` can be anywhere on the system, it accepts both relative and absolute paths. The argument to ```require``` is just the name of the file, and it will look for that file only in Ruby's PATH. Since 1.9.2 however, your working directory is no longer included in it.
 
 {% codeblock lang:ruby %}
 puts $:
@@ -89,11 +91,7 @@ require 'hello_world'
 # => false
 {% endcodeblock %}
 
-The differences are:
-*   require will not import a file more than once
-*   file extension is not necessary when importing with require
-
-Generally it's more appropriate to use require unless you do need to execute some code more than once.
+The other difference is that ```require``` will not import a file more than once.
 
 ## Hashbangs
 

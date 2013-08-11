@@ -58,6 +58,7 @@ begin
   puts i
   i += 1
 end until i >= 0
+# 0
 {% endcodeblock %}
 
 And finally, my favourite - the for loops. If you already have a list to iterate through, great.

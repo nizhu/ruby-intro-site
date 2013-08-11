@@ -23,8 +23,8 @@ In terms of functionality, there's little interesting with Integers. There's obv
 # 2
 5 % 2
 # 1
-2 ** 2
-# 4
+2 ** 3
+# 8
 {% endcodeblock %}
 
 There are also several methods for common operations
@@ -113,7 +113,7 @@ Like integers, Float's methods are quite standard.
 # (3/10)
 {% endcodeblock %}
 
-However, it's important to note that floating point calculations are inaccurate, like almost every programming langauge (can't name any with).
+However, it's important to note that floating point calculations are inaccurate, like almost every programming language (can't name any that are accurate).
 
 {% codeblock lang:ruby %}
 0.3.to_r

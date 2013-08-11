@@ -45,7 +45,6 @@ Finally on to the logic... ```rails generate controller twitter```.
 The code here is almost identical to that from the previous Twitter post. Now, we're just keeping all the tweets in an array instead of just printing it. At the end of the processing, Rails will automatically look for the template ```views/<controller name>/<function name>.*``` unless you specify which HTML template to use with the ```render```. This is displayed within ```views/layouts/application.html.erb```.
 
 {% codeblock lang:ruby app/controllers/twitter_controller.rb %}
-require 'twitter'
 class TwitterController < ApplicationController
   
   def proposals
