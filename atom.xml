@@ -4,7 +4,7 @@
   <title><![CDATA[Ruby Intro]]></title>
   <link href="http://nizhu.github.io/ruby-intro-site/atom.xml" rel="self"/>
   <link href="http://nizhu.github.io/ruby-intro-site/"/>
-  <updated>2013-08-11T20:15:39+10:00</updated>
+  <updated>2013-08-11T21:39:22+10:00</updated>
   <id>http://nizhu.github.io/ruby-intro-site/</id>
   <author>
     <name><![CDATA[Nick Zhu]]></name>
@@ -318,9 +318,7 @@
 <span class='line-number'>24</span>
 <span class='line-number'>25</span>
 <span class='line-number'>26</span>
-<span class='line-number'>27</span>
-</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="nb">require</span> <span class="s1">&#39;twitter&#39;</span>
-</span><span class='line'><span class="k">class</span> <span class="nc">TwitterController</span> <span class="o">&lt;</span> <span class="no">ApplicationController</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="k">class</span> <span class="nc">TwitterController</span> <span class="o">&lt;</span> <span class="no">ApplicationController</span>
 </span><span class='line'>
 </span><span class='line'>  <span class="k">def</span> <span class="nf">proposals</span>
 </span><span class='line'>    <span class="vi">@tweets</span> <span class="o">=</span> <span class="o">[]</span>
@@ -1673,6 +1671,7 @@ If the identity of the object is important, use a symbol.</p></blockquote>
 <span class='line-number'>12</span>
 <span class='line-number'>13</span>
 <span class='line-number'>14</span>
+<span class='line-number'>15</span>
 </pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">i</span> <span class="o">=</span> <span class="mi">0</span>
 </span><span class='line'><span class="k">until</span> <span class="n">i</span> <span class="o">&gt;</span> <span class="mi">2</span>
 </span><span class='line'>  <span class="nb">puts</span> <span class="n">i</span>
@@ -1687,6 +1686,7 @@ If the identity of the object is important, use a symbol.</p></blockquote>
 </span><span class='line'>  <span class="nb">puts</span> <span class="n">i</span>
 </span><span class='line'>  <span class="n">i</span> <span class="o">+=</span> <span class="mi">1</span>
 </span><span class='line'><span class="k">end</span> <span class="k">until</span> <span class="n">i</span> <span class="o">&gt;=</span> <span class="mi">0</span>
+</span><span class='line'><span class="c1"># 0</span>
 </span></code></pre></td></tr></table></div></figure>
 
 
@@ -1947,7 +1947,7 @@ If the identity of the object is important, use a symbol.</p></blockquote>
 </span><span class='line'><span class="c1"># [0, 1, 2, 3, 4, 5, 6, 7]</span>
 </span><span class='line'>
 </span><span class='line'><span class="n">arr</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="o">.</span><span class="mi">5</span><span class="p">)</span>
-</span><span class='line'><span class="c1"># [0, 1, 2, 2.5, 3, 4, 5, 6, 7]</span>
+</span><span class='line'><span class="c1"># [0, 1, 2, 2.5, 3, 4, 5, 6, 7, 8]</span>
 </span></code></pre></td></tr></table></div></figure>
 
 
@@ -1968,19 +1968,19 @@ If the identity of the object is important, use a symbol.</p></blockquote>
 <span class='line-number'>13</span>
 <span class='line-number'>14</span>
 </pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">arr</span>
-</span><span class='line'><span class="c1"># [0, 1, 2, 2.5, 3, 4, 5, 6, 7]</span>
+</span><span class='line'><span class="c1"># [0, 1, 2, 2.5, 3, 4, 5, 6, 7, 8]</span>
 </span><span class='line'>
 </span><span class='line'><span class="n">arr</span><span class="o">.</span><span class="n">pop</span>
-</span><span class='line'><span class="c1"># 7</span>
-</span><span class='line'><span class="c1"># arr = [0, 1, 2, 2.5, 3, 4, 5, 6]</span>
+</span><span class='line'><span class="c1"># 8</span>
+</span><span class='line'><span class="c1"># arr = [0, 1, 2, 2.5, 3, 4, 5, 6, 7]</span>
 </span><span class='line'>
 </span><span class='line'><span class="n">arr</span><span class="o">.</span><span class="n">shift</span>
 </span><span class='line'><span class="c1"># 0</span>
-</span><span class='line'><span class="c1"># arr = [1, 2, 2.5, 3, 4, 5, 6]</span>
+</span><span class='line'><span class="c1"># arr = [1, 2, 2.5, 3, 4, 5, 6, 7]</span>
 </span><span class='line'>
 </span><span class='line'><span class="n">arr</span><span class="o">.</span><span class="n">delete</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
 </span><span class='line'><span class="c1"># 2.5</span>
-</span><span class='line'><span class="c1"># arr = [1, 2. 3, 4, 5, 6]</span>
+</span><span class='line'><span class="c1"># arr = [1, 2. 3, 4, 5, 6, 7]</span>
 </span></code></pre></td></tr></table></div></figure>
 
 
@@ -2283,8 +2283,8 @@ If the identity of the object is important, use a symbol.</p></blockquote>
 </span><span class='line'><span class="c1"># 2</span>
 </span><span class='line'><span class="mi">5</span> <span class="o">%</span> <span class="mi">2</span>
 </span><span class='line'><span class="c1"># 1</span>
-</span><span class='line'><span class="mi">2</span> <span class="o">**</span> <span class="mi">2</span>
-</span><span class='line'><span class="c1"># 4</span>
+</span><span class='line'><span class="mi">2</span> <span class="o">**</span> <span class="mi">3</span>
+</span><span class='line'><span class="c1"># 8</span>
 </span></code></pre></td></tr></table></div></figure>
 
 
@@ -2425,7 +2425,7 @@ If the identity of the object is important, use a symbol.</p></blockquote>
 </span></code></pre></td></tr></table></div></figure>
 
 
-<p>However, it&rsquo;s important to note that floating point calculations are inaccurate, like almost every programming langauge (can&rsquo;t name any with).</p>
+<p>However, it&rsquo;s important to note that floating point calculations are inaccurate, like almost every programming language (can&rsquo;t name any that are accurate).</p>
 
 <figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
@@ -2510,7 +2510,7 @@ If the identity of the object is important, use a symbol.</p></blockquote>
 </span></code></pre></td></tr></table></div></figure>
 
 
-<p>You&rsquo;ll notice that the methods above only returns the result of the function. Some methods makes changes to the string in place.</p>
+<p>You&rsquo;ll notice that the methods above only returns the result of the function. Some methods makes changes to the string in place. In general, the in place version will end with an exclamation mark, but note that this is not a standard.</p>
 
 <figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
@@ -2628,12 +2628,12 @@ If the identity of the object is important, use a symbol.</p></blockquote>
 <span class='line-number'>4</span>
 <span class='line-number'>5</span>
 <span class='line-number'>6</span>
-</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="nb">puts</span> <span class="s2">&quot;</span><span class="se">\#</span><span class="s2">{e} + </span><span class="se">\#</span><span class="s2">{f} is not equal to </span><span class="se">\#</span><span class="s2">{g}&quot;&quot;</span>
-</span><span class='line'><span class="s2"># </span><span class="si">#{</span><span class="n">e</span><span class="si">}</span><span class="s2"> + </span><span class="si">#{</span><span class="n">f</span><span class="si">}</span><span class="s2"> is not equal to </span><span class="si">#{</span><span class="n">g</span><span class="si">}</span><span class="s2"></span>
-</span><span class='line'><span class="s2">puts &#39;</span><span class="si">#{</span><span class="n">e</span><span class="si">}</span><span class="s2"> + </span><span class="si">#{</span><span class="n">f</span><span class="si">}</span><span class="s2"> is not equal to </span><span class="si">#{</span><span class="n">g</span><span class="si">}</span><span class="s2">&#39;</span>
-</span><span class='line'><span class="s2"># </span><span class="si">#{</span><span class="n">e</span><span class="si">}</span><span class="s2"> + </span><span class="si">#{</span><span class="n">f</span><span class="si">}</span><span class="s2"> is not equal to </span><span class="si">#{</span><span class="n">g</span><span class="si">}</span><span class="s2"></span>
-</span><span class='line'><span class="s2">a = &#39;</span><span class="si">#{</span><span class="n">e</span><span class="si">}</span><span class="s2"> + </span><span class="si">#{</span><span class="n">f</span><span class="si">}</span><span class="s2"> is not equal to </span><span class="si">#{</span><span class="n">g</span><span class="si">}</span><span class="s2">&#39;</span>
-</span><span class='line'><span class="s2"># &quot;</span><span class="p">\</span><span class="c1">#{e} + \#{f} is not equal to \#{g}&quot;</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="nb">puts</span> <span class="s2">&quot;</span><span class="se">\#</span><span class="s2">{e} + </span><span class="se">\#</span><span class="s2">{f} is not equal to </span><span class="se">\#</span><span class="s2">{g}&quot;</span>
+</span><span class='line'><span class="c1"># #{e} + #{f} is not equal to #{g}</span>
+</span><span class='line'><span class="nb">puts</span> <span class="s1">&#39;#{e} + #{f} is not equal to #{g}&#39;</span>
+</span><span class='line'><span class="c1"># #{e} + #{f} is not equal to #{g}</span>
+</span><span class='line'><span class="n">a</span> <span class="o">=</span> <span class="s1">&#39;#{e} + #{f} is not equal to #{g}&#39;</span>
+</span><span class='line'><span class="c1"># &quot;\#{e} + \#{f} is not equal to \#{g}&quot;</span>
 </span></code></pre></td></tr></table></div></figure>
 
 
@@ -2706,7 +2706,9 @@ If the identity of the object is important, use a symbol.</p></blockquote>
 
 <p>You&rsquo;ll notice that after printing Hello World, it also says => nil; this is the &lsquo;null&rsquo; value in Ruby. It&rsquo;s the value that is returned by the function, and in this case, the value returned by <code>puts</code>.</p>
 
-<p>If you want to import files that you&rsquo;ve written, there are two ways to do so. A file that is imported in irb is executed just as it would if it had been imported through normal code, and it is the same as if it had been copy and pasted into irb. The following demonstrates the two major difference between the two options so try this out in irb. There is a trick however&hellip; Since Ruby 1.9.2, your current directory is no longer included in the list of directories that Ruby searches for the file you&rsquo;re loading.</p>
+<p>If you want to import files that you&rsquo;ve written, there are two ways to do so. A file that is imported in irb is executed just as it would if it had been imported through normal code, and it is the same as if it had been copy and pasted into irb. The following demonstrates the two major difference between the two options so try this out in irb. Whereas <code>require</code> is your standard &lsquo;import this library&rsquo;, <code>load</code> is more like &lsquo;run this bit of code&rsquo;.</p>
+
+<p>The first is subtle, but important. The argument to <code>load</code> is a path to the file. A file you <code>load</code> can be anywhere on the system, it accepts both relative and absolute paths. The argument to <code>require</code> is just the name of the file, and it will look for that file only in Ruby&rsquo;s PATH. Since 1.9.2 however, your working directory is no longer included in it.</p>
 
 <figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
@@ -2762,18 +2764,23 @@ If the identity of the object is important, use a symbol.</p></blockquote>
 <span class='line-number'>4</span>
 <span class='line-number'>5</span>
 <span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
 </pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="nb">load</span> <span class="s1">&#39;hello_world.rb&#39;</span>
 </span><span class='line'><span class="c1"># Hello World</span>
 </span><span class='line'><span class="c1"># =&gt; true</span>
 </span><span class='line'><span class="nb">load</span> <span class="s1">&#39;hello_world.rb&#39;</span>
 </span><span class='line'><span class="c1"># Hello World</span>
 </span><span class='line'><span class="c1"># =&gt; true</span>
-</span><span class='line'><span class="nb">require</span> <span class="s1">&#39;hello_world&#39;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+
+
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="nb">require</span> <span class="s1">&#39;hello_world&#39;</span>
 </span><span class='line'><span class="c1"># Hello World</span>
 </span><span class='line'><span class="c1"># =&gt; true</span>
 </span><span class='line'><span class="nb">require</span> <span class="s1">&#39;hello_world&#39;</span>
@@ -2781,11 +2788,7 @@ If the identity of the object is important, use a symbol.</p></blockquote>
 </span></code></pre></td></tr></table></div></figure>
 
 
-<p>The differences are:
-*   require will not import a file more than once
-*   file extension is not necessary when importing with require</p>
-
-<p>Generally it&rsquo;s more appropriate to use require unless you do need to execute some code more than once.</p>
+<p>The other difference is that <code>require</code> will not import a file more than once.</p>
 
 <h2>Hashbangs</h2>
 

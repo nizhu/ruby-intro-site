@@ -145,7 +145,7 @@
 </span></code></pre></td></tr></table></div></figure>
 
 
-<p>You&rsquo;ll notice that the methods above only returns the result of the function. Some methods makes changes to the string in place.</p>
+<p>You&rsquo;ll notice that the methods above only returns the result of the function. Some methods makes changes to the string in place. In general, the in place version will end with an exclamation mark, but note that this is not a standard.</p>
 
 <figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
@@ -263,12 +263,12 @@
 <span class='line-number'>4</span>
 <span class='line-number'>5</span>
 <span class='line-number'>6</span>
-</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="nb">puts</span> <span class="s2">&quot;</span><span class="se">\#</span><span class="s2">{e} + </span><span class="se">\#</span><span class="s2">{f} is not equal to </span><span class="se">\#</span><span class="s2">{g}&quot;&quot;</span>
-</span><span class='line'><span class="s2"># </span><span class="si">#{</span><span class="n">e</span><span class="si">}</span><span class="s2"> + </span><span class="si">#{</span><span class="n">f</span><span class="si">}</span><span class="s2"> is not equal to </span><span class="si">#{</span><span class="n">g</span><span class="si">}</span><span class="s2"></span>
-</span><span class='line'><span class="s2">puts &#39;</span><span class="si">#{</span><span class="n">e</span><span class="si">}</span><span class="s2"> + </span><span class="si">#{</span><span class="n">f</span><span class="si">}</span><span class="s2"> is not equal to </span><span class="si">#{</span><span class="n">g</span><span class="si">}</span><span class="s2">&#39;</span>
-</span><span class='line'><span class="s2"># </span><span class="si">#{</span><span class="n">e</span><span class="si">}</span><span class="s2"> + </span><span class="si">#{</span><span class="n">f</span><span class="si">}</span><span class="s2"> is not equal to </span><span class="si">#{</span><span class="n">g</span><span class="si">}</span><span class="s2"></span>
-</span><span class='line'><span class="s2">a = &#39;</span><span class="si">#{</span><span class="n">e</span><span class="si">}</span><span class="s2"> + </span><span class="si">#{</span><span class="n">f</span><span class="si">}</span><span class="s2"> is not equal to </span><span class="si">#{</span><span class="n">g</span><span class="si">}</span><span class="s2">&#39;</span>
-</span><span class='line'><span class="s2"># &quot;</span><span class="p">\</span><span class="c1">#{e} + \#{f} is not equal to \#{g}&quot;</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="nb">puts</span> <span class="s2">&quot;</span><span class="se">\#</span><span class="s2">{e} + </span><span class="se">\#</span><span class="s2">{f} is not equal to </span><span class="se">\#</span><span class="s2">{g}&quot;</span>
+</span><span class='line'><span class="c1"># #{e} + #{f} is not equal to #{g}</span>
+</span><span class='line'><span class="nb">puts</span> <span class="s1">&#39;#{e} + #{f} is not equal to #{g}&#39;</span>
+</span><span class='line'><span class="c1"># #{e} + #{f} is not equal to #{g}</span>
+</span><span class='line'><span class="n">a</span> <span class="o">=</span> <span class="s1">&#39;#{e} + #{f} is not equal to #{g}&#39;</span>
+</span><span class='line'><span class="c1"># &quot;\#{e} + \#{f} is not equal to \#{g}&quot;</span>
 </span></code></pre></td></tr></table></div></figure>
 
 
