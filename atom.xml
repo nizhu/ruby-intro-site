@@ -4,7 +4,7 @@
   <title><![CDATA[Ruby Intro]]></title>
   <link href="http://nizhu.github.io/ruby-intro-site/atom.xml" rel="self"/>
   <link href="http://nizhu.github.io/ruby-intro-site/"/>
-  <updated>2013-08-11T22:28:25+10:00</updated>
+  <updated>2013-08-11T22:38:02+10:00</updated>
   <id>http://nizhu.github.io/ruby-intro-site/</id>
   <author>
     <name><![CDATA[Nick Zhu]]></name>
@@ -1175,16 +1175,16 @@
 <span class='line-number'>10</span>
 <span class='line-number'>11</span>
 </pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">make_it_quack</span><span class="p">(</span><span class="n">w</span><span class="p">)</span>
-</span><span class='line'><span class="ss">NoMethodError</span><span class="p">:</span> <span class="n">undefined</span> <span class="nb">method</span> <span class="sb">`quack&#39; for #&lt;Woman:0x007fbe7b99e800&gt;</span>
+</span><span class='line'><span class="c1"># NoMethodError: undefined method `quack&#39; for #&lt;Woman:0x007fbe7b99e800&gt;</span>
 </span><span class='line'>
-</span><span class='line'><span class="sb">class Woman</span>
-</span><span class='line'><span class="sb">  def quack</span>
-</span><span class='line'><span class="sb">    &quot;Quack!&quot;</span>
-</span><span class='line'><span class="sb">  end</span>
-</span><span class='line'><span class="sb">end</span>
+</span><span class='line'><span class="k">class</span> <span class="nc">Woman</span>
+</span><span class='line'>  <span class="k">def</span> <span class="nf">quack</span>
+</span><span class='line'>    <span class="s2">&quot;Quack!&quot;</span>
+</span><span class='line'>  <span class="k">end</span>
+</span><span class='line'><span class="k">end</span>
 </span><span class='line'>
-</span><span class='line'><span class="sb">make_it_quack(w)</span>
-</span><span class='line'><span class="sb"># Quack!</span>
+</span><span class='line'><span class="n">make_it_quack</span><span class="p">(</span><span class="n">w</span><span class="p">)</span>
+</span><span class='line'><span class="c1"># Quack!</span>
 </span></code></pre></td></tr></table></div></figure>
 
 ]]></content>
