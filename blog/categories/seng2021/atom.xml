@@ -4,7 +4,7 @@
   <title><![CDATA[Category: SENG2021 | Ruby Intro]]></title>
   <link href="http://nizhu.github.io/ruby-intro-site/blog/categories/seng2021/atom.xml" rel="self"/>
   <link href="http://nizhu.github.io/ruby-intro-site/"/>
-  <updated>2013-08-11T22:54:06+10:00</updated>
+  <updated>2013-08-11T23:04:50+10:00</updated>
   <id>http://nizhu.github.io/ruby-intro-site/</id>
   <author>
     <name><![CDATA[Nick Zhu]]></name>
@@ -874,7 +874,7 @@
     <id>http://nizhu.github.io/ruby-intro-site/blog/2013/07/31/consuming-json-rest-resource-through-http</id>
     <content type="html"><![CDATA[<p>As you saw in the previous post, XML is an overly verbose format so in the last few years, what we call JSON (JavaScript Object Notation) has come to dominate web communication. Ideally I&rsquo;d be demonstrating this with Twitter&rsquo;s API since you&rsquo;re likely to use it for this assignment, but since mid June this year, the Twitter API requires OAuth to access. I will be address this in the next post.</p>
 
-<p>If you&rsquo;ve been writing Javascript, you love JSON. If you haven&rsquo;t, you soon will. Note that spaces, tabs and line breaks are all optional. I&rsquo;ve just added those to make it easier to read.</p>
+<p>If you&rsquo;ve been writing Javascript, you love JSON. If you haven&rsquo;t, you soon will. The following is a sample of a JSON formatted file. Note that spaces, tabs and line breaks are all optional. I&rsquo;ve just added those to make it easier to read.</p>
 
 <p><div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
@@ -924,7 +924,7 @@
 
 <h2>Retrieving with Net/HTTP and parsing with json</h2>
 
-<p><a href="http://ruby-doc.org/stdlib-2.0/libdoc/net/http/rdoc/Net/HTTP.html">Net/HTTP</a> is a standard Ruby library, and it&rsquo;ll be your interface to the internet. JSON is a simple parser, but is not standard. As before, install the gem with <code>gem install json</code></p>
+<p><a href="http://ruby-doc.org/stdlib-2.0/libdoc/net/http/rdoc/Net/HTTP.html">Net/HTTP</a> is a standard Ruby library, and it&rsquo;ll be your interface to the internet. JSON is a simple parser and it&rsquo;s also a standard library.</p>
 
 <p><div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
