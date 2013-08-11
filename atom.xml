@@ -4,7 +4,7 @@
   <title><![CDATA[Ruby Intro]]></title>
   <link href="http://nizhu.github.io/ruby-intro-site/atom.xml" rel="self"/>
   <link href="http://nizhu.github.io/ruby-intro-site/"/>
-  <updated>2013-08-11T18:17:20+10:00</updated>
+  <updated>2013-08-11T20:15:39+10:00</updated>
   <id>http://nizhu.github.io/ruby-intro-site/</id>
   <author>
     <name><![CDATA[Nick Zhu]]></name>
@@ -2702,7 +2702,7 @@ If the identity of the object is important, use a symbol.</p></blockquote>
 
 <h2>Interactive Ruby Shell</h2>
 
-<p><code>irb</code> is a tool that provides an interface to Ruby. It&rsquo;s a great feature, especially for developers new to Ruby because it allows one to interact with Ruby for instant feedback, and build up to a complex script line by line. Code behaves exactly the same way in irb as it would in the method described above. So open up <code>irb</code> and write Hello World again&hellip;.&#8220;`puts &ldquo;Hello World&rdquo;</p>
+<p><code>irb</code> is a tool that provides an interface to Ruby. It&rsquo;s a great feature, especially for developers new to Ruby because it allows one to interact with Ruby for instant feedback, and build up to a complex script line by line. Code behaves exactly the same way in irb as it would in the method described above. So open up <code>irb</code> and write Hello World again&hellip;.<code>puts "Hello World"</code></p>
 
 <p>You&rsquo;ll notice that after printing Hello World, it also says => nil; this is the &lsquo;null&rsquo; value in Ruby. It&rsquo;s the value that is returned by the function, and in this case, the value returned by <code>puts</code>.</p>
 
@@ -2959,7 +2959,15 @@ If the identity of the object is important, use a symbol.</p></blockquote>
 
 <h2>Windows</h2>
 
-<p><a href="http://rubyinstaller.org/">http://rubyinstaller.org/</a></p>
+<p>Ruby does work on Windows, but I don&rsquo;t have any experience with it and I&rsquo;m not familiar with the toolset for developing on Windows so these posts don&rsquo;t really work on Windows.</p>
+
+<p>I haven&rsquo;t tried any of this but apparently&hellip;</p>
+
+<p>Download and install the relevant 2.0.0-p247 installer from <a href="http://rubyinstaller.org/downloads/,">http://rubyinstaller.org/downloads/,</a> but make note of where you install it. Press Windows+R, and type in <code>cmd</code>. Then <code>cd</code> to the directory where you installed Ruby and everything else should be the same.</p>
+
+<p><a href="http://www.ruby-lang.org/en/documentation/quickstart/">If you’re using Windows, open fxri from the Ruby section of your Start Menu.</a></p>
+
+<p>Other than that, you&rsquo;re on your own :(</p>
 
 <h2>Keeping legacy code consistent</h2>
 
