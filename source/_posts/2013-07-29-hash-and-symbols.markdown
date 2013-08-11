@@ -133,6 +133,7 @@ Do this..
 h = Hash.new
 h[:abc] = "xyz"
 puts h[:abc]
+# xyz
 {% endcodeblock %}
 
 but don't do this..
@@ -140,7 +141,7 @@ but don't do this..
 {% codeblock lang:ruby %}
 h = Hash.new
 h["abc"] = :xyz
-puts ["abc"]
+puts h["abc"]
 # xyz
 {% endcodeblock %}
 

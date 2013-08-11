@@ -8,7 +8,7 @@ categories: [Ruby, SENG2021]
 
 As you saw in the previous post, XML is an overly verbose format so in the last few years, what we call JSON (JavaScript Object Notation) has come to dominate web communication. Ideally I'd be demonstrating this with Twitter's API since you're likely to use it for this assignment, but since mid June this year, the Twitter API requires OAuth to access. I will be address this in the next post.
 
-If you've been writing Javascript, you love JSON. If you haven't, you soon will. Note that spaces, tabs and line breaks are all optional. I've just added those to make it easier to read.
+If you've been writing Javascript, you love JSON. If you haven't, you soon will. The following is a sample of a JSON formatted file. Note that spaces, tabs and line breaks are all optional. I've just added those to make it easier to read.
 
 {% codeblock lang:javascript %}
 {
@@ -38,7 +38,7 @@ The easiest way to access this data, is to simply open a web browser and go to `
 
 ## Retrieving with Net/HTTP and parsing with json
 
-[Net/HTTP][3] is a standard Ruby library, and it'll be your interface to the internet. JSON is a simple parser, but is not standard. As before, install the gem with ```gem install json```
+[Net/HTTP][3] is a standard Ruby library, and it'll be your interface to the internet. JSON is a simple parser and it's also a standard library.
 
 {% codeblock lang:ruby %}
 require 'net/http'

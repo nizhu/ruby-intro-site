@@ -40,10 +40,10 @@ data["Results"][0].class
 data["Results"][0]["Election"][0]["House"][0]["Contests"][0]["Contest"][0].keys
 # ["Projected", "ContestIdentifier", "Enrolment", "FirstPreferences", "TwoCandidatePreferred", "TwoPartyPreferred", "PollingPlaces"]
 
-data["Results"][0]["Election"][0]["House"][0]["Contests"][0]["Contest"][0]["TwoPartyPreferred"][0]["Coalition"][0]["Votes"]
+data["Results"][0]["Election"][0]["House"][0]["Contests"][0]["Contest"][0]["TwoPartyPreferred"][0]["Coalition"][0]["Votes"][0]
 # 0
 
-data["Results"][0]["Election"][0]["House"][0]["Contests"][0]["Contest"][0]["Enrolment"]
+data["Results"][0]["Election"][0]["House"][0]["Contests"][0]["Contest"][0]["Enrolment"][0]
 # 124215
 {% endcodeblock %}
 

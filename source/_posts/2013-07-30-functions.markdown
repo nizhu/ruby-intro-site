@@ -78,7 +78,7 @@ def do_something
   raise "Failed to do something"
 end
 
-raise_exception
+do_something
 # RuntimeError: Failed to do something
 
 begin
